@@ -1,0 +1,13 @@
+<project name="coordy.hx" url="https://github.com/Mparaiso/coordy.hx" license="MIT">
+  <user name="mparaiso"/>
+  <tag v='layout' />
+  <tag v='js' />
+  <tag v='flash' />
+  <tag v='nme' />
+  <description>Coordy is a Flash layout toolkit that allows you to easily organize items in various layout patterns.
+    written by P.J.Onori http://somerandomdude.com/work/coordy/
+    ported to haxe by M.PARAISO mparaiso@online.fr
+  </description>
+  <version name='dev'>initial alpha version</version>
+</project>
+
