@@ -8,7 +8,6 @@ import com.somerandomdude.coordy.layouts.twodee.ILayout2d;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.GridNode;
 import com.somerandomdude.coordy.nodes.twodee.INode2d;
-import nme.display.DisplayObject;
 import nme.geom.Rectangle;
 
 class Grid extends Layout2d , implements ILayout2d{
@@ -163,7 +162,7 @@ class Grid extends Layout2d , implements ILayout2d{
 		 *
 		 * @return newly created node object containing a link to the object
 		 */
-		override public function addNode(object:DisplayObject=null, moveToCoordinates:Bool=true):INode
+		override public function addNode(object:Dynamic=null, moveToCoordinates:Bool=true):INode
 		{
 			// @TODO fix constructor for jeash to use Dynamic instead of DisplayObject
 			if(object!=null&&!validateObject(object)) throw 'Dynamic does not implement at least one of the following properties: "x", "y", "rotation"';
@@ -197,7 +196,7 @@ class Grid extends Layout2d , implements ILayout2d{
 		override public function addToLayout(object:Dynamic, moveToCoordinates:Bool=true):INode
 		{
 			if(!validateObject(object)) throw 'Object does not implement at least one of the following properties: "x", "y", "rotation"';
-			if(object&&linkExists(object)||size>=maxNodes) return null;
+			if(object!=null&&linkExists(object)||size>=maxNodes) return null;
 			
 			var d:Rectangle = this.calculateCellSize();
 			var c:Int = size%columns;

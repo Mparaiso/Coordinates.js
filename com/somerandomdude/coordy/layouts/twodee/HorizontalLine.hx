@@ -44,7 +44,7 @@ class HorizontalLine extends Layout2d , implements ILayout2d,  implements IOrder
 	}
 	
 	/** Adds object to layout in next available position. **/
-	override public function addNode(object:DisplayObject = null,moveToCoordinates:Bool = true):INode
+	override public function addNode(object:Dynamic = null,moveToCoordinates:Bool = true):INode
 	{
 		if (object != null && !validateObject(object)) throw 'Object does not implement at least one of the following properties: "x", "y", "width", "rotation"';
 		if (object != null && linkExists(object)) return null;
@@ -65,7 +65,6 @@ class HorizontalLine extends Layout2d , implements ILayout2d,  implements IOrder
 	//}
 	
 	/** Adds object to layout in the specified order within the layout **/
-	
 	public function addToLayoutAt(object:Dynamic, index:Int, moveToCoordinates:Bool = true):INode2d
 	{
 		if (!validateObject(object)) throw 'Object does not implement at least one of the following properties: "x", "y", "width", "rotation"';
@@ -101,13 +100,17 @@ class HorizontalLine extends Layout2d , implements ILayout2d,  implements IOrder
 			if (x.order > y.order) return 1;
 			return -1; //when  x.order<y.order
 		});
-		var xPos = 0;
+		var xPos:Float = 0;
 		for (i in 0...size) {
 			node = nodes[i];
 			node.x = xPos + x + (node.jitterX * jitterX);
 			node.y = this.y;
 			if (node.link == null) continue;
-			xPos += node.link.width + hPadding;
+			#if js
+				xPos += cast(node.link,DisplayObject).width + hPadding;
+			#else
+				xPos += node.link.width + hPadding;
+			#end
 		}
 	}
 	
@@ -128,9 +131,14 @@ class HorizontalLine extends Layout2d , implements ILayout2d,  implements IOrder
 			return -1; //when  x.order<y.order
 	}
 	
-	override private function validateObject(object:DisplayObject):Bool
+	override private function validateObject(object:Dynamic):Bool
 	{
-		if (super.validateObject(object) && Reflect.hasField(object, "width")) return true;
+		
+		#if js
+			if (super.validateObject(object) &&  cast(object,DisplayObject).width!=null ) return true;
+		#else
+			if (super.validateObject(object) &&  Reflect.hasField(object, "width") ) return true;
+		#end
 		return false;
 	}
 	

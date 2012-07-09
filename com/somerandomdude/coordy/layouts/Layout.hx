@@ -2,7 +2,6 @@ package com.somerandomdude.coordy.layouts;
 
 import com.somerandomdude.coordy.nodes.INode;
 import haxe.Json;
-import nme.display.DisplayObject;
 import nme.events.EventDispatcher;
 import Xml;
 
@@ -53,7 +52,7 @@ import Xml;
 		}
 		
 		// @TODO fixer le constructeur pour jeash
-		public function addNode(?object:DisplayObject=null, ?moveToCoordinates:Bool=true):INode
+		public function addNode(object:Dynamic=null,moveToCoordinates:Bool=true):INode
 		{
 			throw 'Method must be overriden by child class';
 			return null;

@@ -6,7 +6,9 @@ import com.somerandomdude.coordy.layouts.Layout;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.INode2d;
 import com.somerandomdude.coordy.proxyupdaters.IProxyUpdater;
-import nme.display.DisplayObject;
+#if js
+	import nme.display.DisplayObject;
+#end
 	
 
 class Layout2d extends Layout , implements ILayout2d {
@@ -21,7 +23,8 @@ class Layout2d extends Layout , implements ILayout2d {
 		
 		
 		public var updateMethod(default,set_updateMethod):String;//=LayoutUpdateMethod.UPDATE_AND_RENDER;
-		public var updateFunction(default, default):Dynamic;//Function=updateAndRender;
+		//public var updateFunction(default, default):Dynamic;//Function=updateAndRender;
+		dynamic public function updateFunction() { }
 		
 		private var proxyUpdater(default,set_proxyUpdater):IProxyUpdater;
 		
@@ -239,8 +242,14 @@ class Layout2d extends Layout , implements ILayout2d {
 			for(i in 0...size){
 				n = this.nodes[i];
 				if (!n.link) continue;
-				n.link.x = n.x;
-				n.link.y = n.y;
+				#if js
+					cast(n.link, DisplayObject).x = n.x;
+					cast(n.link, DisplayObject).y = n.y;
+				#else
+					n.link.x = n.x;
+					n.link.y = n.y;
+				#end
+
 			}
 		}
 		
@@ -272,14 +281,21 @@ class Layout2d extends Layout , implements ILayout2d {
 		 *
 		 * @see #addToLayout()
 		 */
-		private function validateObject(object:DisplayObject):Bool
+		private function validateObject(object:Dynamic):Bool
 		{
-			//@TODO fix it
-			//if(Reflect.hasField(object,'x')&&
-				//Reflect.hasField(object,'y')&&
-				//Reflect.hasField(object, 'rotation')
-			//) return true;
-			//return false;
-			return true;
+			#if js
+				var _object:DisplayObject = cast(object, DisplayObject);
+			  //trace(_object.x);
+			  //trace(_object.y);
+			  //trace(_object.rotation);
+				if (_object.x != null && _object.y != null && _object.rotation != null) return true;
+			#else
+				var _object:Dynamic = object;
+			if(Reflect.hasField(_object,'x')&&
+				Reflect.hasField(_object,'y')&&
+				Reflect.hasField(_object, 'rotation')
+			) return true;
+			#end
+			return false;
 		}
 }

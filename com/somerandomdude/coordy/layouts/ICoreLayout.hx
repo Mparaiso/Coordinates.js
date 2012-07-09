@@ -10,7 +10,7 @@ interface ICoreLayout {
 	
 	function addNodes(count:Int):Void;
 	// @TODO fixer le constructeur pour jeash
-	function addNode(object:DisplayObject=null, moveToCoordinates:Bool=true):INode;
+	function addNode(object:Dynamic=null, moveToCoordinates:Bool=true):INode;
 	function addToLayout(object:Dynamic, moveToCoordinates:Bool=true):INode;
 	function getNodeByLink(link:Dynamic):INode;
 	function getNodeIndex(node:INode):Int;
