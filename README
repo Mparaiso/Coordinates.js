@@ -7,3 +7,8 @@
 ##url http://somerandomdude.com/
 
 @TODO add description , doc , and examples
+
+###INSTRUCTIONS
+
+to build tests : > haxe CoordyTest.hxml
+you can change the test plateform target in that file.

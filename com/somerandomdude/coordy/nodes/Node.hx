@@ -1,13 +1,14 @@
 package com.somerandomdude.coordy.nodes;
 
 class Node implements INode {
-	//public var link(default, set_link):Dynamic;
-	public var link(default, default):Dynamic;
 	
-	//function set_link(value:Dynamic):Dynamic {
-		//link = value;
-		//return link;
-	//}
+	public function new(link:Dynamic) {
+		this.link = link;
+	}
+	
+	public var link(get_link, set_link):Dynamic;
+	function get_link():Dynamic { return link;}
+	function set_link(value:Dynamic):Dynamic{return link=value;}
 	/**
 	 * Packages the node as a generic object - mainly used for exporting layout data.
 	 *

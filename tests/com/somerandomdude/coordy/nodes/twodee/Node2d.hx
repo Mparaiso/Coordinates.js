@@ -11,7 +11,14 @@ class Node2d extends Node , implements INode2d
 	public var jitterX(default, setJitterX):Float;
 	public var jitterY(default, setJitterY):Float;
 	public var rotation(default, default):Float;
-
+	//@TODO fix it
+	//override function	set_link(value:Dynamic):Dynamic {
+		//link = value;
+		//link.x = 0;
+		//link.y = 0;
+		//return link;
+	//}
+	//
 	private function setJitterX(value:Float):Float
 	{
 		return jitterX = Math.random()*value*((Math.random()>.5)?-1:1);
@@ -38,7 +45,6 @@ class Node2d extends Node , implements INode2d
 		this.jitterX = jitterX;
 		this.jitterY = jitterY;
 		rotation = 0;
-		super(link);
 	}
 	
 

@@ -2,7 +2,7 @@ package com.somerandomdude.coordy.nodes;
 
 interface INode
 {
-	//var link(default,set_link):Dynamic; @TODO fix it
-	var link(default,default):Dynamic;
+	var link(get_link,set_link):Dynamic;
+	//var link:Dynamic;
 	function toObject():Dynamic;
 }

@@ -1,0 +1,6 @@
+-cp .
+-lib nme
+-swf CoordyTest.swf
+-swf-header 800:600:30:FFFFFF
+-swf-version 9
+-main tests.CoordyTest
