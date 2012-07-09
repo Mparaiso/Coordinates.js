@@ -37,7 +37,7 @@ class AutoAddToLayoutBehavior
 	{
 		if (cast(e.target,DisplayObject).parent != target) return;
 		for (i in 0...layout.size) if (e.target == layout.nodes[i].link) return;
-		layout.addNode(cast(e.target, DisplayObject), false);
+		layout.addNode(e.target, false);
 		layout.executeUpdateMethod();
 		trace(layout.size);
 
@@ -46,7 +46,7 @@ class AutoAddToLayoutBehavior
 	private function removeHandler(e:Event):Void
 	{
 		if (cast(e.target,DisplayObject).parent != target) return;
-		layout.removeNodeByLink(cast(e.target, DisplayObjectContainer));
+		layout.removeNodeByLink(e.target);
 		layout.executeUpdateMethod();
 	}
 }
