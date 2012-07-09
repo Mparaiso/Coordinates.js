@@ -6,9 +6,11 @@
 
 ##url http://somerandomdude.com/
 
-@TODO add description , doc , and examples
+### Available Layouts :
 
-###INSTRUCTIONS
-
-to build tests : > haxe CoordyTest.hxml
-you can change the test plateform target in that file.
++twodee
+	+grid
+	+horizontal line
+	+vertical line
+	+scatter
+	

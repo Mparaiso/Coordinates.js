@@ -6,7 +6,7 @@ import com.somerandomdude.coordy.layouts.twodee.ILayout2d;
 class LayoutTransitioner
 {
 	
-	private static var _tweenFunction(null, default):Dynamic->Dynamic;
+	dynamic public static function tweenFunction(node:Dynamic){}
 	
 	/**
 	 *
@@ -14,8 +14,7 @@ class LayoutTransitioner
 	 */
 	public static function syncNodesTo(layout:ICoreLayout):Void
 	{
-		if (_tweenFunction==null)
-		{
+		if (tweenFunction==null){
 			if (Std.is(layout,ILayout2d)) {
 				for (i in 0...layout.size) {
 					if (layout.nodes[i].link.z) {
@@ -27,7 +26,7 @@ class LayoutTransitioner
 			return;
 		}
 		for (i in 0...layout.size) {
-			_tweenFunction(layout.nodes[i]);
+			tweenFunction(layout.nodes[i]);
 		}
 	}
 	

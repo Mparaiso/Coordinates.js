@@ -1,6 +1,7 @@
 package tests;
 import haxe.unit.TestRunner;
 import tests.com.somerandomdude.coordy.layouts.twodee.HorizontalLineTest;
+import tests.com.somerandomdude.coordy.layouts.twodee.ScatterTest;
 import tests.com.somerandomdude.coordy.layouts.twodee.VerticalLineTest;
 import tests.com.somerandomdude.coordy.nodes.NodeTest;
 import tests.com.somerandomdude.coordy.nodes.twodee.OrderedNodeTest;
@@ -18,6 +19,7 @@ class CoordyTest
 		testRunner.add(new OrderedNodeTest());
 		testRunner.add(new HorizontalLineTest());
 		testRunner.add(new VerticalLineTest());
+		testRunner.add(new ScatterTest());
 		testRunner.run();
 		return 0;
 	}
