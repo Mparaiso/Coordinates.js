@@ -8,9 +8,9 @@
 
 ### Available Layouts :
 
-+twodee
-	+grid
-	+horizontal line
-	+vertical line
-	+scatter
++ twodee
+	+ grid
+	+ horizontal line
+	+ vertical line
+	+ scatter
 	
