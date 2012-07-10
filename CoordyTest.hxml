@@ -1,5 +1,6 @@
 -cp .
 -lib nme
+-lib hxColorToolkit
 -swf CoordyTest.swf
 -swf-header 800:600:30:FFFFFF
 -swf-version 9

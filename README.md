@@ -10,7 +10,9 @@
 
 + twodee
 	+ grid
+	+ flow
 	+ horizontal line
 	+ vertical line
 	+ scatter
+	+ stack
 	

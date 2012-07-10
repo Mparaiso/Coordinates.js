@@ -29,7 +29,7 @@
   <haxelib>
     <library name="nme" />
     <library name="actuate" />
-    <library name="GTweenHX" />
+    <library name="hxColorToolkit" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
