@@ -1,4 +1,4 @@
-#coordy-haxe
+#coordy.hx
 
 ##Author P.J. Onori
 

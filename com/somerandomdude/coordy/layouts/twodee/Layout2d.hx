@@ -24,7 +24,7 @@ class Layout2d extends Layout , implements ILayout2d {
 		
 		public var updateMethod(default,set_updateMethod):String;//=LayoutUpdateMethod.UPDATE_AND_RENDER;
 		//public var updateFunction(default, default):Dynamic;//Function=updateAndRender;
-		dynamic public function updateFunction() { }
+		public var updateFunction:Dynamic;
 		
 		private var proxyUpdater(default,set_proxyUpdater):IProxyUpdater;
 		

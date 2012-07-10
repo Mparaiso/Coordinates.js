@@ -1,0 +1,9 @@
+-cp .
+-lib nme
+-lib actuate
+-js coordy.js
+-main examples.ExamplesList
+--dead-code-elimination
+--js-modern
+--remap flash:nme
+-debug

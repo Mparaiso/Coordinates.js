@@ -2,26 +2,27 @@ package com.somerandomdude.coordy.utils;
 
 import com.somerandomdude.coordy.layouts.ICoreLayout;
 import com.somerandomdude.coordy.layouts.twodee.ILayout2d;
+import com.somerandomdude.coordy.nodes.INode;
 
 class LayoutTransitioner
 {
+	public var layout(default, default):ICoreLayout;
+
+	public function new(layout:ICoreLayout,tweenFunction:Dynamic=null) {
+		this.layout = layout;
+		this.tweenFunction = tweenFunction;
+	}
 	
-	dynamic public static function tweenFunction(node:Dynamic){}
+	dynamic public function tweenFunction(node:INode){}
 	
 	/**
 	 *
 	 * @param	layout
 	 */
-	public static function syncNodesTo(layout:ICoreLayout):Void
+	public function syncNodesTo(l:ICoreLayout=null):Void
 	{
+		if (l != null) layout = l;
 		if (tweenFunction==null){
-			if (Std.is(layout,ILayout2d)) {
-				for (i in 0...layout.size) {
-					if (layout.nodes[i].link.z) {
-						layout.nodes[i].link.z = 0;
-					}
-				}
-			}
 			layout.updateAndRender();
 			return;
 		}

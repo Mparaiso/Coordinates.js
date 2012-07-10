@@ -85,17 +85,17 @@ class Scatter extends Layout2d
 	{
 		for (i in 0...size) {
 				//prevent js/jeash bug
-				if (Std.is(this.nodes[i].link, DisplayObject)) {
+			if (Std.is(this.nodes[i].link, DisplayObject)) {
 					var localNode:DisplayObject = cast(this.nodes[i].link, DisplayObject);
 					localNode.x = this.nodes[i].x;
 					localNode.y = this.nodes[i].y;
 					localNode.rotation = this.nodes[i].rotation;
-				}else {
+			}else {
 					var localNode = this.nodes[i].link;
 					localNode.x = this.nodes[i].x;
 					localNode.y = this.nodes[i].y;
-					localNode.roation = this.nodes[i].rotation;
-				}
+					localNode.rotation = this.nodes[i].rotation;
+			}
 
 		}
 	}
@@ -126,6 +126,7 @@ class Scatter extends Layout2d
 			node.y = yPos;
 			node.xRelation = (node.x) / width;
 			node.yRelation = (node.y) / height;
+			node.rotation  =  jitterRotation?Math.random() * p * 360:0;
 		}
 		updateFunction();
 		

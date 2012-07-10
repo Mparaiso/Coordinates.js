@@ -4,7 +4,7 @@
   <output>
     <movie outputType="Application" />
     <movie input="" />
-    <movie path="CoordyTest.swf" />
+    <movie path="coordy.swf" />
     <movie fps="30" />
     <movie width="800" />
     <movie height="600" />
@@ -21,17 +21,19 @@
   <build>
     <option directives="" />
     <option flashStrict="False" />
-    <option mainClass="tests.CoordyTest" />
+    <option mainClass="examples.ExamplesList" />
     <option enabledebug="False" />
     <option additional="" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
     <library name="nme" />
+    <library name="actuate" />
+    <library name="GTweenHX" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
-    <compile path="tests\CoordyTest.hx" />
+    <compile path="examples\ExamplesList.hx" />
   </compileTargets>
   <!-- Assets to embed into the output SWF -->
   <library>
