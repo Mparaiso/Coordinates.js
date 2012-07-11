@@ -1,10 +1,10 @@
 #coordy.hx
 
-##Author P.J. Onori
+###Author P.J. Onori
 
-##Haxe Port by M.Paraiso mparaiso@online.fr
+###Haxe Port by M.Paraiso mparaiso@online.fr
 
-##url http://somerandomdude.com/
+####url http://somerandomdude.com/work/coordy/
 
 ### Available Layouts :
 
@@ -16,4 +16,5 @@
 	+ scatter
 	+ stack
 	+ wave
+	+ spiral
 	

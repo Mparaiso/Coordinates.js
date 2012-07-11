@@ -8,6 +8,7 @@ import tests.com.somerandomdude.coordy.layouts.twodee.ScatterTest;
 import tests.com.somerandomdude.coordy.layouts.twodee.StackTest;
 import tests.com.somerandomdude.coordy.layouts.twodee.VerticalLineTest;
 import tests.com.somerandomdude.coordy.layouts.twodee.WaveTest;
+import tests.com.somerandomdude.coordy.layouts.twodee.SpiralTest;
 import tests.com.somerandomdude.coordy.nodes.NodeTest;
 import tests.com.somerandomdude.coordy.nodes.twodee.FlowNodeTest;
 import tests.com.somerandomdude.coordy.nodes.twodee.OrderedNodeTest;
@@ -33,6 +34,7 @@ class CoordyTest
 		testRunner.add(new GridTest());
 		testRunner.add(new FlowNodeTest());
 		testRunner.add(new EllipseTest());
+		testRunner.add(new SpiralTest());
 		testRunner.add(new WaveTest());
 		
 		testRunner.run();
