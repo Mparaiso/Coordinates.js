@@ -20,7 +20,9 @@ import com.somerandomdude.coordy.layouts.twodee.ILayout2d;
 import com.somerandomdude.coordy.layouts.twodee.Layout2d;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.FlowNode;
+
 import flash.display.DisplayObject;
+
 import flash.geom.Rectangle;
 
 class Flow extends Layout2d ,implements ILayout2d
@@ -171,9 +173,10 @@ class Flow extends Layout2d ,implements ILayout2d
     for(i in 0...size)
     {
       var cell:FlowNode = this.nodes[i];
-      if(nodes[i].link==null) continue;
+      if (nodes[i].link == null) continue;
       var child:DisplayObject = this.nodes[i].link;
-      var bb:Rectangle = child.getBounds(child);
+			var bb:Rectangle;
+      bb = child.getBounds(child);
 
       bb.x*=child.width/bb.width;
       bb.y*=child.height/bb.height;
@@ -204,7 +207,7 @@ class Flow extends Layout2d ,implements ILayout2d
 
   override function validateObject(object:Dynamic):Bool
   {
-		#if js
+		#if (js && !nojeash)
 			if (!Std.is(object, DisplayObject)) return false;
 		#else
 			var fields = ['x', 'y', 'width', 'height', 'rotation', 'getBounds'];

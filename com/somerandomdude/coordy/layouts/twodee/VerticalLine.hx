@@ -6,8 +6,9 @@ import com.somerandomdude.coordy.layouts.IOrderedLayout;
 import com.somerandomdude.coordy.layouts.twodee.ILayout2d;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.OrderedNode;
+#if (js && !nojeash)
 import flash.display.DisplayObject;
-
+#end
 class VerticalLine extends Layout2d ,implements ILayout2d,implements IOrderedLayout
 {
 
@@ -68,7 +69,7 @@ class VerticalLine extends Layout2d ,implements ILayout2d,implements IOrderedLay
 			node.y = yPos + y + (node.jitterY * this.jitterY);
 			node.x = this.x + (node.jitterX * this.jitterX);
 			if (node.link == null) continue;
-			#if js
+			#if (js && !nojeash)
 				yPos += cast(node.link, DisplayObject).height + vPadding;
 			#else
 				yPos += node.link.height + vPadding;
@@ -96,7 +97,7 @@ class VerticalLine extends Layout2d ,implements ILayout2d,implements IOrderedLay
 	
 	override private function validateObject(object:Dynamic):Bool
 	{
-		#if js
+		#if (js && !nojeash)
 			return (super.validateObject(object) && cast(object, DisplayObject).height != null);
 		#else
 			return (super.validateObject(object) && Reflect.hasField(object, "height"));

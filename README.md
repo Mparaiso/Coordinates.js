@@ -2,6 +2,11 @@
 
 ##coordy is a haxe layout toolkit that allows you to easily organize items in various layout patterns.
 
+##Targets
++ flash
++ html5
++ cpp (Windows , Linux, IOs, Android , ... )
+
 ###Author M.Paraiso
 
 ####Contact  : mparaiso@online.fr
@@ -23,4 +28,8 @@
 	+ wave
 	+ spiral
 	+ lattice
+	
++ threedee
+  + stack
+	
 	

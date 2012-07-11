@@ -7,9 +7,9 @@ import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.INode2d;
 import com.somerandomdude.coordy.proxyupdaters.IProxyUpdater;
 
-import flash.display.DisplayObject;
-
-	
+#if (js && !nojeash)
+import flash.display.DisplayObject
+#end
 
 class Layout2d extends Layout , implements ILayout2d {
 	
@@ -245,10 +245,13 @@ class Layout2d extends Layout , implements ILayout2d {
 				n = this.nodes[i];
 				if (n.link==null) continue;
 				//prevent js/jeash bug
+				#if (js && !nojeash)
 				if (Std.is(n.link, DisplayObject)) {
 					cast(n.link, DisplayObject).x = n.x;
 					cast(n.link, DisplayObject).y = n.y;
-				}else {
+				}else
+				#end
+				{
 					n.link.x = n.x;
 					n.link.y = n.y;
 				}
@@ -285,7 +288,7 @@ class Layout2d extends Layout , implements ILayout2d {
 		 */
 		private function validateObject(object:Dynamic):Bool
 		{
-			#if js
+			#if (js && !nojeash)
 				var _object:DisplayObject = cast(object, DisplayObject);
 			  //trace(_object.x);
 			  //trace(_object.y);

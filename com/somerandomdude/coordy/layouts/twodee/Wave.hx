@@ -6,7 +6,9 @@ import com.somerandomdude.coordy.constants.WaveFunction;
 import com.somerandomdude.coordy.events.CoordyNodeEvent;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.Node2d;
+#if (js && !nojeash)
 import flash.display.DisplayObject;
+#end
 
 class Wave extends Layout2d ,implements ILayout2d
 {
@@ -166,12 +168,15 @@ class Wave extends Layout2d ,implements ILayout2d
 		{
 			c=this.nodes[i];
 			if (!c.link) continue;
+			#if (js && !nojeash)
 			if (Std.is(c.link, DisplayObject)) {
 				var link:DisplayObject = cast(c.link, DisplayObject);
 				link.x=c.x;
 				link.y=c.y;
 				link.rotation = (this.alignType == PathAlignType.NONE)?0:c.rotation;
-			}else{
+			}else
+			#end
+			{
 				c.link.x=c.x;
 				c.link.y=c.y;
 				c.link.rotation = (this.alignType == PathAlignType.NONE)?0:c.rotation;

@@ -1,7 +1,5 @@
 package com.somerandomdude.coordy.nodes.twodee;
 
-import flash.display.DisplayObject;
-
 class EllipseNode extends Node2d,implements INode2d
 {
 	
