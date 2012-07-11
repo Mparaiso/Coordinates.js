@@ -1,8 +1,0 @@
--cp .
--lib actuate
--lib jeash
--js coordy.js
--main examples.ExamplesList
---dead-code-elimination
---js-modern
---remap flash:jeash
