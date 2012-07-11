@@ -30,6 +30,7 @@
     <library name="nme" />
     <library name="actuate" />
     <library name="hxColorToolkit" />
+    <library name="flambe" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
@@ -49,7 +50,7 @@
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->
   <options>
-    <option showHiddenPaths="False" />
+    <option showHiddenPaths="True" />
     <option testMovie="Default" />
   </options>
   <!-- Plugin storage -->

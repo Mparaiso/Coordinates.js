@@ -1,4 +1,10 @@
 coordy_original
+coordyas3
 coordy.hx.hxml
+coordy.hx.js.hxml
 *.swf
 *.js
+*.map
+extra
+Main.hxml
+index.html

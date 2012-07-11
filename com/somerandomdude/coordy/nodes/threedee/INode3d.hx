@@ -2,16 +2,16 @@ package com.somerandomdude.coordy.nodes.threedee;
 import com.somerandomdude.coordy.nodes.INode;
 
 interface INode3d implements INode {
-	public var x(default, default);
-	public var y(default, default);
-	public var z(default, default);
+	public var x(get_x, set_x):Float;
+	public var y(get_y, set_y):Float;
+	public var z(get_z, set_z):Float;
 	
-	public var jitterX(default, default);
-	public var jitterY(default, default);
+	public var jitterX(get_jitterX, set_jitterX):Float;
+	public var jitterY(get_jitterY, set_jitterY):Float;
 	
-	public var rotationX(default, default);
-	public var rotationY(default, default);
-	public var rotationZ(default, default);
+	public var rotationX(get_rotationX, set_rotationX):Float;
+	public var rotationY(get_rotationY, set_rotationY):Float;
+	public var rotationZ(get_rotationZ, set_rotationZ):Float;
 
 	function clone():INode3d;
 }

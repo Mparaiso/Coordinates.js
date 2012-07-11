@@ -207,7 +207,7 @@ class Flow extends Layout2d ,implements ILayout2d
 
   override function validateObject(object:Dynamic):Bool
   {
-		#if (js && !nojeash)
+		#if (js && jeash)
 			if (!Std.is(object, DisplayObject)) return false;
 		#else
 			var fields = ['x', 'y', 'width', 'height', 'rotation', 'getBounds'];

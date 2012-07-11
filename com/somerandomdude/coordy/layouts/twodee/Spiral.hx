@@ -5,7 +5,7 @@ import com.somerandomdude.coordy.events.CoordyNodeEvent;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.INode2d;
 import com.somerandomdude.coordy.nodes.twodee.Node2d;
-#if (js && !nojeash)
+#if (js && jeash)
 import flash.display.DisplayObject;
 #end
 
@@ -162,7 +162,7 @@ class Spiral extends Layout2d ,implements ILayout2d
 	override public function renderNode(node:INode2d):Void
 	{
 		super.renderNode(node);
-		#if (js && !nojeash)
+		#if (js && jeash)
 		if (Std.is(node.link, DisplayObject)) {
 			var link:DisplayObject = cast(node.link, DisplayObject);
 			link.rotation=node.rotation;
@@ -185,7 +185,7 @@ class Spiral extends Layout2d ,implements ILayout2d
 			c = this.nodes[i];
 			if (c.link == null) continue;
 			//prevent jeash/js getter/setter bug
-			#if (js && !nojeash)
+			#if (js && jeash)
 			if (Std.is(c.link, DisplayObject)) {
 				var link:DisplayObject = cast(c.link, DisplayObject);
 				link.x=c.x;

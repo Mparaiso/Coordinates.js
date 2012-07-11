@@ -13,7 +13,7 @@ import com.somerandomdude.coordy.layouts.twodee.ILayout2d;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.INode2d;
 import com.somerandomdude.coordy.nodes.twodee.OrderedNode;
-#if (js && !nojeash)
+#if (js && jeash)
 import flash.display.DisplayObject;
 #end
 
@@ -108,7 +108,7 @@ class HorizontalLine extends Layout2d , implements ILayout2d,  implements IOrder
 			node.x = xPos + x + (node.jitterX * jitterX);
 			node.y = this.y;
 			if (node.link == null) continue;
-			#if (js && !nojeash)
+			#if (js && jeash)
 				xPos += cast(node.link,DisplayObject).width + hPadding;
 			#else
 				xPos += node.link.width + hPadding;
@@ -136,7 +136,7 @@ class HorizontalLine extends Layout2d , implements ILayout2d,  implements IOrder
 	override private function validateObject(object:Dynamic):Bool
 	{
 		
-		#if (js && !nojeash)
+		#if (js && jeash)
 			if (super.validateObject(object) &&  cast(object,DisplayObject).width!=null ) return true;
 		#else
 			if (super.validateObject(object) &&  Reflect.hasField(object, "width") ) return true;

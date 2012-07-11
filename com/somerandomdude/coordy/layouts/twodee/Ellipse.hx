@@ -6,7 +6,7 @@ import com.somerandomdude.coordy.layouts.twodee.ILayout2d;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.EllipseNode;
 import com.somerandomdude.coordy.nodes.twodee.INode2d;
-#if (js && !nojeash)
+#if (js && jeash)
 import flash.display.DisplayObject;
 #end
 
@@ -72,7 +72,7 @@ class Ellipse extends Layout2d, implements ILayout2d {
 	override public function renderNode(node:INode2d):Void
 	{
 		super.renderNode(node);
-		#if (js && !nojeash)
+		#if (js && jeash)
 		if (Std.is(node.link, DisplayObject)) {
 			cast(node.link, DisplayObject).rotation = node.rotation;
 		}else
@@ -89,7 +89,7 @@ class Ellipse extends Layout2d, implements ILayout2d {
 			c = this.nodes[i];
 			if (c.link == null) continue;
 			// prevent javascript getter/setter bug
-			#if (js && !nojeash)
+			#if (js && jeash)
 			if (Std.is(c.link, DisplayObject)) {
 				var link:DisplayObject = cast(c.link, DisplayObject);
 				link.x=c.x;
@@ -109,7 +109,7 @@ class Ellipse extends Layout2d, implements ILayout2d {
 	public function getCellAngle(cell:INode2d):Float {
 		var xR:Float;
 		var yR:Float;
-		#if (js && !nojeash)
+		#if (js && jeash)
 		if (Std.is(cell.link, DisplayObject)) {
 			var link:DisplayObject = cast(cell.link, DisplayObject);
 			xR = link.x - (x + width / 2);
@@ -172,7 +172,7 @@ class Ellipse extends Layout2d, implements ILayout2d {
 		var xR:Float;
 		var yR:Float;
 		//  javascript getter/setter bug fix
-		#if (js && !nojeash)
+		#if (js && jeash)
 		if (Std.is(cell.link, DisplayObject) ){
 			var link = cast(cell.link, DisplayObject);
 			xR = link.x - (x + width / 2);

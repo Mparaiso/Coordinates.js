@@ -15,7 +15,7 @@ import com.somerandomdude.coordy.events.CoordyNodeEvent;
 import com.somerandomdude.coordy.layouts.twodee.ILayout2d;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.ScatterNode;
-#if (js && !nojeash)
+#if (js && jeash)
 import flash.display.DisplayObject;
 #end
 
@@ -86,7 +86,7 @@ class Scatter extends Layout2d
 	{
 		for (i in 0...size) {
 				//prevent js/jeash bug
-			#if (js && !nojeash)
+			#if (js && jeash)
 			if (Std.is(this.nodes[i].link, DisplayObject)) {
 					var localNode:DisplayObject = cast(this.nodes[i].link, DisplayObject);
 					localNode.x = this.nodes[i].x;

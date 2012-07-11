@@ -6,7 +6,7 @@ import com.somerandomdude.coordy.constants.WaveFunction;
 import com.somerandomdude.coordy.events.CoordyNodeEvent;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.Node2d;
-#if (js && !nojeash)
+#if (js && jeash)
 import flash.display.DisplayObject;
 #end
 
@@ -168,7 +168,7 @@ class Wave extends Layout2d ,implements ILayout2d
 		{
 			c=this.nodes[i];
 			if (!c.link) continue;
-			#if (js && !nojeash)
+			#if (js && jeash)
 			if (Std.is(c.link, DisplayObject)) {
 				var link:DisplayObject = cast(c.link, DisplayObject);
 				link.x=c.x;
