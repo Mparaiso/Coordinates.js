@@ -1,6 +1,6 @@
 package examples.utils;
 
-import nme.display.Shape;
+import flash.display.Shape;
 
 class Circle extends Shape {
 	public function new(radius:Float) {

@@ -6,17 +6,17 @@ import com.somerandomdude.coordy.layouts.Layout;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.INode2d;
 import com.somerandomdude.coordy.proxyupdaters.IProxyUpdater;
-#if js
-	import flash.display.DisplayObject;
-#end
+
+import flash.display.DisplayObject;
+
 	
 
 class Layout2d extends Layout , implements ILayout2d {
 	
 		public var x(default,set_x):Float;
 		public var y(default,set_y):Float;
-		public var width(default,set_width):Float;
-		public var height(default,set_height):Float;
+		public var width(get_width,set_width):Float;
+		public var height(get_height,set_height):Float;
 		public var rotation(default,set_rotation):Float;
 		public var jitterX(default,set_jitterX):Float;
 		public var jitterY(default,set_jitterY):Float;
@@ -121,6 +121,7 @@ class Layout2d extends Layout , implements ILayout2d {
 		 *
 		 * @return	Width of layout
 		 */
+		function get_width():Float { return width;}
 		public function set_width(value:Float):Float
 		{
 			this.width=value;
@@ -133,6 +134,7 @@ class Layout2d extends Layout , implements ILayout2d {
 		 *
 		 * @return	Height position of layout
 		 */
+		function get_height():Float { return height;}
 		public function set_height(value:Float):Float
 		{
 			this.height=value;
@@ -241,15 +243,15 @@ class Layout2d extends Layout , implements ILayout2d {
 			var n:INode2d;
 			for(i in 0...size){
 				n = this.nodes[i];
-				if (!n.link) continue;
-				#if js
+				if (n.link==null) continue;
+				//prevent js/jeash bug
+				if (Std.is(n.link, DisplayObject)) {
 					cast(n.link, DisplayObject).x = n.x;
 					cast(n.link, DisplayObject).y = n.y;
-				#else
+				}else {
 					n.link.x = n.x;
 					n.link.y = n.y;
-				#end
-
+				}
 			}
 		}
 		

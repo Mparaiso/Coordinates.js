@@ -7,12 +7,12 @@ import com.somerandomdude.coordy.nodes.twodee.INode2d;
 import com.somerandomdude.coordy.nodes.twodee.Node2d;
 import com.somerandomdude.coordy.utils.LayoutTransitioner;
 import examples.utils.Circle;
-import nme.display.DisplayObject;
-import nme.display.Shape;
-import nme.display.Sprite;
-import nme.events.Event;
-import nme.events.MouseEvent;
-import nme.Lib;
+import flash.display.DisplayObject;
+import flash.display.Shape;
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.events.MouseEvent;
+import flash.Lib;
 /**
  * ...
  * @author marc paraiso

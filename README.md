@@ -1,10 +1,15 @@
 #coordy.hx
 
-###Author P.J. Onori
+##coordy is a haxe layout toolkit that allows you to easily organize items in various layout patterns.
+
+###Author M.Paraiso
+
+####Contact  : mparaiso@online.fr
+
+####ported from the original coordy library by P.J. Onori : http://somerandomdude.com/work/coordy/
 
 ###Haxe Port by M.Paraiso mparaiso@online.fr
 
-####url http://somerandomdude.com/work/coordy/
 
 ### Available Layouts :
 
@@ -17,4 +22,5 @@
 	+ stack
 	+ wave
 	+ spiral
+	+ lattice
 	

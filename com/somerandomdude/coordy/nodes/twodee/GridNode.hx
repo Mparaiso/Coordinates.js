@@ -9,8 +9,8 @@ class GridNode extends Node2d,implements INode2d
 {
 
 
-		private var row(default,default):Int;
-		private var column(default,default):Int;
+		public var row(default,default):Int;
+		public var column(default,default):Int;
 		
 		/**
 		 * Node used for Grid layout

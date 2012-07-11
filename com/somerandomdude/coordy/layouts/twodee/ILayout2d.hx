@@ -8,8 +8,8 @@ interface ILayout2d implements ILayout {
 	
 	public var x(default,set_x):Float;
 	public var y(default,set_y):Float;
-	public var width(default,set_width):Float;
-	public var height(default,set_height):Float;
+	public var width(get_width,set_width):Float;
+	public var height(get_height,set_height):Float;
 	public var rotation(default,set_rotation):Float;
 	public var jitterX(default,set_jitterX):Float;
 	public var jitterY(default,set_jitterY):Float;
