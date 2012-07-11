@@ -29,8 +29,8 @@ class ScatterTest extends TestCase
 		assertEquals(1, scatter.size);
 		assertEquals(link, scatter.nodes[0].link);
 		print(scatter.nodes[0]);
-		print("\n"+scatter.nodes[0].x);
-		print("\n"+scatter.nodes[0].y);
+		//print("\n"+scatter.nodes[0].x);
+		//print("\n"+scatter.nodes[0].y);
 	}
 	
 }
