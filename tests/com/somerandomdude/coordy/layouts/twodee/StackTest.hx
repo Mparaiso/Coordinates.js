@@ -19,6 +19,7 @@ class StackTest extends TestCase
 		super.setup();
 		stack = new Stack();
 		scene = new Sprite();
+		scene.alpha = 0.3;
 		Lib.current.addChild(scene);
 	}
 	
@@ -38,8 +39,8 @@ class StackTest extends TestCase
 			scene.addChild(squares[i]);
 			stack.addNode(squares[i]);
 		}
-		assertEquals(cast(0,Float), squares[0].x);
-		
+		//assertEquals(cast(0,Float), squares[0].x);
+		assertEquals(10, stack.size);
 	}
 	
 }

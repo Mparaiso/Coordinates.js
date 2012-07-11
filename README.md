@@ -15,4 +15,5 @@
 	+ vertical line
 	+ scatter
 	+ stack
+	+ wave
 	

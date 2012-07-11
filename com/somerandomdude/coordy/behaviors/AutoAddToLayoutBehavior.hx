@@ -10,9 +10,9 @@
 
 package com.somerandomdude.coordy.behaviors;
 import com.somerandomdude.coordy.layouts.ILayout;
-import nme.display.DisplayObject;
-import nme.display.DisplayObjectContainer;
-import nme.events.Event;
+import flash.display.DisplayObject;
+import flash.display.DisplayObjectContainer;
+import flash.events.Event;
 
 class AutoAddToLayoutBehavior
 {

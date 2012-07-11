@@ -1,7 +1,6 @@
 package com.somerandomdude.coordy.layouts;
 
 import com.somerandomdude.coordy.nodes.INode;
-import nme.display.DisplayObject;
 
 interface ICoreLayout {
 	

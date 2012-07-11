@@ -19,9 +19,9 @@ import com.somerandomdude.coordy.events.CoordyNodeEvent;
 import com.somerandomdude.coordy.layouts.twodee.ILayout2d;
 import com.somerandomdude.coordy.layouts.twodee.Layout2d;
 import com.somerandomdude.coordy.nodes.INode;
-import coordy_original.src.com.somerandomdude.coordy.nodes.twodee.FlowNode;
+import com.somerandomdude.coordy.nodes.twodee.FlowNode;
 import flash.display.DisplayObject;
-import nme.geom.Rectangle;
+import flash.geom.Rectangle;
 
 class Flow extends Layout2d ,implements ILayout2d
 {

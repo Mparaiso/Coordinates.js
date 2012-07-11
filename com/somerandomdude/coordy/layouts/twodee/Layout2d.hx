@@ -7,7 +7,7 @@ import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.INode2d;
 import com.somerandomdude.coordy.proxyupdaters.IProxyUpdater;
 #if js
-	import nme.display.DisplayObject;
+	import flash.display.DisplayObject;
 #end
 	
 

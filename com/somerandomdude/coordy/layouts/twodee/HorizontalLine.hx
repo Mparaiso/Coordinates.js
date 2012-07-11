@@ -13,7 +13,7 @@ import com.somerandomdude.coordy.layouts.twodee.ILayout2d;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.INode2d;
 import com.somerandomdude.coordy.nodes.twodee.OrderedNode;
-import nme.display.DisplayObject;
+import flash.display.DisplayObject;
 
 class HorizontalLine extends Layout2d , implements ILayout2d,  implements IOrderedLayout
 {

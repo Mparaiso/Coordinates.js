@@ -1,10 +1,5 @@
 package  com.somerandomdude.coordy.layouts;
 
-/**
- * ...
- * @author marc paraiso
- */
-
 interface IOrderedLayout implements ILayout
 {
 

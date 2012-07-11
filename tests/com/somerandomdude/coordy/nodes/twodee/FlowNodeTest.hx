@@ -1,5 +1,5 @@
 package tests.com.somerandomdude.coordy.nodes.twodee;
-import coordy_original.src.com.somerandomdude.coordy.nodes.twodee.FlowNode;
+import com.somerandomdude.coordy.nodes.twodee.FlowNode;
 import flash.display.Sprite;
 import haxe.unit.TestCase;
 
