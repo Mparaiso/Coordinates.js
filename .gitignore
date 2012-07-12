@@ -5,6 +5,7 @@ coordy.hx.js.hxml
 *.nmml
 *.swf
 *.js
+*.hxml
 *.map
 extra
 bin

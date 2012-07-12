@@ -1,8 +1,0 @@
--cp .
--lib nme
--lib hxColorToolkit
--D jeash
--lib five3D
--js extra\CoordyTest.js
--main tests.CoordyTest
---remap flash:nme
