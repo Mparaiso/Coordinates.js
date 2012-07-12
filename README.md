@@ -11,7 +11,7 @@
 
 ####Contact  : mparaiso@online.fr
 
-####ported from the original coordy library by P.J. Onori : http://somerandomdude.com/work/coordy/
+#####ported from the original coordy library by P.J. Onori : http://somerandomdude.com/work/coordy/
 
 ###Haxe Port by M.Paraiso mparaiso@online.fr
 
