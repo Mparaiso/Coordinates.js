@@ -8,7 +8,7 @@ import com.somerandomdude.coordy.nodes.twodee.INode2d;
 import com.somerandomdude.coordy.proxyupdaters.IProxyUpdater;
 
 #if (js && jeash)
-import flash.display.DisplayObject
+import flash.display.DisplayObject;
 #end
 
 class Layout2d extends Layout , implements ILayout2d {
@@ -289,18 +289,15 @@ class Layout2d extends Layout , implements ILayout2d {
 		private function validateObject(object:Dynamic):Bool
 		{
 			#if (js && jeash)
+			if(Std.is(object,DisplayObject)){
 				var _object:DisplayObject = cast(object, DisplayObject);
-			  //trace(_object.x);
-			  //trace(_object.y);
-			  //trace(_object.rotation);
 				if (_object.x != null && _object.y != null && _object.rotation != null) return true;
-			#else
-				var _object:Dynamic = object;
-			if(Reflect.hasField(_object,'x')&&
-				Reflect.hasField(_object,'y')&&
-				Reflect.hasField(_object, 'rotation')
-			) return true;
+			}
 			#end
+			if(Reflect.hasField(object,'x')&&
+				Reflect.hasField(object,'y')&&
+				Reflect.hasField(object, 'rotation')
+			) return true;
 			return false;
 		}
 }

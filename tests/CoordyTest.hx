@@ -1,4 +1,7 @@
 package tests;
+import flash.display.Sprite;
+import flash.Lib;
+import flash.events.Event;
 import haxe.unit.TestRunner;
 import tests.com.somerandomdude.coordy.layouts.threedee.Layout3dTest;
 import tests.com.somerandomdude.coordy.layouts.threedee.Stack3dTest;
@@ -22,13 +25,22 @@ import tests.com.somerandomdude.coordy.nodes.twodee.OrderedNodeTest;
  * compile this class to launch tests
  */
 
-class CoordyTest
+class CoordyTest extends Sprite
 {
-
-	public static function main():Int{
-		var testRunner:TestRunner = new TestRunner();
+	public static var _main:Sprite;
+	
+	public function new(){
+		super();
+		addEventListener(Event.ADDED_TO_STAGE, init);
 		
-		testRunner.add(new Stack3dTest());
+	}
+	
+	private function init(e:Event):Void
+	{
+		_main = this;
+		removeEventListener(Event.ADDED_TO_STAGE, init);
+		var testRunner:TestRunner = new TestRunner();
+		//testRunner.add(new Stack3dTest());
 		testRunner.add(new OrderedNodeTest());
 		testRunner.add(new HorizontalLineTest());
 		testRunner.add(new VerticalLineTest());
@@ -44,9 +56,12 @@ class CoordyTest
 		testRunner.add(new SpiralTest());
 		testRunner.add(new WaveTest());
 		testRunner.add(new LatticeTest());
-		
 		testRunner.run();
-		return 0;
+		
+	}
+
+	public static function main() {
+		Lib.current.addChild(new CoordyTest());
 	}
 	
 }

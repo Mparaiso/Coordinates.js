@@ -3,10 +3,12 @@ package tests.com.somerandomdude.coordy.layouts.twodee;
 
 import com.somerandomdude.coordy.layouts.twodee.Flow;
 import flash.display.DisplayObject;
+import flash.display.DisplayObjectContainer;
 import haxe.unit.TestCase;
 import jeash.RGB;
 import nme.display.Sprite;
 import nme.Lib;
+import tests.CoordyTest;
 
 class FlowTest extends TestCase {
 	private var flow:Flow;
@@ -37,8 +39,8 @@ class FlowTest extends TestCase {
 		assertEquals(cast(20, Float), squares[1].x);
 		assertEquals(cast(60, Float), squares[2].x);
 		assertEquals(cast(0, Float), squares[3].x);
-		
-		Lib.current.addChild(scene);
+		trace("blop");
+		CoordyTest._main.addChild(scene);
 	}
 	
 }
@@ -49,11 +51,15 @@ class Square extends Sprite {
 	}
 	public function new(sideWidth:Float=10,color:Int=0xFF0000){
 		super();
-		graphics.lineStyle(0, 0x000000,0.6);
-		graphics.beginFill(color);
-		graphics.drawRect(0, 0, sideWidth, sideWidth);
-		graphics.endFill();
-		graphics.moveTo(sideWidth / 2, sideWidth / 2);
-		graphics.lineTo(sideWidth / 2, sideWidth);
+		draw(this,sideWidth,color);
+	}
+	public static function draw(ctx:Sprite,sideWidth:Float=10,color:Int=0xFF0000):DisplayObject{
+		ctx.graphics.lineStyle(0, 0x000000,0.6);
+		ctx.graphics.beginFill(color);
+		ctx.graphics.drawRect(0, 0, sideWidth, sideWidth);
+		ctx.graphics.endFill();
+		ctx.graphics.moveTo(sideWidth / 2, sideWidth / 2);
+		ctx.graphics.lineTo(sideWidth / 2, sideWidth);
+		return ctx;
 	}
 }

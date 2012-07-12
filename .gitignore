@@ -2,9 +2,12 @@ coordy_original
 coordyas3
 coordy.hx.hxml
 coordy.hx.js.hxml
+*.nmml
 *.swf
 *.js
 *.map
 extra
+bin
 Main.hxml
 index.html
+.gitignore

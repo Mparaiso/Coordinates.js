@@ -328,7 +328,7 @@ class Layout3d extends Layout , implements ILayout3d
 	 *
 	 * @see #addToLayout()
 	 */
-	private function validateObject(object:Dynamic):Bool
+	dynamic public function validateObject(object:Dynamic):Bool
 	{
 		if(	Reflect.hasField(object,'x')&&
 			Reflect.hasField(object,'y')&&

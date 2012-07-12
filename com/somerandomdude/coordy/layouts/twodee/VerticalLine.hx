@@ -70,10 +70,13 @@ class VerticalLine extends Layout2d ,implements ILayout2d,implements IOrderedLay
 			node.x = this.x + (node.jitterX * this.jitterX);
 			if (node.link == null) continue;
 			#if (js && jeash)
+			if(Std.is(node.link,DisplayObject)){
 				yPos += cast(node.link, DisplayObject).height + vPadding;
-			#else
-				yPos += node.link.height + vPadding;
+			}else
 			#end
+			{
+				yPos += node.link.height + vPadding;
+			}
 		}
 	}
 	
@@ -98,10 +101,14 @@ class VerticalLine extends Layout2d ,implements ILayout2d,implements IOrderedLay
 	override private function validateObject(object:Dynamic):Bool
 	{
 		#if (js && jeash)
-			return (super.validateObject(object) && cast(object, DisplayObject).height != null);
-		#else
-			return (super.validateObject(object) && Reflect.hasField(object, "height"));
+			if (Std.is(object, DisplayObject)) {
+				var link:DisplayObject = cast(object, DisplayObject);
+				return (super.validateObject(link) && Reflect.hasField(link, "height"));
+			}else {
+				return (super.validateObject(object) && Reflect.hasField(object, "height"));
+			}
 		#end
+			return (super.validateObject(object) && Reflect.hasField(object, "height"));
 	}
 	
 }
