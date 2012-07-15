@@ -63,7 +63,7 @@ class Stack extends Layout2d ,implements ILayout2d,implements IOrderedLayout
 		if(!validateObject(object)) throw 'Object does not implement at least one of the following properties: "x", "y", "rotation"';
 		if(linkExists(object)) return null;
 		if (nodes==null) nodes = [];
-		var node:OrderedNode = new OrderedNode(object, index, 0, 0);
+		var node:OrderedNode = new OrderedNode(object, index);
 		
 		storeNodeAt(node, index);
 		this.cleanOrder();

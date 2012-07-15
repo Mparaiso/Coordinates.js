@@ -44,7 +44,7 @@ class VerticalLine extends Layout2d ,implements ILayout2d,implements IOrderedLay
 		if (object != null && linkExists(object)) return null;
 		var node:OrderedNode = new OrderedNode(object, size);
 		this.storeNode(node);
-		this.cleanOrder();
+	  this.cleanOrder();
 		this.update();
 		if (object != null && moveToCoordinates) this.render();
 		dispatchEvent(new CoordyNodeEvent(CoordyNodeEvent.ADD, node));
@@ -70,13 +70,10 @@ class VerticalLine extends Layout2d ,implements ILayout2d,implements IOrderedLay
 			node.x = this.x + (node.jitterX * this.jitterX);
 			if (node.link == null) continue;
 			#if (js && jeash)
-			if(Std.is(node.link,DisplayObject)){
 				yPos += cast(node.link, DisplayObject).height + vPadding;
-			}else
-			#end
-			{
+			#else
 				yPos += node.link.height + vPadding;
-			}
+			#end
 		}
 	}
 	
@@ -90,10 +87,10 @@ class VerticalLine extends Layout2d ,implements ILayout2d,implements IOrderedLay
 	}
 	
 	/** fonction d'aide pour le trie des noeux **/
-	function sortOnOrder(x:Dynamic, y:Dynamic):Int {
+	function sortOnOrder(x:OrderedNode, y:OrderedNode):Int {
 			if (x.order == y.order) return 0;
 			if (x.order > y.order) return 1;
-			return -1; //when  x.order<y.order
+			return -1;
 	}
 	
 	
@@ -103,7 +100,7 @@ class VerticalLine extends Layout2d ,implements ILayout2d,implements IOrderedLay
 		#if (js && jeash)
 			if (Std.is(object, DisplayObject)) {
 				var link:DisplayObject = cast(object, DisplayObject);
-				return (super.validateObject(link) && Reflect.hasField(link, "height"));
+				return (super.validateObject(link) && link.height !=null);
 			}else {
 				return (super.validateObject(object) && Reflect.hasField(object, "height"));
 			}

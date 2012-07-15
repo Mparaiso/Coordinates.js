@@ -31,18 +31,18 @@ import Xml;
 		*/
 		public function toJSON():String
 		{
-			//var nodes:Array = new Array();
-			var layout:Dynamic = {type:toString(),size:size,nodes:nodes};
+			var _nodes:Array<Dynamic> = new Array();
+			var layout:Dynamic = cast { };
 			
-			//for(var i:Int=0; i<size; i++)
-			//{
-				//nodes.push(nodes[i].toObject());
-			//}
-			//layout.type=toString();
-			//layout.size=size;
-			//layout.nodes=nodes;
-			
-			return Json.stringify(layout);
+			for (i in 0...size) {
+				var _node = nodes[i];
+				_nodes.push(Std.string(_node));
+			}
+			layout.type=toString();
+			layout.size=size;
+			layout.nodes=nodes;
+			//
+			return layout;
 		}
 		
 		public function addToLayout(object:Dynamic, moveToCoordinates:Bool=true):INode

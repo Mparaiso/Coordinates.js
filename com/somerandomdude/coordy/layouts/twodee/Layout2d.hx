@@ -246,15 +246,12 @@ class Layout2d extends Layout , implements ILayout2d {
 				if (n.link==null) continue;
 				//prevent js/jeash bug
 				#if (js && jeash)
-				if (Std.is(n.link, DisplayObject)) {
 					cast(n.link, DisplayObject).x = n.x;
 					cast(n.link, DisplayObject).y = n.y;
-				}else
-				#end
-				{
+				#else
 					n.link.x = n.x;
 					n.link.y = n.y;
-				}
+				#end
 			}
 		}
 		

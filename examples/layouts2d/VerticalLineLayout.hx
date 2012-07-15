@@ -1,28 +1,27 @@
 package examples.layouts2d;
 
-	import com.somerandomdude.coordy.layouts.twodee.Flow;
+	import com.somerandomdude.coordy.layouts.twodee.VerticalLine;
 	import com.somerandomdude.coordy.layouts.twodee.ILayout2d;
 	import examples.utils.Square;
 	
 	import flash.display.Sprite;
 
-class FlowLayout extends Sprite
+class VerticalLineLayout extends Sprite
 {
 	public static inline var SIZE:Int=50;
-	public static inline var LAYOUT_WIDTH:Float=750;
-	public static inline var LAYOUT_HEIGHT:Float=350;
+	public static  inline var LAYOUT_WIDTH:Float=350;
+	public static  inline var LAYOUT_HEIGHT:Float=750;
 	private var _layout:ILayout2d;
 	
 	public function new()
 	{
 		super();
-		_layout = new Flow(LAYOUT_WIDTH-40, LAYOUT_HEIGHT-40);
-		_layout.x = 20;
-		_layout.y = 20;
+		_layout = new VerticalLine(5);
+		_layout.x=LAYOUT_WIDTH/2;
 		var c:Square;
 		for(i in 0...SIZE)
 		{
-			c=new Square(3+(Math.random()*35*2),Square.getRandomColor());
+			c = new Square(i+10, Square.getRandomColor());
 			_layout.addNode(c);
 			addChild(c);
 		}

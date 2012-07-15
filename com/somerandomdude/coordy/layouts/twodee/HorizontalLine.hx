@@ -50,7 +50,7 @@ class HorizontalLine extends Layout2d , implements ILayout2d,  implements IOrder
 	{
 		if (object != null && !validateObject(object)) throw 'Object does not implement at least one of the following properties: "x", "y", "width", "rotation"';
 		if (object != null && linkExists(object)) return null;
-		var node:OrderedNode = new OrderedNode(object, this.size);
+		var node:OrderedNode = new OrderedNode(object, size);
 		this.storeNode(node);
 		this.cleanOrder();
 		this.update();
@@ -127,7 +127,7 @@ class HorizontalLine extends Layout2d , implements ILayout2d,  implements IOrder
 	}
 	
 	/** fonction d'aide pour le trie des noeux **/
-	function sortOnOrder(x:Dynamic, y:Dynamic):Int {
+	function sortOnOrder(x:OrderedNode, y:OrderedNode):Int {
 			if (x.order == y.order) return 0;
 			if (x.order > y.order) return 1;
 			return -1; //when  x.order<y.order
