@@ -146,9 +146,11 @@ class Grid3d extends Layout3d , implements ILayout3d {
 		{
 			node = this.nodes[i];
 			
-			c = i%columns;
-			r = ((i/(rows))>> 0)%rows;
-			l = (i/((rows*columns))) >> 0;
+			c = i % columns;
+		//	r = Math.floor(i / rows) % rows;
+		//	l = Math.floor(i / (rows * columns)) ;
+		 untyped r = (( i/(rows)   ) >> 0 )  % rows;
+		 untyped	l = (  i/((rows*columns)) ) >> 0;
 							
 			node.x = ((w*c)+(c*paddingX)+x)+(node.jitterX*this.jitterX);
 			node.y = ((h*r)+(r*paddingY)+y)+(node.jitterY*this.jitterY);

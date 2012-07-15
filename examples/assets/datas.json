@@ -47,5 +47,6 @@
 			"_class":"examples.layouts2d.ScatterLayout"
 		},
 		{"label":"LAYOUTS 3D"},
-		{"label":"Stack 3d layout","_class":"examples.layouts3d.Stack3dLayout"}
+		{"label":"Stack 3d layout","_class":"examples.layouts3d.Stack3dLayout"},
+		{"label":"Grid 3d layout","_class":"examples.layouts3d.Grid3dLayout"}
 ]

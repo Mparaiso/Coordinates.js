@@ -16,7 +16,7 @@ class Grid3dLayout extends Scene3D
 	public function new()
 	{
 		super();
-		var grid3D:Grid3d = new Grid3d(600, 600, 600, 4, 4, 4);
+		var grid3D:Grid3d = new Grid3d(500, 500, 200, 4, 4, 4);
 		grid3D.validateObject = function(object:Dynamic) { return Std.is(object, Sprite3D); };
 		grid3D.updateFunction = function() {
 			grid3D.update();
