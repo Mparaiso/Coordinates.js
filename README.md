@@ -2,6 +2,10 @@
 
 ##coordy is a haxe layout toolkit that allows you to easily organize items in various layout patterns.
 
+
+##Live DEMO ( HTML5 ) : http://paraiso.alwaysdata.net/haxe/coordy/examples/
+	
+	
 ##Targets
 + flash
 + html5
