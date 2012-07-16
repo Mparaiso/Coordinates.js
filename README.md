@@ -36,4 +36,13 @@
 + threedee
   + stack
 	
+###TODO
+
++ fix all the bugs
+
+###IMPORTANT
+
++ if you are targetting js with jeash , use the flag -D jeash when compiling with haxe, or
+	override render and validate methods of the layout to fix the proper layout item structure.
+	
 	

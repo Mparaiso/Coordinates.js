@@ -176,11 +176,9 @@ class Flow extends Layout2d ,implements ILayout2d
       if (nodes[i].link == null) continue;
       var child:DisplayObject = this.nodes[i].link;
 			var bb:Rectangle;
-			#if flash
+			
       bb = child.getBounds(child);
-			#else
-			bb = new Rectangle(child.x, child.y, child.width, child.height);
-			#end
+		
 
       bb.x*=child.width/bb.width;
       bb.y*=child.height/bb.height;
