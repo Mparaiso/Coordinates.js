@@ -1,4 +1,4 @@
-package examples.conceptsbasic;
+package examples.basicconcepts;
 import com.eclecticdesignstudio.motion.Actuate;
 import com.eclecticdesignstudio.motion.easing.Cubic;
 import com.somerandomdude.coordy.constants.LayoutUpdateMethod;
@@ -7,12 +7,15 @@ import com.somerandomdude.coordy.nodes.twodee.INode2d;
 import com.somerandomdude.coordy.nodes.twodee.Node2d;
 import com.somerandomdude.coordy.utils.LayoutTransitioner;
 import examples.utils.Circle;
+import examples.utils.Square;
 import flash.display.DisplayObject;
 import flash.display.Shape;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.Lib;
+import flash.utils.Timer;
+import flash.events.TimerEvent;
 /**
  * ...
  * @author marc paraiso
@@ -29,7 +32,7 @@ class TweenLayoutItems extends Sprite
 	var tweens:Array<Dynamic>;
 	private var i:Int;
 	private var layoutTransitioner:LayoutTransitioner;
-	private var circles:Array<Circle>;
+	private var squares:Array<Square>;
 	
 	public function new() {
 		super();
@@ -49,13 +52,13 @@ class TweenLayoutItems extends Sprite
 		*/
 		scatter = new Scatter(LAYOUT_WIDTH, LAYOUT_HEIGHT, 0, 0, 1, true);
 		scatter.updateMethod = LayoutUpdateMethod.NONE;
-		var c:Circle;
-		circles = new Array<Circle>();
+		var square:Square;
+		squares = new Array<Square>();
 		for (i in 0...SIZE) {
-			c = new Circle(10);
-		  circles.push(c);
-			addChild(c);
-			scatter.addNode(c);
+			square = new Square(10+Math.random()*10,Square.getRandomColor());
+		  squares.push(square);
+			addChild(square);
+			scatter.addNode(square);
 		}
 		scatter.updateAndRender();
 		layoutTransitioner = new LayoutTransitioner(scatter, tweenItem);
@@ -68,18 +71,18 @@ class TweenLayoutItems extends Sprite
 		* layouts, you should set the type as 'INode2d'. When dealing with 3d layouts, you should
 		* set the type as 'INode3d'. See the 'tweenItem' method below for an example.
 		*/
-		#if js
-		stage.addEventListener(MouseEvent.CLICK, clickHandler);
-		#else
-		stage.addEventListener(MouseEvent.CLICK, clickHandler);
-		#end
+		
+		var timer:Timer = new Timer(2000, 100);
+		timer.addEventListener(TimerEvent.TIMER, tick);
+		timer.start();
 	}
 	
-	private function clickHandler(e:MouseEvent):Void
+	private function tick(e:TimerEvent):Void
 	{
-		trace("click");
 		updateItems();
 	}
+	
+
 	
 	function updateItems() {
 		

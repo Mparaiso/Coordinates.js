@@ -1,6 +1,8 @@
 package examples;
 import com.somerandomdude.coordy.layouts.twodee.HorizontalLine;
-import examples.conceptsbasic.TweenLayoutItems;
+import examples.advancedconcepts.NodeEvents;
+import examples.basicconcepts.SwappingLayouts;
+import examples.basicconcepts.TweenLayoutItems;
 import examples.Data;
 import examples.layouts2d.EllipseLayout;
 import examples.layouts2d.FlowLayout;
@@ -27,6 +29,7 @@ import com.somerandomdude.coordy.layouts.twodee.VerticalLine;
 import haxe.Http;
 import haxe.Json;
 import haxe.Resource;
+import nme.Assets;
 
 
 class ExamplesList extends Sprite
@@ -36,16 +39,12 @@ class ExamplesList extends Sprite
 	private var datas:Array<Data>;
 	private var displayZone:DisplayZone;
 
-	function new()
+public	function new()
 	{
 		super();
 		init();
-		var http:Http = new Http("examples/assets/datas.json");
-		http.onData = function(_datas:String) {
-			this.onData(_datas);
-		}
-		http.request(false);
-		
+		var _datas:String = Assets.getText("assets/datas.json");
+		onData(_datas);
 	}
 	
 	function onData(_datas:String)
@@ -80,6 +79,9 @@ class ExamplesList extends Sprite
 		new ScatterLayout();
 		new Stack3dLayout();
 		new Grid3dLayout();
+		new NodeEvents();
+		new TweenLayoutItems();
+		new SwappingLayouts();
 	}
 	
 	function onMessage(e:MenuEvent):Void
@@ -92,10 +94,7 @@ class ExamplesList extends Sprite
 	{
 		horizontalLayout.updateAndRender();
 	}
-	
-	static function main() {
-		Lib.current.addChild(new ExamplesList());
-	}
+
 }
 
 

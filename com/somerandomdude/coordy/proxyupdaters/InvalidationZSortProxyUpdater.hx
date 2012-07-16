@@ -1,4 +1,4 @@
-package com.somerandomdude.coordy.proxyupdaters
+package com.somerandomdude.coordy.proxyupdaters;
 
 import com.somerandomdude.coordy.helpers.SimpleZSorter;
 import com.somerandomdude.coordy.layouts.threedee.ILayout3d;
@@ -32,7 +32,7 @@ class InvalidationZSortProxyUpdater implements IProxyUpdater
 	
 	
 	public function update(){
-		if(target.stage==null)
+		if(_target.stage==null)
 		{
 			_layout.update();
 			return;
@@ -41,7 +41,7 @@ class InvalidationZSortProxyUpdater implements IProxyUpdater
 		_target.stage.invalidate();
 	}
 	
-	private function renderHandler(event:Event):void{
+	private function renderHandler(event:Event):Void{
 		_target.stage.removeEventListener(Event.RENDER, renderHandler);
 		_layout.updateAndRender();
 		SimpleZSorter.sortLayout(_target, _layout);
@@ -50,7 +50,7 @@ class InvalidationZSortProxyUpdater implements IProxyUpdater
 	/**
 	 * @private
 	 */
-	private function addedToStageHandler(event:Event):void
+	private function addedToStageHandler(event:Event):Void
 	{
 		update();
 	}

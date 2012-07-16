@@ -216,8 +216,13 @@ class Layout3d extends Layout , implements ILayout3d
 		super();
 		updateMethod=LayoutUpdateMethod.UPDATE_AND_RENDER;
 		updateFunction = updateAndRender;
+		x = 0;
+		y = 0;
+		z = 0;
+		width = 0;
+		height = 0;
+		depth = 0;
 		rotation = 0;
-	
 	}
 	
 	/**

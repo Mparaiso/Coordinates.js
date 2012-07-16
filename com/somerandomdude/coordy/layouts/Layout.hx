@@ -273,6 +273,7 @@ import Xml;
 		
 		private function clearNodes():Void
 		{
+			if (nodes == null) return;
 			if(nodes.length>0)
 			{
 				for( i in 0...nodes.length )

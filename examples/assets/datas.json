@@ -1,4 +1,9 @@
 [
+		{"label":"ADVANCE CONCEPTS"},
+		{
+			"label":"Node Events",
+			"_class":"examples.advancedconcepts.NodeEvents"
+		},
 		{"label":"LAYOUTS 2D","description":"","_class":null},
 		{
 			"label" : "Horizontal Line" ,

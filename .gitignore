@@ -2,6 +2,7 @@ coordy_original
 coordyas3
 coordy.hx.hxml
 coordy.hx.js.hxml
+*.html
 *.nmml
 *.swf
 *.js

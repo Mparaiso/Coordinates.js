@@ -1,6 +1,6 @@
 package com.somerandomdude.coordy.proxyupdaters;
 
 interface IProxyUpdater {
-	var name(default,default):String;
+	var name(get_name,null):String;
 	function update():Void;
 }

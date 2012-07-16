@@ -35,7 +35,7 @@ class Grid3d extends Layout3d , implements ILayout3d {
 		return nodes[0].height;
 	}
 	
-	public function new(width:Float, height:Float, depth:Float, columns:Int, rows:Int, layers:Int, paddingX:Int = 0, paddingY:Int = 0, paddingZ:Int = 0, x:Float = 0, y:Float = 0, z:Float = 0, jitterX:Float = 0, jitterY:Float = 0, jitterZ:Float = 0) {
+	public function new(width:Float, height:Float, depth:Float, columns:Int=1, rows:Int=1, layers:Int=1, paddingX:Int = 0, paddingY:Int = 0, paddingZ:Int = 0, x:Float = 0, y:Float = 0, z:Float = 0, jitterX:Float = 0, jitterY:Float = 0, jitterZ:Float = 0) {
 		super();
 		this.width = width;
 		this.height = height;
@@ -70,7 +70,7 @@ class Grid3d extends Layout3d , implements ILayout3d {
 	public function getRow(row:Int):Array<Node3d> {
 		var c:Array<Node3d> = [];
 		for(i in (row*columns)...(row*columns+columns)){
-				c.push(_nodes[i]);
+				c.push(nodes[i]);
 		}
 		return c;
 	}
@@ -147,10 +147,8 @@ class Grid3d extends Layout3d , implements ILayout3d {
 			node = this.nodes[i];
 			
 			c = i % columns;
-		//	r = Math.floor(i / rows) % rows;
-		//	l = Math.floor(i / (rows * columns)) ;
-		 untyped r = (( i/(rows)   ) >> 0 )  % rows;
-		 untyped	l = (  i/((rows*columns)) ) >> 0;
+		  r = Std.int(i/(rows))  % rows;
+		 	l = Std.int( i / ((rows * columns)) ) ;
 							
 			node.x = ((w*c)+(c*paddingX)+x)+(node.jitterX*this.jitterX);
 			node.y = ((h*r)+(r*paddingY)+y)+(node.jitterY*this.jitterY);
