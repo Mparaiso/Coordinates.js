@@ -6,6 +6,7 @@ package com.somerandomdude.coordy.layouts.threedee;
 	import com.somerandomdude.coordy.nodes.threedee.GridNode3d;
 	import com.somerandomdude.coordy.nodes.threedee.Node3d;
 
+@:expose
 class Grid3d extends Layout3d , implements ILayout3d {
 	
 	#if (!fields || fields)

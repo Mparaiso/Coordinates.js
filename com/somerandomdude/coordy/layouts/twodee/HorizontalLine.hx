@@ -17,6 +17,7 @@ import com.somerandomdude.coordy.nodes.twodee.OrderedNode;
 import flash.display.DisplayObject;
 #end
 
+@:expose
 class HorizontalLine extends Layout2d , implements ILayout2d,  implements IOrderedLayout
 {
 
@@ -133,7 +134,7 @@ class HorizontalLine extends Layout2d , implements ILayout2d,  implements IOrder
 			return -1; //when  x.order<y.order
 	}
 	
-	override private function validateObject(object:Dynamic):Bool
+	override dynamic public function validateObject(object:Dynamic):Bool
 	{
 		
 		#if (js && jeash)

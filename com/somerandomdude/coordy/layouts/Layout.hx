@@ -2,7 +2,7 @@ package com.somerandomdude.coordy.layouts;
 
 import com.somerandomdude.coordy.nodes.INode;
 import haxe.Json;
-import flash.events.EventDispatcher;
+import com.somerandomdude.coordy.events.EventDispatcher;
 import Xml;
 
 	class Layout extends EventDispatcher

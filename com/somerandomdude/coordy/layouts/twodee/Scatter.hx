@@ -20,7 +20,7 @@ import flash.display.DisplayObject;
 #end
 
 
-
+@:expose
 class Scatter extends Layout2d
 {
 	/** Global jitter value of scatter layout    **/
@@ -82,7 +82,7 @@ class Scatter extends Layout2d
 	}
 	
 	/**  Applies all layout property values to all cells/display objects in the collection **/
-	override public function render():Void
+	override dynamic public function render():Void
 	{
 		for (i in 0...size) {
 				//prevent js/jeash bug

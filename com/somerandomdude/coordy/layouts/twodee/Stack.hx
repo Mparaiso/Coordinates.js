@@ -13,6 +13,7 @@ import com.somerandomdude.coordy.utils.Utilities;
  * @author marc paraiso
  */
 
+@:expose
 class Stack extends Layout2d ,implements ILayout2d,implements IOrderedLayout
 {
 

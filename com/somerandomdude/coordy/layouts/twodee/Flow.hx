@@ -25,6 +25,7 @@ import flash.display.DisplayObject;
 
 import flash.geom.Rectangle;
 
+@:expose
 class Flow extends Layout2d ,implements ILayout2d
 {
 	
@@ -207,7 +208,7 @@ class Flow extends Layout2d ,implements ILayout2d
     this.alignRow(row, maxChildHeight, bounds);
   }
 
-  override function validateObject(object:Dynamic):Bool
+  override dynamic function validateObject(object:Dynamic):Bool
   {
 		#if (js && jeash)
 			if (!Std.is(object, DisplayObject)) return false;

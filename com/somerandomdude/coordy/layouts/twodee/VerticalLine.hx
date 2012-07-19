@@ -9,6 +9,8 @@ import com.somerandomdude.coordy.nodes.twodee.OrderedNode;
 #if (js && jeash)
 import flash.display.DisplayObject;
 #end
+
+@:expose
 class VerticalLine extends Layout2d ,implements ILayout2d,implements IOrderedLayout
 {
 
@@ -95,7 +97,7 @@ class VerticalLine extends Layout2d ,implements ILayout2d,implements IOrderedLay
 	
 	
 	
-	override private function validateObject(object:Dynamic):Bool
+	override dynamic public  function validateObject(object:Dynamic):Bool
 	{
 		#if (js && jeash)
 			if (Std.is(object, DisplayObject)) {

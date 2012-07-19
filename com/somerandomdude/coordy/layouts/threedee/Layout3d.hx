@@ -300,7 +300,7 @@ class Layout3d extends Layout , implements ILayout3d
 	 * Renders all layout property values to all objects in the collection
 	 *
 	 */
-	public function render():Void
+	public dynamic function render():Void
 	{
 		var n:INode3d;
 		for(i in 0...size)

@@ -11,6 +11,7 @@ import com.somerandomdude.coordy.proxyupdaters.IProxyUpdater;
 import flash.display.DisplayObject;
 #end
 
+@:expose
 class Layout2d extends Layout , implements ILayout2d {
 	
 		public var x(default,set_x):Float;
@@ -238,7 +239,7 @@ class Layout2d extends Layout , implements ILayout2d {
 		 * Renders all layout property values to all objects in the collection
 		 *
 		 */
-		public function render():Void
+		dynamic public function render():Void
 		{
 			var n:INode2d;
 			for(i in 0...size){
@@ -283,7 +284,7 @@ class Layout2d extends Layout , implements ILayout2d {
 		 *
 		 * @see #addToLayout()
 		 */
-		private function validateObject(object:Dynamic):Bool
+		dynamic public function validateObject(object:Dynamic):Bool
 		{
 			#if (js && jeash)
 			if(Std.is(object,DisplayObject)){

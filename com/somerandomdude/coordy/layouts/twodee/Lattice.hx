@@ -16,6 +16,7 @@ import com.somerandomdude.coordy.events.CoordyNodeEvent;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.GridNode;
 
+@:expose
 class Lattice extends Layout2d ,implements ILayout2d{
 	
 	public var order:String;

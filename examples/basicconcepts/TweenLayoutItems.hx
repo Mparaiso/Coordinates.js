@@ -104,7 +104,6 @@ class TweenLayoutItems extends Sprite
 			// it seems there is a bug with javascript and actuate related to the way actuate updates fields , so properties need to be updated manually
 			var link:DisplayObject = cast(node.link, DisplayObject);
 			var updateFunction = function(x:Float, y:Float, rotation:Float) {
-				trace(link.x);
 				link.x = x;
 				link.y = y;
 				link.rotation = rotation;

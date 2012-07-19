@@ -8,7 +8,6 @@ interface ICoreLayout {
 	public var size(default,null):Int;
 	
 	function addNodes(count:Int):Void;
-	// @TODO fixer le constructeur pour jeash
 	function addNode(object:Dynamic=null, moveToCoordinates:Bool=true):INode;
 	function addToLayout(object:Dynamic, moveToCoordinates:Bool=true):INode;
 	function getNodeByLink(link:Dynamic):INode;
@@ -23,7 +22,7 @@ interface ICoreLayout {
 	
 	function updateAndRender():Void;
 	function update():Void;
-	function render():Void;
+	dynamic function render():Void;
 	
 	function toString():String;
 	function toJSON():String;

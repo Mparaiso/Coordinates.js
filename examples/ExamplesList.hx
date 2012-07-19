@@ -16,20 +16,12 @@ import examples.layouts2d.VerticalLineLayout;
 import examples.layouts2d.WaveLayout;
 import examples.layouts3d.Grid3dLayout;
 import examples.layouts3d.Stack3dLayout;
+import examples.libraryintegration.Sandy3dBasic;
 import flash.display.DisplayObject;
-import flash.display.Shape;
 import flash.display.Sprite;
-import flash.Lib;
-import flash.text.TextField;
-import flash.text.TextFieldAutoSize;
-import flash.display.SimpleButton;
-import flash.events.MouseEvent;
 import flash.events.Event;
-import com.somerandomdude.coordy.layouts.twodee.VerticalLine;
-import haxe.Http;
 import haxe.Json;
 import haxe.Resource;
-import nme.Assets;
 
 
 class ExamplesList extends Sprite
@@ -42,8 +34,14 @@ class ExamplesList extends Sprite
 public	function new()
 	{
 		super();
-		init();
-		var _datas:String = Assets.getText("assets/datas.json");
+		load();
+		this.addEventListener(Event.ADDED_TO_STAGE, init);
+	}
+	
+	function init(e:Event):Void
+	{
+		removeEventListener(Event.ADDED_TO_STAGE, init);
+		var _datas:String = Resource.getString("datas.json");/*Assets.getText("assets/datas.json");*/
 		onData(_datas);
 	}
 	
@@ -64,7 +62,7 @@ public	function new()
 		horizontalLayout.updateAndRender();
 	}
 	
-	function init()
+	function load()
 	{
 		var layouts:Array<Dynamic> = [];
 	  new VerticalLineLayout();
@@ -82,6 +80,7 @@ public	function new()
 		new NodeEvents();
 		new TweenLayoutItems();
 		new SwappingLayouts();
+		new Sandy3dBasic();
 	}
 	
 	function onMessage(e:MenuEvent):Void

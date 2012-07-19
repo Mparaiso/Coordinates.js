@@ -10,6 +10,7 @@ import com.somerandomdude.coordy.nodes.twodee.INode2d;
 import flash.display.DisplayObject;
 #end
 
+@:expose
 class Ellipse extends Layout2d, implements ILayout2d {
 	private static inline var PI:Float = Math.PI;
 	
@@ -82,7 +83,7 @@ class Ellipse extends Layout2d, implements ILayout2d {
 		}
 	}
 	
-	override public function render():Void
+	override dynamic public function render():Void
 	{
 		var c:EllipseNode;
 		for (i in 0...size) {

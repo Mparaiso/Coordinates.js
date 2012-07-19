@@ -9,6 +9,7 @@ import com.somerandomdude.coordy.nodes.twodee.Node2d;
 import flash.display.DisplayObject;
 #end
 
+@:expose
 class Spiral extends Layout2d ,implements ILayout2d
 {
 	static inline var PI:Float=Math.PI;
@@ -177,7 +178,7 @@ class Spiral extends Layout2d ,implements ILayout2d
 	 * Applies all layout property values to all cells/display objects in the collection
 	 *
 	 */
-	override public function render():Void
+	override dynamic public function render():Void
 	{
 		var c:Node2d;
 		for(i in 0...size)

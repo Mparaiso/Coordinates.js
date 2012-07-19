@@ -59,7 +59,7 @@ class Grid3dLayout extends Scene3D
 				objects.push(cast(this.getChildAt(i),Sprite3D));
 			}
 		
-				this.removeChildren();
+				//this.removeChildren();
 			
 			objects.sort(function(x:Sprite3D, y:Sprite3D) {
 					if (x._z > y._z) return 1;

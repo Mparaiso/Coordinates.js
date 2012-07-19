@@ -8,8 +8,9 @@ import com.somerandomdude.coordy.layouts.twodee.ILayout2d;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.GridNode;
 import com.somerandomdude.coordy.nodes.twodee.INode2d;
-import flash.geom.Rectangle;
+import com.somerandomdude.coordy.geom.Rectangle;
 
+@:expose
 class Grid extends Layout2d , implements ILayout2d{
 	
 	
