@@ -2,6 +2,8 @@
 
 ## a javascript layout framework that helps organize items in 2D or 3D space
 
+## Live Demo : http://paraiso.alwaysdata.net/javascript/coordinates/exemple/three/
+
 ###Author : M.PARAISO mparaiso@online.fr , paraiso.alwaysdata.net
 
 ##### Based on coordy by P J Onori : http://somerandomdude.com/work/coordy/
