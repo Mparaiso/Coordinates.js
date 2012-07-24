@@ -56,17 +56,21 @@ create a html file and paste that code :
 		DIV_HEIGHT=20,
 		layout,
 		viewport,
-		// get the root element  , viewport is a div element in the DOM with the id of viewport
+		// get the root element  ,
+		// viewport is a div element in the DOM with the id of viewport
 		viewport = document.querySelector("#viewport");
-		// make the root element position relative so every direct child position marked as absolute will be relative to the root element
+		// make the root element position relative so every direct child position 
+		//marked as absolute will be relative to the root element
 		viewport.style.position = "relative";
 		// create a wave layout ( width , height , x , y , frequency);
 		layout = new Coordinates.layouts.twodee.Wave(400,200,0,100,2);
-		// override the validateObject method called each time a object is added to the layout , we are simply going to return true so no real validateion
+		// override the validateObject method called each time a object is added to the layout , 
+		//we are simply going to return true so no real validateion
 		layout.validateObject = function(object){
 			return true;
 		}
-		// override the render method to fit the node link object structure ( here we are using a DOM element )
+		// override the render method to fit the node link object structure 
+		//( here we are using a DOM element )
 		layout.render = function(){
 			for(var i=0 ; i< this.size ; i++){
 				this.nodes[i].link.style.left = this.nodes[i].x+"px";
