@@ -1,52 +1,24 @@
-#Coordinates.js
-
-## a javascript layout framework that helps organize items in 2D or 3D space
-
-##### license MIT
-
-## Live Demo : http://paraiso.alwaysdata.net/javascript/coordinates/exemple/three/
-
-###Author : M.PARAISO mparaiso@online.fr , http://paraiso.alwaysdata.net
-
-##### Based on coordy by P J Onori : http://somerandomdude.com/work/coordy/
-
-####Features
-
-+ works with DOM elements
-+ works with Canvas
-+ works with 3d frameworks like Three.js
-
-####Layouts
-
-+ 2D layouts
-	+ Ellipse
-	+ Flow
-	+ Grid
-	+ Horizontal line
-	+ Lattice
-	+ Scatter
-	+ Spiral
-	+ Stack
-	+ Vertical line
-	+ Wave
-
-+ 3D layouts
-	+ Ellipse
-	+ Grid 
-	+ Scatter
-	+ Stack
-	+ Wave 
-	+ Wave Ellipse
-
-### GETTING STARTED 
-
-create a html file and paste that code : 
-
-<code>
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello Coordinates</title>
+	<style type="text/css">
+	body{
+		background: #000;
+		color:#FFF;
+		font-size: 18px;
+		font-family: Helvetica,Tahoma,sans-serif;
+	}
+	</style>
+</head>
+<body>
 	<h1>Hello Coordinates</h1>
 	<h6>Using Coordinates.js with DOM elements</h6>
 	<div class="wrapper">
-		<div id="viewport"></div>
+		<div id="viewport">
+			
+		</div>
 	</div>
 	<script type="text/javascript" src="Coordinates.js"></script>
 	<script type="text/javascript">
@@ -92,5 +64,5 @@ create a html file and paste that code :
 		// update and render the layout
 		layout.updateAndRender();
 	</script>
-</code>
-
+</body>
+</html>

@@ -42,8 +42,8 @@
   <body>
     <div id="wrapper">
       <h1>Coordinates.js with Three.js and TweenLite </h1>
-      <h5><a href="https://raw.github.com/Mparaiso/Coordinates.js/master/exemple/three/main.js">View Source</a> </h5>
-      <h5><a href="https://github.com/Mparaiso/Coordinates.js">Check the project on github</a></h5>
+      <h6><a target="_blank" href="https://raw.github.com/Mparaiso/Coordinates.js/master/exemple/three/main.js">View Source</a> </h6>
+      <h6><a target="_blank" href="https://github.com/Mparaiso/Coordinates.js">Check the project on github</a></h6>
       <div id='container'>
         <div id="target">
         </div>
@@ -51,7 +51,6 @@
       </div>
       <div class='footer'>design M.PARAISO contact mparaiso_at_online.fr</div>
     </div>
-    <script type="text/javascript" src="polyfill.js"></script>
     <script type="text/javascript" src="CSSPlugin.js"></script>
     <script type="text/javascript" src="Coordinates.js"></script>
     <script type="text/javascript" src="EasePack.js"></script>
@@ -59,7 +58,9 @@
     <script type="text/javascript" src="Three.js"></script>
     <script type="text/javascript" src="main.js" id='main-script'></script>
     <script type='text/javascript'>
-      main();
+      window.onload = function(){
+        main();
+      }
     </script>
   </body>
 </html>

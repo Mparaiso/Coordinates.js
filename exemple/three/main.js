@@ -142,7 +142,7 @@ function createLights(){
 
 function createLayouts(){
   var layouts=[];
-
+  layouts.push(new Coordinates.layouts.twodee.Wave(3000,2000,0,0,3));
   layouts.push(new Coordinates.layouts.threedee.Grid3d(1000,1000,1000,4,4,4));
   layouts.push(new Coordinates.layouts.twodee.Spiral(150,.10));
   layouts.push(new Coordinates.layouts.threedee.WaveEllipse3d(2000,2000,500,1,8,1));
@@ -276,8 +276,8 @@ function init() {
   delta = renderingDelta = Date.now();
   currentLayout.update();
   layoutTransitioner.syncNodesTo(currentLayout);
-  container = document.querySelector("#container");
-  container.style.width  = VIEWPORT_WIDTH+"px";
+  container = document.getElementById("container");
+  container.style.width = VIEWPORT_WIDTH+"px";
   container.style.height = VIEWPORT_HEIGHT+"px";
   animateLayoutNames();
 }
