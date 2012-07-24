@@ -42,7 +42,7 @@
 
 create a html file and paste that code : 
 
-<code>
+[code]
 	<h1>Hello Coordinates</h1>
 	<h6>Using Coordinates.js with DOM elements</h6>
 	<div class="wrapper">
@@ -92,5 +92,5 @@ create a html file and paste that code :
 		// update and render the layout
 		layout.updateAndRender();
 	</script>
-</code>
+[/code]
 
