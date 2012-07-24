@@ -38,9 +38,11 @@
 	+ Wave 
 	+ Wave Ellipse
 
-### GETTING STARTED 
+### TUTORIAL : GETTING STARTED 
 
-create a html file and paste that code : 
+##### live demo : http://paraiso.alwaysdata.net/javascript/coordinates/exemple/dom/
+
+##### create a html file and paste that code : 
 
 ```html
 	<h1>Hello Coordinates</h1>
