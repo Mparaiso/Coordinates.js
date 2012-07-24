@@ -41,7 +41,9 @@
   </head>
   <body>
     <div id="wrapper">
-      <h1>Three.js, TweenLite, Coordinates.js </h1>
+      <h1>Coordinates.js with Three.js and TweenLite </h1>
+      <h5><a href="https://raw.github.com/Mparaiso/Coordinates.js/master/exemple/three/main.js">View Source</a> </h5>
+      <h5><a href="https://github.com/Mparaiso/Coordinates.js">Check the project on github</a></h5>
       <div id='container'>
         <div id="target">
         </div>
@@ -59,58 +61,5 @@
     <script type='text/javascript'>
       main();
     </script>
-   <!-- <script src="https://gist.github.com/3169621.js?file=main.js"></script>-->
-    <!--
-      création de texts représentant chaque layout présent dans le tableau layouts 
-      function createTextGroup(scene,layouts){
-        var scene = scene;
-        layoutNames=[];
-        textGroup = new THREE.Object3D();
-        textLayout = new Coordinates.layouts.twoodee.Grid(100,1700,1,layouts.length);
-        textLayout.validateObject= validateObject;
-        textLayout.render = renderLayout;
-
-        for(var i=layouts.length-1;i>=0;i - - ){
-          console.log(layouts[i].toString())
-          var material = new THREE.MeshBasicMaterial( { color: 0xCCCCCC, wireframe: false ,opacity:0.5} );
-          var geometry = new THREE.TextGeometry(layouts[i].toString(),{
-                 size: 100,
-                 height: 3,
-                 curveSegments: 1,
-                 font: "helvetiker",
-                 weight: "bold",
-                 style: "normal",
-          });
-          layoutNames[i] = new THREE.Mesh( geometry, material );
-          textGroup.add(layoutNames[i]);
-          textLayout.addNode(layoutNames[i]);
-        }
-
-        textLayout.updateAndRender();
-        scene.add(textGroup);
-        textGroup.position.x = INITIAL_TEXT_LAYOUT_X;
-        textGroup.position.z = INITIAL_TEXT_LAYOUT_Y;
-        textGroup.position.y = INITIAL_TEXT_LAYOUT_Z;
-        layoutNames[0].material.color =  SELECTED_LAYOUT_COLOR;
-        layoutNames[0].material.opacity =  1;
-        INITIAL_TEXT_Z = layoutNames[0].position.z;
-        INITIAL_TEXT_X = layoutNames[0].position.x;
-      }
-
-      function animateLayoutNames(){
-        tweenTop(textGroup,-INITIAL_TEXT_LAYOUT_Y-textLayout.nodes[iter%textLayout.size].y);
-        for(var i=0;i<layoutNames.length;i++){
-          if(i == iter % layoutNames.length ){
-            layoutNames[i].material.color  = SELECTED_LAYOUT_COLOR ;
-            layoutNames[i].material.opacity  = 1 ;
-            TweenLite.to(layoutNames[i].position,1,{x:INITIAL_TEXT_X,ease:Power4.easeInOut});
-          }else{
-            layoutNames[i].material.color = UNSELECTED_LAYOUT_COLOR ;
-            layoutNames[i].material.opacity = 0.5 ;
-            TweenLite.to(layoutNames[i].position,1,{x:INITIAL_TEXT_X-900,ease:Power4.easeInOut});
-          }
-        }
-      }
-    -->
   </body>
 </html>

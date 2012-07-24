@@ -2,11 +2,11 @@
 
 ## a javascript layout framework that helps organize items in 2D or 3D space
 
-##### license Creative Commons
+##### license MIT
 
 ## Live Demo : http://paraiso.alwaysdata.net/javascript/coordinates/exemple/three/
 
-###Author : M.PARAISO mparaiso@online.fr , paraiso.alwaysdata.net
+###Author : M.PARAISO mparaiso@online.fr , http://paraiso.alwaysdata.net
 
 ##### Based on coordy by P J Onori : http://somerandomdude.com/work/coordy/
 
