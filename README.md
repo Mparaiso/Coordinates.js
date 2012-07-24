@@ -2,6 +2,8 @@
 
 ## a javascript layout framework that helps organize items in 2D or 3D space
 
+##### license Creative Commons
+
 ## Live Demo : http://paraiso.alwaysdata.net/javascript/coordinates/exemple/three/
 
 ###Author : M.PARAISO mparaiso@online.fr , paraiso.alwaysdata.net
@@ -17,21 +19,22 @@
 ####Layouts
 
 + 2D layouts
-	+ Spiral
-	+ Vertical line
-	+ Horizontal line
+	+ Ellipse
 	+ Flow
 	+ Grid
-	+ Wave
-	+ Ellipse
-	+ Scatter
+	+ Horizontal line
 	+ Lattice
+	+ Scatter
+	+ Spiral
 	+ Stack
+	+ Vertical line
+	+ Wave
 
 + 3D layouts
+	+ Ellipse
 	+ Grid 
-	+ Wave 
-	+ Wave Ellipse
 	+ Scatter
 	+ Stack
+	+ Wave 
+	+ Wave Ellipse
 
