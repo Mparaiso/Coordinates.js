@@ -2,9 +2,16 @@ package com.somerandomdude.coordy.layouts;
 
 import com.somerandomdude.coordy.nodes.INode;
 import haxe.Json;
-import com.somerandomdude.coordy.events.EventDispatcher;
+
+#if js
+	import com.somerandomdude.coordy.events.helpers.EventDispatcher;
+#else
+	import flash.events.EventDispatcher;
+#end
+
 import Xml;
 
+	@:expose("Coordinates.layouts.Layout")
 	class Layout extends EventDispatcher
 	{
 		
@@ -22,7 +29,7 @@ import Xml;
 			size=0;
 		}
 		
-		override public function toString():String { return ""; }
+		public override function toString():String { return ""; }
 		
 		/**
 		 * Serializes the layout data of each node as a JSON string. Includes the 'type', 'size' and 'nodes' properties.

@@ -6,6 +6,8 @@ package examples.layouts2d;
 	
 	import flash.display.Sprite;
 
+	
+@:keep
 class FlowLayout extends Sprite
 {
 	public static inline var SIZE:Int=50;

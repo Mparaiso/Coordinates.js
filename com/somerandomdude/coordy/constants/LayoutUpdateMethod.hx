@@ -1,5 +1,6 @@
 package com.somerandomdude.coordy.constants;
 
+@:expose
 class LayoutUpdateMethod
 {
 

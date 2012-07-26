@@ -1,4 +1,4 @@
-package com.somerandomdude.coordy.events;
+package com.somerandomdude.coordy.events.helpers;
 
 class Listener
 {
@@ -116,8 +116,7 @@ class EventDispatcher implements IEventDispatcher
 		}
 	}
 
-	public function toString()
-		return untyped "[ " +  this.__name__ + " ]"
+	public function toString() return Std.string(this)
 
 	public function willTrigger(type : String) : Bool
 		return hasEventListener(type)

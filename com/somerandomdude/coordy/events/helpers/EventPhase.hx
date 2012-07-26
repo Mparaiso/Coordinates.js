@@ -1,4 +1,4 @@
-package com.somerandomdude.coordy.events;
+package com.somerandomdude.coordy.events.helpers;
 
 class EventPhase
 {

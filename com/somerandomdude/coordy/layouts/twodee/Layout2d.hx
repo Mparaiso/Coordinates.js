@@ -2,6 +2,7 @@ package com.somerandomdude.coordy.layouts.twodee;
 
 import com.somerandomdude.coordy.constants.LayoutUpdateMethod;
 import com.somerandomdude.coordy.events.CoordyNodeEvent;
+import com.somerandomdude.coordy.layouts.ILayout;
 import com.somerandomdude.coordy.layouts.Layout;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.INode2d;
@@ -11,7 +12,6 @@ import com.somerandomdude.coordy.proxyupdaters.IProxyUpdater;
 import flash.display.DisplayObject;
 #end
 
-@:expose
 class Layout2d extends Layout , implements ILayout2d {
 	
 		public var x(default,set_x):Float;
@@ -284,7 +284,7 @@ class Layout2d extends Layout , implements ILayout2d {
 		 *
 		 * @see #addToLayout()
 		 */
-		dynamic public function validateObject(object:Dynamic):Bool
+		public dynamic function validateObject(object:Dynamic):Bool
 		{
 			#if (js && jeash)
 			if(Std.is(object,DisplayObject)){

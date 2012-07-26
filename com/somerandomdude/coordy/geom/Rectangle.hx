@@ -50,7 +50,7 @@ class Rectangle
       return p.clone();
    }
 
-   public function clone() : jeash.geom.Rectangle
+   public function clone() : Rectangle
    {
       return new Rectangle(x,y,width,height);
    }
@@ -58,15 +58,15 @@ class Rectangle
    {
       return inX>=x && inY>=y && inX<right && inY<bottom;
    }
-   public function containsPoint(point : jeash.geom.Point) : Bool
+   public function containsPoint(point : Point) : Bool
    {
       return contains(point.x,point.y);
    }
-   public function containsRect(rect : jeash.geom.Rectangle) : Bool
+   public function containsRect(rect : Rectangle) : Bool
    {
      return contains(rect.x,rect.y) && containsPoint(rect.bottomRight);
    }
-   public function equals(toCompare : jeash.geom.Rectangle) : Bool
+   public function equals(toCompare : Rectangle) : Bool
    {
       return x==toCompare.x && y==toCompare.y &&
              width==toCompare.width && height==toCompare.height;
@@ -76,11 +76,11 @@ class Rectangle
       x-=dx; width+=dx*2;
       y-=dy; height+=dy*2;
    }
-   public function inflatePoint(point : jeash.geom.Point) : Void
+   public function inflatePoint(point : Point) : Void
    {
       inflate(point.x,point.y);
    }
-   public function intersection(toIntersect : jeash.geom.Rectangle) : jeash.geom.Rectangle
+   public function intersection(toIntersect : Rectangle) : Rectangle
    {
       var x0 = x<toIntersect.x ? toIntersect.x : x;
       var x1 = right>toIntersect.right ? toIntersect.right : right;
@@ -95,7 +95,7 @@ class Rectangle
       return new Rectangle(x0,y0,x1-x0,y1-y0);
    }
 
-   public function intersects(toIntersect : jeash.geom.Rectangle) : Bool
+   public function intersects(toIntersect : Rectangle) : Bool
    {
       var x0 = x<toIntersect.x ? toIntersect.x : x;
       var x1 = right>toIntersect.right ? toIntersect.right : right;
@@ -107,7 +107,7 @@ class Rectangle
       return y1>y0;
    }
 
-   public function union(toUnion : jeash.geom.Rectangle) : jeash.geom.Rectangle
+   public function union(toUnion : Rectangle) : Rectangle
    {
       var x0 = x>toUnion.x ? toUnion.x : x;
       var x1 = right<toUnion.right ? toUnion.right : right;
@@ -123,7 +123,7 @@ class Rectangle
       y+=dy;
    }
 
-   public function offsetPoint(point : jeash.geom.Point) : Void
+   public function offsetPoint(point : Point) : Void
    {
       x+=point.x;
       y+=point.y;

@@ -1,14 +1,3 @@
-/**
- * @author P.J. Onori
- * ported to Haxe by M.Paraiso
- * mparaiso@online.fr
- * @version 0.1
- *
- * @url http://somerandomdude.com/
- * @url https://github.com/Mparaiso/coordy.hx
- */
-
-
 package com.somerandomdude.coordy.layouts.twodee;
 
 import com.somerandomdude.coordy.constants.FlowAlignment;
@@ -21,11 +10,11 @@ import com.somerandomdude.coordy.layouts.twodee.Layout2d;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.FlowNode;
 
+
 import flash.display.DisplayObject;
 
-import flash.geom.Rectangle;
+import com.somerandomdude.coordy.geom.Rectangle;
 
-@:expose
 class Flow extends Layout2d ,implements ILayout2d
 {
 	

@@ -8,6 +8,8 @@ import flash.events.Event;
  * @author marc paraiso
  */
 
+
+@:keep
 class EllipseLayout extends Sprite
 {
 

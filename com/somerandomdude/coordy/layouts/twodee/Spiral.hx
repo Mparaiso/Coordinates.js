@@ -9,7 +9,7 @@ import com.somerandomdude.coordy.nodes.twodee.Node2d;
 import flash.display.DisplayObject;
 #end
 
-@:expose
+@:expose("Coordinates.layouts.twodee.Spiral")
 class Spiral extends Layout2d ,implements ILayout2d
 {
 	static inline var PI:Float=Math.PI;
@@ -128,7 +128,7 @@ class Spiral extends Layout2d ,implements ILayout2d
 	 * @return Layout's type
 	 *
 	 */
-	override public function toString():String { return LayoutType.ELLIPSE; }
+	override public function toString():String { return LayoutType.SPIRAL; }
 	
 	/**
 	 * Adds object to layout in next available position.

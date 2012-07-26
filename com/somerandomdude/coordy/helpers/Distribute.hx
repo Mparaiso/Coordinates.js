@@ -6,32 +6,32 @@
 
 package com.somerandomdude.coordy.helpers;
 
-import flash.utils.getTimer;
 
-public class Distribute {
+@:keep
+class Distribute {
 
 	static public var RAND_MAX : Float = 200;
 	static public var N : Int = 100;
 	static public var Nstep : Int = 1000;
 	static public var step : Float = 0.01;
-	static public var minimal_step : Float = Float.MIN_VALUE;
+	//static public var minimal_step : Float = untyped Number.MIN_VALUE;
+	static public var minimal_step : Float = 0.000000001;
 
 	public function Distribute() {
 	}
 
 	
-	static public function distribute( vertices : Array<Dynamic>,  nstep : Int = 100 ) : Array<Dynamic>
+	static public function distribute( vertices : Array<Vertex>,  nstep : Int = 100 ) : Array<Vertex>
 	{
-		var gt:Int = getTimer();
 		
 		N = vertices.length;
 		Nstep = nstep;
 		
-		var f : Array<Dynamic> = new Array<Dynamic>(N);
-		var p0 : Array<Dynamic> = new Array<Dynamic>(N);
-		var p1 : Array<Dynamic> = new Array<Dynamic>(N);
-		var pp0 : Array<Dynamic> = new Array<Dynamic>(N);
-		var pp1 : Array<Dynamic> = new Array<Dynamic>(N);
+		var f:Array<Vertex>  = [];
+		var p0:Array<Vertex> = [];
+		var p1:Array<Vertex> = [];
+		var pp0:Array<Vertex>= [];
+		var pp1:Array<Vertex>= [];
 		
 		var v : Vertex;
 		
@@ -41,27 +41,23 @@ public class Distribute {
 		
 		for(i in 0...N )
 		{
-			p0[ i ] = pp0[ i ] = ( vertices[ i ] as Vertex ).clone();
+			p0[ i ] = pp0[ i ] = vertices[i].clone();
 		}
 		
-		for(i in 0...N ) {
-		
-			f[ i ] = new Vertex();
-			p1[ i ] = pp1[ i ] = new Vertex();
-		
-			
-			v = p0[ i ];
-		
-			l = length(p0[i]);
+		var iter = 0;
+		while(iter<N) {
+			f[ iter ] = new Vertex();
+			p1[ iter ] = pp1[ iter ] = new Vertex();
+			v = p0[ iter ];
+			l = _length(p0[iter]);
 			if( l != 0 ) {
-			
 				v.x /= l;
 				v.y /= l;
 				v.z /= l;
-				
 			}else {
-				i--;
+				iter--;
 			}
+			iter++;
 		}
 		
 		var e : Float ;
@@ -107,17 +103,17 @@ public class Distribute {
 			else
 			{
 				// successfull step
-				var t : Array<Dynamic> = pp0.concat();
+				var t : Array<Vertex> = pp0.concat(null);
 			
-				pp0 = pp1.concat();
-				pp1 = t.concat();
+				pp0 = pp1.concat(null);
+				pp1 = t.concat(null);
 			
 				e0 = e;
 				step *= 2;
 			}
 		}
 	
-		p0 = pp0.concat();
+		p0 = pp0.concat(null);
 	
 		return p0;
 	}
@@ -130,7 +126,7 @@ public class Distribute {
 		return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
 	}
 
-	static public function length( v : Vertex ) : Float {
+	static public function _length( v : Vertex ) : Float {
 		return Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
 	}
 
@@ -142,7 +138,7 @@ public class Distribute {
 		v.y = v2.y - v1.y;
 		v.z = v2.z - v1.z;
 
-		return length(v);
+		return _length(v);
 	}
 
 	static public function get_coulomb_energy( N : Int, p : Array<Dynamic>) : Float {
@@ -151,7 +147,7 @@ public class Distribute {
 		var i : Int;
 		var j : Int;
 		for( i in 0...N ) {
-			for( j (i+1)...N ) {
+			for( j in (i+1)...N ) {
 				e += 1 / length2(p[ i ], p[ j ]);
 			}
 		}
@@ -160,7 +156,7 @@ public class Distribute {
 	}
 
 	
-	static public function get_forces( N : Int, f : Array<Dynamic>, p : Array<Dynamic> ) : Void {
+	static public function get_forces( N : Int, f : Array<Vertex>, p : Array<Vertex> ) : Void {
 		
 		var i : Int;
 		var j : Int;

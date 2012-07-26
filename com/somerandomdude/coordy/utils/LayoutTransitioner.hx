@@ -4,7 +4,9 @@ import com.somerandomdude.coordy.layouts.ICoreLayout;
 import com.somerandomdude.coordy.layouts.twodee.ILayout2d;
 import com.somerandomdude.coordy.nodes.INode;
 
-class LayoutTransitioner
+@:expose("Coordinates.utils.LayoutTransitioner")
+@:keep
+class LayoutTransitioner implements ILayoutTransitioner
 {
 	public var layout(default, default):ICoreLayout;
 

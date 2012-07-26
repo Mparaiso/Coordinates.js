@@ -1,11 +1,3 @@
-/**
- * @author M.Paraiso
- * @contact mparaiso@online.fr
- * original code by P.J. Onori http://somerandomdude.com/
- *
- * @version 0.1
- * @url https://github.com/Mparaiso/coordy.hx
- */
 package com.somerandomdude.coordy.layouts.twodee;
 
 import com.somerandomdude.coordy.constants.LatticeAlternationPattern;
@@ -16,7 +8,7 @@ import com.somerandomdude.coordy.events.CoordyNodeEvent;
 import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.twodee.GridNode;
 
-@:expose
+@:expose("Coordinates.layouts.twodee.Lattice")
 class Lattice extends Layout2d ,implements ILayout2d{
 	
 	public var order:String;

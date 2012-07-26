@@ -52,6 +52,12 @@ class LayoutType{
 		 */
 		public static inline var ELLIPSE:String='Ellipse';
 		
+		
+		/**
+		 * @see com.somerandomdude.coordy.layouts.twodee.Spiral
+		 */
+		public static inline var SPIRAL:String='Spiral';
+		
 		/**
 		 * @see com.somerandomdude.coordy.layouts.twodee.Flow
 		 */

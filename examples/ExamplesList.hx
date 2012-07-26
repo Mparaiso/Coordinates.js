@@ -4,6 +4,7 @@ import examples.advancedconcepts.NodeEvents;
 import examples.basicconcepts.SwappingLayouts;
 import examples.basicconcepts.TweenLayoutItems;
 import examples.Data;
+import haxe.FastList;
 import examples.layouts2d.EllipseLayout;
 import examples.layouts2d.FlowLayout;
 import examples.layouts2d.GridLayout;
@@ -16,7 +17,9 @@ import examples.layouts2d.VerticalLineLayout;
 import examples.layouts2d.WaveLayout;
 import examples.layouts3d.Grid3dLayout;
 import examples.layouts3d.Stack3dLayout;
+import examples.layouts3d.Wave3dLayout;
 import examples.libraryintegration.Sandy3dBasic;
+
 import flash.display.DisplayObject;
 import flash.display.Sprite;
 import flash.events.Event;
@@ -65,22 +68,12 @@ public	function new()
 	function load()
 	{
 		var layouts:Array<Dynamic> = [];
-	  new VerticalLineLayout();
-		new HorizontalLineLayout();
-		new GridLayout();
-		new FlowLayout();
-		new StackLayout();
-		new WaveLayout();
-		new SpiralLayout();
-		new EllipseLayout();
-		new LatticeLayout();
-		new ScatterLayout();
+
 		new Stack3dLayout();
 		new Grid3dLayout();
 		new NodeEvents();
 		new TweenLayoutItems();
 		new SwappingLayouts();
-		new Sandy3dBasic();
 	}
 	
 	function onMessage(e:MenuEvent):Void

@@ -8,6 +8,9 @@ import flash.display.Sprite;
  * @author marc paraiso
  */
 
+
+@:keep
+
 class SpiralLayout extends Sprite
 {
 

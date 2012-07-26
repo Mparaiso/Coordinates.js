@@ -8,6 +8,8 @@ import flash.display.Sprite;
  * @author marc paraiso
  */
 
+
+@:keep
 class LatticeLayout extends Sprite
 {
 

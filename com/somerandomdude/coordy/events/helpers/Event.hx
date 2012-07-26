@@ -1,7 +1,9 @@
-package com.somerandomdude.coordy.events;
+package com.somerandomdude.coordy.events.helpers;
 
 //import jeash.display.InteractiveObject;
 
+//@:expose("Coordinantes.events.helpers.Event")
+//@:keep
 class Event
 {
 	public var bubbles(default,null) : Bool;

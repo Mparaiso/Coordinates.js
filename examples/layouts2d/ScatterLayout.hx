@@ -3,6 +3,8 @@ package examples.layouts2d;
 import com.somerandomdude.coordy.layouts.twodee.Scatter;
 import examples.utils.Square;
 import flash.display.Sprite;
+
+@:keep
 class ScatterLayout extends Sprite {
 	public function new(){
 		super();

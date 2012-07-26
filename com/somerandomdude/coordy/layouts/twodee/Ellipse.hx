@@ -10,7 +10,7 @@ import com.somerandomdude.coordy.nodes.twodee.INode2d;
 import flash.display.DisplayObject;
 #end
 
-@:expose
+@:expose("Coordinates.layouts.twodee.Ellipse")
 class Ellipse extends Layout2d, implements ILayout2d {
 	private static inline var PI:Float = Math.PI;
 	

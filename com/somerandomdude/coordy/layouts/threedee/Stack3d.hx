@@ -8,6 +8,7 @@ package com.somerandomdude.coordy.layouts.threedee;
 	import com.somerandomdude.coordy.nodes.threedee.OrderedNode3d;
 	import com.somerandomdude.coordy.utils.Utilities;
 
+	@:expose("Coordinates.layouts.threedee.Stack3d")
 	class Stack3d extends Layout3d ,implements ILayout3d, implements IOrderedLayout
 	{
 		

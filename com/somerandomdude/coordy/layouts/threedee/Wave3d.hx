@@ -8,19 +8,20 @@ import com.somerandomdude.coordy.nodes.INode;
 import com.somerandomdude.coordy.nodes.threedee.INode3d;
 import com.somerandomdude.coordy.nodes.threedee.Node3d;
 
-public class Wave3d extends Layout3d implements ILayout3d
+@:expose("Coordinates.layouts.threedee.Wave3d")
+class Wave3d extends Layout3d ,implements ILayout3d
 {
 	public var  frequency(get_frequency,set_frequency):Float;
 	public var  waveFunctionY(get_waveFunctionY,set_waveFunctionY):String;
 	public var  waveFunctionZ(get_waveFunctionZ,set_waveFunctionZ):String;
-	public var  functionY(get_functionY, set_functionY):Float->Float;
-	public var  functionZ(get_functionZ, set_functionZ):Float->Float;
+	public var  functionY(default, default):Float->Float;
+	public var  functionZ(default, default):Float->Float;
 
 	public var  heightMultiplier(get_heightMultiplier, set_heightMultiplier):Float;
 	public var  depthMultiplier(get_depthMultiplier, set_depthMultiplier):Float;
 
 	public static inline var PI:Float = Math.PI;
-	public static inline var PI 180:Float = PI/180;
+	public static inline var PI_180:Float = PI/180;
 
 	public var  alignType(get_alignType,set_alignType):String;
 	public var  alignAngleOffset(get_alignAngleOffset,set_alignAngleOffset):Float;
@@ -31,10 +32,11 @@ public class Wave3d extends Layout3d implements ILayout3d
 	 *
 	 */
 	public function get_alignAngleOffset():Float { return this.alignAngleOffset; }
-	public function set_alignAngleOffset(value:Float):Void
+	public function set_alignAngleOffset(value:Float):Float
 	{
 		this.alignAngleOffset=value;
 		this.updateFunction();
+		return alignAngleOffset;
 	}
 	
 	/**
@@ -46,10 +48,11 @@ public class Wave3d extends Layout3d implements ILayout3d
 	 *
 	 */
 	public function get_alignType():String { return this.alignType; }
-	public function set_alignType(value:String):Void
+	public function set_alignType(value:String):String
 	{
 		this.alignType=value;
 		this.updateFunction();
+		return alignType;
 	}
 
 	/**
@@ -58,39 +61,40 @@ public class Wave3d extends Layout3d implements ILayout3d
 	 * @return	Wave function for the Y-axis
 	 */
 	public function get_waveFunctionY():String { return  waveFunctionY; }
-	public function set_waveFunctionY(value:String):Void
+	public function set_waveFunctionY(value:String):String
 	{
 		switch(value)
 		{
 			case WaveFunction.SINE:
 				 waveFunctionY=value;
 				 functionY=Math.sin;
-				break;
+				
 			case WaveFunction.COSINE:
 				 waveFunctionY=value;
 				 functionY=Math.cos;
-				break;
+				
 			case WaveFunction.TAN:
 				 waveFunctionY=value;
 				 functionY=Math.tan;
-				break;
+				
 			case WaveFunction.ARCSINE:
 				 waveFunctionY=value;
 				 functionY=Math.asin;
-				break;
+				
 			case WaveFunction.ARCCOSINE:
 				 waveFunctionY=value;
 				 functionY=Math.acos;
-				break;
+				
 			case WaveFunction.ARCTAN:
 				 waveFunctionY=value;
 				 functionY=Math.atan;
-				break;
+				
 			default:
 				 waveFunctionY=WaveFunction.SINE;
 				 functionY=Math.sin;
 		}
 		this.updateFunction();
+		return waveFunctionY;
 	}
 	
 	/**
@@ -99,39 +103,40 @@ public class Wave3d extends Layout3d implements ILayout3d
 	 * @return	Wave function for the Z-axis
 	 */
 	public function get_waveFunctionZ():String { return  waveFunctionZ; }
-	public function set_waveFunctionZ(value:String):Void
+	public function set_waveFunctionZ(value:String):String
 	{
 		switch(value)
 		{
 			case WaveFunction.SINE:
 				 waveFunctionZ=value;
 				 functionZ=Math.sin;
-				break;
+				
 			case WaveFunction.COSINE:
 				 waveFunctionZ=value;
 				 functionZ=Math.cos;
-				break;
+				
 			case WaveFunction.TAN:
 				 waveFunctionZ=value;
 				 functionZ=Math.tan;
-				break;
+				
 			case WaveFunction.ARCSINE:
 				 waveFunctionZ=value;
 				 functionZ=Math.asin;
-				break;
+				
 			case WaveFunction.ARCCOSINE:
 				 waveFunctionZ=value;
 				 functionZ=Math.acos;
-				break;
+				
 			case WaveFunction.ARCTAN:
 				 waveFunctionZ=value;
 				 functionZ=Math.atan;
-				break;
+				
 			default:
 				 waveFunctionZ=WaveFunction.SINE;
 				 functionZ=Math.sin;
 		}
 		this.updateFunction();
+		return waveFunctionZ;
 	}
 
 	/**
@@ -140,10 +145,11 @@ public class Wave3d extends Layout3d implements ILayout3d
 	 * @return	Frequency of wave
 	 */
 	public function get_frequency():Float { return  frequency; }
-	public function set_frequency(value:Float):Void
+	public function set_frequency(value:Float):Float
 	{
 		this.frequency=value;
 		this.updateFunction();
+		return frequency;
 	}
 	
 	/**
@@ -151,11 +157,12 @@ public class Wave3d extends Layout3d implements ILayout3d
 	 *
 	 * @return	HeightMultipler of wave
 	 */
-	public function get_heightMultiplier():Float { return  heightMultiplier; }
-	public function set_heightMultiplier(value:Float):Void
+	function get_heightMultiplier():Float { return  heightMultiplier; }
+	function set_heightMultiplier(value:Float):Float
 	{
 		this.heightMultiplier=value;
 		this.updateFunction();
+		return heightMultiplier;
 	}
 	
 	/**
@@ -163,11 +170,12 @@ public class Wave3d extends Layout3d implements ILayout3d
 	 *
 	 * @return	DepthMultipler of wave
 	 */
-	public function get_depthMultiplier():Float { return  depthMultiplier; }
-	public function set_depthMultiplier(value:Float):Void
+	function get_depthMultiplier():Float { return  depthMultiplier; }
+	function set_depthMultiplier(value:Float):Float
 	{
 		this.depthMultiplier=value;
 		this.updateFunction();
+		return depthMultiplier;
 	}
 	
 	/**
@@ -199,7 +207,7 @@ public class Wave3d extends Layout3d implements ILayout3d
 						jitterX:Float=0,
 						jitterY:Float=0,
 						jitterZ:Float=0,
-						alignType:String=PathAlignType.ALIGN PERPENDICULAR,
+						alignType:String=PathAlignType.ALIGN_PERPENDICULAR,
 						alignOffset:Float=0):Void
 	{
 		super();
@@ -230,7 +238,7 @@ public class Wave3d extends Layout3d implements ILayout3d
 	 * @return Layout's type
 	 *
 	 */
-	override public function toString():String { return LayoutType.WAVE 3D; }
+	override public function toString():String { return LayoutType.WAVE_3D; }
 	
 	/**
 	 * Adds object to layout in next available position.
@@ -240,12 +248,12 @@ public class Wave3d extends Layout3d implements ILayout3d
 	 *
 	 * @return newly created node object containing a link to the object
 	 */
-	override public function addNode(object:Object=null, moveToCoordinates:Bool=true):INode
+	override public function addNode(object:Dynamic=null, moveToCoordinates:Bool=true):INode
 	{
-		if(object!=null && !validateObject(object)) throw new Error('Object does not implement at least one of the following properties: "x", "y", "z", "rotationX", "rotationY", "rotationZ"');
+		if (object != null && !validateObject(object)) throw 'Object does not implement at least one of the following properties: "x", "y", "z", "rotationX", "rotationY", "rotationZ"';
 		if(object!=null &&linkExists(object)) return null;
 		var node:Node3d = new Node3d(object,0,0,0,((Math.random()>.5)?-1:1)*Math.random(),((Math.random()>.5)?-1:1)*Math.random(),((Math.random()>.5)?-1:1)*Math.random());
-		this.storeNode(node as INode3d);
+		this.storeNode(cast(node, INode3d));
 		this.update();
 		
 		if(object!=null &&moveToCoordinates) this.render();
@@ -256,29 +264,29 @@ public class Wave3d extends Layout3d implements ILayout3d
 	}
 	
 	
-	/**
-	 * Adds object to layout in next available position <strong>This method is depreceated.</strong>
-	 *
-	 * @param  object  Object to add to layout
-	 * @param  moveToCoordinates  automatically move DisplayObject to corresponding node's coordinates
-	 *
-	 * @return newly created node object containing a link to the object
-	 */
-	override public function addToLayout(object:Object,  moveToCoordinates:Bool=true):INode
-	{
-		if(!validateObject(object)) throw new Error('Object does not implement at least one of the following properties: "x", "y", "z", "rotationX", "rotationY", "rotationZ"');
-		if(linkExists(object)) return null;
-		
-		var node:Node3d = new Node3d(object,0,0,0,((Math.random()>.5)?-1:1)*Math.random(),((Math.random()>.5)?-1:1)*Math.random(),((Math.random()>.5)?-1:1)*Math.random());
-		this.storeNode(node as INode3d);
-		this.update();
-		
-		if(moveToCoordinates) this.render();
-		
-		dispatchEvent(new CoordyNodeEvent(CoordyNodeEvent.ADD, node));
-		
-		return node;
-	}
+	///**
+	 //* Adds object to layout in next available position <strong>This method is depreceated.</strong>
+	 //*
+	 //* @param  object  Object to add to layout
+	 //* @param  moveToCoordinates  automatically move DisplayObject to corresponding node's coordinates
+	 //*
+	 //* @return newly created node object containing a link to the object
+	 //*/
+	//override public function addToLayout(object:Object,  moveToCoordinates:Bool=true):INode
+	//{
+		//if(!validateObject(object)) throw new Error('Object does not implement at least one of the following properties: "x", "y", "z", "rotationX", "rotationY", "rotationZ"');
+		//if(linkExists(object)) return null;
+		//
+		//var node:Node3d = new Node3d(object,0,0,0,((Math.random()>.5)?-1:1)*Math.random(),((Math.random()>.5)?-1:1)*Math.random(),((Math.random()>.5)?-1:1)*Math.random());
+		//this.storeNode(node as INode3d);
+		//this.update();
+		//
+		//if(moveToCoordinates) this.render();
+		//
+		//dispatchEvent(new CoordyNodeEvent(CoordyNodeEvent.ADD, node));
+		//
+		//return node;
+	//}
 	
 	/**
 	* Clones the current object's properties (does not include links to DisplayObjects)
@@ -298,7 +306,7 @@ public class Wave3d extends Layout3d implements ILayout3d
 	override public function update():Void
 	{
 		var c:Node3d;
-		var r:Float = this.rotation*PI 180;
+		var r:Float = this.rotation*PI_180;
 		
 		for(i in 0...size)
 		{
@@ -314,7 +322,7 @@ public class Wave3d extends Layout3d implements ILayout3d
 			else if( functionY==Math.cos) c.rotationZ = Math.sin(PI*(i+1)/( size/2)* frequency)*180/PI;
 			else c.rotationZ = 0;
 			
-			if(this.alignType==PathAlignType.ALIGN PERPENDICULAR) c.rotationZ+=90;
+			if(this.alignType==PathAlignType.ALIGN_PERPENDICULAR) c.rotationZ+=90;
 			c.rotationZ+=this.alignAngleOffset;
 		}
 	}

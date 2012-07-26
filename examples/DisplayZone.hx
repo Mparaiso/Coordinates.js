@@ -2,6 +2,7 @@ package examples;
 
 import flash.display.Sprite;
 import flash.display.DisplayObject;
+import sandy.core.data.Polygon;
 
 class DisplayZone extends Sprite {
 

@@ -6,6 +6,7 @@ package examples.layouts2d;
 	
 	import flash.display.Sprite;
 
+@:keep
 class VerticalLineLayout extends Sprite
 {
 	public static inline var SIZE:Int=50;

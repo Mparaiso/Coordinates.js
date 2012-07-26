@@ -10,7 +10,7 @@ import com.somerandomdude.coordy.nodes.twodee.GridNode;
 import com.somerandomdude.coordy.nodes.twodee.INode2d;
 import com.somerandomdude.coordy.geom.Rectangle;
 
-@:expose
+@:expose("Coordinates.layouts.twoodee.Grid")
 class Grid extends Layout2d , implements ILayout2d{
 	
 	

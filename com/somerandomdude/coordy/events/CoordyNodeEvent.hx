@@ -1,5 +1,12 @@
 package com.somerandomdude.coordy.events;
-import com.somerandomdude.coordy.events.Event;
+
+#if js
+	import com.somerandomdude.coordy.events.helpers.Event;
+#else
+	import flash.events.Event;
+#end
+
+
 import com.somerandomdude.coordy.nodes.INode;
 
 class CoordyNodeEvent extends Event

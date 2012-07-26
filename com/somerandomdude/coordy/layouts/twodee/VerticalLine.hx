@@ -10,7 +10,7 @@ import com.somerandomdude.coordy.nodes.twodee.OrderedNode;
 import flash.display.DisplayObject;
 #end
 
-@:expose
+@:expose("Coordinates.layouts.twodee.VerticalLine")
 class VerticalLine extends Layout2d ,implements ILayout2d,implements IOrderedLayout
 {
 
@@ -97,7 +97,7 @@ class VerticalLine extends Layout2d ,implements ILayout2d,implements IOrderedLay
 	
 	
 	
-	override dynamic public  function validateObject(object:Dynamic):Bool
+	override  public  function validateObject(object:Dynamic):Bool
 	{
 		#if (js && jeash)
 			if (Std.is(object, DisplayObject)) {
@@ -107,7 +107,12 @@ class VerticalLine extends Layout2d ,implements ILayout2d,implements IOrderedLay
 				return (super.validateObject(object) && Reflect.hasField(object, "height"));
 			}
 		#end
-			return (super.validateObject(object) && Reflect.hasField(object, "height"));
+			if(Reflect.hasField(object,'x')&&
+				Reflect.hasField(object,'y')&&
+				Reflect.hasField(object, 'rotation') &&
+				Reflect.hasField(object, "height")
+			) return true;
+			return false;
 	}
 	
 }

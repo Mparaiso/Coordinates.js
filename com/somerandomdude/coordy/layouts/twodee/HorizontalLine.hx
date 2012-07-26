@@ -140,7 +140,11 @@ class HorizontalLine extends Layout2d , implements ILayout2d,  implements IOrder
 		#if (js && jeash)
 			if (super.validateObject(object) &&  cast(object,DisplayObject).width!=null ) return true;
 		#else
-			if (super.validateObject(object) &&  Reflect.hasField(object, "width") ) return true;
+				if(Reflect.hasField(object,'x')&&
+				Reflect.hasField(object,'y')&&
+				Reflect.hasField(object, 'rotation') &&
+				Reflect.hasField(object,'width')
+			) return true;
 		#end
 		return false;
 	}
