@@ -48,6 +48,28 @@ requireloaded = function(event) {
     /* test de chaque méthode de chaque classe
     */
 
+    /*
+                coordinates.links.DOMLink2d
+    */
+
+    module("coordinates.links.DOMLink2d");
+    test("coordinates.links.DOMLink2d", function() {
+      var domLink2d, el;
+      el = document.createElement("DIV");
+      el.style.width = "200px";
+      el.style.height = "200px";
+      el.style.position = "fixed";
+      domLink2d = new coordinates.links.DOMLink2d(el);
+      ok(domLink2d !== null && domLink2d instanceof coordinates.links.DOMLink2d, "DOMLink2d.constructor");
+      domLink2d.setX(200);
+      domLink2d.setY(250);
+      domLink2d.setRotation(45);
+      equal(domLink2d.getDomElement().style.transform, "translate(200px,250px) rotate(45deg)", "DOMLink2d.applyTransform");
+    });
+    /*
+                coordinates.events.helpers.Event
+    */
+
     module("coordinates.events.helpers.Event");
     test("coordinates.events.helpers.Event", function() {
       var clonedEvent, e;
@@ -60,10 +82,57 @@ requireloaded = function(event) {
       return ok(clonedEvent.type === e.type && clonedEvent.bubbles === e.bubbles, "Event.clone");
     });
     module("coordinates.events.helpers.EventDispatcher");
-    return test("coordinates.events.helpers.EventDispatcher", function() {
+    /*
+                coordinates.events.helpers.EventDispatcher
+    */
+
+    test("coordinates.events.helpers.EventDispatcher", function() {
       var o;
+      expect(3);
       o = new coordinates.events.helpers.EventDispatcher();
-      return ok(o !== null && o instanceof coordinates.events.helpers.EventDispatcher, "EventDispatcher.constructor");
+      ok(o !== null && o instanceof coordinates.events.helpers.EventDispatcher, "EventDispatcher.constructor");
+      ok(o._target === o, "EventDispatcher._target == EventDispatcher");
+      o.addEventListener("XEvent", function(e) {
+        return ok(e.target === o._target, "EventDispatcher.dispatchEvent fired");
+      });
+      return o.dispatchEvent(new coordinates.events.helpers.Event("XEvent"));
+    });
+    module("coordinates.nodes");
+    test("coordinates.nodes.Node", function() {
+      var link, newLink, node;
+      link = {
+        x: 1,
+        y: 1
+      };
+      node = new coordinates.nodes.Node(link);
+      ok(node.getLink() === link, "Node.getLink");
+      newLink = {
+        x: 2,
+        y: 5
+      };
+      node.setLink(newLink);
+      ok(node.getLink() === newLink, "Node.setLink");
+      throws(function() {
+        return node.toObject();
+      }, "Node.toObject throws an exception");
+    });
+    module("coordinates.nodes.twodee");
+    return test("coordinates.nodes.twodee.Node2d", function() {
+      var clonedNode, link, node2d, o;
+      link = {
+        x: 1,
+        y: 2
+      };
+      node2d = new coordinates.nodes.twodee.Node2d(link, 2, 5);
+      ok(node2d !== null && node2d instanceof coordinates.nodes.twodee.Node2d, "Node2d.constructor");
+      o = node2d.toObject();
+      ok(o.x === 2 && o.y === 5, "Node.toObject");
+      node2d.setRotation(35);
+      clonedNode = node2d.clone();
+      ok(clonedNode.getX() === node2d.getX() && clonedNode.getRotation() === node2d.getRotation(), "Node.clone");
+      node2d.setJitterX(3);
+      node2d.setJitterY(5);
+      ok(node2d.getJitterX !== 3 && node2d.getJitterY() !== 5, "Node2d.setJitterX , Node2d.setJitterY");
     });
   });
 };

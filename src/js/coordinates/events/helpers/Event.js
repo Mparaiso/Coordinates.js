@@ -14,11 +14,14 @@ define(function(require) {
       this.type || (function() {
         throw "" + this + " type is not defined!";
       }).call(this);
-      this.isCancelled = false;
-      this.isCancelledNow = false;
+      this._isCancelled = false;
+      this._isCancelledNow = false;
       this.target = null;
       this.currentTarget = null;
       eventPhase = EventPhase.AT_TARGET;
+      /* Getters and Setters
+      */
+
       this.setEventPhase = function(phase) {
         return eventPhase = phase;
       };
@@ -32,11 +35,11 @@ define(function(require) {
     };
 
     Event.prototype.stopImmediatePropagation = function() {
-      this.isCancelled = this.isCancelledNow = true;
+      this._isCancelled = this._isCancelledNow = true;
     };
 
     Event.prototype.stopPropagation = function() {
-      this.isCancelled = true;
+      this._isCancelled = true;
     };
 
     Event.prototype.toString = function() {

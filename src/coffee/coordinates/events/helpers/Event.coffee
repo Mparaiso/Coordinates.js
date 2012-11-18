@@ -5,11 +5,12 @@ define (require)->
 
         constructor:(@type,@bubbles=false,@cancelable=false)->
             @type || throw "#{this} type is not defined!"
-            @isCancelled = false
-            @isCancelledNow = false
+            @_isCancelled = false
+            @_isCancelledNow = false
             @target = null
             @currentTarget = null
             eventPhase = EventPhase.AT_TARGET
+            ### Getters and Setters ###
             @setEventPhase =(phase)=>
                 return eventPhase = phase
             @getEventPhase=()=>
@@ -19,11 +20,11 @@ define (require)->
             return new Event(@type,@bubbles,@cancelable)
 
         stopImmediatePropagation:->
-            @isCancelled = @isCancelledNow = true
+            @_isCancelled = @_isCancelledNow = true
             return
 
         stopPropagation:->
-            @isCancelled = true
+            @_isCancelled = true
             return
 
         toString:->

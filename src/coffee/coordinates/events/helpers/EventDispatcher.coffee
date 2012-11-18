@@ -3,8 +3,9 @@ define (require)->
     IEventDispatcher = require("./IEventDispatcher")
     EventPhase = require("./EventPhase")
 
+    sIDs = 1
+
     class Listener
-        sIDs = 1
 
         constructor:(@mListner,@mUseCapture,@mPriority)->
             @mID = sIDs++
@@ -17,7 +18,7 @@ define (require)->
 
     class EventDispatcher extends IEventDispatcher
 
-        constructor:(target=this)->
+        constructor:(@_target=this)->
             @_eventMap = []
 
         _getList:(type)->
@@ -43,7 +44,7 @@ define (require)->
 
         dispatchEvent:(event)->
             if not event.target
-                event.target = @target
+                event.target = @_target
 
             capture = event.eventPhase == EventPhase.CAPTURING_PHASE
 
@@ -54,7 +55,7 @@ define (require)->
                     listener = list[idx]
                     if listener.mUseCapture == capture
                         listener.dispatchEvent(event)
-                        if(event.getIsCancelledNow())
+                        if event._isCancelledNow==true
                             return true
                     ### Detect if the just used event listener was removed... ###
                     if(idx<list.length && listener != list[idx])

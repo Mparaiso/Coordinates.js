@@ -3,13 +3,11 @@ var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 define(function(require) {
-  var EventDispatcher, EventPhase, IEventDispatcher, Listener;
+  var EventDispatcher, EventPhase, IEventDispatcher, Listener, sIDs;
   IEventDispatcher = require("./IEventDispatcher");
   EventPhase = require("./EventPhase");
+  sIDs = 1;
   Listener = (function() {
-    var sIDs;
-
-    sIDs = 1;
 
     function Listener(mListner, mUseCapture, mPriority) {
       this.mListner = mListner;
@@ -33,10 +31,8 @@ define(function(require) {
 
     __extends(EventDispatcher, _super);
 
-    function EventDispatcher(target) {
-      if (target == null) {
-        target = this;
-      }
+    function EventDispatcher(_target) {
+      this._target = _target != null ? _target : this;
       this._eventMap = [];
     }
 
@@ -87,7 +83,7 @@ define(function(require) {
     EventDispatcher.prototype.dispatchEvent = function(event) {
       var capture, idx, list, listener;
       if (!event.target) {
-        event.target = this.target;
+        event.target = this._target;
       }
       capture = event.eventPhase === EventPhase.CAPTURING_PHASE;
       if (this._existList(event.type)) {
@@ -97,7 +93,7 @@ define(function(require) {
           listener = list[idx];
           if (listener.mUseCapture === capture) {
             listener.dispatchEvent(event);
-            if (event.getIsCancelledNow()) {
+            if (event._isCancelledNow === true) {
               return true;
             }
           }
