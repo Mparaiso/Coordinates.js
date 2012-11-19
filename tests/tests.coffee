@@ -10,7 +10,32 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
     test "coordinates is loaded",->
         ok(coordinates!=null,"coordinates is not null")
 
-    module("ES5shims")
+    module "ES5shims",
+        setup:->
+
+            @MyClass = class extends Coordinates.BaseClass
+
+                constructor:->
+                    super()
+                    @initConfig({x:1,y:2,z:3})
+
+                getX:->
+                    @_x * 2
+
+                setZ:(v)->
+                    @_z = v/2
+
+            window.MyClass = @MyClass
+
+            @MySuperClass = class extends @MyClass
+
+                constructor:->
+                    super()
+                    @initConfig({a:1,b:2,c:3})
+
+            window.MySuperClass = @MySuperClass
+
+        teardown:->
 
     test "capitalize",->
         testSentence = "this is a sentence"
@@ -19,6 +44,19 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         testSentence="this is a sentence with  spaces"
         expectedSentence="This Is A Sentence With  Spaces"
         equal(testSentence.capitalize(),expectedSentence,"capitalize with spaces")
+
+    test "BaseClass",->
+        myClass = new @MyClass()
+        equal(myClass.getX(),2,"BaseClass.initConfig")
+        myClass.setZ(10)
+        equal(myClass.getZ(),5,"BaseClass.initConfig")
+        mySuperClass = new @MySuperClass()
+        equal(mySuperClass.getY(),2,"BaseClass.constructor")
+        equal(mySuperClass.getA(),1,"BaseClass.constructor")
+        ### test inheritance ###
+
+
+
 
 
     ### test de chaque méthode de chaque classe ###
@@ -31,12 +69,14 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         el.style.width = "200px"
         el.style.height="200px"
         el.style.position="fixed"
-        domLink2d = new coordinates.links.DOMLink2d(el)
+        ok(true)
+        domLink2d = new coordinates.DOMLink2d(el)
+        
         ok(domLink2d!=null && domLink2d instanceof coordinates.links.DOMLink2d,"DOMLink2d.constructor")
-        domLink2d.x=200
-        domLink2d.y=250
-        domLink2d.rotation=45
-        equal(domLink2d.domElement.style.transform ,"translate(200px,250px) rotate(45deg)","DOMLink2d.applyTransform")
+        domLink2d.setX(200)
+        domLink2d.setY(250)
+        domLink2d.setRotation(45)
+        equal(domLink2d.getElement().style.transform ,"translate(200px,250px) rotate(45deg)","DOMLink2d.applyTransform")
         return
 
     ###

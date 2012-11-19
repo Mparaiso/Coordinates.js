@@ -9,7 +9,7 @@ define(function(require) {
 
     __extends(DOMLink2d, _super);
 
-    function DOMLink2d(domElement, x, y, rotation) {
+    function DOMLink2d(element, x, y, rotation) {
       if (x == null) {
         x = 0;
       }
@@ -19,57 +19,33 @@ define(function(require) {
       if (rotation == null) {
         rotation = 0;
       }
-      domElement instanceof window.HTMLElement || (function() {
+      element instanceof window.HTMLElement || (function() {
         throw "domElement must be an instance of HTMLElement";
       })();
-      if (typeof Object.defineProperties === "function") {
-        Object.defineProperties(this, {
-          x: {
-            get: function() {
-              return x;
-            },
-            set: function(value) {
-              x = value;
-              return this.applyTransform();
-            }
-          },
-          y: {
-            get: function() {
-              return y;
-            },
-            set: function(value) {
-              y = value;
-              return this.applyTransform();
-            }
-          },
-          rotation: {
-            get: function() {
-              return rotation;
-            },
-            set: function(value) {
-              rotation = value;
-              return this.applyTransform();
-            }
-          },
-          domElement: {
-            get: function() {
-              return domElement;
-            },
-            set: function(value) {
-              return domElement = value;
-            }
-          }
-        });
-      }
+      DOMLink2d.__super__.constructor.call(this, element, x, y, rotation);
     }
 
+    DOMLink2d.prototype.setX = function(value) {
+      this._x = value;
+      return this.applyTransform();
+    };
+
+    DOMLink2d.prototype.setY = function(value) {
+      this._y = value;
+      return this.applyTransform();
+    };
+
+    DOMLink2d.prototype.setRotation = function(value) {
+      this._rotation = value;
+      return this.applyTransform();
+    };
+
     DOMLink2d.prototype.applyTransform = function() {
-      var d, transform, _i, _len, _ref;
-      d = this.domElement;
+      var transform, _i, _len, _ref;
       _ref = ['transform', "webkitTransform", "mozTransform", "oTransform", "msTransform"];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         transform = _ref[_i];
-        d.style[transform] = "translate(" + this.x + "px," + this.y + "px) rotate(" + this.rotation + "deg)";
+        this.getElement().style[transform] = "translate(" + this._x + "px," + this._y + "px) rotate(" + this._rotation + "deg)";
       }
     };
 

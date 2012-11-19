@@ -1,8 +1,7 @@
 define (require)->
 
-    IEventDispatcher = require("./IEventDispatcher")
     EventPhase = require("./EventPhase")
-
+    BaseClass = require("../../utils/BaseClass")
     sIDs = 1
 
     class Listener
@@ -16,7 +15,7 @@ define (require)->
         dispatchEvent:(event)->
             @mListner(event)
 
-    class EventDispatcher extends IEventDispatcher
+    class EventDispatcher extends BaseClass
 
         constructor:(@_target=this)->
             @_eventMap = []

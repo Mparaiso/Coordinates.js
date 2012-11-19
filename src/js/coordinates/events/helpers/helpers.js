@@ -3,15 +3,13 @@
 */
 
 define(function(require) {
-  var Event, EventDispatcher, EventPhase, IEventDispatcher;
+  var Event, EventDispatcher, EventPhase;
   Event = require("./Event");
   EventDispatcher = require("./EventDispatcher");
   EventPhase = require("./EventPhase");
-  IEventDispatcher = require("./IEventDispatcher");
   return {
     Event: Event,
     EventDispatcher: EventDispatcher,
-    EventPhase: EventPhase,
-    IEventDispatcher: IEventDispatcher
+    EventPhase: EventPhase
   };
 });

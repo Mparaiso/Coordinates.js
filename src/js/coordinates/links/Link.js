@@ -2,9 +2,15 @@
 /* coordinates.links.Link
 */
 
+var __hasProp = {}.hasOwnProperty,
+  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
 define(function(require) {
-  var Link;
-  return Link = (function() {
+  var BaseClass, Link;
+  BaseClass = require("../utils/BaseClass");
+  return Link = (function(_super) {
+
+    __extends(Link, _super);
 
     function Link(element, x, y, rotation) {
       if (x == null) {
@@ -16,39 +22,11 @@ define(function(require) {
       if (rotation == null) {
         rotation = 0;
       }
-      Object.defineProperties(this, {
-        x: {
-          get: function() {
-            return x;
-          },
-          set: function(v) {
-            return x = v;
-          }
-        },
-        y: {
-          get: function() {
-            return y;
-          },
-          set: function(v) {
-            return y = v;
-          }
-        },
-        rotation: {
-          get: function() {
-            return rotation;
-          },
-          set: function(v) {
-            return rotation = v;
-          }
-        },
-        element: {
-          get: function() {
-            return element;
-          },
-          set: function(v) {
-            return element = v;
-          }
-        }
+      this.initConfig({
+        element: element,
+        x: x,
+        y: y,
+        rotation: rotation
       });
     }
 
@@ -58,5 +36,5 @@ define(function(require) {
 
     return Link;
 
-  })();
+  })(BaseClass);
 });

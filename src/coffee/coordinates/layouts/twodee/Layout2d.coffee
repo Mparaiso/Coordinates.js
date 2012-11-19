@@ -1,92 +1,68 @@
 define (require)->
 
     Layout = require("../Layout")
+    LayoutUpdateMethod = require("../../constants/LayoutUpdateMethod")
 
     class Layout2d extends Layout
-        constructor:->
+
+        constructor:(x=0,y=0,jitterX=0,jitterY=0,width=0,height=0,rotation=0)->
             super()
 
-            x=0
+            @setUpdateMethod(LayoutUpdateMethod.UPDATE_AND_RENDER)
 
-            y=0
+            @initConfig({x:x,y:y,width:width,height:height,rotation:rotation,jitterX:jitterX,jitterY:jitterY,proxyUpdater:null},@updateFunction)
 
-            width=0
 
-            height=0
+        setX:(v)->
+            @_x=v
+            @updateFunction()
 
-            rotation=0
+        setY=(v)->
+            @_y=v
+            @updateFunction()
 
-            jitterX=0
+        setWidth:(v)->
+            @_width=v
+            @updateFunction()
 
-            jitterY=0
+        setHeight:(v)->
+            @_height=v
+            @updateFunction()
 
-            @updateFunction = null
+        setJitterX:(v)->
+            @_jitterX=v
+            @updateFunction()
 
-            updateMethod=null
+        setJitterY:(v)->
+            @_jitterY=v
+            @updateFunction()
 
-            proxyUpdater=null
+        setRotation:(v)->
+            @_rotation=v
+            @updateFunction()
 
-            @get_x=->x
+        setUpdateMethod:(v)->
+            ### 
+                Specifies whether layout properties (x, y, width, height, etc.) adjust the layout automatically without calling apply() method.
+                An alternative method for updating layouts is to define a proxy updater using the proxyUpdater property
+            ###
+            @_updateMethod=v
+            switch v
+                when LayoutUpdateMethod.NONE
+                    @updateFunction = ->
+                when LayoutUpdateMethod.UPDATE_ONLY
+                    @updateFunction = @update
+                else
+                    @updateFunction = @updateAndRender
 
-            @set_x=(v)->x=v;@updateFunction()
-
-            @get_y=->y
-
-            @set_y=(v)->y=v;@updateFunction()
-
-            @get_width=->width
-
-            @set_width=(v)->width=v;@updateFunction()
-
-            @get_height=->height
-
-            @set_height=(v)->height=v;@updateFunction()
-
-            @get_jitterX=->jitterX
-
-            @set_jitterX=(v)->jitterX=v;@updateFunction()
-
-            @get_jitterY=->jitterY
-
-            @set_jitterY=(v)->jitterY=v;@updateFunction()
-
-            @get_rotation=->rotation
-
-            @set_rotation=(v)->rotation=v;updateFunction()
-
-            @get_updateMethod=->updateMethod
-
-            @set_updateMethod=(v)->
-                ### 
-                    Specifies whether layout properties (x, y, width, height, etc.) adjust the layout automatically without calling apply() method.
-                    An alternative method for updating layouts is to define a proxy updater using the proxyUpdater property
-                ###
-                updateMethod=v
-                switch v
-                    when LayoutUpdateMethod.NONE
-                        @updateFunction = ->
-                    when LayoutUpdateMethod.UPDATE_ONLY
-                        @updateFunction = @update
-                    else
-                        @updateFunction = @updateAndRender
-
-            @get_proxyUdpdater=->proxyUpdater
-
-            @set_proxyUpdater=(v)->
-                ###
-                    Sets a proxy update method for altering layouts as opposed to internal update methods such as update(), render() or updateAndRender()
-                    This allows more customization for the updating sequence. 
-                ###
-                @set_updateMethod(v.name)
-                @updateFunction=v.update
-                proxyUpdater = v
-
-            #init 
-
-            @set_updateMethod(LayoutUpdateMethod.UPDATE_AND_RENDER)
-
-            @updateFunction = @updateAndRender
-
+        setProxyUpdater=(v)->
+            ###
+                Sets a proxy update method for altering layouts as opposed to internal update methods such as update(), render() or updateAndRender()
+                This allows more customization for the updating sequence. 
+            ###
+            @setUpdateMethod(v.name)
+            @updateFunction=v.update
+            @_proxyUpdater = v
 
         addToLayout:(link,moveToCoordinates)->
             ### Adds object to layout in next available position.  ###
@@ -118,6 +94,12 @@ define (require)->
                 # l.setX(n.getX())
                 # l.setY(n.getY())
 
+
+        updateAndRender:->
+            ### Performs an update on all the nodes' positions and renders each node's corresponding link ###
+            @update()
+            @render()
+
         clone:->
             ### Clones the current object's properties (does not include links to DisplayDynamics) ###
             throw  'Method must be overriden by child class';
@@ -127,10 +109,11 @@ define (require)->
             node.getLink().setX(node.getX())
             node.getLink().setY(node.getY())
 
-
         validateObject:(obj)->
             ### Determines if an object added to the layout contains the properties/methods required from the layout. ###
             return true
 
-
+        toString:->
+            ### toString ###
+            "[object Layout2d]"
 

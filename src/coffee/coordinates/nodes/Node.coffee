@@ -1,16 +1,11 @@
-define (require)->
-    class Node
+define (require)-> 
+    BaseClass = require("../utils/BaseClass")
+    class Node extends BaseClass
         constructor:(link)->
-
-            @getLink=->
-                return link
-                
-            @setLink=(value)->
-                link=value
+            @initConfig({link:link})
 
         toObject:->
-            throw "Method must be called in Node descendant"
-            return 
+            throw 'Method must be overriden by child class'
 
         toString:->
             "[object Node]"

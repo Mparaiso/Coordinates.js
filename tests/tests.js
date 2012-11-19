@@ -3,6 +3,9 @@
     Coordinates.js tests with qunit
 */
 
+var __hasProp = {}.hasOwnProperty,
+  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
 require(["../src/js/coordinates/coordinates"], function(coordinates) {
   /* helper pour le debugging via console
   */
@@ -10,7 +13,53 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
   test("coordinates is loaded", function() {
     return ok(coordinates !== null, "coordinates is not null");
   });
-  module("ES5shims");
+  module("ES5shims", {
+    setup: function() {
+      this.MyClass = (function(_super) {
+
+        __extends(_Class, _super);
+
+        function _Class() {
+          _Class.__super__.constructor.call(this);
+          this.initConfig({
+            x: 1,
+            y: 2,
+            z: 3
+          });
+        }
+
+        _Class.prototype.getX = function() {
+          return this._x * 2;
+        };
+
+        _Class.prototype.setZ = function(v) {
+          return this._z = v / 2;
+        };
+
+        return _Class;
+
+      })(Coordinates.BaseClass);
+      window.MyClass = this.MyClass;
+      this.MySuperClass = (function(_super) {
+
+        __extends(_Class, _super);
+
+        function _Class() {
+          _Class.__super__.constructor.call(this);
+          this.initConfig({
+            a: 1,
+            b: 2,
+            c: 3
+          });
+        }
+
+        return _Class;
+
+      })(this.MyClass);
+      return window.MySuperClass = this.MySuperClass;
+    },
+    teardown: function() {}
+  });
   test("capitalize", function() {
     var expectedSentence, testSentence;
     testSentence = "this is a sentence";
@@ -19,6 +68,19 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
     testSentence = "this is a sentence with  spaces";
     expectedSentence = "This Is A Sentence With  Spaces";
     return equal(testSentence.capitalize(), expectedSentence, "capitalize with spaces");
+  });
+  test("BaseClass", function() {
+    var myClass, mySuperClass;
+    myClass = new this.MyClass();
+    equal(myClass.getX(), 2, "BaseClass.initConfig");
+    myClass.setZ(10);
+    equal(myClass.getZ(), 5, "BaseClass.initConfig");
+    mySuperClass = new this.MySuperClass();
+    equal(mySuperClass.getY(), 2, "BaseClass.constructor");
+    return equal(mySuperClass.getA(), 1, "BaseClass.constructor");
+    /* test inheritance
+    */
+
   });
   /* test de chaque méthode de chaque classe
   */
@@ -34,12 +96,13 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
     el.style.width = "200px";
     el.style.height = "200px";
     el.style.position = "fixed";
-    domLink2d = new coordinates.links.DOMLink2d(el);
+    ok(true);
+    domLink2d = new coordinates.DOMLink2d(el);
     ok(domLink2d !== null && domLink2d instanceof coordinates.links.DOMLink2d, "DOMLink2d.constructor");
-    domLink2d.x = 200;
-    domLink2d.y = 250;
-    domLink2d.rotation = 45;
-    equal(domLink2d.domElement.style.transform, "translate(200px,250px) rotate(45deg)", "DOMLink2d.applyTransform");
+    domLink2d.setX(200);
+    domLink2d.setY(250);
+    domLink2d.setRotation(45);
+    equal(domLink2d.getElement().style.transform, "translate(200px,250px) rotate(45deg)", "DOMLink2d.applyTransform");
   });
   /*
           coordinates.events.helpers.Event

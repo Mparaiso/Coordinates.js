@@ -1,33 +1,21 @@
 define (require)->
     Node = require ("../Node")
+
     class Node2d extends Node
 
         constructor:(link=null,x=0,y=0,jitterX=0,jitterY=0)->
             super(link)
-            rotation=0
+            @initConfig(rotation:0,x:x,y:y,
+            jitterX:jitterX,jitterY:jitterY)
 
-            @getX=->x
+        setJitterX:(value)->
+            #
+            @_jitterX=Math.random()*value*( if Math.random()>0.5 then -1 else 1)
 
-            @setX=(value)->x=value
 
-            @getY=->y
-
-            @setY=(value)->y=value
-
-            @getJitterX=->jitterX
-
-            @setJitterX=(value)->jitterX=Math.random()*value*((Math.random()>0.5)?-1:1)
-
-            @getJitterY=->jitterY
-
-            @setJitterY=(value)->jitterY=Math.random()*value*((Math.random()>0.5)?-1:1)
-
-            @getRotation=->rotation
-
-            @setRotation=(value)->rotation=value
-
-            @setJitterX(jitterX)
-            @setJitterY(jitterY)
+        setJitterY:(value)->
+            #
+            @_jitterY=Math.random()*value*(if Math.random()>0.5 then -1 else 1)
 
         clone:->
             n = new Node2d(@getLink(),@getX(),@getY(),@getJitterX(),@getJitterY)
@@ -42,4 +30,5 @@ define (require)->
             rotation:@getRotation()
 
         toString:->
+            #
             "[object Node2d]"

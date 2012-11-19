@@ -2,6 +2,10 @@
 
 define(function(require) {
   return {
-    Layout: require("./Layout")
+    Layout: require("./Layout"),
+    twodee: {
+      Layout2d: require("./twodee/Layout2d"),
+      VerticalLine: require("./twodee/VerticalLine")
+    }
   };
 });

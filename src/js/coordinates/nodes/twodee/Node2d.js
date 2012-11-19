@@ -10,7 +10,6 @@ define(function(require) {
     __extends(Node2d, _super);
 
     function Node2d(link, x, y, jitterX, jitterY) {
-      var rotation;
       if (link == null) {
         link = null;
       }
@@ -27,44 +26,22 @@ define(function(require) {
         jitterY = 0;
       }
       Node2d.__super__.constructor.call(this, link);
-      rotation = 0;
-      this.getX = function() {
-        return x;
-      };
-      this.setX = function(value) {
-        return x = value;
-      };
-      this.getY = function() {
-        return y;
-      };
-      this.setY = function(value) {
-        return y = value;
-      };
-      this.getJitterX = function() {
-        return jitterX;
-      };
-      this.setJitterX = function(value) {
-        return jitterX = Math.random() * value * (((Math.random() > 0.5) != null) - {
-          1: 1
-        });
-      };
-      this.getJitterY = function() {
-        return jitterY;
-      };
-      this.setJitterY = function(value) {
-        return jitterY = Math.random() * value * (((Math.random() > 0.5) != null) - {
-          1: 1
-        });
-      };
-      this.getRotation = function() {
-        return rotation;
-      };
-      this.setRotation = function(value) {
-        return rotation = value;
-      };
-      this.setJitterX(jitterX);
-      this.setJitterY(jitterY);
+      this.initConfig({
+        rotation: 0,
+        x: x,
+        y: y,
+        jitterX: jitterX,
+        jitterY: jitterY
+      });
     }
+
+    Node2d.prototype.setJitterX = function(value) {
+      return this._jitterX = Math.random() * value * (Math.random() > 0.5 ? -1 : 1);
+    };
+
+    Node2d.prototype.setJitterY = function(value) {
+      return this._jitterY = Math.random() * value * (Math.random() > 0.5 ? -1 : 1);
+    };
 
     Node2d.prototype.clone = function() {
       var n;
