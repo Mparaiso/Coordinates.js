@@ -12,8 +12,32 @@ define(function(require) {
     function Layout() {
       Layout.__super__.constructor.call(this);
       this.size = 0;
-      this.nodes = null;
+      this.nodes = [];
     }
+
+    Layout.prototype.addToLayout = function(object, moveToCoordinates) {
+      /*
+      */
+      throw 'Method must be overriden by child class';
+    };
+
+    Layout.prototype.addNode = function(object, moveToCoordinates) {
+      /*
+      */
+      throw 'Method must be overriden by child class';
+    };
+
+    Layout.prototype.addNodes = function(count) {
+      /* Adds a specified number of empty nodes to the layout
+      */
+
+      var i, _i, _results;
+      _results = [];
+      for (i = _i = 0; 0 <= count ? _i < count : _i > count; i = 0 <= count ? ++_i : --_i) {
+        _results.push(this.addNode());
+      }
+      return _results;
+    };
 
     Layout.prototype.toString = function() {
       return "[object Layout]";
@@ -34,24 +58,134 @@ define(function(require) {
       };
     };
 
-    Layout.prototype.addToLayout = function(object, moveToCoordinates) {
-      throw 'Method must be overriden by child class';
-    };
-
-    Layout.prototype.addNode = function(object, moveToCoordinates) {
-      throw 'Method must be overriden by child class';
-    };
-
-    Layout.prototype.addNodes = function(count) {
-      /* Adds a specified number of empty nodes to the layout
+    Layout.prototype.getNodeByLink = function(link) {
+      /* Returns node object by specified display object
       */
 
-      var i, _i, _results;
-      _results = [];
-      for (i = _i = 0; 0 <= count ? _i < count : _i > count; i = 0 <= count ? ++_i : --_i) {
-        _results.push(this.addNode());
+      var node, _i, _len, _ref;
+      _ref = this.nodes;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        node = _ref[_i];
+        if (node.getLink() === link) {
+          return node;
+        }
       }
-      return _results;
+      return null;
+    };
+
+    Layout.prototype.getNodeIndex = function(node) {
+      /* Returns specified node object's index in the collection
+      */
+      return this.nodes.indexOf(node);
+    };
+
+    Layout.prototype.getNodeAt = function(index) {
+      /* Returns node object at specified index of collection
+      */
+      return this.nodes[index];
+    };
+
+    Layout.prototype.linkExists = function(link) {
+      /* Returns true if a link (DisplayObject owned by a layout's node) exists in the layout
+      */
+
+      var node, _i, _len, _ref;
+      _ref = this.nodes;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        node = _ref[_i];
+        if (link === node.getLink()) {
+          return true;
+        }
+      }
+      return false;
+    };
+
+    Layout.prototype.swapNodeLinks = function(nodeTo, nodeFrom) {
+      /* Swaps links of two node objects
+      */
+
+      var tmpLink;
+      tmpLink = nodeTo.getLink();
+      nodeTo.setLink(nodeFrom.getLink());
+      nodeFrom.setLink(tmpLink);
+    };
+
+    Layout.prototype.removeLinks = function() {
+      /* Removes all links between nodes and display objects
+      */
+
+      var node, _i, _len, _ref;
+      _ref = this.nodes;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        node = _ref[_i];
+        node.setLink(null);
+      }
+    };
+
+    Layout.prototype.removeLinkAt = function(index) {
+      /* Removed the link between the node and display object at the specified index
+      */
+      return this.nodes[index].setLink(null);
+    };
+
+    Layout.prototype.removeNode = function(node) {
+      this.nodes.splice(this.getNodeIndex(node), 1);
+      return --this.size;
+    };
+
+    Layout.prototype.removeAllNodes = function() {
+      /* Removes all nodes from the layout
+      */
+      this.nodes = [];
+      return this.size = 0;
+    };
+
+    Layout.prototype.removeNodeByLink = function(link) {
+      /* Removes the node that is linked to the specified object
+      */
+
+      var node, _i, _len, _ref;
+      _ref = this.nodes;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        node = _ref[_i];
+        if (node.getLink() === link) {
+          this.removeNode(node);
+          return;
+        }
+      }
+    };
+
+    Layout.prototype.addLinkAt = function(link, index) {
+      /* Adds a link between the specified display object to the node object at the specified index
+      */
+      return this.nodes[index].setLink(link);
+    };
+
+    Layout.prototype.storeNode = function(node) {
+      if (!this.nodes) {
+        this.nodes = [];
+      }
+      this.nodes.push(node);
+      return ++this.size;
+    };
+
+    Layout.prototype.storeNodeAt = function(node, index) {
+      if (!this.nodes) {
+        this.nodes = [];
+      }
+      this.nodes.splice(index, 0, node);
+      return ++this.size;
+    };
+
+    Layout.prototype.getNextAvailableNode = function() {
+      var node, _i, _len, _ref;
+      _ref = this.nodes;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        node = _ref[_i];
+        if (node.getLink() !== null) {
+          return node;
+        }
+      }
     };
 
     return Layout;

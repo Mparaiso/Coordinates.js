@@ -5,7 +5,8 @@ define(function(require) {
   Coordinates = {
     events: require("./events/events"),
     nodes: require("./nodes/nodes"),
-    links: require("./links/links")
+    links: require("./links/links"),
+    layouts: require("./layouts/layouts")
   };
   /* shortcuts
   */
@@ -14,5 +15,6 @@ define(function(require) {
   Coordinates.Link = Coordinates.links.Link;
   Coordinates.Node = Coordinates.nodes.Node;
   Coordinates.Node2d = Coordinates.nodes.twodee.Node2d;
+  Coordinates.Layout = Coordinates.layouts.Layout;
   return Coordinates;
 });

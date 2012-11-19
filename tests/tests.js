@@ -117,7 +117,7 @@ requireloaded = function(event) {
       }, "Node.toObject throws an exception");
     });
     module("coordinates.nodes.twodee");
-    return test("coordinates.nodes.twodee.Node2d", function() {
+    test("coordinates.nodes.twodee.Node2d", function() {
       var clonedNode, link, node2d, o;
       link = {
         x: 1,
@@ -133,6 +133,61 @@ requireloaded = function(event) {
       node2d.setJitterX(3);
       node2d.setJitterY(5);
       ok(node2d.getJitterX !== 3 && node2d.getJitterY() !== 5, "Node2d.setJitterX , Node2d.setJitterY");
+    });
+    /*
+                Coordinates.layouts
+    */
+
+    module("coordinates.layouts.Layout", {
+      setup: function() {
+        this.link1 = new Coordinates.Link({
+          x: 1,
+          y: 2
+        });
+        this.link2 = new Coordinates.Link({
+          x: 3,
+          y: 5
+        });
+        this.node1 = new Coordinates.Node(this.link1);
+        this.node2 = new Coordinates.Node(this.link2);
+        return this.layout = new Coordinates.Layout();
+      },
+      teardown: function() {}
+    });
+    test("constructor", function() {
+      equal(this.layout.size, 0);
+      return equal(this.layout.nodes.length, 0);
+    });
+    test("storeNode", function() {
+      this.layout.storeNode(this.node1);
+      equal(this.layout.size, 1, "Layout.storeNode");
+      equal(this.layout.nodes.length, 1, "Layout.storeNode");
+      equal(this.layout.linkExists(this.link1), true, "Layout.linkExists");
+      equal(this.layout.linkExists(this.link2), false, "Layout.linkExists");
+      this.layout.storeNodeAt(this.node2, 0);
+      equal(this.layout.nodes[0].getLink(), this.link2, "Layout.storeNodeAt");
+      equal(this.layout.getNodeByLink(this.link1), this.node1, "Layout.getNodeByLink");
+      equal(this.layout.getNodeIndex(this.node2), 0, "Layout.getNodeIndex");
+      equal(this.layout.getNodeAt(0), this.node2, "Layout.getNodeAt");
+      this.layout.removeNodeByLink(this.link1);
+      equal(this.layout.linkExists(this.link1), false, "layout.removeNodeByLink");
+      equal(this.layout.size, 1, "layout.removeNodeByLink");
+      equal(this.layout.nodes.length, 1, "layout.removeNodeByLink");
+      this.layout.removeAllNodes();
+      equal(this.layout.size, 0, "Layout.removeAllNodes");
+      return equal(this.layout.nodes.length, 0, "Layout.removeAllNodes");
+    });
+    test("swapNodeLinks", function() {
+      this.layout.storeNode(this.node1);
+      this.layout.storeNode(this.node2);
+      this.layout.swapNodeLinks(this.node1, this.node2);
+      equal(this.node1.getLink(), this.link2);
+      return equal(this.node2.getLink(), this.link1);
+    });
+    return test("addLinkAt", function() {
+      this.layout.storeNode(this.node1);
+      this.layout.addLinkAt(this.link2, 0);
+      return equal(this.layout.nodes[0].getLink(), this.link2, "Layout.addLinkAt");
     });
   });
 };

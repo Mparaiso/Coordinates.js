@@ -99,6 +99,54 @@ requireloaded = (event)->
             ok(node2d.getJitterX!=3 && node2d.getJitterY()!=5,"Node2d.setJitterX , Node2d.setJitterY")
             return
 
+        ###
+            Coordinates.layouts
+        ###
+
+        module "coordinates.layouts.Layout",
+            setup:->
+                @link1 = new Coordinates.Link({x:1,y:2})
+                @link2 = new Coordinates.Link({x:3,y:5})
+                @node1 = new Coordinates.Node(@link1)
+                @node2 = new Coordinates.Node(@link2)
+                @layout = new Coordinates.Layout()
+            teardown:->
+
+        test "constructor", ->
+            equal(@layout.size,0)
+            equal(@layout.nodes.length,0)
+
+        test "storeNode", ->
+            @layout.storeNode(@node1)
+            equal(@layout.size,1,"Layout.storeNode")
+            equal(@layout.nodes.length,1,"Layout.storeNode")
+            equal(@layout.linkExists(@link1),true,"Layout.linkExists")
+            equal(@layout.linkExists(@link2),false,"Layout.linkExists")
+            @layout.storeNodeAt(@node2,0)
+            equal(@layout.nodes[0].getLink(),@link2,"Layout.storeNodeAt")
+            equal(@layout.getNodeByLink(@link1),@node1,"Layout.getNodeByLink")
+            equal(@layout.getNodeIndex(@node2),0,"Layout.getNodeIndex")
+            equal(@layout.getNodeAt(0),@node2,"Layout.getNodeAt")
+            @layout.removeNodeByLink(@link1)
+            equal(@layout.linkExists(@link1),false,"layout.removeNodeByLink")
+            equal(@layout.size,1,"layout.removeNodeByLink")
+            equal(@layout.nodes.length,1,"layout.removeNodeByLink")
+            @layout.removeAllNodes()
+            equal(@layout.size,0,"Layout.removeAllNodes")
+            equal(@layout.nodes.length,0,"Layout.removeAllNodes")
+
+        test "swapNodeLinks",->
+            @layout.storeNode(@node1)
+            @layout.storeNode(@node2)
+            @layout.swapNodeLinks(@node1,@node2)
+            equal(@node1.getLink(),@link2)
+            equal(@node2.getLink(),@link1)
+
+        test "addLinkAt",->
+            @layout.storeNode(@node1)
+            @layout.addLinkAt(@link2,0)
+            equal(@layout.nodes[0].getLink(),@link2,"Layout.addLinkAt")
+
         
 
 
