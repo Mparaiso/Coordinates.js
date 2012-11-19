@@ -1,21 +1,6 @@
 ###
     Coordinates.js tests with qunit
 ###
-### load a script according to its path , then execute a callback ###
-# loadScript=(scriptPath,callback,options={},callbackoptions={})->
-#     s = document.createElement("SCRIPT")
-#     s.option = value for option,values in options
-
-#     s.onload = (e)=>
-#         callback(e,callbackoptions)
-
-#     s.src = scriptPath
-#     document.body.appendChild(s)
-#     return s
-
-### callback ###
-# requireloaded = (event)->
-#     console.log("requireloaded",arguments)
 
 require ["../src/js/coordinates/coordinates"],(coordinates)->
     # console.log("coordinates loaded",arguments)
@@ -25,7 +10,17 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
     test "coordinates is loaded",->
         ok(coordinates!=null,"coordinates is not null")
 
-        
+    module("ES5shims")
+
+    test "capitalize",->
+        testSentence = "this is a sentence"
+        expectedSentence ="This Is A Sentence"
+        equal(testSentence.capitalize(),expectedSentence,"capitalize")
+        testSentence="this is a sentence with  spaces"
+        expectedSentence="This Is A Sentence With  Spaces"
+        equal(testSentence.capitalize(),expectedSentence,"capitalize with spaces")
+
+
     ### test de chaque méthode de chaque classe ###
     ###
         coordinates.links.DOMLink2d
@@ -147,10 +142,3 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         @layout.storeNode(@node1)
         @layout.addLinkAt(@link2,0)
         equal(@layout.nodes[0].getLink(),@link2,"Layout.addLinkAt")
-
-        
-
-
-#loadScript("../src/js/vendor/require.min.js",requireloaded)
-
-

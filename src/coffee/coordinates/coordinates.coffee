@@ -6,6 +6,7 @@ define (require)->
         links:require("./links/links")
         layouts:require("./layouts/layouts")
         helpers:require("./helpers/helpers")
+        utils:require("./utils/utils")
 
     ### shortcuts ###
     Coordinates.DOMLink2d = Coordinates.links.DOMLink2d

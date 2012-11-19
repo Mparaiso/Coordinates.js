@@ -3,18 +3,22 @@
     Coordinates.js tests with qunit
 */
 
-/* load a script according to its path , then execute a callback
-*/
-
-/* callback
-*/
-
 require(["../src/js/coordinates/coordinates"], function(coordinates) {
   /* helper pour le debugging via console
   */
   window.Coordinates = coordinates;
   test("coordinates is loaded", function() {
     return ok(coordinates !== null, "coordinates is not null");
+  });
+  module("ES5shims");
+  test("capitalize", function() {
+    var expectedSentence, testSentence;
+    testSentence = "this is a sentence";
+    expectedSentence = "This Is A Sentence";
+    equal(testSentence.capitalize(), expectedSentence, "capitalize");
+    testSentence = "this is a sentence with  spaces";
+    expectedSentence = "This Is A Sentence With  Spaces";
+    return equal(testSentence.capitalize(), expectedSentence, "capitalize with spaces");
   });
   /* test de chaque méthode de chaque classe
   */
