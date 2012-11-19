@@ -61,10 +61,10 @@ requireloaded = function(event) {
       el.style.position = "fixed";
       domLink2d = new coordinates.links.DOMLink2d(el);
       ok(domLink2d !== null && domLink2d instanceof coordinates.links.DOMLink2d, "DOMLink2d.constructor");
-      domLink2d.setX(200);
-      domLink2d.setY(250);
-      domLink2d.setRotation(45);
-      equal(domLink2d.getDomElement().style.transform, "translate(200px,250px) rotate(45deg)", "DOMLink2d.applyTransform");
+      domLink2d.x = 200;
+      domLink2d.y = 250;
+      domLink2d.rotation = 45;
+      equal(domLink2d.domElement.style.transform, "translate(200px,250px) rotate(45deg)", "DOMLink2d.applyTransform");
     });
     /*
                 coordinates.events.helpers.Event

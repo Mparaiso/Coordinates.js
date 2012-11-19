@@ -4,13 +4,20 @@ define (require)->
 
     class Link
 
-        constructor:(x=0,y=0,rotation=0)->
-            @getX=->x
-            @setX=(value)->x=value
-            @getY=->y
-            @setY=(value)->y=value
-            @getRotation=->rotation
-            @setRotatation=(value)->rotation=value
+        constructor:(element,x=0,y=0,rotation=0)->
+            Object.defineProperties this,
+                x:
+                    get:->x
+                    set:(v)->x=v
+                y:
+                    get:->y
+                    set:(v)->y=v
+                rotation:
+                    get:->rotation
+                    set:(v)->rotation=v
+                element:
+                    get:->element
+                    set:(v)->element=v
 
         toString:->
             "[object Link]"

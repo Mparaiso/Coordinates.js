@@ -6,7 +6,7 @@ define(function(require) {
   var Link;
   return Link = (function() {
 
-    function Link(x, y, rotation) {
+    function Link(element, x, y, rotation) {
       if (x == null) {
         x = 0;
       }
@@ -16,24 +16,40 @@ define(function(require) {
       if (rotation == null) {
         rotation = 0;
       }
-      this.getX = function() {
-        return x;
-      };
-      this.setX = function(value) {
-        return x = value;
-      };
-      this.getY = function() {
-        return y;
-      };
-      this.setY = function(value) {
-        return y = value;
-      };
-      this.getRotation = function() {
-        return rotation;
-      };
-      this.setRotatation = function(value) {
-        return rotation = value;
-      };
+      Object.defineProperties(this, {
+        x: {
+          get: function() {
+            return x;
+          },
+          set: function(v) {
+            return x = v;
+          }
+        },
+        y: {
+          get: function() {
+            return y;
+          },
+          set: function(v) {
+            return y = v;
+          }
+        },
+        rotation: {
+          get: function() {
+            return rotation;
+          },
+          set: function(v) {
+            return rotation = v;
+          }
+        },
+        element: {
+          get: function() {
+            return element;
+          },
+          set: function(v) {
+            return element = v;
+          }
+        }
+      });
     }
 
     Link.prototype.toString = function() {

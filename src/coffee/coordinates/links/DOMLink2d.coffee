@@ -3,33 +3,28 @@ define (require)->
 
     class DOMLink2d extends Link
 
-        constructor:(domElement)->
-            x=0
-            y=0
-            rotation=0
-            @getX=->x
-            @setX=(v)->x=v;@applyTransform()
-            @getY=->y
-            @setY=(v)->y=v;@applyTransform()
-            @getRotation=->rotation
-            @setRotation=(v)->rotation=v;@applyTransform()
-            @getDomElement=->domElement
-            @setDomElement=(v)->domElement=v;@initTransform()
-            @initTransform()
-            ###
-            descriptors = 
+        constructor:(domElement,x=0,y=0,rotation=0)->
+            domElement instanceof window.HTMLElement || throw "domElement must be an instance of HTMLElement"
+            Object.defineProperties? this,
                 x:
-                    get:->@x
-                    set:(value)->@x=value;@applyTransform()
+                    get:->x
+                    set:(value)->x=value;@applyTransform()
                 y:
-                    get:->@y
-            ###
-
-        initTransform:->-
-
+                    get:->y
+                    set:(value)->y=value;@applyTransform()
+                rotation:
+                    get:->rotation
+                    set:(value)->rotation=value;@applyTransform()
+                domElement:
+                    get:->domElement
+                    set:(value)->domElement=value
+            
         applyTransform:->
-            d = @getDomElement()
+            d = @domElement
             for transform in ['transform',"webkitTransform","mozTransform","oTransform","msTransform"]
                 #if d.style[transform]?
-                    d.style[transform] = "translate(#{@getX()}px,#{@getY()}px) rotate(#{@getRotation()}deg)"
+                    d.style[transform] = "translate(#{@x}px,#{@y}px) rotate(#{@rotation}deg)"
             return
+
+        toString:->
+            "[object DOMLink2d]"

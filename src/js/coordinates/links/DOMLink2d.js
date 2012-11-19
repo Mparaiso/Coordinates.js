@@ -9,63 +9,72 @@ define(function(require) {
 
     __extends(DOMLink2d, _super);
 
-    function DOMLink2d(domElement) {
-      var rotation, x, y;
-      x = 0;
-      y = 0;
-      rotation = 0;
-      this.getX = function() {
-        return x;
-      };
-      this.setX = function(v) {
-        x = v;
-        return this.applyTransform();
-      };
-      this.getY = function() {
-        return y;
-      };
-      this.setY = function(v) {
-        y = v;
-        return this.applyTransform();
-      };
-      this.getRotation = function() {
-        return rotation;
-      };
-      this.setRotation = function(v) {
-        rotation = v;
-        return this.applyTransform();
-      };
-      this.getDomElement = function() {
-        return domElement;
-      };
-      this.setDomElement = function(v) {
-        domElement = v;
-        return this.initTransform();
-      };
-      this.initTransform();
-      /*
-                  descriptors = 
-                      x:
-                          get:->@x
-                          set:(value)->@x=value;@applyTransform()
-                      y:
-                          get:->@y
-      */
-
+    function DOMLink2d(domElement, x, y, rotation) {
+      if (x == null) {
+        x = 0;
+      }
+      if (y == null) {
+        y = 0;
+      }
+      if (rotation == null) {
+        rotation = 0;
+      }
+      domElement instanceof window.HTMLElement || (function() {
+        throw "domElement must be an instance of HTMLElement";
+      })();
+      if (typeof Object.defineProperties === "function") {
+        Object.defineProperties(this, {
+          x: {
+            get: function() {
+              return x;
+            },
+            set: function(value) {
+              x = value;
+              return this.applyTransform();
+            }
+          },
+          y: {
+            get: function() {
+              return y;
+            },
+            set: function(value) {
+              y = value;
+              return this.applyTransform();
+            }
+          },
+          rotation: {
+            get: function() {
+              return rotation;
+            },
+            set: function(value) {
+              rotation = value;
+              return this.applyTransform();
+            }
+          },
+          domElement: {
+            get: function() {
+              return domElement;
+            },
+            set: function(value) {
+              return domElement = value;
+            }
+          }
+        });
+      }
     }
 
-    DOMLink2d.prototype.initTransform = function() {
-      return -{
-        applyTransform: function() {
-          var d, transform, _i, _len, _ref;
-          d = this.getDomElement();
-          _ref = ['transform', "webkitTransform", "mozTransform", "oTransform", "msTransform"];
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            transform = _ref[_i];
-            d.style[transform] = "translate(" + (this.getX()) + "px," + (this.getY()) + "px) rotate(" + (this.getRotation()) + "deg)";
-          }
-        }
-      };
+    DOMLink2d.prototype.applyTransform = function() {
+      var d, transform, _i, _len, _ref;
+      d = this.domElement;
+      _ref = ['transform', "webkitTransform", "mozTransform", "oTransform", "msTransform"];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        transform = _ref[_i];
+        d.style[transform] = "translate(" + this.x + "px," + this.y + "px) rotate(" + this.rotation + "deg)";
+      }
+    };
+
+    DOMLink2d.prototype.toString = function() {
+      return "[object DOMLink2d]";
     };
 
     return DOMLink2d;
