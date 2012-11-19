@@ -6,7 +6,8 @@ define(function(require) {
     events: require("./events/events"),
     nodes: require("./nodes/nodes"),
     links: require("./links/links"),
-    layouts: require("./layouts/layouts")
+    layouts: require("./layouts/layouts"),
+    helpers: require("./helpers/helpers")
   };
   /* shortcuts
   */
