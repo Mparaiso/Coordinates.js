@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>THREE JS , TweenLite , Coordinates </title>
+    <style type="text/css">
+      body{
+        font-family:Helvetica,sans-serif;
+        font-size: 18px;
+        background: #000;
+        color:#F9F9F9;
+      }
+      .footer{
+        font-size: 0.8em;
+      }
+      #wrapper{
+        margin:auto;
+        width:80%;
+      }
+
+      #container{
+        position: relative;
+        overflow: hidden;
+      }
+      #target{
+        position: absolute;
+        top:0;
+        left:0;
+        z-index: 1;
+      }
+      #textContainer{
+        top:0;
+        left:0;
+        position: absolute;
+        z-index: 2;
+      }
+      pre{
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>Coordinates.js with Three.js and TweenLite </h1>
+      <h6><a target="_blank" href="https://raw.github.com/Mparaiso/Coordinates.js/master/exemple/three/main.js">View Source</a> </h6>
+      <h6><a target="_blank" href="https://github.com/Mparaiso/Coordinates.js">Check the project on github</a></h6>
+      <div id='container'>
+        <div id="target">
+        </div>
+        <div id="textContainer"><!--TEXT CONTAINER--></div>
+      </div>
+      <div class='footer'>design M.PARAISO contact mparaiso_at_online.fr</div>
+    </div>
+    <script type="text/javascript" src="CSSPlugin.js"></script>
+    <script type="text/javascript" src="Coordinates.js"></script>
+    <script type="text/javascript" src="EasePack.js"></script>
+    <script type="text/javascript" src="TweenLite.js"></script>
+    <script type="text/javascript" src="Three.js"></script>
+    <script type="text/javascript" src="main.js" id='main-script'></script>
+    <script type='text/javascript'>
+      window.onload = function(){
+        main();
+      }
+    </script>
+  </body>
+</html>
