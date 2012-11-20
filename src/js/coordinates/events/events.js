@@ -5,6 +5,6 @@
 define(function(require) {
   return {
     helpers: require("./helpers/helpers"),
-    CoordinateNodeEvent: require("./NodeEvent")
+    NodeEvent: require("./NodeEvent")
   };
 });

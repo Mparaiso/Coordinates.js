@@ -49,15 +49,7 @@ define(function(require) {
     };
 
     EventDispatcher.prototype._compareListeners = function(l1, l2) {
-      if (l1.mPriority === l2.mPriority) {
-        return 0;
-      } else {
-        if (l1.mPriority > l2.mPriority) {
-          return -1;
-        } else {
-          return 1;
-        }
-      }
+      return l1.mPriority < l2.mPriority;
     };
 
     EventDispatcher.prototype.addEventListener = function(type, inListener, capture, priority, useWeakReference) {

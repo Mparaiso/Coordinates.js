@@ -30,7 +30,7 @@ define (require)->
             @_eventMap[type]?
 
         _compareListeners:(l1,l2)->
-            return if l1.mPriority==l2.mPriority then 0 else (if l1.mPriority > l2.mPriority then -1 else 1 )
+            l1.mPriority < l2.mPriority
 
         addEventListener:(type,inListener,capture=false,priority=0,useWeakReference=false)->
             list = @_getList(type)

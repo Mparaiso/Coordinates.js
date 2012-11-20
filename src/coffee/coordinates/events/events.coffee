@@ -2,4 +2,4 @@
 define (require)->
 
     helpers: require("./helpers/helpers")
-    CoordinateNodeEvent: require("./NodeEvent")
+    NodeEvent: require("./NodeEvent")

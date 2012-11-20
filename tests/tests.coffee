@@ -215,13 +215,13 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
 
     test "addNodes",->
         expect(8)
+
+        @vl.addEventListener( coordinates.NodeEvent::ADD,-> ok(true,"ADD event dispatched") )
+
         @vl.addNodes([@l1,@l2,@l3,@l4])
 
-        @vl.addEventListener coordinates.NodeEvent::ADD,->
-            @ok(true,"ADD event dispatched")
-
-        equal(@l1.getY(),0)
-        equal(@l2.getY(),120)
-        equal(@l3.getY(),240)
-        equal(@l4.getY(),360)
+        equal(@l1.getY(),0,"Node updated and rendered")
+        equal(@l2.getY(),120,"Node updated and rendered")
+        equal(@l3.getY(),240,"Node updated and rendered")
+        equal(@l4.getY(),360,"Node updated and rendered")
 
