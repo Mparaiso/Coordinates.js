@@ -225,3 +225,26 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         equal(@l3.getY(),240,"Node updated and rendered")
         equal(@l4.getY(),360,"Node updated and rendered")
 
+
+    module "coordinates.HorizontalLine",
+        setup:->
+        teadown:->
+
+    module "coordinates.Ellipse",
+        setup:->
+            @ellipse = new coordinates.Ellipse(100,100)
+
+    test "constructor",->
+        expect(2)
+        equal(@ellipse.getWidth(),100,"Ellipse.getWidth")
+        equal(@ellipse.getHeight(),100,"Ellipse.getHeight")
+
+
+    module "coordinates.Wave",
+        setup:->
+            @wave = new coordinates.Wave(500,300)
+
+    test "constructor",->
+        expect(2)
+        equal(@wave.getWidth(),500,"Wave.getWidth")
+        equal(@wave.getHeight(),300,"Wave.getHeight")

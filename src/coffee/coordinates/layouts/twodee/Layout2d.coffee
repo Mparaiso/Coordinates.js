@@ -2,6 +2,8 @@ define (require)->
 
     Layout = require("../Layout")
     LayoutUpdateMethod = require("../../constants/LayoutUpdateMethod")
+    Node2d = require("../../nodes/twodee/Node2d")
+    #ES5shims = require("../../utils/ES5shims")
 
     class Layout2d extends Layout
 
@@ -29,7 +31,6 @@ define (require)->
                 else
                     @updateFunction = @updateAndRender
 
-
         getProxyUpdater:-> @_proxyUpdater
 
         setProxyUpdater=(v)->
@@ -40,6 +41,16 @@ define (require)->
             @setUpdateMethod(v.name)
             @updateFunction= v.update
             @_proxyUpdater = v
+
+        addNode:(link,moveToCoordinates=true)->
+            ### Adds object to layout in next available position. ###
+            unless @linkExists(link)
+                node = new Node2d(link,0,0,@_getRand(),@_getRand())
+                @storeNode(node)
+                @update()
+                if moveToCoordinates then @render()
+                @dispatchEvent(new NodeEvent(NodeEvent::ADD,node))
+                return node
 
         addToLayout:(link,moveToCoordinates)->
             ### Adds object to layout in next available position.  ###
@@ -96,3 +107,7 @@ define (require)->
             ### toString ###
             "[object Layout2d]"
 
+
+        _getRand:->
+            ### obtenir un nomber aléatoire pour alimenter le jitter ###
+            (if Math.random() > 0.5 then 1 else -1)*Math.random()

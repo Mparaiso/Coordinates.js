@@ -44,7 +44,7 @@ define (require)->
             new HorizontalLine(@getHPadding(),@getX(),@getY(),@getJitterX(),@getJitterY())
 
         update:->
-            unless size <= 0
+            unless @size <= 0
                 @nodes.sort((a,b)->a.getOrder()>b.getOrder())
                 xPos = 0
                 for node in @nodes

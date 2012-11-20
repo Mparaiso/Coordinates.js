@@ -252,7 +252,7 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
     equal(this.l3.getY(), 240);
     return equal(this.l4.getY(), 360);
   });
-  return test("addNodes", function() {
+  test("addNodes", function() {
     expect(8);
     this.vl.addEventListener(coordinates.NodeEvent.prototype.ADD, function() {
       return ok(true, "ADD event dispatched");
@@ -262,5 +262,29 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
     equal(this.l2.getY(), 120, "Node updated and rendered");
     equal(this.l3.getY(), 240, "Node updated and rendered");
     return equal(this.l4.getY(), 360, "Node updated and rendered");
+  });
+  module("coordinates.HorizontalLine", {
+    setup: function() {},
+    teadown: function() {}
+  });
+  module("coordinates.Ellipse", {
+    setup: function() {
+      return this.ellipse = new coordinates.Ellipse(100, 100);
+    }
+  });
+  test("constructor", function() {
+    expect(2);
+    equal(this.ellipse.getWidth(), 100, "Ellipse.getWidth");
+    return equal(this.ellipse.getHeight(), 100, "Ellipse.getHeight");
+  });
+  module("coordinates.Wave", {
+    setup: function() {
+      return this.wave = new coordinates.Wave(500, 300);
+    }
+  });
+  return test("constructor", function() {
+    expect(2);
+    equal(this.wave.getWidth(), 500, "Wave.getWidth");
+    return equal(this.wave.getHeight(), 300, "Wave.getHeight");
   });
 });

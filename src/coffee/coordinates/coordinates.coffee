@@ -7,6 +7,7 @@ define (require)->
         layouts:require("./layouts/layouts")
         helpers:require("./helpers/helpers")
         utils:require("./utils/utils")
+        constants:require("./constants/constants")
 
     ### shortcuts ###
     Coordinates.DOMLink2d = Coordinates.links.DOMLink2d
@@ -17,7 +18,8 @@ define (require)->
     Coordinates.Layout2d = Coordinates.layouts.twodee.Layout2d
     Coordinates.VerticalLine = Coordinates.layouts.twodee.VerticalLine
     Coordinates.HorizontalLine = Coordinates.layouts.twodee.HorizontalLine
+    Coordinates.Ellipse = Coordinates.layouts.twodee.Ellipse
     Coordinates.BaseClass = Coordinates.utils.BaseClass
     Coordinates.NodeEvent = Coordinates.events.NodeEvent
-
+    Coordinates.Wave = Coordinates.layouts.twodee.Wave
     return Coordinates
