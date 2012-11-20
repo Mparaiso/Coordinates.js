@@ -11,3 +11,8 @@ define (require)->
             first = first.toUpperCase()
             first+word[1..]
         return capitalized.join(" ")
+
+
+    if typeof console == undefined && console == null
+        console=
+            log :->

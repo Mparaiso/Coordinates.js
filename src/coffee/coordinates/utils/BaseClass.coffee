@@ -24,7 +24,7 @@ define (require)->
             @[key]?= (value)->
                 @["_"+property] = value
                 if listenerFunction && listenerFunction instanceof Function
-                    listenerFunction()
+                    listenerFunction.call(this)
             @[key](val)
             return
 

@@ -10,36 +10,9 @@ define (require)->
 
             @setUpdateMethod(LayoutUpdateMethod.UPDATE_AND_RENDER)
 
-            @initConfig({x:x,y:y,width:width,height:height,rotation:rotation,jitterX:jitterX,jitterY:jitterY,proxyUpdater:null},@updateFunction)
+            @initConfig({x:x,y:y,width:width,height:height,rotation:rotation,jitterX:jitterX,jitterY:jitterY},->@updateFunction())
 
-
-        setX:(v)->
-            @_x=v
-            @updateFunction()
-
-        setY=(v)->
-            @_y=v
-            @updateFunction()
-
-        setWidth:(v)->
-            @_width=v
-            @updateFunction()
-
-        setHeight:(v)->
-            @_height=v
-            @updateFunction()
-
-        setJitterX:(v)->
-            @_jitterX=v
-            @updateFunction()
-
-        setJitterY:(v)->
-            @_jitterY=v
-            @updateFunction()
-
-        setRotation:(v)->
-            @_rotation=v
-            @updateFunction()
+        getUpdateMethod: -> @_updateMethod
 
         setUpdateMethod:(v)->
             ### 
@@ -55,13 +28,16 @@ define (require)->
                 else
                     @updateFunction = @updateAndRender
 
+
+        getProxyUpdater:-> @_proxyUpdater
+
         setProxyUpdater=(v)->
             ###
                 Sets a proxy update method for altering layouts as opposed to internal update methods such as update(), render() or updateAndRender()
                 This allows more customization for the updating sequence. 
             ###
             @setUpdateMethod(v.name)
-            @updateFunction=v.update
+            @updateFunction= v.update
             @_proxyUpdater = v
 
         addToLayout:(link,moveToCoordinates)->
@@ -85,6 +61,8 @@ define (require)->
             ###  
                 Updates the nodes virtual coordinates. <strong>Note</strong> - this method does not update the actual objects linked to the layout.
             ###
+            console.log('update',this)
+
 
         render:->
             ### Renders all layout property values to all objects in the collection ###
@@ -94,9 +72,9 @@ define (require)->
                 # l.setX(n.getX())
                 # l.setY(n.getY())
 
-
         updateAndRender:->
             ### Performs an update on all the nodes' positions and renders each node's corresponding link ###
+            console.log('updateAndRender',this)
             @update()
             @render()
 

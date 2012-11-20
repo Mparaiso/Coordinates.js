@@ -15,6 +15,7 @@ define (require)->
     Coordinates.Node2d=Coordinates.nodes.twodee.Node2d
     Coordinates.Layout = Coordinates.layouts.Layout
     Coordinates.Layout2d = Coordinates.layouts.twodee.Layout2d
+    Coordinates.VerticalLine = Coordinates.layouts.twodee.VerticalLine
     Coordinates.BaseClass = Coordinates.utils.BaseClass
 
     return Coordinates
