@@ -1,6 +1,7 @@
 define (require)->
 
     EventDispatcher = require("../events/helpers/EventDispatcher")
+    NodeEvent = require("../events/NodeEvent")
 
     class Layout extends EventDispatcher
 
@@ -19,7 +20,11 @@ define (require)->
         
         addNodes:(count)->
             ### Adds a specified number of empty nodes to the layout ###
-            @addNode() for i in [0...count]
+            switch typeof count
+                when "number"
+                    @addNode() for i in [0...count]
+                when "object"
+                    @addNode(n) for n in count
 
         toString:->
             "[object Layout]"
@@ -71,7 +76,8 @@ define (require)->
             @nodes[index].setLink(null)
 
         removeNode:(node)->
-            @nodes.splice(@getNodeIndex(node),1)
+            [removedNode] = @nodes.splice(@getNodeIndex(node),1)
+            @dispatchEvent(new NodeEvent(NodeEvent::REMOVE,removedNode))
             --@size
 
         removeAllNodes:->

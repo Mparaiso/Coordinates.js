@@ -3,7 +3,7 @@ define (require)->
 
     Event = require("./helpers/Event")
 
-    class CoordinateNodeEvent extends Event
+    class NodeEvent extends Event
 
         ADD:"coordyNodeAdd"
         REMOVE:"coordyNodeRemove"
@@ -11,4 +11,4 @@ define (require)->
         constructor:(type,@node,bubbles=false,cancelable=false)->
             super(type,bubbles,cancelable)
         clone:->
-            new CoordinateNodeEvent(@type,@node,@bubbles,@cancelable)
+            new NodeEvent(@type,@node,@bubbles,@cancelable)

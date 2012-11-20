@@ -23,6 +23,7 @@ define(function(require) {
         throw "domElement must be an instance of HTMLElement";
       })();
       DOMLink2d.__super__.constructor.call(this, element, x, y, rotation);
+      this.getElement().style.position = "absolute";
     }
 
     DOMLink2d.prototype.setX = function(value) {
@@ -38,6 +39,34 @@ define(function(require) {
     DOMLink2d.prototype.setRotation = function(value) {
       this._rotation = value;
       return this.applyTransform();
+    };
+
+    DOMLink2d.prototype.getHeight = function() {
+      /* obtenir la hauteur
+      */
+
+      var r;
+      r = this.getElement().style.height.match(/(\d+)(px)/) || (function() {
+        throw "Error getting height at " + this;
+      }).call(this);
+      r[2] === "px" || (function() {
+        throw "height must be expressed in px";
+      })();
+      return parseInt(r[1], 10);
+    };
+
+    DOMLink2d.prototype.getWidth = function() {
+      /* obtenir la longueur
+      */
+
+      var r;
+      r = this.getElement().style.width.match(/(\d+)(px)/) || (function() {
+        throw "Error getting width at " + this;
+      }).call(this);
+      r[2] === "px" || (function() {
+        throw "width must be expressed in px";
+      })();
+      return parseInt(r[1], 10);
     };
 
     DOMLink2d.prototype.applyTransform = function() {

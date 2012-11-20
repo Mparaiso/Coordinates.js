@@ -55,15 +55,12 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         equal(mySuperClass.getA(),1,"BaseClass.constructor")
         ### test inheritance ###
 
-
-
-
-
     ### test de chaque méthode de chaque classe ###
     ###
         coordinates.links.DOMLink2d
     ###
     module("coordinates.links.DOMLink2d")
+
     test "coordinates.links.DOMLink2d",->
         el = document.createElement("DIV")
         el.style.width = "200px"
@@ -99,6 +96,7 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
     ###
         coordinates.events.helpers.EventDispatcher
     ###
+
     test "coordinates.events.helpers.EventDispatcher",->
         expect(3)
         o = new coordinates.events.helpers.EventDispatcher()
@@ -108,6 +106,7 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         o.dispatchEvent(new coordinates.events.helpers.Event("XEvent"))
 
     module("coordinates.nodes")
+
     test "coordinates.nodes.Node",->
         link= {x:1,y:1}
         node = new coordinates.nodes.Node(link)
@@ -121,6 +120,7 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         return
 
     module("coordinates.nodes.twodee")
+
     test "coordinates.nodes.twodee.Node2d",->
         link = {x:1,y:2}
         node2d = new coordinates.nodes.twodee.Node2d(link,2,5)
@@ -182,3 +182,46 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         @layout.storeNode(@node1)
         @layout.addLinkAt(@link2,0)
         equal(@layout.nodes[0].getLink(),@link2,"Layout.addLinkAt")
+
+
+    module "coordinates.VerticalLine",
+        setup:->
+            @l1 = new coordinates.Link({},0,0,0,100,100)
+            @l2 = new coordinates.Link({},0,0,0,100,100)
+            @l3 = new coordinates.Link({},0,0,0,100,100)
+            @l4 = new coordinates.Link({},0,0,0,100,100)
+
+            @vl = new coordinates.VerticalLine(20,0,0,0,0)
+
+    test "constructor",->
+        ok(@vl!=null)
+
+    test "addNode",->
+        @vl.addNode(@l1)
+        @vl.addNode(@l2)
+        @vl.addNode(@l3)
+
+        equal(@vl.size,3,"VerticalLine.size")
+
+        @vl.addNode(@l4)
+
+        equal(@vl.size,4,"VerticalLine.size")
+        equal(@vl.nodes.length,4,"VerticalLine.size")
+
+        equal(@l1.getY(),0)
+        equal(@l2.getY(),120)
+        equal(@l3.getY(),240)
+        equal(@l4.getY(),360)
+
+    test "addNodes",->
+        expect(8)
+        @vl.addNodes([@l1,@l2,@l3,@l4])
+
+        @vl.addEventListener coordinates.NodeEvent::ADD,->
+            @ok(true,"ADD event dispatched")
+
+        equal(@l1.getY(),0)
+        equal(@l2.getY(),120)
+        equal(@l3.getY(),240)
+        equal(@l4.getY(),360)
+

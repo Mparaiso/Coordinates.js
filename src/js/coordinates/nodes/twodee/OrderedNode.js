@@ -29,12 +29,9 @@ define(function(require) {
         jitterY = 0;
       }
       OrderedNode.__super__.constructor.call(this, link, x, y, jitterX, jitterY);
-      this.getOrder = function() {
-        return order;
-      };
-      this.setOrder = function(v) {
-        return order = v;
-      };
+      this.initConfig({
+        order: order
+      });
     }
 
     OrderedNode.prototype.clone = function() {

@@ -12,7 +12,7 @@ define(function(require) {
 
     __extends(Link, _super);
 
-    function Link(element, x, y, rotation) {
+    function Link(element, x, y, rotation, width, height) {
       if (x == null) {
         x = 0;
       }
@@ -22,11 +22,19 @@ define(function(require) {
       if (rotation == null) {
         rotation = 0;
       }
+      if (width == null) {
+        width = 0;
+      }
+      if (height == null) {
+        height = 0;
+      }
       this.initConfig({
         element: element,
         x: x,
         y: y,
-        rotation: rotation
+        rotation: rotation,
+        width: width,
+        height: height
       });
     }
 

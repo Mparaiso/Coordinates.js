@@ -222,9 +222,45 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
     equal(this.node1.getLink(), this.link2);
     return equal(this.node2.getLink(), this.link1);
   });
-  return test("addLinkAt", function() {
+  test("addLinkAt", function() {
     this.layout.storeNode(this.node1);
     this.layout.addLinkAt(this.link2, 0);
     return equal(this.layout.nodes[0].getLink(), this.link2, "Layout.addLinkAt");
+  });
+  module("coordinates.VerticalLine", {
+    setup: function() {
+      this.l1 = new coordinates.Link({}, 0, 0, 0, 100, 100);
+      this.l2 = new coordinates.Link({}, 0, 0, 0, 100, 100);
+      this.l3 = new coordinates.Link({}, 0, 0, 0, 100, 100);
+      this.l4 = new coordinates.Link({}, 0, 0, 0, 100, 100);
+      return this.vl = new coordinates.VerticalLine(20, 0, 0, 0, 0);
+    }
+  });
+  test("constructor", function() {
+    return ok(this.vl !== null);
+  });
+  test("addNode", function() {
+    this.vl.addNode(this.l1);
+    this.vl.addNode(this.l2);
+    this.vl.addNode(this.l3);
+    equal(this.vl.size, 3, "VerticalLine.size");
+    this.vl.addNode(this.l4);
+    equal(this.vl.size, 4, "VerticalLine.size");
+    equal(this.vl.nodes.length, 4, "VerticalLine.size");
+    equal(this.l1.getY(), 0);
+    equal(this.l2.getY(), 120);
+    equal(this.l3.getY(), 240);
+    return equal(this.l4.getY(), 360);
+  });
+  return test("addNodes", function() {
+    expect(8);
+    this.vl.addNodes([this.l1, this.l2, this.l3, this.l4]);
+    this.vl.addEventListener(coordinates.NodeEvent.prototype.ADD, function() {
+      return this.ok(true, "ADD event dispatched");
+    });
+    equal(this.l1.getY(), 0);
+    equal(this.l2.getY(), 120);
+    equal(this.l3.getY(), 240);
+    return equal(this.l4.getY(), 360);
   });
 });

@@ -6,6 +6,7 @@ define (require)->
     class Layout2d extends Layout
 
         constructor:(x=0,y=0,jitterX=0,jitterY=0,width=0,height=0,rotation=0)->
+            
             super()
 
             @setUpdateMethod(LayoutUpdateMethod.UPDATE_AND_RENDER)
@@ -61,8 +62,7 @@ define (require)->
             ###  
                 Updates the nodes virtual coordinates. <strong>Note</strong> - this method does not update the actual objects linked to the layout.
             ###
-            console.log('update',this)
-
+            #console.log('update',this)
 
         render:->
             ### Renders all layout property values to all objects in the collection ###
@@ -71,10 +71,11 @@ define (require)->
                 # l = n.getLink()
                 # l.setX(n.getX())
                 # l.setY(n.getY())
+            return
 
         updateAndRender:->
             ### Performs an update on all the nodes' positions and renders each node's corresponding link ###
-            console.log('updateAndRender',this)
+            #console.log('updateAndRender',this)
             @update()
             @render()
 

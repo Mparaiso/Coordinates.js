@@ -3,8 +3,9 @@ var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 define(function(require) {
-  var EventDispatcher, Layout;
+  var EventDispatcher, Layout, NodeEvent;
   EventDispatcher = require("../events/helpers/EventDispatcher");
+  NodeEvent = require("../events/NodeEvent");
   return Layout = (function(_super) {
 
     __extends(Layout, _super);
@@ -31,12 +32,23 @@ define(function(require) {
       /* Adds a specified number of empty nodes to the layout
       */
 
-      var i, _i, _results;
-      _results = [];
-      for (i = _i = 0; 0 <= count ? _i < count : _i > count; i = 0 <= count ? ++_i : --_i) {
-        _results.push(this.addNode());
+      var i, n, _i, _j, _len, _results, _results1;
+      switch (typeof count) {
+        case "number":
+          _results = [];
+          for (i = _i = 0; 0 <= count ? _i < count : _i > count; i = 0 <= count ? ++_i : --_i) {
+            _results.push(this.addNode());
+          }
+          return _results;
+          break;
+        case "object":
+          _results1 = [];
+          for (_j = 0, _len = count.length; _j < _len; _j++) {
+            n = count[_j];
+            _results1.push(this.addNode(n));
+          }
+          return _results1;
       }
-      return _results;
     };
 
     Layout.prototype.toString = function() {
@@ -129,7 +141,9 @@ define(function(require) {
     };
 
     Layout.prototype.removeNode = function(node) {
-      this.nodes.splice(this.getNodeIndex(node), 1);
+      var removedNode;
+      removedNode = this.nodes.splice(this.getNodeIndex(node), 1)[0];
+      this.dispatchEvent(new NodeEvent(NodeEvent.prototype.REMOVE, removedNode));
       return --this.size;
     };
 

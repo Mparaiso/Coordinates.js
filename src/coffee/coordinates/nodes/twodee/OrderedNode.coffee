@@ -7,8 +7,7 @@ define (require)->
 
             super(link,x,y,jitterX,jitterY)
 
-            @getOrder=->order
-            @setOrder=(v)->order=v
+            @initConfig(order:order)
 
         clone:->
             return new OrderedNode(@getLink,@getOrder(),

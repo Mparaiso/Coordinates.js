@@ -7,6 +7,7 @@ define (require)->
         constructor:(element,x=0,y=0,rotation=0)->
             element instanceof window.HTMLElement || throw "domElement must be an instance of HTMLElement"
             super(element,x,y,rotation)
+            @getElement().style.position = "absolute"
 
         setX:(value)->
             @_x=value
@@ -19,6 +20,18 @@ define (require)->
         setRotation:(value)->
             @_rotation=value
             @applyTransform()
+
+        getHeight:->
+            ### obtenir la hauteur ###
+            r = @getElement().style.height.match(/(\d+)(px)/) || throw "Error getting height at #{this}"
+            r[2] == "px" || throw "height must be expressed in px"
+            return parseInt(r[1],10)
+
+        getWidth:->
+            ### obtenir la longueur ###
+            r = @getElement().style.width.match(/(\d+)(px)/) || throw "Error getting width at #{this}"
+            r[2] == "px" || throw "width must be expressed in px"
+            return parseInt(r[1],10)
 
         applyTransform:->
             for transform in ['transform',"webkitTransform","mozTransform","oTransform","msTransform"]

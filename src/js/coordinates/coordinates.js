@@ -21,5 +21,6 @@ define(function(require) {
   Coordinates.Layout2d = Coordinates.layouts.twodee.Layout2d;
   Coordinates.VerticalLine = Coordinates.layouts.twodee.VerticalLine;
   Coordinates.BaseClass = Coordinates.utils.BaseClass;
+  Coordinates.NodeEvent = Coordinates.events.NodeEvent;
   return Coordinates;
 });

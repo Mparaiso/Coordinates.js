@@ -3,11 +3,8 @@
 */
 
 define(function(require) {
-  var CoordinateNodeEvent, helpers;
-  helpers = require("./helpers/helpers");
-  CoordinateNodeEvent = require("./CoordinatesNodeEvent");
   return {
-    helpers: helpers,
-    CoordinateNodeEvent: CoordinateNodeEvent
+    helpers: require("./helpers/helpers"),
+    CoordinateNodeEvent: require("./NodeEvent")
   };
 });
