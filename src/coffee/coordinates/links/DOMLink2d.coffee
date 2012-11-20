@@ -5,7 +5,8 @@ define (require)->
     class DOMLink2d extends Link
 
         constructor:(element,x=0,y=0,rotation=0)->
-            element instanceof window.HTMLElement || throw "domElement must be an instance of HTMLElement"
+            # element instanceof window.HTMLElement || throw "domElement must be an instance of HTMLElement" doesnt work on IE8
+            # element.nodeType?  == 1 || throw "domElement must be an instance of HTMLElement" 
             super(element,x,y,rotation)
             @getElement().style.position = "absolute"
 

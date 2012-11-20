@@ -20,6 +20,7 @@ define(function(require) {
   Coordinates.Layout = Coordinates.layouts.Layout;
   Coordinates.Layout2d = Coordinates.layouts.twodee.Layout2d;
   Coordinates.VerticalLine = Coordinates.layouts.twodee.VerticalLine;
+  Coordinates.HorizontalLine = Coordinates.layouts.twodee.HorizontalLine;
   Coordinates.BaseClass = Coordinates.utils.BaseClass;
   Coordinates.NodeEvent = Coordinates.events.NodeEvent;
   return Coordinates;

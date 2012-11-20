@@ -19,9 +19,6 @@ define(function(require) {
       if (rotation == null) {
         rotation = 0;
       }
-      element instanceof window.HTMLElement || (function() {
-        throw "domElement must be an instance of HTMLElement";
-      })();
       DOMLink2d.__super__.constructor.call(this, element, x, y, rotation);
       this.getElement().style.position = "absolute";
     }
