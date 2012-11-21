@@ -1079,27 +1079,17 @@ define('layouts/Layout',['require','../events/helpers/EventDispatcher','../event
       throw 'Method must be overriden by child class';
     };
 
-    Layout.prototype.addNodes = function(count) {
+    Layout.prototype.addNodes = function(nodes) {
       /* Adds a specified number of empty nodes to the layout
       */
 
-      var i, n, _i, _j, _len, _results, _results1;
-      switch (typeof count) {
-        case "number":
-          _results = [];
-          for (i = _i = 0; 0 <= count ? _i < count : _i > count; i = 0 <= count ? ++_i : --_i) {
-            _results.push(this.addNode());
-          }
-          return _results;
-          break;
-        case "object":
-          _results1 = [];
-          for (_j = 0, _len = count.length; _j < _len; _j++) {
-            n = count[_j];
-            _results1.push(this.addNode(n));
-          }
-          return _results1;
+      var n, _i, _len, _results;
+      _results = [];
+      for (_i = 0, _len = nodes.length; _i < _len; _i++) {
+        n = nodes[_i];
+        _results.push(this.addNode(n));
       }
+      return _results;
     };
 
     Layout.prototype.toString = function() {
@@ -1275,10 +1265,12 @@ define('constants/LayoutUpdateMethod',['require'],function(require) {
 var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-define('layouts/twodee/Layout2d',['require','../Layout','../../constants/LayoutUpdateMethod'],function(require) {
-  var Layout, Layout2d, LayoutUpdateMethod;
+define('layouts/twodee/Layout2d',['require','../Layout','../../constants/LayoutUpdateMethod','../../nodes/twodee/Node2d','../../events/NodeEvent'],function(require) {
+  var Layout, Layout2d, LayoutUpdateMethod, Node2d, NodeEvent;
   Layout = require("../Layout");
   LayoutUpdateMethod = require("../../constants/LayoutUpdateMethod");
+  Node2d = require("../../nodes/twodee/Node2d");
+  NodeEvent = require("../../events/NodeEvent");
   return Layout2d = (function(_super) {
     var setProxyUpdater;
 
@@ -1355,6 +1347,26 @@ define('layouts/twodee/Layout2d',['require','../Layout','../../constants/LayoutU
       return this._proxyUpdater = v;
     };
 
+    Layout2d.prototype.addNode = function(link, moveToCoordinates) {
+      var node;
+      if (moveToCoordinates == null) {
+        moveToCoordinates = true;
+      }
+      /* Adds object to layout in next available position.
+      */
+
+      if (!this.linkExists(link)) {
+        node = new Node2d(link, 0, 0, this._getRand(), this._getRand());
+        this.storeNode(node);
+        this.update();
+        if (moveToCoordinates) {
+          this.render();
+        }
+        this.dispatchEvent(new NodeEvent(NodeEvent.prototype.ADD, node));
+        return node;
+      }
+    };
+
     Layout2d.prototype.addToLayout = function(link, moveToCoordinates) {
       /* Adds object to layout in next available position.
       */
@@ -1427,6 +1439,12 @@ define('layouts/twodee/Layout2d',['require','../Layout','../../constants/LayoutU
       /* toString
       */
       return "[object Layout2d]";
+    };
+
+    Layout2d.prototype._getRand = function() {
+      /* obtenir un nomber aléatoire pour alimenter le jitter
+      */
+      return (Math.random() > 0.5 ? 1 : -1) * Math.random();
     };
 
     return Layout2d;
@@ -1770,22 +1788,6 @@ define('layouts/twodee/Ellipse',['require','./Layout2d','../../nodes/twodee/Elli
 
     __extends(Ellispe, _super);
 
-    Ellispe.prototype.getWidth = function() {
-      return this._width;
-    };
-
-    Ellispe.prototype.getHeight = function() {
-      return this._height;
-    };
-
-    Ellispe.prototype.getRotation = function() {
-      return this._rotation;
-    };
-
-    Ellispe.prototype.getAlignAngleOffset = function() {
-      return this._alignAngleOffset;
-    };
-
     function Ellispe(width, height, x, y, rotation, jitterX, jitterY, alignType, alignAngleOffset) {
       if (x == null) {
         x = 0;
@@ -1862,24 +1864,27 @@ define('layouts/twodee/Ellipse',['require','./Layout2d','../../nodes/twodee/Elli
           the actual objects linked to the layout.
       */
 
-      var PI, h, i, node, rOffset, rad, w, _i, _ref, _results;
-      PI = Math.PI;
-      w = this.getWidth() / 2;
-      h = this.getHeight() / 2;
-      rOffset = this.getRotation() * (PI / 180);
-      _results = [];
-      for (i = _i = 0, _ref = this.size; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
-        node = this.nodes[i];
-        rad = ((PI * i) / (this.size / 2)) + rOffset;
-        node.setX((w * Math.cos(rad)) + (w + this.getX()) + (node.getJitterX() * this.getJitterX()) - w);
-        node.setY((h * Math.sin(rad)) + (h + this.getY()) + (node.getJitterY() * this.getJitterY()) - h);
-        node.setRotation(Math.atan2((this.getY()) - node.getY(), this.getX() - node.getX()) * (180 / PI));
-        if (this.getAlignType() === PathAlignType.ALIGN_PERPENDICULAR) {
-          node.setRotation(node.getRotation() + 90);
+      var PI, h, i, node, rOffset, rad, w, _i, _len, _ref, _results;
+      if (!(this.nodes.length <= 0)) {
+        PI = Math.PI;
+        w = this.getWidth() / 2;
+        h = this.getHeight() / 2;
+        rOffset = this.getRotation() * (PI / 180);
+        _ref = this.nodes;
+        _results = [];
+        for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+          node = _ref[i];
+          rad = ((PI * i) / (this.size / 2)) + rOffset;
+          node.setX((w * Math.cos(rad)) + (w + this.getX()) + (node.getJitterX() * this.getJitterX()) - w);
+          node.setY((h * Math.sin(rad)) + (h + this.getY()) + (node.getJitterY() * this.getJitterY()) - h);
+          node.setRotation(Math.atan2((this.getY()) - node.getY(), this.getX() - node.getX()) * (180 / PI));
+          if (this.getAlignType() === PathAlignType.ALIGN_PERPENDICULAR) {
+            node.setRotation(node.getRotation() + 90);
+          }
+          _results.push(node.setRotation(node.getRotation() + this.getAlignAngleOffset()));
         }
-        _results.push(node.setRotation(node.getRotation() + this.getAlignAngleOffset()));
+        return _results;
       }
-      return _results;
     };
 
     return Ellispe;
@@ -1889,14 +1894,187 @@ define('layouts/twodee/Ellipse',['require','./Layout2d','../../nodes/twodee/Elli
 
 // Generated by CoffeeScript 1.3.3
 
-define('layouts/layouts',['require','./Layout','./twodee/Layout2d','./twodee/VerticalLine','./twodee/HorizontalLine','./twodee/Ellipse'],function(require) {
+define('constants/WaveFunction',{
+  SINE: "sineFunction",
+  COSINE: "cosineFunction",
+  TAN: "tanFunction",
+  ARCSINE: "arcsineFunction",
+  ARCCOSINE: "arccosineFunction",
+  ARCTAN: "arctanFunction"
+});
+
+// Generated by CoffeeScript 1.3.3
+var __hasProp = {}.hasOwnProperty,
+  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+define('layouts/twodee/Wave',['require','../../events/NodeEvent','../../constants/PathAlignType','../../constants/WaveFunction','./Layout2d'],function(require) {
+  var Layout2d, NodeEvent, PathAlignType, Wave, WaveFunction;
+  NodeEvent = require("../../events/NodeEvent");
+  PathAlignType = require("../../constants/PathAlignType");
+  WaveFunction = require("../../constants/WaveFunction");
+  Layout2d = require("./Layout2d");
+  return Wave = (function(_super) {
+    var PI;
+
+    __extends(Wave, _super);
+
+    PI = Math.PI;
+
+    Wave.prototype.setWaveFunction = function(value) {
+      this._wavefunction = value || WaveFunction.SINE;
+      switch (this._wavefunction) {
+        case WaveFunction.SINE:
+          return this._function = Math.sin;
+        case WaveFunction.COSINE:
+          return this._function = Math.cos;
+        case WaveFunction.TAN:
+          return this._function = Math.tan;
+        case WaveFunction.ARCSINE:
+          return this._function = Math.asin;
+        case WaveFunction.ARCOSINE:
+          return this._function = Math.acos;
+        case WaveFunction.ARCTAN:
+          return this._function = Math.atan;
+        default:
+          return this._function = Math.sin;
+      }
+    };
+
+    Wave.prototype.getWaveFunction = function() {
+      return this._wavefunction;
+    };
+
+    Wave.prototype.getAlignType = function() {
+      return this._alignType;
+    };
+
+    Wave.prototype.getAlignOffset = function() {
+      return this._alignOffset;
+    };
+
+    function Wave(width, height, x, y, frequency, waveFunction, jitterX, jitterY, alignType, alignOffset) {
+      if (x == null) {
+        x = 0;
+      }
+      if (y == null) {
+        y = 0;
+      }
+      if (frequency == null) {
+        frequency = 1;
+      }
+      if (waveFunction == null) {
+        waveFunction = WaveFunction.SINE;
+      }
+      if (jitterX == null) {
+        jitterX = 0;
+      }
+      if (jitterY == null) {
+        jitterY = 0;
+      }
+      if (alignType == null) {
+        alignType = PathAlignType.ALIGN_PERPENDICULAR;
+      }
+      if (alignOffset == null) {
+        alignOffset = 0;
+      }
+      /* Distributes nodes in a wave.
+      */
+
+      Wave.__super__.constructor.call(this, x, y, jitterX, jitterY, width, height);
+      this.initConfig({
+        frequency: frequency,
+        waveFunction: waveFunction,
+        alignType: alignType,
+        alignOffset: alignOffset
+      }, function() {
+        return this.updateFunction();
+      });
+      this._heightMultiplier = 0;
+      this._thetaOffset = 0;
+    }
+
+    Wave.prototype.toString = function() {
+      /* Returns the type of layout in a string format
+      */
+      return "[object Wave]";
+    };
+
+    Wave.prototype.clone = function() {
+      return new Wave(this.getWidth(), this.getHeight(), this.getX(), this.getY(), this.getFrequency(), this.getWaveFunction(), this.getJitterX(), this.getJitterY(), this.getAlignType(), this.getAlignOffset());
+    };
+
+    Wave.prototype.render = function() {
+      /* Applies all layout property values to all cells/display objects in the collection
+      */
+
+      var node, _i, _len, _ref, _results;
+      _ref = this.nodes;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        node = _ref[_i];
+        if (node.getLink() !== null) {
+          _results.push(this.renderNode(node));
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
+    };
+
+    Wave.prototype.renderNode = function(node) {
+      Wave.__super__.renderNode.call(this, node);
+      return node.getLink().setRotation(this.getAlignType() === PathAlignType.NONE ? 0 : node.getRotation());
+    };
+
+    Wave.prototype.update = function() {
+      /* 
+          Updates the nodes' virtual coordinates. <strong>Note</strong> - 
+          this method does not update
+          the actual objects linked to the layout.
+      */
+
+      var i, jitter, len, n, _i, _len, _ref, _results;
+      len = this.nodes.length;
+      if (!(len <= 0)) {
+        _ref = this.nodes;
+        _results = [];
+        for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+          n = _ref[i];
+          n.setX(i * (this.getWidth() / len) + this.getX() + (n.getJitterX() * this.getJitterX()));
+          jitter = this._y + (n._jitterY * this._jitterY);
+          n.setY((this._function(PI * (i + 1) / (len / 2) * this._frequency - (this._thetaOffset * PI / 180)) * ((this._height + (this._heightMultiplier * i)) / 2)) + jitter);
+          if (this._function === Math.sin) {
+            n.setRotation(Math.cos(PI * (i + 1) / (len / 2) * this._frequency) * 180 / PI);
+          } else if (this._function === Math.cos) {
+            n.setRotation(Math.sin(PI * (i + 1) / (len / 2) * this.frequency) * 180 / PI);
+          } else {
+            n.setRotation(0);
+          }
+          if (this._alignType === PathAlignType.ALIGN_PERPENDICULAR) {
+            n.setRotation(n.getRotation() + 90);
+          }
+          _results.push(n.setRotation(n.getRotation() + this._alignOffset));
+        }
+        return _results;
+      }
+    };
+
+    return Wave;
+
+  })(Layout2d);
+});
+
+// Generated by CoffeeScript 1.3.3
+
+define('layouts/layouts',['require','./Layout','./twodee/Layout2d','./twodee/VerticalLine','./twodee/HorizontalLine','./twodee/Ellipse','./twodee/Wave'],function(require) {
   return {
     Layout: require("./Layout"),
     twodee: {
       Layout2d: require("./twodee/Layout2d"),
       VerticalLine: require("./twodee/VerticalLine"),
       HorizontalLine: require("./twodee/HorizontalLine"),
-      Ellipse: require("./twodee/Ellipse")
+      Ellipse: require("./twodee/Ellipse"),
+      Wave: require("./twodee/Wave")
     }
   };
 });
@@ -1908,12 +2086,9 @@ define('helpers/helpers',['require'],function(require) {});
 // Generated by CoffeeScript 1.3.3
 
 define('utils/ES5shims',['require'],function(require) {
-  var console, _base, _base1, _base2, _ref, _ref1, _ref2;
-  if ((_ref = (_base = Object.prototype).defineProperties) == null) {
-    _base.defineProperties = function(scope, properties) {};
-  }
-  if ((_ref1 = (_base1 = Array.prototype).indexOf) == null) {
-    _base1.indexOf = function(needle) {
+  var console, _base, _base1, _ref, _ref1;
+  if ((_ref = (_base = Array.prototype).indexOf) == null) {
+    _base.indexOf = function(needle) {
       var index, value, _i, _len;
       for (index = _i = 0, _len = this.length; _i < _len; index = ++_i) {
         value = this[index];
@@ -1924,8 +2099,8 @@ define('utils/ES5shims',['require'],function(require) {
       return -1;
     };
   }
-  if ((_ref2 = (_base2 = String.prototype).capitalize) == null) {
-    _base2.capitalize = function() {
+  if ((_ref1 = (_base1 = String.prototype).capitalize) == null) {
+    _base1.capitalize = function() {
       var capitalized, first, word, words;
       words = this.valueOf().split(" ");
       capitalized = (function() {
@@ -1950,20 +2125,66 @@ define('utils/ES5shims',['require'],function(require) {
 });
 
 // Generated by CoffeeScript 1.3.3
+var __hasProp = {}.hasOwnProperty,
+  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-define('utils/utils',['require','./ES5shims','./BaseClass'],function(require) {
+define('utils/LayoutTransitioner',['require','./BaseClass'],function(require) {
+  var BaseClass, LayoutTransitioner;
+  BaseClass = require("./BaseClass");
+  return LayoutTransitioner = (function(_super) {
+
+    __extends(LayoutTransitioner, _super);
+
+    function LayoutTransitioner(tweenFunction, layout) {
+      this.initConfig({
+        tweenFunction: tweenFunction,
+        layout: layout
+      });
+    }
+
+    LayoutTransitioner.prototype.syncNodesTo = function(layout) {
+      var node, _i, _len, _ref, _results;
+      if (layout == null) {
+        layout = null;
+      }
+      if (layout) {
+        this.setLayout(layout);
+      }
+      if (this.getTweenFunction() === null) {
+        return this.getLayout().updateAndRender();
+      } else {
+        _ref = this.getLayout().nodes;
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          node = _ref[_i];
+          _results.push(this.getTweenFunction()(node));
+        }
+        return _results;
+      }
+    };
+
+    return LayoutTransitioner;
+
+  })(BaseClass);
+});
+
+// Generated by CoffeeScript 1.3.3
+
+define('utils/utils',['require','./ES5shims','./BaseClass','./LayoutTransitioner'],function(require) {
   return {
     ES5shims: require("./ES5shims"),
-    BaseClass: require("./BaseClass")
+    BaseClass: require("./BaseClass"),
+    LayoutTransitioner: require("./LayoutTransitioner")
   };
 });
 
 // Generated by CoffeeScript 1.3.3
 
-define('constants/constants',['require','./LayoutUpdateMethod','./PathAlignType'],function(require) {
+define('constants/constants',['require','./LayoutUpdateMethod','./PathAlignType','./WaveFunction'],function(require) {
   return {
     LayoutUpdateMethod: require("./LayoutUpdateMethod"),
-    PathAlignType: require("./PathAlignType")
+    PathAlignType: require("./PathAlignType"),
+    WaveFunction: require("./WaveFunction")
   };
 });
 
@@ -1994,5 +2215,8 @@ define('Coordinates',['require','./events/events','./nodes/nodes','./links/links
   Coordinates.Ellipse = Coordinates.layouts.twodee.Ellipse;
   Coordinates.BaseClass = Coordinates.utils.BaseClass;
   Coordinates.NodeEvent = Coordinates.events.NodeEvent;
+  Coordinates.Wave = Coordinates.layouts.twodee.Wave;
+  Coordinates.LayoutTransitioner = Coordinates.utils.LayoutTransitioner;
+  Coordinates.LayoutUpdateMethod = Coordinates.constants.LayoutUpdateMethod;
   return Coordinates;
 });

@@ -28,27 +28,17 @@ define(function(require) {
       throw 'Method must be overriden by child class';
     };
 
-    Layout.prototype.addNodes = function(count) {
+    Layout.prototype.addNodes = function(nodes) {
       /* Adds a specified number of empty nodes to the layout
       */
 
-      var i, n, _i, _j, _len, _results, _results1;
-      switch (typeof count) {
-        case "number":
-          _results = [];
-          for (i = _i = 0; 0 <= count ? _i < count : _i > count; i = 0 <= count ? ++_i : --_i) {
-            _results.push(this.addNode());
-          }
-          return _results;
-          break;
-        case "object":
-          _results1 = [];
-          for (_j = 0, _len = count.length; _j < _len; _j++) {
-            n = count[_j];
-            _results1.push(this.addNode(n));
-          }
-          return _results1;
+      var n, _i, _len, _results;
+      _results = [];
+      for (_i = 0, _len = nodes.length; _i < _len; _i++) {
+        n = nodes[_i];
+        _results.push(this.addNode(n));
       }
+      return _results;
     };
 
     Layout.prototype.toString = function() {

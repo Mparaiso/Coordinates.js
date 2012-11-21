@@ -18,13 +18,9 @@ define (require)->
             ### ###
             throw 'Method must be overriden by child class'
         
-        addNodes:(count)->
+        addNodes:(nodes)->
             ### Adds a specified number of empty nodes to the layout ###
-            switch typeof count
-                when "number"
-                    @addNode() for i in [0...count]
-                when "object"
-                    @addNode(n) for n in count
+            @addNode(n) for n in nodes
 
         toString:->
             "[object Layout]"

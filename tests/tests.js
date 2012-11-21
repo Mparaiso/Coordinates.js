@@ -279,12 +279,19 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
   });
   module("coordinates.Wave", {
     setup: function() {
-      return this.wave = new coordinates.Wave(500, 300);
+      this.wave = new coordinates.Wave(500, 300);
+      this.wave.addNode(new coordinates.Link({}));
+      this.wave.addNode(new coordinates.Link({}));
+      return this.wave.addNode(new coordinates.Link({}));
     }
   });
   return test("constructor", function() {
-    expect(2);
+    expect(4);
     equal(this.wave.getWidth(), 500, "Wave.getWidth");
-    return equal(this.wave.getHeight(), 300, "Wave.getHeight");
+    equal(this.wave.getHeight(), 300, "Wave.getHeight");
+    this.wave.setX(50);
+    equal(this.wave.getX(), 50, "Wave.setX");
+    this.wave.setY(100);
+    return equal(this.wave.getY(), 100, "Wave.setY");
   });
 });

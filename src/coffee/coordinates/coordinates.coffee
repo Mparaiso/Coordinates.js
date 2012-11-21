@@ -22,4 +22,7 @@ define (require)->
     Coordinates.BaseClass = Coordinates.utils.BaseClass
     Coordinates.NodeEvent = Coordinates.events.NodeEvent
     Coordinates.Wave = Coordinates.layouts.twodee.Wave
+    Coordinates.LayoutTransitioner = Coordinates.utils.LayoutTransitioner
+    Coordinates.LayoutUpdateMethod = Coordinates.constants.LayoutUpdateMethod
+    
     return Coordinates

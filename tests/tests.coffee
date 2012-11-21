@@ -243,8 +243,15 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
     module "coordinates.Wave",
         setup:->
             @wave = new coordinates.Wave(500,300)
+            @wave.addNode(new coordinates.Link({}))
+            @wave.addNode(new coordinates.Link({}))
+            @wave.addNode(new coordinates.Link({}))
 
     test "constructor",->
-        expect(2)
+        expect(4)
         equal(@wave.getWidth(),500,"Wave.getWidth")
         equal(@wave.getHeight(),300,"Wave.getHeight")
+        @wave.setX(50)
+        equal(@wave.getX(),50,"Wave.setX")
+        @wave.setY 100
+        equal @wave.getY(),100,"Wave.setY"

@@ -3,6 +3,7 @@ define (require)->
     Layout = require("../Layout")
     LayoutUpdateMethod = require("../../constants/LayoutUpdateMethod")
     Node2d = require("../../nodes/twodee/Node2d")
+    NodeEvent = require("../../events/NodeEvent")
     #ES5shims = require("../../utils/ES5shims")
 
     class Layout2d extends Layout

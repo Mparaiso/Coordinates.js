@@ -42,8 +42,7 @@ define (require)->
             "[object Wave]"
 
         clone:->
-            new Wave(@getWidth(),@getHeight(),@getX(),@getY(),@getFrenquery(),@getWaveFunction(),@getJitterX(),@getJitterY(),@getAlignType(),@getAlignOffset())
-
+            new Wave(@getWidth(),@getHeight(),@getX(),@getY(),@getFrequency(),@getWaveFunction(),@getJitterX(),@getJitterY(),@getAlignType(),@getAlignOffset())
 
         render:->
             ### Applies all layout property values to all cells/display objects in the collection ###
@@ -53,4 +52,25 @@ define (require)->
 
         renderNode:(node)->
             super(node)
-            node.getLink().setRotation(if @getAlignType() == PathAlignType.NONE then 0 else @node.getRotation())
+            node.getLink().setRotation(if @getAlignType() == PathAlignType.NONE then 0 else node.getRotation())
+
+        update:->
+            ### 
+                Updates the nodes' virtual coordinates. <strong>Note</strong> - 
+                this method does not update
+                the actual objects linked to the layout. 
+            ###
+            len = @nodes.length
+            unless len <=0
+                for n,i in @nodes
+                    n.setX i*(@getWidth()/len)+@getX()+(n.getJitterX()*@getJitterX()) 
+                    jitter = @_y + (n._jitterY*@_jitterY) 
+                    n.setY( (@_function(PI*(i+1)/(len/2)*@_frequency-(@_thetaOffset*PI/180))*((@_height+(@_heightMultiplier*i))/2)) + jitter )
+
+                    if @_function==Math.sin then n.setRotation(Math.cos(PI*(i+1)/(len/2)*@_frequency)*180/PI)
+                    else if @_function == Math.cos then n.setRotation(Math.sin(PI*(i+1)/(len/2)*@frequency)*180/PI)
+                    else n.setRotation(0)
+
+                    if @_alignType == PathAlignType.ALIGN_PERPENDICULAR then n.setRotation(n.getRotation()+90)
+
+                    n.setRotation(n.getRotation()+@_alignOffset)

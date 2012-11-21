@@ -7,15 +7,6 @@ define (require)->
 
     class Ellispe extends Layout2d
 
-        getWidth:->
-            @_width
-        getHeight:->
-            @_height
-        getRotation:->
-            @_rotation
-        getAlignAngleOffset:->
-            @_alignAngleOffset
-
         constructor:(width,height,x=0,y=0,rotation=0,jitterX=0,jitterY=0,alignType=PathAlignType.NONE,alignAngleOffset=0)->
             super(x,y,jitterX,jitterY,width,height,rotation)
             @initConfig({alignType:alignType,alignAngleOffset:alignAngleOffset},->@updateFunction())
@@ -38,8 +29,6 @@ define (require)->
             super(node)
             node.getLink().setRotation(if @getAlignType() == PathAlignType.NONE then 0 else node.getRotation())
 
-
-
         # setNodeAngle:(node,angle)->
         #     ### Sets angle of position of specified cell in degrees  ###
         #     nAngle = @getCellAngle(node)
@@ -57,19 +46,19 @@ define (require)->
                 this method does not update 
                 the actual objects linked to the layout. 
             ###
-            PI = Math.PI
-            w = @getWidth() / 2
-            h = @getHeight() / 2
-            rOffset = @getRotation()*(PI/180)
-            for i in [0...@size]
-                node = @nodes[i]
-                rad = ((PI*(i))/(@size/2))+rOffset
-                node.setX((w*Math.cos(rad))+(w+@getX())+(node.getJitterX()*@getJitterX())-w)
-                node.setY((h*Math.sin(rad))+(h+@getY())+(node.getJitterY()*@getJitterY())-h)
-                node.setRotation(Math.atan2((@getY())-node.getY(),@getX()-node.getX())*(180/PI))
-                if @getAlignType() == PathAlignType.ALIGN_PERPENDICULAR
-                    node.setRotation(node.getRotation()+90)
-                node.setRotation(node.getRotation()+@getAlignAngleOffset())
+            unless @nodes.length <= 0
+                PI = Math.PI
+                w = @getWidth() / 2
+                h = @getHeight() / 2
+                rOffset = @getRotation()*(PI/180)
+                for node,i in @nodes
+                    rad = ((PI*(i))/(@size/2))+rOffset
+                    node.setX((w*Math.cos(rad))+(w+@getX())+(node.getJitterX()*@getJitterX())-w)
+                    node.setY((h*Math.sin(rad))+(h+@getY())+(node.getJitterY()*@getJitterY())-h)
+                    node.setRotation(Math.atan2((@getY())-node.getY(),@getX()-node.getX())*(180/PI))
+                    if @getAlignType() == PathAlignType.ALIGN_PERPENDICULAR
+                        node.setRotation(node.getRotation()+90)
+                    node.setRotation(node.getRotation()+@getAlignAngleOffset())
 
         # rotateCellToTop:(cell)->
         #     xR = cell.getLink().getX() - ( @getX() + @getWidth() / 2 )
