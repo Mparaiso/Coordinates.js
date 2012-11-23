@@ -298,4 +298,29 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
     test "constructor",->
         ok(true)
 
+    module "coordinates.Scatter",
+        setup:->
+            @scatter = new coordinates.Scatter(500,500)
+            @scatter.addNode(new coordinates.Link({}))
+            @scatter.addNode(new coordinates.Link({}))
+            @scatter.addNode(new coordinates.Link({}))
+            @scatter.addNode(new coordinates.Link({}))
 
+    test "constructor",->
+        equal(@scatter.toString(),"[object Scatter]",'Scatter.constructor')
+        equal(@scatter.getWidth(),500)
+        equal(@scatter.getHeight(),500)
+        equal(@scatter.getX(),0)
+
+    module "coordinates.Flow",
+        setup:->
+            @flow = new Coordinates.Flow(500,500)
+            @flow.addNode(new coordinates.Link({}))
+            @flow.addNode(new coordinates.Link({}))
+            @flow.addNode(new coordinates.Link({}))
+            @flow.addNode(new coordinates.Link({}))
+
+    test "constructor",->
+        equal(@flow.getWidth(),500)
+        equal(@flow.getHeight(),500)
+        equal(@flow.size,4)

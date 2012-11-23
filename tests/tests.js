@@ -338,7 +338,36 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
       return _results;
     }
   });
-  return test("constructor", function() {
+  test("constructor", function() {
     return ok(true);
+  });
+  module("coordinates.Scatter", {
+    setup: function() {
+      this.scatter = new coordinates.Scatter(500, 500);
+      this.scatter.addNode(new coordinates.Link({}));
+      this.scatter.addNode(new coordinates.Link({}));
+      this.scatter.addNode(new coordinates.Link({}));
+      return this.scatter.addNode(new coordinates.Link({}));
+    }
+  });
+  test("constructor", function() {
+    equal(this.scatter.toString(), "[object Scatter]", 'Scatter.constructor');
+    equal(this.scatter.getWidth(), 500);
+    equal(this.scatter.getHeight(), 500);
+    return equal(this.scatter.getX(), 0);
+  });
+  module("coordinates.Flow", {
+    setup: function() {
+      this.flow = new Coordinates.Flow(500, 500);
+      this.flow.addNode(new coordinates.Link({}));
+      this.flow.addNode(new coordinates.Link({}));
+      this.flow.addNode(new coordinates.Link({}));
+      return this.flow.addNode(new coordinates.Link({}));
+    }
+  });
+  return test("constructor", function() {
+    equal(this.flow.getWidth(), 500);
+    equal(this.flow.getHeight(), 500);
+    return equal(this.flow.size, 4);
   });
 });

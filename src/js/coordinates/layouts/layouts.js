@@ -11,7 +11,9 @@ define(function(require) {
       Wave: require("./twodee/Wave"),
       Stack: require("./twodee/Stack"),
       Spiral: require("./twodee/Spiral"),
-      Grid: require("./twodee/Grid")
+      Grid: require("./twodee/Grid"),
+      Scatter: require("./twodee/Scatter"),
+      Flow: require("./twodee/Flow")
     }
   };
 });

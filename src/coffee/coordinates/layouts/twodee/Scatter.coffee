@@ -2,8 +2,9 @@ define (require)->
 
     NodeEvent = require "../../events/NodeEvent"
     ScatterNode = require "../../nodes/twodee/ScatterNode"
-      
-    class Scatter
+    Layout2d = require "./Layout2d"
+
+    class Scatter extends Layout2d
 
         constructor:(width,height,x=0,y=0,jitter=1,jitterRotation=false)->
             super(x,y,0,0,width,height)
@@ -29,7 +30,7 @@ define (require)->
 
             if moveToCoordinates then @render()
 
-            dispatchEvent new NodeEvent NodeEvent::ADD,node
+            @dispatchEvent new NodeEvent NodeEvent::ADD,node
 
             return node
 

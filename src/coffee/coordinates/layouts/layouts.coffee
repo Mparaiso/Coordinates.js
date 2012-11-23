@@ -9,3 +9,5 @@ define (require)->
         Stack:require("./twodee/Stack")
         Spiral:require("./twodee/Spiral")
         Grid:require("./twodee/Grid")
+        Scatter:require "./twodee/Scatter"
+        Flow: require "./twodee/Flow"

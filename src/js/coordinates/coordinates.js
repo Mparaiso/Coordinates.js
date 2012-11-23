@@ -28,9 +28,14 @@ define(function(require) {
   Coordinates.Wave = Coordinates.layouts.twodee.Wave;
   Coordinates.Stack = Coordinates.layouts.twodee.Stack;
   Coordinates.Spiral = Coordinates.layouts.twodee.Spiral;
+  Coordinates.Flow = Coordinates.layouts.twodee.Flow;
   Coordinates.Grid = Coordinates.layouts.twodee.Grid;
+  Coordinates.Scatter = Coordinates.layouts.twodee.Scatter;
   Coordinates.LayoutTransitioner = Coordinates.utils.LayoutTransitioner;
   Coordinates.LayoutUpdateMethod = Coordinates.constants.LayoutUpdateMethod;
+  Coordinates.FlowOverflowPolicy = Coordinates.constants.FlowOverflowPolicy;
+  Coordinates.FlowDirection = Coordinates.constants.FlowDirection;
+  Coordinates.FlowAlignment = Coordinates.constants.FlowAlignment;
   Coordinates.StackOrder = Coordinates.constants.StackOrder;
   return Coordinates;
 });
