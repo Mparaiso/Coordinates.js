@@ -3,6 +3,7 @@
 define(function(require) {
   return {
     Node2d: require("./Node2d"),
-    OrderedNode: require("./OrderedNode")
+    OrderedNode: require("./OrderedNode"),
+    GridNode: require("./GridNode")
   };
 });

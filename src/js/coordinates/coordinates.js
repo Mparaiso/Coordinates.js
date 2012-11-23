@@ -26,7 +26,11 @@ define(function(require) {
   Coordinates.BaseClass = Coordinates.utils.BaseClass;
   Coordinates.NodeEvent = Coordinates.events.NodeEvent;
   Coordinates.Wave = Coordinates.layouts.twodee.Wave;
+  Coordinates.Stack = Coordinates.layouts.twodee.Stack;
+  Coordinates.Spiral = Coordinates.layouts.twodee.Spiral;
+  Coordinates.Grid = Coordinates.layouts.twodee.Grid;
   Coordinates.LayoutTransitioner = Coordinates.utils.LayoutTransitioner;
   Coordinates.LayoutUpdateMethod = Coordinates.constants.LayoutUpdateMethod;
+  Coordinates.StackOrder = Coordinates.constants.StackOrder;
   return Coordinates;
 });

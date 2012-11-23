@@ -285,7 +285,7 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
       return this.wave.addNode(new coordinates.Link({}));
     }
   });
-  return test("constructor", function() {
+  test("constructor", function() {
     expect(4);
     equal(this.wave.getWidth(), 500, "Wave.getWidth");
     equal(this.wave.getHeight(), 300, "Wave.getHeight");
@@ -293,5 +293,52 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
     equal(this.wave.getX(), 50, "Wave.setX");
     this.wave.setY(100);
     return equal(this.wave.getY(), 100, "Wave.setY");
+  });
+  module("coordinates.Stack", {
+    setup: function() {
+      this.stack = new coordinates.Stack();
+      this.stack.addNode(new coordinates.Link({}));
+      this.stack.addNode(new coordinates.Link({}));
+      this.stack.addNode(new coordinates.Link({}));
+      return this.stack.addNode(new coordinates.Link({}));
+    }
+  });
+  test("constructor", function() {
+    equal(this.stack.size, 4, "Stack.size");
+    equal(this.stack.nodes.length, 4, "Stack.size");
+    equal(this.stack.nodes[0].getOrder(), 0, "Node orders");
+    equal(this.stack.nodes[1].getOrder(), 1, "Node orders");
+    equal(this.stack.nodes[2].getOrder(), 2, "Node orders");
+    return equal(this.stack.nodes[3].getOrder(), 3, "Node orders");
+  });
+  module("coordinates.Spiral", {
+    setup: function() {
+      this.spiral = new coordinates.Spiral(300);
+      this.spiral.addNode(new coordinates.Link({}));
+      this.spiral.addNode(new coordinates.Link({}));
+      this.spiral.addNode(new coordinates.Link({}));
+      return this.spiral.addNode(new coordinates.Link({}));
+    }
+  });
+  test("constructor", function() {
+    equal(this.spiral.size, 4, "Spiral.size");
+    equal(this.spiral.nodes.length, 4, "Spiral.size");
+    equal(this.spiral.toString(), "[object Spiral]", "Spiral.toString");
+    equal(this.spiral.nodes[0].getX(), 300);
+    return equal(this.spiral.nodes[0].getY(), 0);
+  });
+  module("coordinates.Grid", {
+    setup: function() {
+      var i, _i, _results;
+      this.grid = new coordinates.Grid(500, 500, 5, 5);
+      _results = [];
+      for (i = _i = 0; _i <= 25; i = ++_i) {
+        _results.push(this.grid.addNode(new coordinates.Link({})));
+      }
+      return _results;
+    }
+  });
+  return test("constructor", function() {
+    return ok(true);
   });
 });

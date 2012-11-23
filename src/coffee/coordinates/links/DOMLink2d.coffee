@@ -9,6 +9,7 @@ define (require)->
             # element.nodeType?  == 1 || throw "domElement must be an instance of HTMLElement" 
             super(element,x,y,rotation)
             @getElement().style.position = "absolute"
+            #@getElement().style.filter = "filter:progid:DXImageTransform.Microsoft.Matrix()"
 
         setX:(value)->
             @_x=value
@@ -20,6 +21,10 @@ define (require)->
 
         setRotation:(value)->
             @_rotation=value
+            @applyTransform()
+
+        setOrder:(value)->
+            @_order = value
             @applyTransform()
 
         getHeight:->
@@ -35,9 +40,12 @@ define (require)->
             return parseInt(r[1],10)
 
         applyTransform:->
-            for transform in ['transform',"webkitTransform","mozTransform","oTransform","msTransform"]
-                @getElement().style[transform] = "translate(#{@_x}px,#{@_y}px) rotate(#{@_rotation}deg)"
+            unless @_element == undefined || @_element == null
+                @getElement().style.zIndex = @_order || 0
+                for transform in ['transform',"webkitTransform","mozTransform","oTransform","msTransform"]
+                    @getElement().style[transform] = "translate(#{parseInt(@_x)}px,#{parseInt(@_y)}px) rotate(#{parseInt(@_rotation)}deg)"
             return
 
         toString:->
             "[object DOMLink2d]"
+

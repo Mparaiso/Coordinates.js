@@ -9,7 +9,7 @@ define (require)->
         constructor:(element,x=0,y=0,rotation=0,width=0,height=0)->
 
             @initConfig(element:element,x:x,
-            y:y,rotation:rotation,width:width,height:height)
+            y:y,rotation:rotation,width:width,height:height,order:0)
 
         toString:->
             "[object Link]"

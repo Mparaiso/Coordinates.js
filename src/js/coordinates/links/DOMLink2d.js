@@ -38,6 +38,11 @@ define(function(require) {
       return this.applyTransform();
     };
 
+    DOMLink2d.prototype.setOrder = function(value) {
+      this._order = value;
+      return this.applyTransform();
+    };
+
     DOMLink2d.prototype.getHeight = function() {
       /* obtenir la hauteur
       */
@@ -68,10 +73,13 @@ define(function(require) {
 
     DOMLink2d.prototype.applyTransform = function() {
       var transform, _i, _len, _ref;
-      _ref = ['transform', "webkitTransform", "mozTransform", "oTransform", "msTransform"];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        transform = _ref[_i];
-        this.getElement().style[transform] = "translate(" + this._x + "px," + this._y + "px) rotate(" + this._rotation + "deg)";
+      if (!(this._element === void 0 || this._element === null)) {
+        this.getElement().style.zIndex = this._order || 0;
+        _ref = ['transform', "webkitTransform", "mozTransform", "oTransform", "msTransform"];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          transform = _ref[_i];
+          this.getElement().style[transform] = "translate(" + (parseInt(this._x)) + "px," + (parseInt(this._y)) + "px) rotate(" + (parseInt(this._rotation)) + "deg)";
+        }
       }
     };
 

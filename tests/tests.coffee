@@ -255,3 +255,47 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         equal(@wave.getX(),50,"Wave.setX")
         @wave.setY 100
         equal @wave.getY(),100,"Wave.setY"
+
+
+    module "coordinates.Stack",
+        setup:->
+            @stack = new coordinates.Stack()
+            @stack.addNode(new coordinates.Link({}))
+            @stack.addNode(new coordinates.Link({}))
+            @stack.addNode(new coordinates.Link({}))
+            @stack.addNode(new coordinates.Link({}))
+
+
+    test "constructor",->
+        equal(@stack.size,4,"Stack.size")
+        equal(@stack.nodes.length,4,"Stack.size")
+        equal(@stack.nodes[0].getOrder(),0,"Node orders")
+        equal(@stack.nodes[1].getOrder(),1,"Node orders")
+        equal(@stack.nodes[2].getOrder(),2,"Node orders")
+        equal(@stack.nodes[3].getOrder(),3,"Node orders")
+
+    module "coordinates.Spiral",
+        setup:->
+            @spiral = new coordinates.Spiral(300)
+            @spiral.addNode(new coordinates.Link({}))
+            @spiral.addNode(new coordinates.Link({}))
+            @spiral.addNode(new coordinates.Link({}))
+            @spiral.addNode(new coordinates.Link({}))
+
+    test "constructor",->
+        equal(@spiral.size,4,"Spiral.size")
+        equal(@spiral.nodes.length,4,"Spiral.size")
+        equal(@spiral.toString(),"[object Spiral]","Spiral.toString")
+        equal(@spiral.nodes[0].getX(),300)
+        equal(@spiral.nodes[0].getY(),0)
+
+    module "coordinates.Grid"
+        setup:->
+            @grid = new coordinates.Grid(500,500,5,5)
+            for i in [0..25]
+                @grid.addNode(new coordinates.Link({}))
+
+    test "constructor",->
+        ok(true)
+
+

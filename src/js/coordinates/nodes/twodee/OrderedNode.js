@@ -47,6 +47,10 @@ define(function(require) {
       };
     };
 
+    OrderedNode.prototype.toString = function() {
+      return "[object OrderedNode]";
+    };
+
     return OrderedNode;
 
   })(Node2d);

@@ -34,7 +34,8 @@ define(function(require) {
         y: y,
         rotation: rotation,
         width: width,
-        height: height
+        height: height,
+        order: 0
       });
     }
 

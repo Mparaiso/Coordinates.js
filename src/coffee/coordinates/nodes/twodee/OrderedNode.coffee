@@ -19,3 +19,6 @@ define (require)->
             y:@getY()
             rotation:@getRotation()
 
+        toString:->
+            "[object OrderedNode]"
+
