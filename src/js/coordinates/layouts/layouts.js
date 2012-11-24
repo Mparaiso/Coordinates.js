@@ -13,7 +13,8 @@ define(function(require) {
       Spiral: require("./twodee/Spiral"),
       Grid: require("./twodee/Grid"),
       Scatter: require("./twodee/Scatter"),
-      Flow: require("./twodee/Flow")
+      Flow: require("./twodee/Flow"),
+      Lattice: require("./twodee/Lattice")
     }
   };
 });

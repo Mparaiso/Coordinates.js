@@ -315,12 +315,23 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
     module "coordinates.Flow",
         setup:->
             @flow = new Coordinates.Flow(500,500)
-            @flow.addNode(new coordinates.Link({}))
-            @flow.addNode(new coordinates.Link({}))
-            @flow.addNode(new coordinates.Link({}))
-            @flow.addNode(new coordinates.Link({}))
+            @flow.addNode(new coordinates.Link({width:200,height:100}))
+            @flow.addNode(new coordinates.Link({width:500,height:200}))
+            @flow.addNode(new coordinates.Link({width:200,height:500}))
+            @flow.addNode(new coordinates.Link({width:100,height:100}))
 
     test "constructor",->
         equal(@flow.getWidth(),500)
         equal(@flow.getHeight(),500)
         equal(@flow.size,4)
+
+    module "coordinates.Lattice",
+        setup:->
+            @lattice = new Coordinates.Lattice(500,500,0,0,3,3)
+            for i in [0...9]
+                @lattice.addNode(new coordinates.Link({width:30,height:30}))
+
+    test "constructor",->
+        equal(@lattice.getWidth(),500)
+        equal(@lattice.getHeight(),500)
+        equal(@lattice.size,9)

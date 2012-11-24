@@ -11,3 +11,4 @@ define (require)->
         Grid:require("./twodee/Grid")
         Scatter:require "./twodee/Scatter"
         Flow: require "./twodee/Flow"
+        Lattice: require "./twodee/Lattice"

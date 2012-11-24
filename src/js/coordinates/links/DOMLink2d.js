@@ -21,6 +21,8 @@ define(function(require) {
       }
       DOMLink2d.__super__.constructor.call(this, element, x, y, rotation);
       this.getElement().style.position = "absolute";
+      this.setWidth(this.getWidth());
+      this.setHeight(this.getHeight());
     }
 
     DOMLink2d.prototype.setX = function(value) {

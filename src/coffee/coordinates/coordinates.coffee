@@ -27,6 +27,7 @@ define (require)->
     Coordinates.Flow = Coordinates.layouts.twodee.Flow
     Coordinates.Grid = Coordinates.layouts.twodee.Grid
     Coordinates.Scatter = Coordinates.layouts.twodee.Scatter
+    Coordinates.Lattice = Coordinates.layouts.twodee.Lattice
 
     Coordinates.LayoutTransitioner = Coordinates.utils.LayoutTransitioner
     Coordinates.LayoutUpdateMethod = Coordinates.constants.LayoutUpdateMethod
@@ -34,5 +35,9 @@ define (require)->
     Coordinates.FlowDirection = Coordinates.constants.FlowDirection
     Coordinates.FlowAlignment = Coordinates.constants.FlowAlignment
     Coordinates.StackOrder = Coordinates.constants.StackOrder
+    Coordinates.LatticeAlternationPattern = Coordinates.constants.LatticeAlternationPattern
+    Coordinates.LatticeOrder = Coordinates.constants.LatticeOrder
+    Coordinates.LatticeType = Coordinates.constants.LatticeType
+
     
     return Coordinates

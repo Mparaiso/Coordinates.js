@@ -7,3 +7,6 @@ define (require)->
     FlowOverflowPolicy:require "./FlowOverflowPolicy"
     FlowDirection:require "./FlowDirection"
     FlowAlignment:require "./FlowAlignment"
+    LatticeType: require './LatticeType'
+    LatticeOrder: require './LatticeType'
+    LatticeAlternationPattern: require "./LatticeAlternationPattern"

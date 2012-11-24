@@ -359,15 +359,46 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
   module("coordinates.Flow", {
     setup: function() {
       this.flow = new Coordinates.Flow(500, 500);
-      this.flow.addNode(new coordinates.Link({}));
-      this.flow.addNode(new coordinates.Link({}));
-      this.flow.addNode(new coordinates.Link({}));
-      return this.flow.addNode(new coordinates.Link({}));
+      this.flow.addNode(new coordinates.Link({
+        width: 200,
+        height: 100
+      }));
+      this.flow.addNode(new coordinates.Link({
+        width: 500,
+        height: 200
+      }));
+      this.flow.addNode(new coordinates.Link({
+        width: 200,
+        height: 500
+      }));
+      return this.flow.addNode(new coordinates.Link({
+        width: 100,
+        height: 100
+      }));
     }
   });
-  return test("constructor", function() {
+  test("constructor", function() {
     equal(this.flow.getWidth(), 500);
     equal(this.flow.getHeight(), 500);
     return equal(this.flow.size, 4);
+  });
+  module("coordinates.Lattice", {
+    setup: function() {
+      var i, _i, _results;
+      this.lattice = new Coordinates.Lattice(500, 500, 0, 0, 3, 3);
+      _results = [];
+      for (i = _i = 0; _i < 9; i = ++_i) {
+        _results.push(this.lattice.addNode(new coordinates.Link({
+          width: 30,
+          height: 30
+        })));
+      }
+      return _results;
+    }
+  });
+  return test("constructor", function() {
+    equal(this.lattice.getWidth(), 500);
+    equal(this.lattice.getHeight(), 500);
+    return equal(this.lattice.size, 9);
   });
 });

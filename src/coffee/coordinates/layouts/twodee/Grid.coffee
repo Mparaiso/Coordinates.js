@@ -9,7 +9,7 @@ define (require)->
 
     class Grid extends Layout2d
 
-        constructor:(width,height,columns,rows,x=0,y=0,hPadding=0,vPadding=0,hDirection = GridLayoutDirection.LEFT_TO_RIGHT, vDirection = GridLayoutDirection.TOP_TO_BOTTOM,jitterX=0,jitterY=0)->
+        constructor:(width,height,x=0,y=0,columns,rows,hPadding=0,vPadding=0,hDirection = GridLayoutDirection.LEFT_TO_RIGHT, vDirection = GridLayoutDirection.TOP_TO_BOTTOM,jitterX=0,jitterY=0)->
             ### Distributes nodes in a grid. ###
             super(x,y,jitterX,jitterY,width,height)
             @initConfig({columns:columns,rows:rows,hPadding:hPadding,vPadding:vPadding,hDirection:hDirection,vDirection:vDirection},->@updateFunction)

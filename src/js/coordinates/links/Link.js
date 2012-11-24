@@ -23,10 +23,10 @@ define(function(require) {
         rotation = 0;
       }
       if (width == null) {
-        width = 0;
+        width = 1;
       }
       if (height == null) {
-        height = 0;
+        height = 1;
       }
       this.initConfig({
         element: element,
@@ -37,6 +37,12 @@ define(function(require) {
         height: height,
         order: 0
       });
+      if (element.width) {
+        this.setWidth(element.width);
+      }
+      if (element.height) {
+        this.setHeight(element.height);
+      }
     }
 
     Link.prototype.toString = function() {

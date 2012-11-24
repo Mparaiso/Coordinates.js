@@ -7,7 +7,7 @@ define (require)->
 
         constructor:(link,x=0,y=0)->
             super(link,x,y)
-            @initConfig(outsideBounds:false)
+            @initConfig(outsideBounds:false,width:@_link.getWidth(),height:@_link.getHeight())
 
         clone:->
             n = new FlowNode(@_link,@_x,@_y)

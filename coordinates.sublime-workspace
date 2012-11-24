@@ -1,0 +1,1306 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"l",
+				"Library  (class)"
+			],
+			[
+				"sa",
+				"sans-serif"
+			],
+			[
+				"fon-",
+				"font-family"
+			],
+			[
+				"image",
+				"imageData"
+			],
+			[
+				"getC",
+				"getImage  (function)"
+			],
+			[
+				"st",
+				"status"
+			],
+			[
+				"Class",
+				"ClassMetadataFactory  (namespace)"
+			],
+			[
+				"inp",
+				"input_file"
+			],
+			[
+				"ta",
+				"currentTarget  (variable)"
+			],
+			[
+				"cl",
+				"clear"
+			],
+			[
+				"re",
+				"relative"
+			],
+			[
+				"f",
+				":first-child"
+			],
+			[
+				"tex",
+				"text-indent"
+			],
+			[
+				"bo",
+				"border-left"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"boo",
+				"bootstrap"
+			],
+			[
+				"ve",
+				"vendor"
+			],
+			[
+				"__",
+				"__prop	__prop"
+			],
+			[
+				"usern",
+				"userNonExpired"
+			],
+			[
+				"my",
+				"myBase"
+			],
+			[
+				"mongo",
+				"mongoDataAccessLayer"
+			],
+			[
+				"co",
+				"confirmDelete"
+			],
+			[
+				"cou",
+				"couchdb"
+			],
+			[
+				"dr",
+				"drawTextOverlay"
+			],
+			[
+				"up",
+				"updateGameState"
+			],
+			[
+				"ch",
+				"checkHits"
+			],
+			[
+				"la",
+				"layouts"
+			],
+			[
+				"po",
+				"position"
+			],
+			[
+				"point",
+				"pointLights"
+			],
+			[
+				"Vir",
+				"VirtualHost"
+			],
+			[
+				"VI",
+				"VIEWPORT_HEIGHT"
+			],
+			[
+				"lao",
+				"layout"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 245.0,
+		"selected_items":
+		[
+			[
+				"pytho",
+				"User: Python PEP8 Autoformat"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"dja",
+				"Django DocsSearch"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"stack",
+				"Stackoverflow: Search from Input"
+			],
+			[
+				"pretty",
+				"Pretty JSON: Reformat (Pretty Print) JSON"
+			],
+			[
+				"view",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"fe",
+				"Fetch: Package"
+			],
+			[
+				"preview",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"json",
+				"Pretty JSON: Reformat (Pretty Print) JSON"
+			],
+			[
+				"md",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"tw",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"twig",
+				"Set Syntax: HTML (Twig)"
+			],
+			[
+				"ds",
+				"Coffee: Display JavaScript"
+			],
+			[
+				"display",
+				"Coffee: Display JavaScript"
+			],
+			[
+				"coffee",
+				"Coffee: Display JavaScript"
+			],
+			[
+				"mdp",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"markdo",
+				"Markdown Preview: preview in Browser"
+			],
+			[
+				"mark",
+				"Markdown Preview: preview in Sublime Text"
+			],
+			[
+				"doc",
+				"Goto Documentation"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"zen",
+				"Zen Coding: Wrap zen as you type"
+			],
+			[
+				"codei",
+				"SublimeCodeIntel: Disable Plugin"
+			],
+			[
+				"fetch",
+				"Fetch"
+			],
+			[
+				"bro",
+				"Preferences: Browse Packages"
+			],
+			[
+				"fetc",
+				"Fetch: Manage remote files"
+			],
+			[
+				"fet",
+				"Fetch: Manage remote files"
+			],
+			[
+				"wra",
+				"HTML: Wrap Selection With Tag"
+			],
+			[
+				"fech",
+				"Fetch: Manage remote files"
+			],
+			[
+				"g",
+				"Goto Documentation"
+			],
+			[
+				"",
+				"Fetch: Manage remote files"
+			],
+			[
+				"date",
+				"Snippet: input - date"
+			],
+			[
+				"do",
+				"Goto Documentation"
+			],
+			[
+				"PHPUnit: ",
+				"PHPUnit: Run Using This XML File"
+			],
+			[
+				"rei",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"codein",
+				"SublimeCodeIntel: Disable Live Autocompletion"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"diff",
+				"FileDiffs: Menu"
+			],
+			[
+				"code",
+				"SublimeCodeIntel: Disable Plugin"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reid",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"lint",
+				"SublimeLinter: Show Error List"
+			],
+			[
+				"linter",
+				"SublimeLinter: Show Error List"
+			],
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"codeintel",
+				"SublimeCodeIntel: Disable Live Autocompletion"
+			],
+			[
+				"intel",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: re",
+				"Package Control: Remove Package"
+			],
+			[
+				"html",
+				"Tidy HTML"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"PHP Code Sniffer: ",
+				"PHP Code Sniffer: Sniff this file"
+			],
+			[
+				"Package Control:ins",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 522.0
+	},
+	"console":
+	{
+		"height": 338.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": true,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/c/projects/categories/django/buddy/snippets/templates/snippets/snippet_detail.html",
+		"/c/projects/categories/django/buddy/snippets/templates/snippets/snippet_tag.html",
+		"/c/projects/categories/django/buddy/snippets/views.py",
+		"/c/projects/categories/django/buddy/snippets/urls.py",
+		"/C/projects/categories/django/buddy/snippets/templates/snippets/snippet_tag.html",
+		"/c/projects/categories/django/buddy/snippets/models.py",
+		"/c/projects/categories/django/buddy/manage.py",
+		"/c/projects/categories/django/buddy/buddy/templates/layout.html",
+		"/c/projects/categories/django/buddy/users/templates/profile.html",
+		"/c/projects/categories/django/buddy/users/views.py",
+		"/c/projects/categories/django/buddy/users/urls.py",
+		"/c/projects/categories/django/buddy/buddy/urls.py",
+		"/c/projects/categories/django/buddy/buddy/settings.py",
+		"/c/projects/categories/django/buddy/users/settings.py",
+		"/c/projects/categories/django/buddy/snippets/templates/snippets/snippet_search.html",
+		"/C/projects/categories/django/buddy/buddy/templates/includes/typeahead.html",
+		"/c/projects/categories/django/buddy/buddy/views.py",
+		"/c/Python26/lib/site-packages/django/core/urlresolvers.py",
+		"/c/Python26/lib/site-packages/django/utils/functional.py",
+		"/c/projects/categories/django/buddy/snippets/templates/snippets/includes/snippet_list_partial.html",
+		"/C/projects/categories/django/buddy/snippets/templates/snippets/snippet_search.html",
+		"/c/projects/categories/django/buddy/facebooktab/templates/snippet_list.html",
+		"/C/projects/categories/django/buddy/snippets/templates/snippets/includes/snippet_list_partial.html",
+		"/c/projects/categories/django/buddy/snippets/templates/snippets/snippet_list.html",
+		"/C/projects/categories/django/buddy/buddy/templates/includes/paginator_partial.html",
+		"/c/projects/categories/django/buddy/buddy/README.md",
+		"/C/projects/categories/django/buddy/snippets/forms.py",
+		"/c/Python26/lib/site-packages/django/http/__init__.py",
+		"/c/Python26/Lib/json/__init__.py",
+		"/c/projects/categories/django/buddy/snippets/views/snippets.py",
+		"/c/projects/categories/django/buddy/snippets/templates/snippets/snippet_form.html",
+		"/c/projects/categories/django/buddy/snippets/templates/snippets/snippet_page.html",
+		"/C/projects/categories/django/buddy/snippets/templatetags/snippets_extras.py",
+		"/c/projects/categories/django/buddy/buddy/static/vendor/bootstrap/css/bootstrap.css",
+		"/c/projects/categories/django/buddy/.gitignore",
+		"/C/Python26/lib/site-packages/django/views/generic/base.py",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/c/projects/categories/django/buddy/FAQ.md",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/User/__utf8__comment.sublime-snippet",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/projects/categories/django/buddy/snippets/templatetags/__init__.py",
+		"/c/projects/categories/django/buddy/snippets/templates/snippets/_snippet_create.html",
+		"/C/Python26/lib/site-packages/django/views/generic/edit.py",
+		"/c/projects/categories/django/buddy/users/templates/login.html",
+		"/C/projects/categories/django/buddy/users/settings.py",
+		"/c/projects/categories/django/buddy/requirements.txt",
+		"/c/projects/categories/django/buddy/public/django.fcgi",
+		"/C/projects/categories/django/buddy/public/.htaccess",
+		"/C/projects/categories/django/buddy/public/django.fcgi",
+		"/c/projects/categories/django/django-poll-tutorial/public/django.fcgi",
+		"/c/projects/categories/django/django-poll-tutorial/public/.htaccess",
+		"/C/projects/categories/java/java-for-artists/paraiso/marc/sample/SampleClass.java",
+		"/C/projects/categories/java/java-for-artists/paraiso/marc/sample/ApplicationClass.java",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/projects/categories/django/django-poll-tutorial/public/.htaccess",
+		"/c/projects/categories/django/django-poll-tutorial/poll/settings.py",
+		"/C/projects/categories/django/django-poll-tutorial/poll/views.py",
+		"/c/projects/categories/django/django-poll-tutorial/poll/urls.py",
+		"/C/projects/categories/django/django-poll-tutorial/poll/templates/registration/login.html",
+		"/C/projects/categories/django/django-poll-tutorial/poll/tests.py",
+		"/c/projects/categories/typescript/hello-world/hello.ts",
+		"/c/projects/categories/typescript/hello-world/hello.js",
+		"/c/projects/categories/django/django-poll-tutorial/poll/admin.py",
+		"/c/projects/categories/django/django-poll-tutorial/poll/templates/detail.html",
+		"/c/projects/categories/django/django-poll-tutorial/poll/templates/results.html",
+		"/c/projects/categories/django/django-poll-tutorial/poll/templates/index.html",
+		"/C/projects/categories/django/django-poll-tutorial/poll/templates/results.html",
+		"/C/Python26/lib/site-packages/django/contrib/messages/api.py",
+		"/C/projects/categories/django/django-poll-tutorial/poll/templates/detail.html",
+		"/c/projects/categories/django/django-poll-tutorial/poll/models.py",
+		"/C/projects/categories/django/django-poll-tutorial/poll/templates/404.html",
+		"/C/projects/categories/django/django-poll-tutorial/poll/index.html",
+		"/c/projects/categories/django/django-poll-tutorial/poll/templates/admin/base_site.html",
+		"/c/projects/categories/django/django-poll-tutorial/poll/templates/layout.html",
+		"/C/projects/categories/django/django-poll-tutorial/poll/admin.py",
+		"/C/projects/categories/django/django-poll-tutorial/poll/models.py",
+		"/C/Python26/lib/site-packages/django/contrib/admin/sites.py",
+		"/c/projects/categories/django/django-poll-tutorial/HEROKU-FAQ.md",
+		"/c/projects/categories/django/django-poll-tutorial/requirements.txt",
+		"/c/projects/categories/django/django-poll-tutorial/.gitignore",
+		"/c/projects/categories/django/django-poll-tutorial/poll/views.py",
+		"/C/projects/categories/django/django-poll-tutorial/poll/templates/layout.html",
+		"/C/projects/categories/django/django-poll-tutorial/poll/templates/index.html",
+		"/c/projects/categories/django/aikah-flogin-python/exampleapp.py",
+		"/c/projects/categories/django/django-poll-tutorial/README.md",
+		"/c/projects/categories/django/aikah-flogin-python/static/images/sprites.png",
+		"/C/projects/categories/django/buddy/facebooktab/views.py",
+		"/C/projects/categories/django/buddy/facebooktab/settings.py",
+		"/C/Python26/lib/site-packages/django/core/serializers/__init__.py",
+		"/C/projects/categories/django/buddy/buddy/urls.py",
+		"/C/projects/categories/django/buddy/buddy/settings.py",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/SublimeCodeIntel/Base File.sublime-settings",
+		"/C/Python26/Lib/json/__init__.py",
+		"/C/Python26/lib/site-packages/django/http/__init__.py",
+		"/C/projects/categories/django/buddy/snippets/models.py",
+		"/C/projects/categories/django/buddy/webservice/urls.py",
+		"/C/projects/categories/django/buddy/snippets/urls.py",
+		"/C/projects/categories/django/buddy/webservice/__init__.py",
+		"/C/Python26/Lib/distutils/ccompiler.py",
+		"/c/projects/categories/cpp/hello.cpp",
+		"/C/Users/mark prades/.kivy/logs/kivy_12-10-21_4.txt",
+		"/C/Users/mark prades/.kivy/config.ini",
+		"/c/projects/categories/kivy/hello-kivy/main.py",
+		"/C/Python26/Lib/distutils/cygwinccompiler.py",
+		"/C/projects/categories/django/buddy/facebooktab/templates/facebooktab/../snippet_list.html",
+		"/C/projects/categories/django/buddy/facebooktab/urls.py",
+		"/C/Python26/lib/site-packages/django/conf/urls/__init__.py",
+		"/C/projects/categories/django/buddy/.gitignore",
+		"/C/projects/categories/django/buddy/buddy/configuration/__init__.py",
+		"/c/projects/categories/django/buddy/.git/hooks/post-receive",
+		"/C/projects/categories/django/buddy/buddy/configuration/prod_database.py",
+		"/C/projects/categories/django/buddy/buddy/configuration/post_database.py",
+		"/C/projects/categories/django/buddy/buddy/configuration/database.py",
+		"/C/projects/categories/django/buddy/requirements.txt",
+		"/C/projects/categories/django/buddy/manage.py",
+		"/C/jar/script.js",
+		"/C/projects/categories/django/buddy/snippets/views/__init__.py",
+		"/C/projects/categories/django/buddy/facebooktap/templates/facebooktab/snippet_list.html",
+		"/C/projects/categories/django/buddy/facebooktap/urls.py",
+		"/C/projects/categories/django/buddy/facebooktap/views.py",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/User/__django__urls.sublime-snippet",
+		"/C/projects/categories/django/buddy/users/urls.py",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/User/SublimeLinter.sublime-settings",
+		"/C/projects/categories/django/buddy/snippets/views/snippets.py",
+		"/C/Python26/lib/site-packages/django/views/generic/detail.py",
+		"/C/projects/categories/django/buddy/buddy/fixtures/initial_data.json",
+		"/C/ParticleSDK/particle/platform/html5/runtime-dist/1.0_Any_Release_All/HTML5Runtime.js"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"c:\\projects\\categories\\django",
+			"c:\\Users\\mark prades\\Documents\\www\\projects",
+			"c:\\Users\\mark prades\\Documents\\www\\projects\\mpmedia.alwaysdata.net-silexblog",
+			"c:\\Users\\mark prades\\Documents\\www\\projects\\mongoblog.phpfogapp.com\\app\\view"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"tab",
+			"login",
+			"timezone",
+			"time",
+			"created",
+			"route",
+			"templ",
+			"fold",
+			"inlin",
+			"encode",
+			"data",
+			"-mno-cygwin",
+			"                      ",
+			"\\s+$",
+			"visible",
+			"wrap",
+			"static",
+			"python",
+			"root",
+			"static",
+			"models",
+			"auth",
+			"type",
+			"snippetmanager",
+			"k",
+			"template",
+			"category",
+			"\"favorite\":\\s\\S+",
+			"\"created\"",
+			"\"updated\"",
+			"\"user_id\":\\s\\d+\\,",
+			"created",
+			"updated",
+			"category\"",
+			"app",
+			"php",
+			"app",
+			"mod",
+			"model",
+			"spectragram",
+			"APP",
+			"indent",
+			"app",
+			"learningdjango",
+			"staticfiles",
+			"learningdjango",
+			"cache",
+			"id",
+			"console",
+			"console.log",
+			"'}",
+			"url",
+			"controller",
+			"toggle",
+			"\");\n",
+			"portrait",
+			"on_error",
+			"version",
+			"this is my event{} Index",
+			"this is my event{}",
+			"c",
+			"alias",
+			"xmlhttp",
+			"mongo",
+			"throwNotCallbackError",
+			"isFunction",
+			"-values",
+			"hous",
+			"#",
+			"alias",
+			"boostrap",
+			"]]",
+			"[[",
+			"wget",
+			"gem",
+			"$app['article_manager']",
+			">\n",
+			"twig",
+			"spam_manager",
+			"spam",
+			"option",
+			"<?",
+			"span2",
+			"add-on",
+			"       ",
+			"@note",
+			"$app['user_manager']",
+			"$app['article_manager']",
+			"info",
+			"form.factory",
+			"    $",
+			"getapp",
+			"sdf",
+			"dfdfs",
+			"app",
+			"{",
+			"ip",
+			"user_ma",
+			"xdebug",
+			"print",
+			"logfile",
+			"root",
+			"$name",
+			"$myBase",
+			"/login",
+			"header",
+			"cache",
+			"database",
+			"server",
+			"config",
+			":",
+			"dll",
+			"80",
+			"virtual",
+			"directory",
+			"php",
+			"servername",
+			"alias",
+			"time",
+			"timeout",
+			"alias",
+			"options",
+			"alias",
+			"FollowSymLinks",
+			"alias",
+			"override",
+			"alias",
+			"todo"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"django_models",
+			"snippets",
+			"",
+			"\"created_at\"",
+			"\"updated_at\"",
+			"\"user_id\": 1,",
+			"created_at",
+			"updated_at",
+			"language\"",
+			"buddy",
+			"spectragram",
+			"a",
+			"xhr",
+			"config.mongo",
+			"_throwNotCallbackError",
+			"_isFunction",
+			"_values",
+			"",
+			"curl -O ",
+			"$this->articleManager",
+			"$this->userManager",
+			"$this->articleManager",
+			"$this->name",
+			"$this->myBase",
+			"=>\n",
+			"->\n",
+			"\">\n",
+			"Z",
+			"Y"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 36.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.exec":
+	{
+		"height": 141.0
+	},
+	"output.phpdocumentor":
+	{
+		"height": 102.0
+	},
+	"output.phpunit":
+	{
+		"height": 102.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"buddy/ur",
+				"buddy/urls.py"
+			],
+			[
+				"users/u",
+				"users/urls.py"
+			],
+			[
+				"lay",
+				"buddy/templates/layout.html"
+			],
+			[
+				"sni",
+				"snippets/templates/snippets/snippet_search.html"
+			],
+			[
+				"search",
+				"snippets/templates/snippets/snippet_search.html"
+			],
+			[
+				"layou",
+				"buddy/templates/layout.html"
+			],
+			[
+				"layout",
+				"buddy/templates/layout.html"
+			],
+			[
+				"snipp",
+				"snippets/templates/snippets/snippet_list.html"
+			],
+			[
+				"snippet",
+				"facebooktab/templates/snippet_list.html"
+			],
+			[
+				"views",
+				"snippets/views.py"
+			],
+			[
+				"urls",
+				"snippets/urls.py"
+			],
+			[
+				"snippet/urls",
+				"snippets/urls.py"
+			],
+			[
+				"detail",
+				"snippets/templates/snippets/snippet_detail.html"
+			],
+			[
+				"snili",
+				"snippets/templates/snippets/snippet_list.html"
+			],
+			[
+				"snippet_de",
+				"snippets/templates/snippets/snippet_detail.html"
+			],
+			[
+				"la",
+				"buddy/templates/layout.html"
+			],
+			[
+				"sett",
+				"buddy/settings.py"
+			],
+			[
+				"boot",
+				"buddy/static/vendor/bootstrap/css/bootstrap.css"
+			],
+			[
+				"snippet_",
+				"snippets/templates/snippets/snippet_detail.html"
+			],
+			[
+				"snippet_list",
+				"snippets/templates/snippets/snippet_list.html"
+			],
+			[
+				"snippet_li",
+				"facebooktab/templates/snippet_list.html"
+			],
+			[
+				"boots",
+				"buddy/static/vendor/bootstrap/css/bootstrap.css"
+			],
+			[
+				"vie",
+				"buddy/views.py"
+			],
+			[
+				"ur",
+				"poll/urls.py"
+			],
+			[
+				"url",
+				"poll/urls.py"
+			],
+			[
+				"ad",
+				"poll/admin.py"
+			],
+			[
+				"deta",
+				"poll/templates/detail.html"
+			],
+			[
+				"dta",
+				"poll/templates/detail.html"
+			],
+			[
+				"det",
+				"poll/templates/detail.html"
+			],
+			[
+				"resu",
+				"poll/templates/results.html"
+			],
+			[
+				"ind",
+				"poll/templates/index.html"
+			],
+			[
+				"detai",
+				"poll/templates/detail.html"
+			],
+			[
+				"dea",
+				"poll/templates/detail.html"
+			],
+			[
+				"models",
+				"poll/models.py"
+			],
+			[
+				"m",
+				"poll/models.py"
+			],
+			[
+				"model",
+				"poll/models.py"
+			],
+			[
+				"her",
+				"HEROKU-FAQ.md"
+			],
+			[
+				"se",
+				"poll/settings.py"
+			],
+			[
+				"layo",
+				"poll/templates/layout.html"
+			],
+			[
+				"inde",
+				"poll/templates/index.html"
+			],
+			[
+				"web",
+				"webservice/urls.py"
+			],
+			[
+				"vies",
+				"facebooktab/views.py"
+			],
+			[
+				"setting",
+				"buddy/settings.py"
+			],
+			[
+				"lan",
+				"snippets/templates/snippets/language_detail.html"
+			],
+			[
+				"lang",
+				"snippets/templates/snippets/language_list.html"
+			],
+			[
+				"l",
+				"buddy/templates/layout.html"
+			],
+			[
+				"rls",
+				"buddy/urls.py"
+			],
+			[
+				"forms",
+				"users/forms.py"
+			],
+			[
+				"login",
+				"users/templates/login.html"
+			],
+			[
+				"register",
+				"users/templates/register.html"
+			],
+			[
+				"log",
+				"users/templates/login.html"
+			],
+			[
+				"regi",
+				"users/templates/register.html"
+			],
+			[
+				"regis",
+				"users/templates/register.html"
+			],
+			[
+				"form",
+				"users/forms.py"
+			],
+			[
+				"mod",
+				"users/models.py"
+			],
+			[
+				"sign",
+				"users/templates/signup.html"
+			],
+			[
+				"si",
+				"users/templates/signup.html"
+			],
+			[
+				"sig",
+				"users/templates/signup.html"
+			],
+			[
+				"style",
+				"snippetmanager/snippetmanager/static/css/style.css"
+			],
+			[
+				"prett",
+				"snippetmanager/snippetmanager/static/js/prettyprint.js"
+			],
+			[
+				"snippet_d",
+				"snippetmanager/snippetmanager/templates/snippetmanager/snippet_detail.html"
+			],
+			[
+				"read",
+				"README.md"
+			],
+			[
+				"app.sc",
+				"spectragram/development/resources/sass/app.scss"
+			],
+			[
+				"settin",
+				"spectragram/settings.py"
+			],
+			[
+				"rea",
+				"README.md"
+			],
+			[
+				"st",
+				"css/style.css"
+			],
+			[
+				"tweets",
+				"spectragram/development/app/view/Tweets.js"
+			],
+			[
+				"main",
+				"development/app/controller/Main.js"
+			],
+			[
+				"contac",
+				"app/view/Contact.js"
+			],
+			[
+				"app.js",
+				"app.js"
+			],
+			[
+				"main.js",
+				"app/view/Main.js"
+			],
+			[
+				"hum",
+				"tutorials/12 - Introduction to Classes and Objects/Human.cpp"
+			],
+			[
+				"basic",
+				"exemples/basic.php"
+			],
+			[
+				"context",
+				"Canvas/CAnvasRenderingContext2D.php"
+			],
+			[
+				"canvas",
+				"Canvas/Canvas.php"
+			],
+			[
+				"color",
+				"Canvas/Color.php"
+			],
+			[
+				"routes",
+				"App/routes.php"
+			],
+			[
+				"user",
+				"App/Model/Entity/User.php"
+			],
+			[
+				"usercon",
+				"App/Controller/UserController.php"
+			],
+			[
+				"userma",
+				"App/Model/Manager/UserManager.php"
+			],
+			[
+				"spammanager",
+				"App/Model/Manager/SpamManager.php"
+			],
+			[
+				"spammana",
+				"App/Model/Manager/SpamManager.php"
+			],
+			[
+				"commentc",
+				"App/Controller/CommentController.php"
+			],
+			[
+				"usermanager",
+				"App/Model/Manager/UserManager.php"
+			],
+			[
+				"akis",
+				"Lib/Net/Mpmedia/Akismet/Akismet.php"
+			],
+			[
+				"comment",
+				"App/Form/Comment.php"
+			],
+			[
+				"validatorser",
+				"vendor/silex/silex/src/Silex/Provider/ValidatorServiceProvider.php"
+			],
+			[
+				"config",
+				"App/config.php"
+			],
+			[
+				"articlemana",
+				"App/Model/Manager/ArticleManager.php"
+			],
+			[
+				"articleman",
+				"App/Model/Manager/ArticleManager.php"
+			],
+			[
+				"metadatat",
+				"App/Form/DataTransformer/MetadataTransformer.php"
+			],
+			[
+				"articlead",
+				"App/Controller/Admin/ArticleAdminController.php"
+			],
+			[
+				"articlea",
+				"App/Controller/Admin/ArticleAdminController.php"
+			],
+			[
+				"route",
+				"vendor/symfony/routing/Symfony/Component/Routing/Route.php"
+			],
+			[
+				"controllerresolver",
+				"vendor/symfony/http-kernel/Symfony/Component/HttpKernel/Controller/ControllerResolver.php"
+			],
+			[
+				"optionma",
+				"App/Model/Manager/OptionManager.php"
+			],
+			[
+				"optioncon",
+				"App/Controller/Admin/OptionAdminController.php"
+			],
+			[
+				"optionana",
+				"App/Model/Manager/OptionManager.php"
+			],
+			[
+				"usermana",
+				"App/Model/Manager/UserManager.php"
+			],
+			[
+				"commentmanager",
+				"mpmedia.alwaysdata.net-silexblog/App/Model/Manager/CommentManager.php"
+			],
+			[
+				"commentcontro",
+				"mpmedia.alwaysdata.net-silexblog/App/Controller/CommentController.php"
+			],
+			[
+				"entity/co",
+				"mpmedia.alwaysdata.net-silexblog/App/Model/Entity/Comment.php"
+			],
+			[
+				"comment/crea",
+				"mpmedia.alwaysdata.net-silexblog/App/view/comment/create.twig"
+			],
+			[
+				"form/comme",
+				"mpmedia.alwaysdata.net-silexblog/App/Form/Comment.php"
+			],
+			[
+				"form/com",
+				"extjs/extjs-4.1.0/examples/form/combos.html"
+			],
+			[
+				"commentcon",
+				"mpmedia.alwaysdata.net-silexblog/App/Controller/CommentController.php"
+			],
+			[
+				"commentman",
+				"mpmedia.alwaysdata.net-silexblog/App/Model/Manager/CommentManager.php"
+			],
+			[
+				"",
+				"mpmedia.alwaysdata.net-silexblog/Lib/Net/Mpmedia/Akismet/Akismet.php"
+			],
+			[
+				"app/config",
+				"mpmedia.alwaysdata.net-silexblog/App/config.php"
+			],
+			[
+				"entity/article",
+				"mpmedia.alwaysdata.net-silexblog/App/Model/Entity/Article.php"
+			],
+			[
+				"option/ind",
+				"mpmedia.alwaysdata.net-silexblog/App/view/option/index.twig"
+			],
+			[
+				"entity/option",
+				"mpmedia.alwaysdata.net-silexblog/App/Model/Entity/Option.php"
+			],
+			[
+				"admin/o",
+				"mpmedia.alwaysdata.net-silexblog/App/Controller/Admin/OptionAdminController.php"
+			],
+			[
+				"user-me",
+				"mpmedia.alwaysdata.net-silexblog/App/view/user/user-menu.twig"
+			],
+			[
+				"option/index",
+				"mpmedia.alwaysdata.net-silexblog/App/view/option/index.twig"
+			],
+			[
+				"akism",
+				"mpmedia.alwaysdata.net-silexblog/trash/akismet-test.php"
+			],
+			[
+				"ihttp",
+				"mpmedia.alwaysdata.net-silexblog/Lib/Net/Mpmedia/Http/IHttpClient.php"
+			],
+			[
+				"httpc",
+				"mpmedia.alwaysdata.net-silexblog/Lib/Net/Mpmedia/Http/HttpClient.php"
+			],
+			[
+				"akismet",
+				"mpmedia.alwaysdata.net-silexblog/Lib/Net/Mpmedia/Akismet/Akismet.php"
+			],
+			[
+				"commentm",
+				"mpmedia.alwaysdata.net-silexblog/App/Model/Manager/CommentManager.php"
+			],
+			[
+				"iart",
+				"mpmedia.alwaysdata.net-silexblog/App/Model/Manager/IArticleManager.php"
+			],
+			[
+				"manager/user",
+				"mpmedia.alwaysdata.net-silexblog/App/Model/Manager/UserManager.php"
+			],
+			[
+				"manager/article",
+				"mpmedia.alwaysdata.net-silexblog/App/Model/Manager/ArticleManager.php"
+			],
+			[
+				"articlec",
+				"mpmedia.alwaysdata.net-silexblog/App/Controller/ArticleController.php"
+			],
+			[
+				"artic",
+				"mpmedia.alwaysdata.net-silexblog/App/Controller/ArticleController.php"
+			],
+			[
+				"user/profile",
+				"mpmedia.alwaysdata.net-silexblog/App/view/user/profile.twig"
+			],
+			[
+				"user/",
+				"verge/views/user/profile.twig"
+			],
+			[
+				"article",
+				"mpmedia.alwaysdata.net-silexblog/App/view/form/article.twig"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": false,
+	"side_bar_visible": true,
+	"side_bar_width": 296.0,
+	"status_bar_visible": true
+}

@@ -11,14 +11,12 @@ define (require)->
 
         constructor:(width,height,x=0,y=0,hPadding=0,vPadding=0)->
             super(x,y,0,0,width,height)
-            @initConfig(hPadding:hPadding,vPadding:vPadding,overFlowPolicy:FlowOverflowPolicy.ALLOW_OVERFLOW,placementDirection:FlowDirection.HORIZONTAL,
-                alignment:FlowAlignment.TOP_LEFT,horizontalAlign:"top",verticalAlign:"left",->@updateFunction())
+            @initConfig(hPadding:hPadding,vPadding:vPadding,overFlowPolicy:FlowOverflowPolicy.ALLOW_OVERFLOW, alignment:FlowAlignment.TOP_LEFT, horizontalAlign:"top",verticalAlign:"left",placementDirection:FlowDirection.HORIZONTAL,->@updateFunction())
 
         addNode:(link=null,moveToCoordinates=true)->
             ### Adds object to layout in next available position. ###
             if @linkExists(link) then return null
-            node = new FlowNode()
-            node.setLink(link)
+            node = new FlowNode(link,0,0)
             @storeNode(node)
             @update()
             if moveToCoordinates then @render()
@@ -135,7 +133,8 @@ define (require)->
             lastChild = column[column.length-1]
             columnHeight = (lastChild.getY()+lastChild.getLink().getHeight()) - bounds.y 
             difference = bounds.height - columnHeight
-            for i in [0...(columnCount = column.length)]
+            columnCount = column.length
+            for i in [0...column.length]
                 child=column[i]
                 @alignItems(child,{x:child.getX(),y:child.getY(),width:maxChildWidth,height:child.getLink().getHeight()},@_horizontalAlign,null)
                 switch @_verticalAlign

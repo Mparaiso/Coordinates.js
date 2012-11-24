@@ -23,7 +23,13 @@
 </head>
 <body>
 	<script type="text/javascript" src="../assets/js/vendor/TweenMax.min.js"></script>
-	<script type="text/javascript" src="../../bin/coordinates.js"></script>
-	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="../../src/js/vendor/require.min.js"></script>
+	<script type="text/javascript">
+	require.config({
+		baseUrl: "../../src/js/coordinates",
+	});
+	</script>
+	<script type="text/javascript" src="dom.js"></script>
+
 </body>
 </html>

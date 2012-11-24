@@ -10,6 +10,8 @@ define (require)->
             super(element,x,y,rotation)
             @getElement().style.position = "absolute"
             #@getElement().style.filter = "filter:progid:DXImageTransform.Microsoft.Matrix()"
+            @setWidth @getWidth()
+            @setHeight @getHeight()
 
         setX:(value)->
             @_x=value
