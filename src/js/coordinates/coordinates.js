@@ -41,5 +41,52 @@ define(function(require) {
   Coordinates.LatticeAlternationPattern = Coordinates.constants.LatticeAlternationPattern;
   Coordinates.LatticeOrder = Coordinates.constants.LatticeOrder;
   Coordinates.LatticeType = Coordinates.constants.LatticeType;
+  Coordinates.LayoutType = Coordinates.constants.LayoutType;
+  /* @todo
+  */
+
+  Coordinates.createLayout = function(type, options, links) {
+    var layout;
+    if (links == null) {
+      links = null;
+    }
+    /* helper method to create layouts
+    */
+
+    type = type.capitalize();
+    layout = (function() {
+      var alignAngleOffset, alignOffset, alignType, angleDelta, circumference, columns, frequency, hDirection, hPadding, height, jitterX, jitterY, rotation, rows, spiralConstant, vDirection, vPadding, waveFunction, width, x, y;
+      switch (type) {
+        case Coordinates.LayoutType.ELLIPSE:
+          width = options.width, height = options.height, x = options.x, y = options.y, rotation = options.rotation, jitterX = options.jitterX, jitterY = options.jitterY, alignType = options.alignType, alignAngleOffset = options.alignAngleOffset;
+          return new Coordinates.Ellipse(width, height, x, y, rotation, jitterX, jitterY);
+        case Coordinates.LayoutType.SPIRAL:
+          circumference = options.circumference, x = options.x, y = options.y, spiralConstant = options.spiralConstant, angleDelta = options.angleDelta, rotation = options.rotation, jitterX = options.jitterX, jitterY = options.jitterY, alignType = options.alignType, alignOffset = options.alignOffset;
+          return new Coordinates.Spiral(circumference, x, y, spiralConstant, angleDelta, rotation, jitterX, jitterY, alignType, alignOffset);
+        case Coordinates.LayoutType.FLOW:
+          width = options.width, height = options.height, x = options.x, y = options.y, hPadding = options.hPadding, vPadding = options.vPadding;
+          return new Coordinates.Flow(width, height, x, y, hPadding, vPadding);
+        case Coordinates.LayoutType.GRID:
+          width = options.width, height = options.height, x = options.x, y = options.y, columns = options.columns, rows = options.rows, hPadding = options.hPadding, vPadding = options.vPadding, hDirection = options.hDirection, vDirection = options.vDirection, jitterX = options.jitterX, jitterY = options.jitterY;
+          return new Coordinates.Grid(width, height, x, y, columns, rows, hPadding, vPadding, hDirection, vDirection, jitterX, jitterY);
+        case Coordinates.LayoutType.HORIZONTAL_LINE:
+          hPadding = options.hPadding, x = options.x, y = options.y, jitterX = options.jitterX, jitterY = options.jitterY;
+          return new Coordinates.HorizontalLine(hPadding, x, y, jitterX, jitterY);
+        case Coordinates.LayoutType.WAVE:
+          width = options.width, height = options.height, x = options.x, y = options.y, frequency = options.frequency, waveFunction = options.waveFunction, jitterX = options.jitterX, jitterY = options.jitterY, alignType = options.alignType, alignOffset = options.alignOffset;
+          return new Coordinates.Wave(width, height, x, y, frequency, waveFunction, jitterX, jitterY, alignType, alignOffset);
+      }
+    })();
+    /* if links , then add nodes
+    */
+
+    if (links) {
+      layout.addNodes(links);
+    }
+    /* return layout
+    */
+
+    return layout;
+  };
   return Coordinates;
 });

@@ -10,3 +10,4 @@ define (require)->
     LatticeType: require './LatticeType'
     LatticeOrder: require './LatticeType'
     LatticeAlternationPattern: require "./LatticeAlternationPattern"
+    LayoutType: require "./LayoutType"

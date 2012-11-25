@@ -94,7 +94,7 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
     var domLink2d, el;
     el = document.createElement("DIV");
     el.style.width = "200px";
-    el.style.height = "200px";
+    el.style.height = "300px";
     el.style.position = "fixed";
     ok(true);
     domLink2d = new coordinates.DOMLink2d(el);
@@ -103,6 +103,8 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
     domLink2d.setY(250);
     domLink2d.setRotation(45);
     equal(domLink2d.getElement().style.transform, "translate(200px,250px) rotate(45deg)", "DOMLink2d.applyTransform");
+    equal(domLink2d.getWidth(), 200);
+    equal(domLink2d.getHeight(), 300);
   });
   /*
           coordinates.events.helpers.Event
@@ -360,27 +362,35 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
     setup: function() {
       this.flow = new Coordinates.Flow(500, 500);
       this.flow.addNode(new coordinates.Link({
-        width: 200,
+        "width": 100,
+        "height": 100
+      }));
+      this.flow.addNode(new coordinates.Link({
+        "width": 100,
         height: 100
       }));
       this.flow.addNode(new coordinates.Link({
-        width: 500,
-        height: 200
-      }));
-      this.flow.addNode(new coordinates.Link({
-        width: 200,
-        height: 500
+        "width": 100,
+        height: 100
       }));
       return this.flow.addNode(new coordinates.Link({
-        width: 100,
+        "width": 500,
         height: 100
       }));
     }
   });
   test("constructor", function() {
+    ok(this.flow !== void 0);
     equal(this.flow.getWidth(), 500);
     equal(this.flow.getHeight(), 500);
-    return equal(this.flow.size, 4);
+    equal(this.flow.size, 4);
+    equal(this.flow.nodes[0].getWidth(), 100);
+    equal(this.flow.nodes[0].getHeight(), 100);
+    equal(this.flow.nodes[0].getLink().getWidth(), 100);
+    equal(this.flow.nodes[0].getLink().getHeight(), 100);
+    equal(this.flow.nodes[1].getX(), 100, "node 1 x");
+    equal(this.flow.nodes[2].getX(), 200, "@nodes[2]._x is 300");
+    return equal(this.flow.nodes[3].getX(), 0, "@nodes[3]._x is 0");
   });
   module("coordinates.Lattice", {
     setup: function() {

@@ -21,6 +21,7 @@ define (require)->
         addNodes:(nodes)->
             ### Adds a specified number of empty nodes to the layout ###
             @addNode(n) for n in nodes
+            return
 
         toString:->
             "[object Layout]"

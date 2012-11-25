@@ -983,7 +983,9 @@ define('nodes/twodee/FlowNode',['require','./Node2d'],function(require) {
       }
       FlowNode.__super__.constructor.call(this, link, x, y);
       this.initConfig({
-        outsideBounds: false
+        outsideBounds: false,
+        width: this._link.getWidth(),
+        height: this._link.getHeight()
       });
     }
 
@@ -1102,8 +1104,8 @@ define('links/DOMLink2d',['require','./Link'],function(require) {
       }
       DOMLink2d.__super__.constructor.call(this, element, x, y, rotation);
       this.getElement().style.position = "absolute";
-      this.setWidth(this.getWidth);
-      this.setHeight(this.getHeight);
+      this.setWidth(this.getWidth());
+      this.setHeight(this.getHeight());
     }
 
     DOMLink2d.prototype.setX = function(value) {
@@ -1218,13 +1220,11 @@ define('layouts/Layout',['require','../events/helpers/EventDispatcher','../event
       /* Adds a specified number of empty nodes to the layout
       */
 
-      var n, _i, _len, _results;
-      _results = [];
+      var n, _i, _len;
       for (_i = 0, _len = nodes.length; _i < _len; _i++) {
         n = nodes[_i];
-        _results.push(this.addNode(n));
+        this.addNode(n);
       }
-      return _results;
     };
 
     Layout.prototype.toString = function() {
@@ -2464,7 +2464,7 @@ define('layouts/twodee/Grid',['require','./Layout2d','../../constants/GridLayout
 
     __extends(Grid, _super);
 
-    function Grid(width, height, columns, rows, x, y, hPadding, vPadding, hDirection, vDirection, jitterX, jitterY) {
+    function Grid(width, height, x, y, columns, rows, hPadding, vPadding, hDirection, vDirection, jitterX, jitterY) {
       if (x == null) {
         x = 0;
       }
@@ -2835,61 +2835,11 @@ define('layouts/twodee/Flow',['require','./Layout2d','../../events/NodeEvent','.
 
     __extends(Flow, _super);
 
-    function Flow(width, height, x, y, hPadding, vPadding) {
-      if (x == null) {
-        x = 0;
-      }
-      if (y == null) {
-        y = 0;
-      }
-      if (hPadding == null) {
-        hPadding = 0;
-      }
-      if (vPadding == null) {
-        vPadding = 0;
-      }
-      Flow.__super__.constructor.call(this, x, y, 0, 0, width, height);
-      this.initConfig({
-        hPadding: hPadding,
-        vPadding: vPadding,
-        overFlowPolicy: FlowOverflowPolicy.ALLOW_OVERFLOW,
-        alignment: FlowAlignment.TOP_LEFT,
-        horizontalAlign: "top",
-        verticalAlign: "left",
-        placementDirection: FlowDirection.HORIZONTAL
-      }, function() {
+    Flow.prototype.setOverflowPolicy = function(v) {
+      this._overflowPolicy = v;
+      if (this.size > 0) {
         return this.updateFunction();
-      });
-    }
-
-    Flow.prototype.addNode = function(link, moveToCoordinates) {
-      var node;
-      if (link == null) {
-        link = null;
       }
-      if (moveToCoordinates == null) {
-        moveToCoordinates = true;
-      }
-      /* Adds object to layout in next available position.
-      */
-
-      if (this.linkExists(link)) {
-        return null;
-      }
-      node = new FlowNode(link, 0, 0);
-      this.storeNode(node);
-      this.update();
-      if (moveToCoordinates) {
-        this.render();
-      }
-      this.dispatchEvent(new NodeEvent(NodeEvent.prototype.ADD, node));
-      return node;
-    };
-
-    Flow.prototype.clone = function() {
-      /* Clones the current object's properties (does not include links to DisplayObjects)
-      */
-      return new Flow(this._width, this._height, this._x, this._y, this._hPadding, this._vPading);
     };
 
     Flow.prototype.setAlignment = function(v) {
@@ -2901,7 +2851,7 @@ define('layouts/twodee/Flow',['require','./Layout2d','../../events/NodeEvent','.
           this._horizontalAlign = "center";
           break;
         case FlowAlignment.TOP_RIGHT:
-          this._verticalAlign = "middle";
+          this._verticalAlign = "top";
           this._horizontalAlign = "right";
           break;
         case FlowAlignment.MIDDLE_LEFT:
@@ -2936,12 +2886,85 @@ define('layouts/twodee/Flow',['require','./Layout2d','../../events/NodeEvent','.
       return this.updateFunction();
     };
 
+    Flow.prototype.setWidth = function(v) {
+      if (v <= 0) {
+        throw "width cannot be null";
+      }
+      this._width = v;
+      this.updateFunction();
+    };
+
+    Flow.prototype.setHeight = function(v) {
+      if (v <= 0) {
+        throw "height cannot be null";
+      }
+      this._height = v;
+      this.updateFunction();
+    };
+
+    function Flow(width, height, x, y, hPadding, vPadding) {
+      if (x == null) {
+        x = 0;
+      }
+      if (y == null) {
+        y = 0;
+      }
+      if (hPadding == null) {
+        hPadding = 0;
+      }
+      if (vPadding == null) {
+        vPadding = 0;
+      }
+      Flow.__super__.constructor.call(this, x, y, 0, 0, width, height);
+      this.initConfig({
+        horizontalAlign: "left",
+        verticalAlign: "top",
+        width: width,
+        height: height,
+        hPadding: hPadding,
+        vPadding: vPadding,
+        overFlowPolicy: FlowOverflowPolicy.ALLOW_OVERFLOW,
+        alignment: FlowAlignment.TOP_LEFT,
+        placementDirection: FlowDirection.HORIZONTAL
+      }, function() {
+        return this.updateFunction();
+      });
+    }
+
+    Flow.prototype.addNode = function(link, moveToCoordinates) {
+      var node;
+      if (link == null) {
+        link = null;
+      }
+      if (moveToCoordinates == null) {
+        moveToCoordinates = true;
+      }
+      /* Adds object to layout in next available position.
+      */
+
+      if (this.linkExists(link)) {
+        return null;
+      }
+      node = new FlowNode(link);
+      this.storeNode(node);
+      this.update();
+      if (moveToCoordinates) {
+        this.render();
+      }
+      this.dispatchEvent(new NodeEvent(NodeEvent.prototype.ADD, node));
+      return node;
+    };
+
+    Flow.prototype.clone = function() {
+      /* Clones the current object's properties (does not include links to DisplayObjects)
+      */
+      return new Flow(this._width, this._height, this._x, this._y, this._hPadding, this._vPadding);
+    };
+
     Flow.prototype.update = function() {
       /* Updates the nodes' virtual coordinates. <strong>Note</strong> - this method does not updatethe actual objects linked to the layout.
       */
-
-      var _ref;
-      if (((_ref = this.nodes) != null ? _ref.length : void 0) <= 0) {
+      if (this.nodes.length <= 0) {
         return;
       }
       if (this._placementDirection === FlowDirection.HORIZONTAL) {
@@ -2983,8 +3006,8 @@ define('layouts/twodee/Flow',['require','./Layout2d','../../events/NodeEvent','.
         };
         bb.x *= link.getWidth() / bb.width;
         bb.y *= link.getHeight() / bb.height;
-        endOfRow = xPosition + link.getWidth();
-        if ((endOfRow - bounds.x >= bounds.width) && xPosition !== START_X) {
+        endOfRow = xPosition + link.getWidth() + 0;
+        if ((endOfRow - bounds.x) > bounds.width && xPosition !== START_X) {
           this.alignRow(row, maxChildHeight, bounds);
           yPosition += maxChildHeight + this._vPadding;
           xPosition = START_X;
@@ -2992,21 +3015,22 @@ define('layouts/twodee/Flow',['require','./Layout2d','../../events/NodeEvent','.
           row = [];
         }
         node.setOutsideBounds(yPosition + link.getHeight() > bounds.height ? true : false);
-        node.setX(xPosition - bb.x);
-        node.setY(xPosition - bb.y);
+        node.setX(xPosition);
+        node.setY(yPosition);
         row.push(node);
         maxChildHeight = Math.max(maxChildHeight, link.getHeight());
+        xPosition += link.getWidth() + this._hPadding;
       }
       this.alignRow(row, maxChildHeight, bounds);
     };
 
     Flow.prototype.layoutChildrenVertically = function(bounds) {
-      var START_X, bb, endOfRow, i, link, maxChildHeight, node, row, xPosition, yPosition, _i, _len, _ref;
-      START_X = bounds.x + 0;
-      yPosition = bounds.y + 0;
-      xPosition = START_X;
-      maxChildHeight = 0;
-      row = [];
+      var START_Y, bb, column, endOfColumn, i, link, maxChildWidth, node, xPosition, yPosition, _i, _len, _ref;
+      START_Y = bounds.y + 0;
+      xPosition = bounds.x + 0;
+      yPosition = START_Y;
+      maxChildWidth = 0;
+      column = [];
       _ref = this.nodes;
       for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
         node = _ref[i];
@@ -3022,25 +3046,21 @@ define('layouts/twodee/Flow',['require','./Layout2d','../../events/NodeEvent','.
         };
         bb.x *= link.getWidth() / bb.width;
         bb.y *= link.getHeight() / bb.height;
-        /* next column if we're over the height, but not if we're at yposition == bounds.y
-        */
-
-        endOfRow = xPosition + link.getWidth() + 0;
-        if ((endOfRow - bounds.x) >= bounds.width && xPosition !== START_X) {
-          this.alignRow(row, maxChildHeight, bounds);
-          yPosition += maxChildHeight + this._vPadding;
-          xPosition = START_X;
-          maxChildHeight = 0;
-          row = [];
+        endOfColumn = yPosition + link.getHeight() + 0;
+        if (endOfColumn - bounds.y >= bounds.height && yPosition !== START_Y) {
+          this.alignColumn(column, maxChildWidth, bounds);
+          xPosition += maxChildWidth + this._hPadding;
+          yPosition = START_Y;
+          column = [];
         }
-        node.setOutSideBounds(yPosition + node.getHeight() > bounds.height ? true : false);
-        node.setX(xPosition - bb.x);
-        node.setY(yPosition - bb.y);
-        row.push(node);
-        maxChildHeight = Math.max(maxChildHeight, link.getHeight());
-        xPosition += link.getWidth() + this._hPadding;
+        node.setOutsideBounds = xPosition + link.getWidth() > bounds.width ? true : false;
+        node.setX(xPosition);
+        node.setY(yPosition);
+        column.push(node);
+        maxChildWidth = Math.max(maxChildWidth, link.getWidth());
+        yPosition += link.getHeight() + this._vPadding;
       }
-      this.alignRow(row, maxChildHeight, bounds);
+      this.alignColumn(column, maxChildWidth, bounds);
     };
 
     Flow.prototype.alignColumn = function(column, maxChildWidth, bounds) {
@@ -3071,55 +3091,54 @@ define('layouts/twodee/Flow',['require','./Layout2d','../../events/NodeEvent','.
     };
 
     Flow.prototype.alignRow = function(row, maxChildHeight, bounds) {
-      var child, difference, i, lastChild, rowCount, rowWidth, _i;
-      if (row.length <= 0) {
+      var difference, i, lastChild, node, rowWidth, _i, _len;
+      if (row.length === 0) {
         return;
       }
       lastChild = row[row.length - 1];
-      rowWidth = (lastChild.getX() + lastChild.getLink().getWidth()) - bounds.x;
+      rowWidth = (lastChild.getX() + lastChild.getLink().getWidth()) - bounds.x + 0;
       difference = bounds.width - rowWidth;
-      rowCount = row.length;
-      for (i = _i = 0; 0 <= rowCount ? _i < rowCount : _i > rowCount; i = 0 <= rowCount ? ++_i : --_i) {
-        child = row[i];
-        this.alignItems(child, {
-          x: child.getX(),
-          y: child.getY(),
-          width: child.getLink().getWidth(),
-          height: maxChildHeight
+      for (i = _i = 0, _len = row.length; _i < _len; i = ++_i) {
+        node = row[i];
+        this.alignItems(node, {
+          x: node.getX(),
+          y: node.getY(),
+          width: node.getLink().getWidth(),
+          maxChildHeight: maxChildHeight
         }, null, this._verticalAlign);
-        switch (this._horizontalAlign) {
+        switch (this.getHorizontalAlign()) {
           case "center":
-            child.setX(child.getX() + difference / 2);
+            node.setX(node.getX() + (difference / 2));
             break;
           case "right":
-            child.setX(child.getX() + difference);
+            node.setX(node.getX() + difference);
         }
       }
     };
 
-    Flow.prototype.alignItems = function(node, bounds, horizontalAlign, verticalAlign) {
+    Flow.prototype.alignItems = function(target, bounds, horizontalAlign, verticalAlign) {
       var horizontalDifference, verticalDifference;
-      horizontalDifference = bounds.width - node.getLink().getWidth();
+      horizontalDifference = bounds.width - target.getLink().getWidth();
       switch (horizontalAlign) {
         case "left":
-          node.setX(bounds.x);
+          target.setX(bounds.x);
           break;
         case "center":
-          node.setX(bounds.x + horizontalDifference / 2);
+          target.setX(bounds.x + horizontalDifference / 2);
           break;
         case "right":
-          node.setX(bounds.x + horizontalDifference);
+          target.setX(bounds.x + horizontalDifference);
       }
-      verticalDifference = bounds.height - node.getLink().getHeight();
+      verticalDifference = bounds.height - target.getLink().getHeight();
       switch (verticalAlign) {
         case "top":
-          node.setY(bounds.y);
+          target.setY(bounds.y);
           break;
         case "middle":
-          node.setY(bounds.y + verticalDifference / 2);
+          target.setY(bounds.y + verticalDifference / 2);
           break;
         case "bottom":
-          node.setY(bounds.y + verticalDifference);
+          target.setY(bounds.y + verticalDifference);
       }
     };
 
@@ -3136,7 +3155,233 @@ define('layouts/twodee/Flow',['require','./Layout2d','../../events/NodeEvent','.
 
 // Generated by CoffeeScript 1.3.3
 
-define('layouts/layouts',['require','./Layout','./twodee/Layout2d','./twodee/VerticalLine','./twodee/HorizontalLine','./twodee/Ellipse','./twodee/Wave','./twodee/Stack','./twodee/Spiral','./twodee/Grid','./twodee/Scatter','./twodee/Flow'],function(require) {
+define('constants/LatticeOrder',{
+  ORDER_HORIZONTALLY: "latticeOrderHorizontally",
+  ORDER_VERTICALLY: "latticeOrderVertically"
+});
+
+// Generated by CoffeeScript 1.3.3
+
+define('constants/LatticeType',{
+  SQUARE: "squareLattice",
+  DIAGONAL: "diagonalLattice"
+});
+
+// Generated by CoffeeScript 1.3.3
+
+define('constants/LatticeAlternationPattern',{
+  ALTERNATE_HORIZONTALLY: "diagonalLatticeAlternalHorizontally",
+  ALTERNATE_VERTICALLY: "diagonalLatticeAlternalVertially"
+});
+
+// Generated by CoffeeScript 1.3.3
+var __hasProp = {}.hasOwnProperty,
+  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+define('layouts/twodee/Lattice',['require','./Layout2d','../../events/NodeEvent','../../constants/LatticeOrder','../../constants/LatticeType','../../constants/LatticeAlternationPattern','../../nodes/twodee/GridNode'],function(require) {
+  var GridNode, Lattice, LatticeAlternationPattern, LatticeOrder, LatticeType, Layout2d, NodeEvent;
+  Layout2d = require("./Layout2d");
+  NodeEvent = require("../../events/NodeEvent");
+  LatticeOrder = require("../../constants/LatticeOrder");
+  LatticeType = require("../../constants/LatticeType");
+  LatticeAlternationPattern = require("../../constants/LatticeAlternationPattern");
+  GridNode = require("../../nodes/twodee/GridNode");
+  return Lattice = (function(_super) {
+
+    __extends(Lattice, _super);
+
+    /*  Distributes nodes in a lattice.
+    */
+
+
+    function Lattice(width, height, x, y, columns, rows, allowOverFlow, order, hPadding, vPadding, jitterX, jitterY) {
+      if (x == null) {
+        x = 0;
+      }
+      if (y == null) {
+        y = 0;
+      }
+      if (columns == null) {
+        columns = 1;
+      }
+      if (rows == null) {
+        rows = 1;
+      }
+      if (allowOverFlow == null) {
+        allowOverFlow = true;
+      }
+      if (order == null) {
+        order = LatticeOrder.ORDER_HORIZONTALLY;
+      }
+      if (hPadding == null) {
+        hPadding = 0;
+      }
+      if (vPadding == null) {
+        vPadding = 0;
+      }
+      if (jitterX == null) {
+        jitterX = 0;
+      }
+      if (jitterY == null) {
+        jitterY = 0;
+      }
+      Lattice.__super__.constructor.call(this, x, y, jitterX, jitterY);
+      this.initConfig({
+        hPadding: hPadding,
+        vPadding: vPadding,
+        columns: columns,
+        rows: rows,
+        maxCells: columns * rows,
+        allowOverFlow: allowOverFlow,
+        order: order,
+        latticeType: LatticeType.DIAGONAL,
+        alternate: LatticeAlternationPattern.ALTERNATE_HORIZONTALLY,
+        width: width,
+        height: height
+      }, function() {
+        return this.updateFunction;
+      });
+    }
+
+    Lattice.prototype.getWidth = function() {
+      return this._columnWidth * this._columns;
+    };
+
+    Lattice.prototype.setWidth = function(v) {
+      this._width = v;
+      this._columnWidth = v / this._columns;
+      return this.updateFunction();
+    };
+
+    Lattice.prototype.getHeight = function() {
+      return this._rowHeight * this._rows;
+    };
+
+    Lattice.prototype.setHeight = function(v) {
+      this._height = v;
+      this._rowHeight = v / this._rows;
+      return this.updateFunction();
+    };
+
+    Lattice.prototype.setColumns = function(v) {
+      if (v === 0) {
+        throw "columns cannot be equal to 0";
+      }
+      this._columns = v;
+      this._order = LatticeOrder.ORDER_HORIZONTALLY;
+      this.updateFunction();
+      this._maxCells = this._columns * this._rows;
+    };
+
+    Lattice.prototype.setRows = function(v) {
+      if (v === 0) {
+        throw "rows cannot be equal to 0";
+      }
+      this._rows = v;
+      this._order = LatticeOrder.ORDER_VERTICALLY;
+      this.updateFunction();
+      this._maxCells = this._columns * this._rows;
+    };
+
+    Lattice.prototype.toString = function() {
+      return "[object Lattice]";
+    };
+
+    Lattice.prototype.addNode = function(link, moveToCoordinates) {
+      var c, node, r;
+      if (moveToCoordinates == null) {
+        moveToCoordinates = true;
+      }
+      if (this.linkExists(link)) {
+        return;
+      }
+      if (!this._allowOverFlow && this.size >= this._maxCells) {
+        return;
+      }
+      c = this._order === LatticeOrder.ORDER_VERTICALLY ? this.size % this._columns : this.size % Math.floor(this.size / this._rows);
+      r = this._order === LatticeOrder.ORDER_VERTICALLY ? Math.floor(this.size / this._columns) : this.size % this._rows;
+      node = new GridNode(link, c, r);
+      this.storeNode(node);
+      this.adjustLattice();
+      this.update();
+      if (moveToCoordinates) {
+        this.render();
+      }
+      if (this._order === LatticeOrder.ORDER_VERTICALLY) {
+        this._columns = Math.ceil(this.size / this._rows);
+      } else if (this._order === LatticeOrder.ORDER_VERTICALLY) {
+        this._rows = Math.ceil(this.size / this._columns);
+      }
+      this.dispatchEvent(new NodeEvent(NodeEvent.prototype.ADD, node));
+      return node;
+    };
+
+    Lattice.prototype.update = function() {
+      var i, node, _i, _len, _ref;
+      if (this.size <= 0) {
+        return;
+      }
+      _ref = this.nodes;
+      for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+        node = _ref[i];
+        node.setX((node.getColumn() * (this._columnWidth + this._hPadding)) + this._x + (node.getJitterX() * this._jitterX));
+        node.setY((node.getRow() * (this._rowHeight + this._vPadding)) + this._y + (node.getJitterY() * this._jitterY));
+        if (this._latticeType === LatticeType.DIAGONAL && this._alternate === LatticeAlternationPattern.ALTERNATE_VERTICALLY && node.getRow() % 2) {
+          node.setX(node.getX() + this._columnWidth / 2);
+        } else if (this._latticeType === LatticeType.DIAGONAL && this._alternate === LatticeAlternationPattern.ALTERNATE_HORIZONTALLY && node.getColumn() % 2) {
+          node.setY(node.getY() + this._rowHeight / 2);
+        }
+      }
+    };
+
+    Lattice.prototype.removeNode = function(node) {
+      Lattice.__super__.removeNode.call(this, node);
+      this.adjustLattice();
+      return this.updateFunction();
+    };
+
+    Lattice.prototype.clone = function() {
+      /* clone layout
+      */
+      return new Lattice(this._width, this._height, this._x, this._y, this._columns, this._rows, this._allowOverFlow, this._order, this._hPadding, this._vPadding, this._jitterX, this._jitterY);
+    };
+
+    Lattice.prototype.adjustLattice = function() {
+      var c, i, node, r, _i, _j, _len, _len1, _ref, _ref1;
+      if (this._order === LatticeOrder.ORDER_HORIZONTALLY) {
+        _ref = this.nodes;
+        for (i = _i = 0, _len = _ref.length; _i < _len; i = ++_i) {
+          node = _ref[i];
+          c = i % this._columns;
+          r = Math.floor(i / this._columns);
+          node.setColumn(c);
+          node.setRow(r);
+        }
+      } else {
+        _ref1 = this.nodes;
+        for (i = _j = 0, _len1 = _ref1.length; _j < _len1; i = ++_j) {
+          node = _ref1[i];
+          c = Math.floor(i / this._rows);
+          r = i % this._rows;
+          node.setColumn(c);
+          node.setRow(r);
+        }
+      }
+      if (this._order === LatticeOrder.ORDER_VERTICALLY) {
+        this._columns = Math.ceil(this.size / this._rows);
+      } else if (this._order = LatticeOrder.ORDER_HORIZONTALLY) {
+        this._rows = Math.ceil(this.size / this._columns);
+      }
+    };
+
+    return Lattice;
+
+  })(Layout2d);
+});
+
+// Generated by CoffeeScript 1.3.3
+
+define('layouts/layouts',['require','./Layout','./twodee/Layout2d','./twodee/VerticalLine','./twodee/HorizontalLine','./twodee/Ellipse','./twodee/Wave','./twodee/Stack','./twodee/Spiral','./twodee/Grid','./twodee/Scatter','./twodee/Flow','./twodee/Lattice'],function(require) {
   return {
     Layout: require("./Layout"),
     twodee: {
@@ -3149,7 +3394,8 @@ define('layouts/layouts',['require','./Layout','./twodee/Layout2d','./twodee/Ver
       Spiral: require("./twodee/Spiral"),
       Grid: require("./twodee/Grid"),
       Scatter: require("./twodee/Scatter"),
-      Flow: require("./twodee/Flow")
+      Flow: require("./twodee/Flow"),
+      Lattice: require("./twodee/Lattice")
     }
   };
 });
@@ -3255,7 +3501,31 @@ define('utils/utils',['require','./ES5shims','./BaseClass','./LayoutTransitioner
 
 // Generated by CoffeeScript 1.3.3
 
-define('constants/constants',['require','./LayoutUpdateMethod','./PathAlignType','./WaveFunction','./StackOrder','./GridLayoutDirection','./FlowOverflowPolicy','./FlowDirection','./FlowAlignment'],function(require) {
+define('constants/LayoutType',{
+  ELLIPSE_3D: 'Ellipse3d',
+  GRID_3D: 'Grid3d',
+  SCATTER_3D: 'Scatter3d',
+  SNAPSHOT_3D: 'Snapshot3d',
+  SPHEROID_3D: 'Sphere3d',
+  STACK_3D: 'Stack3d',
+  WAVE_3D: 'Wave3d',
+  WAVE_ELLIPSE_3D: 'WaveEllipse3d',
+  ELLIPSE: 'Ellipse',
+  SPIRAL: 'Spiral',
+  FLOW: 'Flow',
+  GRID: 'Grid',
+  HORIZONTAL_LINE: 'HorizontalLine',
+  LATTICE: 'Lattice',
+  SCATTER: 'Scatter',
+  SNAPSHOT: 'Snapshot',
+  STACK: 'Stack',
+  VERTICAL_LINE: 'VerticalLine',
+  WAVE: 'Wave'
+});
+
+// Generated by CoffeeScript 1.3.3
+
+define('constants/constants',['require','./LayoutUpdateMethod','./PathAlignType','./WaveFunction','./StackOrder','./GridLayoutDirection','./FlowOverflowPolicy','./FlowDirection','./FlowAlignment','./LatticeType','./LatticeType','./LatticeAlternationPattern','./LayoutType'],function(require) {
   return {
     LayoutUpdateMethod: require("./LayoutUpdateMethod"),
     PathAlignType: require("./PathAlignType"),
@@ -3264,7 +3534,11 @@ define('constants/constants',['require','./LayoutUpdateMethod','./PathAlignType'
     GridLayoutDirection: require("./GridLayoutDirection"),
     FlowOverflowPolicy: require("./FlowOverflowPolicy"),
     FlowDirection: require("./FlowDirection"),
-    FlowAlignment: require("./FlowAlignment")
+    FlowAlignment: require("./FlowAlignment"),
+    LatticeType: require('./LatticeType'),
+    LatticeOrder: require('./LatticeType'),
+    LatticeAlternationPattern: require("./LatticeAlternationPattern"),
+    LayoutType: require("./LayoutType")
   };
 });
 
@@ -3301,11 +3575,43 @@ define('Coordinates',['require','./events/events','./nodes/nodes','./links/links
   Coordinates.Flow = Coordinates.layouts.twodee.Flow;
   Coordinates.Grid = Coordinates.layouts.twodee.Grid;
   Coordinates.Scatter = Coordinates.layouts.twodee.Scatter;
+  Coordinates.Lattice = Coordinates.layouts.twodee.Lattice;
   Coordinates.LayoutTransitioner = Coordinates.utils.LayoutTransitioner;
   Coordinates.LayoutUpdateMethod = Coordinates.constants.LayoutUpdateMethod;
   Coordinates.FlowOverflowPolicy = Coordinates.constants.FlowOverflowPolicy;
   Coordinates.FlowDirection = Coordinates.constants.FlowDirection;
   Coordinates.FlowAlignment = Coordinates.constants.FlowAlignment;
   Coordinates.StackOrder = Coordinates.constants.StackOrder;
+  Coordinates.LatticeAlternationPattern = Coordinates.constants.LatticeAlternationPattern;
+  Coordinates.LatticeOrder = Coordinates.constants.LatticeOrder;
+  Coordinates.LatticeType = Coordinates.constants.LatticeType;
+  Coordinates.LayoutType = Coordinates.constants.LayoutType;
+  Coordinates.createLayout = function(type, options) {
+    /* helper method to create layouts
+    */
+
+    var alignAngleOffset, alignOffset, alignType, angleDelta, circumference, columns, frequency, hDirection, hPadding, height, jitterX, jitterY, rotation, rows, spiralConstant, vDirection, vPadding, waveFunction, width, x, y;
+    type = type.capitalize();
+    switch (type) {
+      case Coordinates.LayoutType.ELLIPSE:
+        width = options.width, height = options.height, x = options.x, y = options.y, rotation = options.rotation, jitterX = options.jitterX, jitterY = options.jitterY, alignType = options.alignType, alignAngleOffset = options.alignAngleOffset;
+        return new Coordinates.Ellipse(width, height, x, y, rotation, jitterX, jitterY);
+      case Coordinates.LayoutType.SPIRAL:
+        circumference = options.circumference, x = options.x, y = options.y, spiralConstant = options.spiralConstant, angleDelta = options.angleDelta, rotation = options.rotation, jitterX = options.jitterX, jitterY = options.jitterY, alignType = options.alignType, alignOffset = options.alignOffset;
+        return new Coordinates.Spiral(circumference, x, y, spiralConstant, angleDelta, rotation, jitterX, jitterY, alignType, alignOffset);
+      case Coordinates.LayoutType.FLOW:
+        width = options.width, height = options.height, x = options.x, y = options.y, hPadding = options.hPadding, vPadding = options.vPadding;
+        return new Coordinates.Flow(width, height, x, y, hPadding, vPadding);
+      case Coordinates.LayoutType.GRID:
+        width = options.width, height = options.height, x = options.x, y = options.y, columns = options.columns, rows = options.rows, hPadding = options.hPadding, vPadding = options.vPadding, hDirection = options.hDirection, vDirection = options.vDirection, jitterX = options.jitterX, jitterY = options.jitterY;
+        return new Coordinates.Grid(width, height, x, y, columns, rows, hPadding, vPadding, hDirection, vDirection, jitterX, jitterY);
+      case Coordinates.LayoutType.HORIZONTAL_LINE:
+        hPadding = options.hPadding, x = options.x, y = options.y, jitterX = options.jitterX, jitterY = options.jitterY;
+        return new Coordinates.HorizontalLine(hPadding, x, y, jitterX, jitterY);
+      case Coordinates.LayoutType.WAVE:
+        width = options.width, height = options.height, x = options.x, y = options.y, frequency = options.frequency, waveFunction = options.waveFunction, jitterX = options.jitterX, jitterY = options.jitterY, alignType = options.alignType, alignOffset = options.alignOffset;
+        return new Coordinates.Wave(width, height, x, y, frequency, waveFunction, jitterX, jitterY, alignType, alignOffset);
+    }
+  };
   return Coordinates;
 });

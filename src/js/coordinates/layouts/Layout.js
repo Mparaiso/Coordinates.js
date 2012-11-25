@@ -32,13 +32,11 @@ define(function(require) {
       /* Adds a specified number of empty nodes to the layout
       */
 
-      var n, _i, _len, _results;
-      _results = [];
+      var n, _i, _len;
       for (_i = 0, _len = nodes.length; _i < _len; _i++) {
         n = nodes[_i];
-        _results.push(this.addNode(n));
+        this.addNode(n);
       }
-      return _results;
     };
 
     Layout.prototype.toString = function() {

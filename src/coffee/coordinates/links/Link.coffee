@@ -11,8 +11,8 @@ define (require)->
             @initConfig(element:element,x:x,
             y:y,rotation:rotation,width:width,height:height,order:0)
 
-            if  element.width then @setWidth element.width
-            if  element.height  then @setHeight element.height
+            if  element.width then @setWidth(element.width)
+            if  element.height  then @setHeight(element.height)
 
         toString:->
             "[object Link]"
