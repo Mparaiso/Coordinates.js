@@ -46,7 +46,7 @@ define (require)->
     # Coordinates.createLinks()
     # Coordinates.tweenLayouts(layout1,layout2,duration)
     # Coordinates.cloneLayout(layout2)
-    # Coordinates.addLinksTolayout(links,layout)
+    # Coordinates.addLinksTolayout(links,layout)  
 
     Coordinates.createLayout = (type,options,links=null)->
         ### helper method to create layouts ###

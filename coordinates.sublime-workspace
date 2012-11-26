@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"c",
+				"callback"
+			],
+			[
+				"p",
+				"p3"
+			],
+			[
 				"l",
 				"Library  (class)"
 			],
@@ -135,6 +143,38 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/coffee/coordinates/coordinates.coffee",
+			"settings":
+			{
+				"buffer_size": 4651,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "tests/bezier.html",
+			"settings":
+			{
+				"buffer_size": 228,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "tests/bezier.coffee",
+			"settings":
+			{
+				"buffer_size": 572,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/coffee/coordinates/layouts/twodee/Quadric.coffee",
+			"settings":
+			{
+				"buffer_size": 28,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -392,6 +432,72 @@
 	},
 	"file_history":
 	[
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/SublimeCodeIntel/Base File.sublime-settings",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/Completion Rules.tmPreferences",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/Object-key-key-value.sublime-snippet",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/Prototype-(proto).sublime-snippet",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/JSON.tmLanguage",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/function-(fun).sublime-snippet",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/for-()-{}.sublime-snippet",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/for-()-{}-(faster).sublime-snippet",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/HTML/Symbol List - ID.tmPreferences",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/HTML/html.sublime-snippet",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/HTML/HTML.sublime-completions",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/Completion Rules.tmPreferences.cache",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/Symbol List Class.tmPreferences",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/Object-Value-JS.sublime-snippet",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/Symbol List Banned.tmPreferences",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/Symbol List Function.tmPreferences",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/Symbol List Sub 1.tmPreferences",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/Object-Method.sublime-snippet",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/JavaScript Indent.tmPreferences",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/JavaScript.tmLanguage",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Pristine Packages/JavaScript.sublime-package",
+		"/C/projects/categories/javascript/coordinates/bin/coordinates.js",
+		"/C/projects/categories/django/buddy/buddy/settings.py",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/twodee/Wave.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/twodee/HorizontalLine.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/constants/LayoutType.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/links/DOMLink2d.coffee",
+		"/C/projects/categories/javascript/coordinates/tests/tests.coffee",
+		"/C/projects/lib/coordy-0.9.9/src/com/somerandomdude/coordy/layouts/twodee/Flow.as",
+		"/C/projects/categories/javascript/coordinates/legacy_code/_haxe/examples/layouts2d/GridLayout.hx",
+		"/C/projects/categories/javascript/coordinates/exemples/twodee/dom.js",
+		"/C/projects/categories/javascript/coordinates/src/js/coordinates/coordinates.js",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/twodee/Flow.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/twodee/Spiral.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/twodee/Grid.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/twodee/Ellipse.coffee",
+		"/C/projects/categories/javascript/coordinates/src/js/coordinates/utils/ES5shims.js",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/constants/constants.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/proxyupdaters/InvalidationProxyUpdater.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/Layout.coffee",
+		"/C/Users/mark prades/Documents/www/Libraries/Flash/coordy-0.9.9/coordy-0.9.9/src/com/somerandomdude/coordy/proxyupdaters/InvalidationProxyUpdater.as",
+		"/C/projects/categories/javascript/coordinates/tests/tests.js",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/layouts.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/coordinates.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/links/Link.coffee",
+		"/C/projects/categories/javascript/coordinates/tests/tests.html",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/twodee/Layout2d.coffee",
+		"/C/projects/categories/javascript/coordinates/exemples/twodee/dom.htm",
+		"/C/projects/categories/javascript/coordinates/legacy_code/_haxe/com/somerandomdude/coordy/layouts/twodee/Flow.hx",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/CoffeeScript/CoffeeScript.tmLanguage",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/Color Scheme - Default/Cobalt.tmTheme",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/Color Scheme - Default/Ksenia.tmTheme",
+		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/Color Scheme - Default/Mac Classic.tmTheme",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/twodee/Lattice.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/nodes/twodee/FlowNode.coffee",
+		"/C/Users/mark prades/Documents/www/Libraries/Flash/coordy-0.9.9/coordy-0.9.9/src/com/somerandomdude/coordy/layouts/twodee/Lattice.as",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/nodes/twodee/twodee.coffee",
+		"/C/projects/categories/javascript/coordinates/exemples/twodee/script.js",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/constants/LatticeType.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/constants/LatticeOrder.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/nodes/twodee/LatticeNode.coffee",
+		"/C/Users/mark prades/Documents/www/Libraries/Flash/coordy-0.9.9/coordy-0.9.9/src/com/somerandomdude/coordy/constants/LatticeType.as",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/constants/LatticeAlternationPattern.coffee",
+		"/C/Users/mark prades/Documents/www/Libraries/Flash/coordy-0.9.9/coordy-0.9.9/src/com/somerandomdude/coordy/constants/LatticeAlternationPattern.as",
+		"/C/Users/mark prades/Documents/www/Libraries/Flash/coordy-0.9.9/coordy-0.9.9/src/com/somerandomdude/coordy/constants/LatticeOrder.as",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/nodes/Node.coffee",
 		"/c/projects/categories/django/buddy/snippets/templates/snippets/snippet_detail.html",
 		"/c/projects/categories/django/buddy/snippets/templates/snippets/snippet_tag.html",
 		"/c/projects/categories/django/buddy/snippets/views.py",
@@ -453,73 +559,7 @@
 		"/C/projects/categories/django/django-poll-tutorial/poll/templates/registration/login.html",
 		"/C/projects/categories/django/django-poll-tutorial/poll/tests.py",
 		"/c/projects/categories/typescript/hello-world/hello.ts",
-		"/c/projects/categories/typescript/hello-world/hello.js",
-		"/c/projects/categories/django/django-poll-tutorial/poll/admin.py",
-		"/c/projects/categories/django/django-poll-tutorial/poll/templates/detail.html",
-		"/c/projects/categories/django/django-poll-tutorial/poll/templates/results.html",
-		"/c/projects/categories/django/django-poll-tutorial/poll/templates/index.html",
-		"/C/projects/categories/django/django-poll-tutorial/poll/templates/results.html",
-		"/C/Python26/lib/site-packages/django/contrib/messages/api.py",
-		"/C/projects/categories/django/django-poll-tutorial/poll/templates/detail.html",
-		"/c/projects/categories/django/django-poll-tutorial/poll/models.py",
-		"/C/projects/categories/django/django-poll-tutorial/poll/templates/404.html",
-		"/C/projects/categories/django/django-poll-tutorial/poll/index.html",
-		"/c/projects/categories/django/django-poll-tutorial/poll/templates/admin/base_site.html",
-		"/c/projects/categories/django/django-poll-tutorial/poll/templates/layout.html",
-		"/C/projects/categories/django/django-poll-tutorial/poll/admin.py",
-		"/C/projects/categories/django/django-poll-tutorial/poll/models.py",
-		"/C/Python26/lib/site-packages/django/contrib/admin/sites.py",
-		"/c/projects/categories/django/django-poll-tutorial/HEROKU-FAQ.md",
-		"/c/projects/categories/django/django-poll-tutorial/requirements.txt",
-		"/c/projects/categories/django/django-poll-tutorial/.gitignore",
-		"/c/projects/categories/django/django-poll-tutorial/poll/views.py",
-		"/C/projects/categories/django/django-poll-tutorial/poll/templates/layout.html",
-		"/C/projects/categories/django/django-poll-tutorial/poll/templates/index.html",
-		"/c/projects/categories/django/aikah-flogin-python/exampleapp.py",
-		"/c/projects/categories/django/django-poll-tutorial/README.md",
-		"/c/projects/categories/django/aikah-flogin-python/static/images/sprites.png",
-		"/C/projects/categories/django/buddy/facebooktab/views.py",
-		"/C/projects/categories/django/buddy/facebooktab/settings.py",
-		"/C/Python26/lib/site-packages/django/core/serializers/__init__.py",
-		"/C/projects/categories/django/buddy/buddy/urls.py",
-		"/C/projects/categories/django/buddy/buddy/settings.py",
-		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/SublimeCodeIntel/Base File.sublime-settings",
-		"/C/Python26/Lib/json/__init__.py",
-		"/C/Python26/lib/site-packages/django/http/__init__.py",
-		"/C/projects/categories/django/buddy/snippets/models.py",
-		"/C/projects/categories/django/buddy/webservice/urls.py",
-		"/C/projects/categories/django/buddy/snippets/urls.py",
-		"/C/projects/categories/django/buddy/webservice/__init__.py",
-		"/C/Python26/Lib/distutils/ccompiler.py",
-		"/c/projects/categories/cpp/hello.cpp",
-		"/C/Users/mark prades/.kivy/logs/kivy_12-10-21_4.txt",
-		"/C/Users/mark prades/.kivy/config.ini",
-		"/c/projects/categories/kivy/hello-kivy/main.py",
-		"/C/Python26/Lib/distutils/cygwinccompiler.py",
-		"/C/projects/categories/django/buddy/facebooktab/templates/facebooktab/../snippet_list.html",
-		"/C/projects/categories/django/buddy/facebooktab/urls.py",
-		"/C/Python26/lib/site-packages/django/conf/urls/__init__.py",
-		"/C/projects/categories/django/buddy/.gitignore",
-		"/C/projects/categories/django/buddy/buddy/configuration/__init__.py",
-		"/c/projects/categories/django/buddy/.git/hooks/post-receive",
-		"/C/projects/categories/django/buddy/buddy/configuration/prod_database.py",
-		"/C/projects/categories/django/buddy/buddy/configuration/post_database.py",
-		"/C/projects/categories/django/buddy/buddy/configuration/database.py",
-		"/C/projects/categories/django/buddy/requirements.txt",
-		"/C/projects/categories/django/buddy/manage.py",
-		"/C/jar/script.js",
-		"/C/projects/categories/django/buddy/snippets/views/__init__.py",
-		"/C/projects/categories/django/buddy/facebooktap/templates/facebooktab/snippet_list.html",
-		"/C/projects/categories/django/buddy/facebooktap/urls.py",
-		"/C/projects/categories/django/buddy/facebooktap/views.py",
-		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/User/__django__urls.sublime-snippet",
-		"/C/projects/categories/django/buddy/users/urls.py",
-		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/SublimeLinter/SublimeLinter.sublime-settings",
-		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/User/SublimeLinter.sublime-settings",
-		"/C/projects/categories/django/buddy/snippets/views/snippets.py",
-		"/C/Python26/lib/site-packages/django/views/generic/detail.py",
-		"/C/projects/categories/django/buddy/buddy/fixtures/initial_data.json",
-		"/C/ParticleSDK/particle/platform/html5/runtime-dist/1.0_Any_Release_All/HTML5Runtime.js"
+		"/c/projects/categories/typescript/hello-world/hello.js"
 	],
 	"find":
 	{
@@ -541,6 +581,44 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"^\\s*",
+			";",
+			"String=",
+			"public static inline var",
+			"\\*\\/",
+			"\\/\\*.*((\\n*).*)$",
+			"overflowPolicy",
+			"ALLOW_OVERFLOW",
+			"outsideBounds",
+			"setOutsideBounds",
+			"xPositionsetOutsideBounds",
+			"xPosition",
+			"node.setX",
+			"node.x",
+			"layoutChildrenVertically",
+			"alignColumn",
+			"alignitem",
+			"alignColumn",
+			"horizontalalign",
+			"yPa",
+			"vPadi",
+			"@_width",
+			"width",
+			"variable",
+			"@",
+			"regex",
+			"regexp",
+			"key",
+			"variable",
+			"scope",
+			"this",
+			"_width",
+			"_height",
+			"_rows",
+			"setRow",
+			"setRows",
+			"setRow",
+			"setCol",
 			"tab",
 			"login",
 			"timezone",
@@ -630,50 +708,12 @@
 			"$app['user_manager']",
 			"$app['article_manager']",
 			"info",
-			"form.factory",
-			"    $",
-			"getapp",
-			"sdf",
-			"dfdfs",
-			"app",
-			"{",
-			"ip",
-			"user_ma",
-			"xdebug",
-			"print",
-			"logfile",
-			"root",
-			"$name",
-			"$myBase",
-			"/login",
-			"header",
-			"cache",
-			"database",
-			"server",
-			"config",
-			":",
-			"dll",
-			"80",
-			"virtual",
-			"directory",
-			"php",
-			"servername",
-			"alias",
-			"time",
-			"timeout",
-			"alias",
-			"options",
-			"alias",
-			"FollowSymLinks",
-			"alias",
-			"override",
-			"alias",
-			"todo"
+			"form.factory"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
 			"",
@@ -716,8 +756,467 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/coffee/coordinates/coordinates.coffee",
+					"settings":
+					{
+						"buffer_size": 4651,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2170,
+								2170
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_mark_style": "outline",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 612.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "tests/bezier.html",
+					"settings":
+					{
+						"buffer_size": 228,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								198,
+								198
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_mark_style": "outline",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/PHP-Twig/Syntaxes/HTML (Twig).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "tests/bezier.coffee",
+					"settings":
+					{
+						"buffer_size": 572,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								133,
+								133
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_mark_style": "outline",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/coffee/coordinates/layouts/twodee/Quadric.coffee",
+					"settings":
+					{
+						"buffer_size": 28,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								28,
+								28
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_mark_style": "outline",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -752,6 +1251,10 @@
 		]
 	},
 	"menu_visible": false,
+	"output.coffeecompile_output":
+	{
+		"height": 114.0
+	},
 	"output.exec":
 	{
 		"height": 141.0
@@ -774,6 +1277,98 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"wave",
+				"src/coffee/coordinates/layouts/twodee/Wave.coffee"
+			],
+			[
+				"hori",
+				"src/coffee/coordinates/layouts/twodee/HorizontalLine.coffee"
+			],
+			[
+				"grid",
+				"src/coffee/coordinates/layouts/twodee/Grid.coffee"
+			],
+			[
+				"spiral",
+				"src/coffee/coordinates/layouts/twodee/Spiral.coffee"
+			],
+			[
+				"ell",
+				"src/coffee/coordinates/layouts/twodee/Ellipse.coffee"
+			],
+			[
+				"coo",
+				"src/coffee/coordinates/coordinates.coffee"
+			],
+			[
+				"doml",
+				"src/coffee/coordinates/links/DOMLink2d.coffee"
+			],
+			[
+				"dom",
+				"exemples/twodee/dom.js"
+			],
+			[
+				"test",
+				"tests/tests.coffee"
+			],
+			[
+				"tests",
+				"tests/tests.coffee"
+			],
+			[
+				"domlin",
+				"src/coffee/coordinates/links/DOMLink2d.coffee"
+			],
+			[
+				"layout.c",
+				"src/coffee/coordinates/layouts/Layout.coffee"
+			],
+			[
+				"layout2d",
+				"src/coffee/coordinates/layouts/twodee/Layout2d.coffee"
+			],
+			[
+				"flow.",
+				"legacy_code/_haxe/com/somerandomdude/coordy/layouts/twodee/Flow.hx"
+			],
+			[
+				"flow.c",
+				"src/coffee/coordinates/layouts/twodee/Flow.coffee"
+			],
+			[
+				"coor",
+				"src/coffee/coordinates/coordinates.coffee"
+			],
+			[
+				"latt",
+				"src/coffee/coordinates/layouts/twodee/Lattice.coffee"
+			],
+			[
+				"scr",
+				"exemples/twodee/script.js"
+			],
+			[
+				"sc",
+				"exemples/twodee/script.js"
+			],
+			[
+				"tes",
+				"tests/tests.coffee"
+			],
+			[
+				"coord",
+				"src/coffee/coordinates/coordinates.coffee"
+			],
+			[
+				"la",
+				"src/coffee/coordinates/constants/LatticeAlternationPattern.coffee"
+			],
+			[
+				"const",
+				"src/coffee/coordinates/constants/constants.coffee"
+			],
 			[
 				"buddy/ur",
 				"buddy/urls.py"
@@ -833,10 +1428,6 @@
 			[
 				"snippet_de",
 				"snippets/templates/snippets/snippet_detail.html"
-			],
-			[
-				"la",
-				"buddy/templates/layout.html"
 			],
 			[
 				"sett",
@@ -1197,94 +1788,6 @@
 			[
 				"commentcon",
 				"mpmedia.alwaysdata.net-silexblog/App/Controller/CommentController.php"
-			],
-			[
-				"commentman",
-				"mpmedia.alwaysdata.net-silexblog/App/Model/Manager/CommentManager.php"
-			],
-			[
-				"",
-				"mpmedia.alwaysdata.net-silexblog/Lib/Net/Mpmedia/Akismet/Akismet.php"
-			],
-			[
-				"app/config",
-				"mpmedia.alwaysdata.net-silexblog/App/config.php"
-			],
-			[
-				"entity/article",
-				"mpmedia.alwaysdata.net-silexblog/App/Model/Entity/Article.php"
-			],
-			[
-				"option/ind",
-				"mpmedia.alwaysdata.net-silexblog/App/view/option/index.twig"
-			],
-			[
-				"entity/option",
-				"mpmedia.alwaysdata.net-silexblog/App/Model/Entity/Option.php"
-			],
-			[
-				"admin/o",
-				"mpmedia.alwaysdata.net-silexblog/App/Controller/Admin/OptionAdminController.php"
-			],
-			[
-				"user-me",
-				"mpmedia.alwaysdata.net-silexblog/App/view/user/user-menu.twig"
-			],
-			[
-				"option/index",
-				"mpmedia.alwaysdata.net-silexblog/App/view/option/index.twig"
-			],
-			[
-				"akism",
-				"mpmedia.alwaysdata.net-silexblog/trash/akismet-test.php"
-			],
-			[
-				"ihttp",
-				"mpmedia.alwaysdata.net-silexblog/Lib/Net/Mpmedia/Http/IHttpClient.php"
-			],
-			[
-				"httpc",
-				"mpmedia.alwaysdata.net-silexblog/Lib/Net/Mpmedia/Http/HttpClient.php"
-			],
-			[
-				"akismet",
-				"mpmedia.alwaysdata.net-silexblog/Lib/Net/Mpmedia/Akismet/Akismet.php"
-			],
-			[
-				"commentm",
-				"mpmedia.alwaysdata.net-silexblog/App/Model/Manager/CommentManager.php"
-			],
-			[
-				"iart",
-				"mpmedia.alwaysdata.net-silexblog/App/Model/Manager/IArticleManager.php"
-			],
-			[
-				"manager/user",
-				"mpmedia.alwaysdata.net-silexblog/App/Model/Manager/UserManager.php"
-			],
-			[
-				"manager/article",
-				"mpmedia.alwaysdata.net-silexblog/App/Model/Manager/ArticleManager.php"
-			],
-			[
-				"articlec",
-				"mpmedia.alwaysdata.net-silexblog/App/Controller/ArticleController.php"
-			],
-			[
-				"artic",
-				"mpmedia.alwaysdata.net-silexblog/App/Controller/ArticleController.php"
-			],
-			[
-				"user/profile",
-				"mpmedia.alwaysdata.net-silexblog/App/view/user/profile.twig"
-			],
-			[
-				"user/",
-				"verge/views/user/profile.twig"
-			],
-			[
-				"article",
-				"mpmedia.alwaysdata.net-silexblog/App/view/form/article.twig"
 			]
 		],
 		"width": 0.0
@@ -1299,8 +1802,8 @@
 	},
 	"show_minimap": false,
 	"show_open_files": true,
-	"show_tabs": false,
+	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 296.0,
+	"side_bar_width": 257.0,
 	"status_bar_visible": true
 }
