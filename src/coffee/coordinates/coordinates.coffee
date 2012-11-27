@@ -46,7 +46,10 @@ define (require)->
     # Coordinates.createLinks()
     # Coordinates.tweenLayouts(layout1,layout2,duration)
     # Coordinates.cloneLayout(layout2)
-    # Coordinates.addLinksTolayout(links,layout)  
+    # Coordinates.addLinksTolayout(links,layout) 
+
+    Coordinates.createDomLinks = (domElements)->
+        return new Coordinates.DOMLink2d(element) for element in domElements 
 
     Coordinates.createLayout = (type,options,links=null)->
         ### helper method to create layouts ###
