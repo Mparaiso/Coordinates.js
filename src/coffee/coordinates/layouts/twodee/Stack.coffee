@@ -42,6 +42,7 @@ define (require)->
         renderNode:(node)->
             super(node)
             node.getLink().setOrder node.getOrder()
+            node.getLink().setRotation(0)
             return
 
         update:->

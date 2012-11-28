@@ -50,6 +50,10 @@ define (require)->
             ### Get cell objects by row index ###            
             @nodes[i] for i in [(row*@_columns)...(row*@_columns+@_columns)]
 
+        renderNode:(node)->
+            super(node)
+            node.getLink().setRotation(0)
+
         update:->
             unless @nodes.length <= 0
                 total = @_columns * @_rows
@@ -61,8 +65,9 @@ define (require)->
                     if @_hDirection == GridLayoutDirection.RIGHT_TO_LEFT then c = (@_columns-1)-c
                     if @_vDirection == GridLayoutDirection.BOTTOM_TO_TOP then r = (@_rows - 1 ) -r
 
-                    node.setX = d.width*c + c*@_hPadding + @_x
-                    node.setY = d.height*r + r*@_vPadding + @_y
+                    node.setX(d.width*c + c*@_hPadding + @_x)
+                    node.setY(d.height*r + r*@_vPadding + @_y)
+                    node.setRotation(0)
             return
 
         calculateCellSize:->

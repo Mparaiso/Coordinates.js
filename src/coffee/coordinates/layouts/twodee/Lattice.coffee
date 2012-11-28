@@ -70,6 +70,11 @@ define (require)->
 
             return node
 
+        renderNode:(node)->
+            super(node)
+            node.getLink().setRotation 0
+            return
+            
         update:->
             if @size <= 0 then return
             for node,i in @nodes

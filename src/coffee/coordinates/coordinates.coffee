@@ -40,13 +40,29 @@ define (require)->
     Coordinates.LatticeType = Coordinates.constants.LatticeType
     Coordinates.LayoutType = Coordinates.constants.LayoutType
 
+    ###
+        FACADE : 
+            EN : some methods to facilitate work with layouts
+            FR : une série de méthodes pour faciliter le travail avec les layouts
+    ###
+
     ### @todo ###
 
-    # Coordinates.createDomLinks()
+    Coordinates.createDom2dLinks=(domElements)->
+        ### creates and returns a or several DOMLink2d ###
+        for element in domElements
+            new Coordinates.DOMLink2d(element)
+
     # Coordinates.createLinks()
     # Coordinates.tweenLayouts(layout1,layout2,duration)
     # Coordinates.cloneLayout(layout2)
-    # Coordinates.addLinksTolayout(links,layout) 
+
+    Coordinates.addLinksTolayout=(links,layout)->
+        ### 
+            add links to layout 
+            @return layout
+        ###
+        layout.addNodes(links)
 
     Coordinates.createDomLinks = (domElements)->
         return new Coordinates.DOMLink2d(element) for element in domElements 
@@ -68,14 +84,28 @@ define (require)->
                 when Coordinates.LayoutType.GRID
                     {width, height, x, y, columns, rows, hPadding, vPadding, hDirection, vDirection, jitterX, jitterY} = options
                     new Coordinates.Grid(width,height,x,y, columns, rows, hPadding, vPadding, hDirection, vDirection, jitterX, jitterY)
+
                 when Coordinates.LayoutType.HORIZONTAL_LINE
                     {hPadding, x, y, jitterX, jitterY} = options
                     new Coordinates.HorizontalLine(hPadding, x, y, jitterX, jitterY)
-                # when Coordinates.LayoutType.LATTICE
-                # when Coordinates.LayoutType.SCATTER
+
+                when Coordinates.LayoutType.LATTICE
+                     {width,height,x, y, columns, rows, allowOverFlow, order, hPadding, vPadding, jitterX, jitterY}=options
+                     new Coordinates.Lattice(width,height,x, y, columns, rows, allowOverFlow, order, hPadding, vPadding, jitterX, jitterY)
+
+                when Coordinates.LayoutType.SCATTER
+                    {width,height,x,y,jitter,jitterRotation} = options
+                    new Coordinates.Scatter(width,height,x,y,jitter,jitterRotation)
+
                 # when Coordinates.LayoutType.SNAPSHOT
-                # when Coordinates.LayoutType.STACK
-                # when Coordinates.LayoutType.VERTICAL_LINE
+                when Coordinates.LayoutType.STACK
+                    {angle,offset,x,y,order,jitterX,jitterY}=options
+                    new Coordinates.Stack(angle,offset,x,y,order,jitterX,jitterY)
+
+                when Coordinates.LayoutType.VERTICAL_LINE
+                    {vPadding,x,y,jitterX,jitterY} = options
+                    new Coordinates.VerticalLine(vPadding, x, y, jitterX, jitterY)
+
                 when Coordinates.LayoutType.WAVE
                     {width, height, x, y, frequency, waveFunction, jitterX, jitterY, alignType, alignOffset} = options
                     new Coordinates.Wave(width, height, x, y, frequency, waveFunction, jitterX, jitterY, alignType, alignOffset)

@@ -86,6 +86,10 @@ define (require)->
             #     for node,i in @nodes
             #         # do something
 
+        renderNode:(node)->
+            super(node)
+            node.getLink().setRotation(0)
+
         LayoutChildrenHorizontally:(bounds)->
             START_X = bounds.x 
             yPosition = bounds.y

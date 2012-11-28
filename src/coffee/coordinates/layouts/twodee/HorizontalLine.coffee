@@ -39,6 +39,10 @@ define (require)->
             @dispatchEvent(new NodeEvent(NodeEvent::ADD,node))
             return node
 
+        renderNode:(node)->
+            super(node)
+            node.getLink().setRotation(0)
+
         clone:->
             ### Clones the current object's properties  ###
             new HorizontalLine(@getHPadding(),@getX(),@getY(),@getJitterX(),@getJitterY())

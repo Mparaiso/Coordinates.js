@@ -52,6 +52,10 @@ define (require)->
             ### fonction d'aide pour le trie des noeux ###
             n1.getOrder() > n2.getOrder()  
 
+        renderNode:(node)->
+            super(node)
+            node.getLink().setRotation(0)
+
 
         
 

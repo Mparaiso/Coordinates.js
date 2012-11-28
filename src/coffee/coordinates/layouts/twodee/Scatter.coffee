@@ -38,8 +38,8 @@ define (require)->
             ### Updates the nodes' virtual coordinates. <strong>Note</strong> - this method does not update the actual objects linked to the layout. ###
             unless @nodes?.length <= 0
                 for node in @nodes
-                    node.setX @node.getXRelation()*@_width
-                    node.setY @node.getYRelation()*@_height
+                    node.setX node.getXRelation()*@_width
+                    node.setY node.getYRelation()*@_height
 
         scatter:->
             ### Re-scatters layout and adjusts cell links appropriately ###

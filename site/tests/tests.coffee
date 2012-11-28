@@ -2,7 +2,12 @@
 EN : Unit test for Coordinates.js tests
 FR : Tests unitaires
 ###
-requirejs(["./js/main"],(Main)->
+requirejs.config
+    paths:
+        "app":"js/app"
+        "coordinates":"../src/js/coordinates"
+
+requirejs(["./js/app"],(app)->
 
     module "flickr",
         setup:->
@@ -14,5 +19,5 @@ requirejs(["./js/main"],(Main)->
         teardown:->
 
     asyncTest "service/flickr",->
-        Main.Services.Flickr.search("art",@callback)
+        app.service.Flickr.search("art",@callback)
 )

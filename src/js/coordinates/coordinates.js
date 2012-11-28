@@ -42,9 +42,41 @@ define(function(require) {
   Coordinates.LatticeOrder = Coordinates.constants.LatticeOrder;
   Coordinates.LatticeType = Coordinates.constants.LatticeType;
   Coordinates.LayoutType = Coordinates.constants.LayoutType;
+  /*
+          FACADE : 
+              EN : some methods to facilitate work with layouts
+              FR : une série de méthodes pour faciliter le travail avec les layouts
+  */
+
   /* @todo
   */
 
+  Coordinates.createDom2dLinks = function(domElements) {
+    /* creates and returns a or several DOMLink2d
+    */
+
+    var element, _i, _len, _results;
+    _results = [];
+    for (_i = 0, _len = domElements.length; _i < _len; _i++) {
+      element = domElements[_i];
+      _results.push(new Coordinates.DOMLink2d(element));
+    }
+    return _results;
+  };
+  Coordinates.addLinksTolayout = function(links, layout) {
+    /* 
+        add links to layout 
+        @return layout
+    */
+    return layout.addNodes(links);
+  };
+  Coordinates.createDomLinks = function(domElements) {
+    var element, _i, _len;
+    for (_i = 0, _len = domElements.length; _i < _len; _i++) {
+      element = domElements[_i];
+      return new Coordinates.DOMLink2d(element);
+    }
+  };
   Coordinates.createLayout = function(type, options, links) {
     var layout;
     if (links == null) {
@@ -55,7 +87,7 @@ define(function(require) {
 
     type = type.capitalize();
     layout = (function() {
-      var alignAngleOffset, alignOffset, alignType, angleDelta, circumference, columns, frequency, hDirection, hPadding, height, jitterX, jitterY, rotation, rows, spiralConstant, vDirection, vPadding, waveFunction, width, x, y;
+      var alignAngleOffset, alignOffset, alignType, allowOverFlow, angle, angleDelta, circumference, columns, frequency, hDirection, hPadding, height, jitter, jitterRotation, jitterX, jitterY, offset, order, rotation, rows, spiralConstant, vDirection, vPadding, waveFunction, width, x, y;
       switch (type) {
         case Coordinates.LayoutType.ELLIPSE:
           width = options.width, height = options.height, x = options.x, y = options.y, rotation = options.rotation, jitterX = options.jitterX, jitterY = options.jitterY, alignType = options.alignType, alignAngleOffset = options.alignAngleOffset;
@@ -72,6 +104,18 @@ define(function(require) {
         case Coordinates.LayoutType.HORIZONTAL_LINE:
           hPadding = options.hPadding, x = options.x, y = options.y, jitterX = options.jitterX, jitterY = options.jitterY;
           return new Coordinates.HorizontalLine(hPadding, x, y, jitterX, jitterY);
+        case Coordinates.LayoutType.LATTICE:
+          width = options.width, height = options.height, x = options.x, y = options.y, columns = options.columns, rows = options.rows, allowOverFlow = options.allowOverFlow, order = options.order, hPadding = options.hPadding, vPadding = options.vPadding, jitterX = options.jitterX, jitterY = options.jitterY;
+          return new Coordinates.Lattice(width, height, x, y, columns, rows, allowOverFlow, order, hPadding, vPadding, jitterX, jitterY);
+        case Coordinates.LayoutType.SCATTER:
+          width = options.width, height = options.height, x = options.x, y = options.y, jitter = options.jitter, jitterRotation = options.jitterRotation;
+          return new Coordinates.Scatter(width, height, x, y, jitter, jitterRotation);
+        case Coordinates.LayoutType.STACK:
+          angle = options.angle, offset = options.offset, x = options.x, y = options.y, order = options.order, jitterX = options.jitterX, jitterY = options.jitterY;
+          return new Coordinates.Stack(angle, offset, x, y, order, jitterX, jitterY);
+        case Coordinates.LayoutType.VERTICAL_LINE:
+          vPadding = options.vPadding, x = options.x, y = options.y, jitterX = options.jitterX, jitterY = options.jitterY;
+          return new Coordinates.VerticalLine(vPadding, x, y, jitterX, jitterY);
         case Coordinates.LayoutType.WAVE:
           width = options.width, height = options.height, x = options.x, y = options.y, frequency = options.frequency, waveFunction = options.waveFunction, jitterX = options.jitterX, jitterY = options.jitterY, alignType = options.alignType, alignOffset = options.alignOffset;
           return new Coordinates.Wave(width, height, x, y, frequency, waveFunction, jitterX, jitterY, alignType, alignOffset);
