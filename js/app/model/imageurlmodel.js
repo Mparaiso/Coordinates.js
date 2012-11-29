@@ -4,7 +4,6 @@ var __hasProp = {}.hasOwnProperty,
 
 define(function(require) {
   var Flickr, ImageUrlModel;
-  require("vendor/backbone-min");
   Flickr = require("app/service/Flickr");
   return ImageUrlModel = (function(_super) {
 

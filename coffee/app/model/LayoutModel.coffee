@@ -1,6 +1,5 @@
 define (require)->
     
-    require "vendor/backbone-min"
     
     class LayoutModel extends Backbone.Model
         defaults:

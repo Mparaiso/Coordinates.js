@@ -4,7 +4,6 @@ var __hasProp = {}.hasOwnProperty,
 
 define(function(require) {
   var ImageModel;
-  require("vendor/backbone-min");
   return ImageModel = (function(_super) {
 
     __extends(ImageModel, _super);

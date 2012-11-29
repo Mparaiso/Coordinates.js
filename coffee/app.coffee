@@ -1,7 +1,4 @@
 define (require)->
-    require "vendor/jquery.min.js"
-    require "vendor/underscore-min.js"
-    require "vendor/backbone-min.js"
     Main = 
         service:
             Flickr: require "app/service/Flickr"

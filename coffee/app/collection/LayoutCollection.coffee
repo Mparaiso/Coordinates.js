@@ -1,8 +1,7 @@
 define (require)->
 
-    require "vendor/backbone-min"
-    ES5shims = require "coordinates/utils/ES5shims"
     LayoutModel = require "app/model/LayoutModel"
+    Coordinates = require "coordinates/coordinates"
     Coordinates = require "coordinates/coordinates"
 
     class LayoutCollection extends Backbone.Collection

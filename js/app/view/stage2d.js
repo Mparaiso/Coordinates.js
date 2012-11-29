@@ -4,7 +4,6 @@ var __hasProp = {}.hasOwnProperty,
 
 define(function(require) {
   var ImageView, Stage2d;
-  require("vendor/backbone-min");
   ImageView = require("app/view/ImageView");
   return Stage2d = (function(_super) {
 
