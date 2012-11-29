@@ -2,6 +2,7 @@ define (require)->
 
     EventDispatcher = require("../events/helpers/EventDispatcher")
     NodeEvent = require("../events/NodeEvent")
+    LayoutUpdateMethod = require "../constants/LayoutUpdateMethod"
 
     class Layout extends EventDispatcher
 
@@ -20,7 +21,8 @@ define (require)->
         
         addNodes:(nodes)->
             ### Adds a specified number of empty nodes to the layout ###
-            @addNode(n) for n in nodes
+
+            @addNode(n,if @_updateMethod == LayoutUpdateMethod.UPDATE_AND_RENDER then true else false ) for n in nodes
             return
 
         toString:->

@@ -3,9 +3,10 @@ var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 define(function(require) {
-  var EventDispatcher, Layout, NodeEvent;
+  var EventDispatcher, Layout, LayoutUpdateMethod, NodeEvent;
   EventDispatcher = require("../events/helpers/EventDispatcher");
   NodeEvent = require("../events/NodeEvent");
+  LayoutUpdateMethod = require("../constants/LayoutUpdateMethod");
   return Layout = (function(_super) {
 
     __extends(Layout, _super);
@@ -35,7 +36,7 @@ define(function(require) {
       var n, _i, _len;
       for (_i = 0, _len = nodes.length; _i < _len; _i++) {
         n = nodes[_i];
-        this.addNode(n);
+        this.addNode(n, this._updateMethod === LayoutUpdateMethod.UPDATE_AND_RENDER ? true : false);
       }
     };
 

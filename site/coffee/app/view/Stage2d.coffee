@@ -5,6 +5,7 @@ define (require)->
     
     class Stage2d extends Backbone.View
 
+        ADDED_TO_STAGE:"added_to_stage"
 
         initialize:(params)->
 
@@ -20,13 +21,16 @@ define (require)->
 
         imageUrlCollectionReset:->
             ### creer les images destinées à être affichées ###
-            console.log "form",this,"imageUrlCollectionReset"
             @setImageViews  @collection.map (imageUrl)->
-                new ImageView(el:$("<img>",{"class":"thb","src":imageUrl.getUrl(),"style":"width:50px;height:50px"}),model:imageUrl)
+                imageView = new ImageView(el:$("<img>",{"class":"thb"}),model:imageUrl)
+                imageView.load(imageView.model.get("url"))
+                return imageView
+
 
         render:->
             ### pour chaque ImageView , ajouter le html de l'image view au html du Stage2d ###
             @$el.append(_.pluck(@getImageViews(),"$el"))
+            this.trigger(Stage2d::ADDED_TO_STAGE)
             return this
 
 

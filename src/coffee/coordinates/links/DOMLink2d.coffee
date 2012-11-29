@@ -31,15 +31,17 @@ define (require)->
 
         getHeight:->
             ### obtenir la hauteur ###
-            r = @getElement().style.height.match(/(\d+)(px)/) || throw "Error getting height at #{this}"
-            r[2] == "px" || throw "height must be expressed in px"
-            return parseInt(r[1],10)
+            # r = @getElement().style.height.match(/(\d+)(px)/) || throw "Error getting height at #{this}"
+            # r[2] == "px" || throw "height must be expressed in px"
+            # return parseInt(r[1],10)
+            @getElement().offsetHeight
 
         getWidth:->
             ### obtenir la longueur ###
-            r = @getElement().style.width.match(/(\d+)(px)/) || throw "Error getting width at #{this}"
-            r[2] == "px" || throw "width must be expressed in px"
-            return parseInt(r[1],10)
+            # r = @getElement().style.width.match(/(\d+)(px)/) || throw "Error getting width at #{this}"
+            # r[2] == "px" || throw "width must be expressed in px"
+            # return parseInt(r[1],10)
+            @getElement().offsetWidth
 
         applyTransform:->
             unless @_element == undefined || @_element == null

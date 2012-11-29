@@ -16,7 +16,7 @@ define (require)->
             return
 
         url:->
-            Flickr.getFlickApiUrl(text:"art",quantity:30)
+            Flickr.getFlickApiUrl(key:"design",quantity:30)
 
         parse:(raw)->
             return raw.photos.photo

@@ -12,3 +12,4 @@ define (require)->
         Scatter:require "./twodee/Scatter"
         Flow: require "./twodee/Flow"
         Lattice: require "./twodee/Lattice"
+        Quadric: require './twodee/Quadric'

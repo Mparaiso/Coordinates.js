@@ -14,7 +14,8 @@ define(function(require) {
       Grid: require("./twodee/Grid"),
       Scatter: require("./twodee/Scatter"),
       Flow: require("./twodee/Flow"),
-      Lattice: require("./twodee/Lattice")
+      Lattice: require("./twodee/Lattice"),
+      Quadric: require('./twodee/Quadric')
     }
   };
 });

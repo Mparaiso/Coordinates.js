@@ -27,7 +27,6 @@ define (require)->
         onCurrentLayoutChange:(layout)->
             ### set active if not active ###
             selector = "li[data-type|=\"#{layout}\"]"
-            console.log "onCurrentLayoutChange",selector
             $("li",@$el).removeClass("active")
             @$el.find(selector).addClass("active")
 

@@ -18,3 +18,4 @@ define
     STACK:'Stack'
     VERTICAL_LINE:'VerticalLine'
     WAVE:'Wave'
+    QUADRIC:"Quadric"

@@ -28,6 +28,7 @@ define (require)->
     Coordinates.Grid = Coordinates.layouts.twodee.Grid
     Coordinates.Scatter = Coordinates.layouts.twodee.Scatter
     Coordinates.Lattice = Coordinates.layouts.twodee.Lattice
+    Coordinates.Quadric = Coordinates.layouts.twodee.Quadric
 
     Coordinates.LayoutTransitioner = Coordinates.utils.LayoutTransitioner
     Coordinates.LayoutUpdateMethod = Coordinates.constants.LayoutUpdateMethod
@@ -67,20 +68,26 @@ define (require)->
     Coordinates.createDomLinks = (domElements)->
         return new Coordinates.DOMLink2d(element) for element in domElements 
 
-    Coordinates.createLayout = (type,options,links=null)->
-        ### helper method to create layouts ###
+    Coordinates.createLayout = (type,options,links)->
+        ###
+            helper method to create layouts
+            @param root HTMLElement the root element from which the children elements will be associated with the layout
+        ###
         type = type.capitalize()
         layout = do ->
             switch type
                 when Coordinates.LayoutType.ELLIPSE
                     {width,height,x,y,rotation,jitterX,jitterY,alignType,alignAngleOffset}=options
                     new Coordinates.Ellipse(width,height,x,y,rotation,jitterX,jitterY)
+
                 when Coordinates.LayoutType.SPIRAL
                     {circumference, x, y, spiralConstant, angleDelta, rotation, jitterX, jitterY, alignType, alignOffset} = options
                     new Coordinates.Spiral(circumference, x, y, spiralConstant, angleDelta, rotation, jitterX, jitterY, alignType, alignOffset)
+
                 when Coordinates.LayoutType.FLOW
                     {width, height, x, y, hPadding, vPadding} = options
                     new Coordinates.Flow(width, height, x, y, hPadding, vPadding)
+
                 when Coordinates.LayoutType.GRID
                     {width, height, x, y, columns, rows, hPadding, vPadding, hDirection, vDirection, jitterX, jitterY} = options
                     new Coordinates.Grid(width,height,x,y, columns, rows, hPadding, vPadding, hDirection, vDirection, jitterX, jitterY)
@@ -97,7 +104,10 @@ define (require)->
                     {width,height,x,y,jitter,jitterRotation} = options
                     new Coordinates.Scatter(width,height,x,y,jitter,jitterRotation)
 
-                # when Coordinates.LayoutType.SNAPSHOT
+                when Coordinates.LayoutType.QUADRIC
+                    {x,y,x1,y1,x2,y2,x3,y3,x4,y4,jitterX,jitterY} = options
+                    new Coordinates.Quadric(x,y,x1,y1,x2,y2,x3,y3,x4,y4,jitterX,jitterY)
+                    
                 when Coordinates.LayoutType.STACK
                     {angle,offset,x,y,order,jitterX,jitterY}=options
                     new Coordinates.Stack(angle,offset,x,y,order,jitterX,jitterY)
@@ -109,19 +119,23 @@ define (require)->
                 when Coordinates.LayoutType.WAVE
                     {width, height, x, y, frequency, waveFunction, jitterX, jitterY, alignType, alignOffset} = options
                     new Coordinates.Wave(width, height, x, y, frequency, waveFunction, jitterX, jitterY, alignType, alignOffset)
+
         ### if links , then add nodes ###
         if links then layout.addNodes(links)
         ### return layout ###
         return layout
 
-
+    Coordinates.createDomLayout = (type,options,root,autoUpdate=false)->
+        ###
+            helper method to create layouts , and create dom links from a root element
+            @param type layout type
+            @param options layout parameters
+            @param root HTMLElement the root element from which the children elements will be associated with the layout
+            @param autoUpdate autoupdate layout when a HTMLElement is added or removed from the root element
+        ###
+        layout = Coordinates.createLayout(type,options)
 
                 
-                    
 
-                
-            
-        
-
-    
+    ### export coordinates ###
     return Coordinates

@@ -32,6 +32,7 @@ define(function(require) {
   Coordinates.Grid = Coordinates.layouts.twodee.Grid;
   Coordinates.Scatter = Coordinates.layouts.twodee.Scatter;
   Coordinates.Lattice = Coordinates.layouts.twodee.Lattice;
+  Coordinates.Quadric = Coordinates.layouts.twodee.Quadric;
   Coordinates.LayoutTransitioner = Coordinates.utils.LayoutTransitioner;
   Coordinates.LayoutUpdateMethod = Coordinates.constants.LayoutUpdateMethod;
   Coordinates.FlowOverflowPolicy = Coordinates.constants.FlowOverflowPolicy;
@@ -78,16 +79,15 @@ define(function(require) {
     }
   };
   Coordinates.createLayout = function(type, options, links) {
-    var layout;
-    if (links == null) {
-      links = null;
-    }
-    /* helper method to create layouts
+    /*
+                helper method to create layouts
+                @param root HTMLElement the root element from which the children elements will be associated with the layout
     */
 
+    var layout;
     type = type.capitalize();
     layout = (function() {
-      var alignAngleOffset, alignOffset, alignType, allowOverFlow, angle, angleDelta, circumference, columns, frequency, hDirection, hPadding, height, jitter, jitterRotation, jitterX, jitterY, offset, order, rotation, rows, spiralConstant, vDirection, vPadding, waveFunction, width, x, y;
+      var alignAngleOffset, alignOffset, alignType, allowOverFlow, angle, angleDelta, circumference, columns, frequency, hDirection, hPadding, height, jitter, jitterRotation, jitterX, jitterY, offset, order, rotation, rows, spiralConstant, vDirection, vPadding, waveFunction, width, x, x1, x2, x3, x4, y, y1, y2, y3, y4;
       switch (type) {
         case Coordinates.LayoutType.ELLIPSE:
           width = options.width, height = options.height, x = options.x, y = options.y, rotation = options.rotation, jitterX = options.jitterX, jitterY = options.jitterY, alignType = options.alignType, alignAngleOffset = options.alignAngleOffset;
@@ -110,6 +110,9 @@ define(function(require) {
         case Coordinates.LayoutType.SCATTER:
           width = options.width, height = options.height, x = options.x, y = options.y, jitter = options.jitter, jitterRotation = options.jitterRotation;
           return new Coordinates.Scatter(width, height, x, y, jitter, jitterRotation);
+        case Coordinates.LayoutType.QUADRIC:
+          x = options.x, y = options.y, x1 = options.x1, y1 = options.y1, x2 = options.x2, y2 = options.y2, x3 = options.x3, y3 = options.y3, x4 = options.x4, y4 = options.y4, jitterX = options.jitterX, jitterY = options.jitterY;
+          return new Coordinates.Quadric(x, y, x1, y1, x2, y2, x3, y3, x4, y4, jitterX, jitterY);
         case Coordinates.LayoutType.STACK:
           angle = options.angle, offset = options.offset, x = options.x, y = options.y, order = options.order, jitterX = options.jitterX, jitterY = options.jitterY;
           return new Coordinates.Stack(angle, offset, x, y, order, jitterX, jitterY);
@@ -132,5 +135,23 @@ define(function(require) {
 
     return layout;
   };
+  Coordinates.createDomLayout = function(type, options, root, autoUpdate) {
+    var layout;
+    if (autoUpdate == null) {
+      autoUpdate = false;
+    }
+    /*
+                helper method to create layouts , and create dom links from a root element
+                @param type layout type
+                @param options layout parameters
+                @param root HTMLElement the root element from which the children elements will be associated with the layout
+                @param autoUpdate autoupdate layout when a HTMLElement is added or removed from the root element
+    */
+
+    return layout = Coordinates.createLayout(type, options);
+  };
+  /* export coordinates
+  */
+
   return Coordinates;
 });

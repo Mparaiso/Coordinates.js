@@ -5,79 +5,124 @@
     <title>Coordinates.js</title>
     <meta name="author" content="mparaiso">
     <meta name="keywords" content="html5,draw,canvas">
-    <meta name="description" content="A javascript library to layout objects">
+    <meta name="description" content="A javascript library to layout objects on the screen.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap-responsive.min.css">
 </head>
 <body>
-    <div class="row">
-        <div class="navbar navbar-inverse">
-            <div class="navbar-inner">
-                <div class="brand">Coordinates.js</div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <div class="span12">
+                    <a href='#' class="brand">Coordinates.js</a>
+                    <ul class="nav pull-right">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="#showcase">Demonstration</a></li>
+                        <li><a href="#gettingstarted">Getting Started</a></li>
+                        <li><a href="#documentation">Documentation</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="hero-unit">
-                <h1>Coordinates.js <small>beta 0.1</small> </h1>
-                <h2>A layout library for javascript.</h2>
-                <h5>Author: M.Paraiso</h5>
-                <h6>compatible browsers : IE9+ , CHROME , FF , OPERA , SAFARI </h6>
+            <div class="span12">
+                <div class="hero-unit">
+                    <h1>Coordinates.js <small>beta 0.1</small> </h1>
+                    <h2>A layout library for javascript.</h2>
+                    <h5>Author: M.Paraiso</h5>
+                    <h6>compatible browsers : IE9+ , CHROME , FF , OPERA , SAFARI </h6>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="span12">
+                <a name="download"></a>
+                <h3>Download</h3>
+                <a href="" class="btn btn-large btn-inverse">Coordinates.js</a>
+                <a href="" class="btn btn-large btn-primary">Coordinates.min.js</a>
+                <a href="" class="btn btn-large btn-info">Source code (zip)</a>
+                <hr>
             </div>
         </div>
         <div class="row">
-            <h3>Demo</h3>
+            <div class="span12">
+                <a name="showcase"></a>
+                <h3>Demonstration</h3>
+                <table class='table'>
+                    <thead>
+                        <tr>
+                            <th>2D Layouts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-            <table class='table'>
-                <thead>
-                    <tr>
-                        <th>2D Layouts</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>Layouts</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <ul id="menu-layout2d" class='nav nav-pills' >
+                        <tr>
+                            <td>
+                                <ul id="menu-layout2d" class='nav nav-pills' style="margin-bottom: 0px;" >
 
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class='stage' id="stage-layout2d">
-                                
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                                </ul>
+                            </td>
+                        </tr>
+                 <!--        <tr>
+                            <th id="layout2d-description">Layout description</th>
+                        </tr> -->
+                        <tr>
+                            <td>
+                                <div class='stage' id="stage-layout2d">
+                                    <noscript>
+                                        <div class="alert alert-error">
+                                            <h1>JAVASCRIPT is required to view demos@, please enable javascript.</h1>
+                                        </div>
+                                    </noscript>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-    <script data-main="js/main" type="text/javascript" src="vendor/require.min.js"></script>
-    <style type="text/css">
+        <div class="row">
+            <div class="span12"><a  name="gettingstarted"></a>
+                <h3>Getting Started</h3>
+                Coming soon...</div>
+            </div>
+            <div class="row">
+                <div class="span12">
+                    <a name="documentation"></a>
+                    <h3>Documentation</h3>
+                    Coming soon...</div>
+                </div>
+            </div>
+            <script data-main="js/main" type="text/javascript" src="vendor/require.min.js"></script>
+            <style type="text/css">
+            body,html{
+                width:100%;
+            }
 
-    .stage{
-        background: #000;
-        width:100%;
-        height:600px;
-        position: relative;
-        overflow: hidden;
-    }
-    .thb{
-        position: absolute;
-        border:1px solid #FFF;
-        padding:4px;
-        border-radius: 2px 2px;
-        width:50px;
-        height:50px;
-        background: #111;
-        transition:all 1s ease-in-out;
-        -moz-transition: all 1s ease-in-out; /* Firefox 4 */
-        -webkit-transition: all 1s ease-in-out; /* Safari and Chrome */
-        -o-transition: all 1s ease-in-out;  /* Opera *
+            .stage{
+                background: #000;
+                width:100%;
+                height:600px;
+                position: relative;
+                overflow: hidden;
+            }
+            .thb{
+                position: absolute;
+                border:1px solid #FFF;
+                padding:4px;
+                border-radius: 2px 2px;
+                width:50px;
+                height:50px;
+                background: url(img/ajax-loader-large.gif) 4px 4px no-repeat;
+                transition:all 0.5s ease-in-out;
+                -moz-transition: all 0.5s ease-in-out; /* Firefox 4 */
+                -webkit-transition: all 0.5s ease-in-out; /* Safari and Chrome */
+        -o-transition: all 0.5s ease-in-out;  /* Opera *
     }
     </style>
 </body>

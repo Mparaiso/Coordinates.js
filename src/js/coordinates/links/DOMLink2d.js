@@ -48,29 +48,13 @@ define(function(require) {
     DOMLink2d.prototype.getHeight = function() {
       /* obtenir la hauteur
       */
-
-      var r;
-      r = this.getElement().style.height.match(/(\d+)(px)/) || (function() {
-        throw "Error getting height at " + this;
-      }).call(this);
-      r[2] === "px" || (function() {
-        throw "height must be expressed in px";
-      })();
-      return parseInt(r[1], 10);
+      return this.getElement().offsetHeight;
     };
 
     DOMLink2d.prototype.getWidth = function() {
       /* obtenir la longueur
       */
-
-      var r;
-      r = this.getElement().style.width.match(/(\d+)(px)/) || (function() {
-        throw "Error getting width at " + this;
-      }).call(this);
-      r[2] === "px" || (function() {
-        throw "width must be expressed in px";
-      })();
-      return parseInt(r[1], 10);
+      return this.getElement().offsetWidth;
     };
 
     DOMLink2d.prototype.applyTransform = function() {
