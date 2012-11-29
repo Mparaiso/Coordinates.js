@@ -4,10 +4,13 @@ requirejs.config
         "coordinates":"../../src/js/coordinates"
 
 ### application principale ###
-requirejs ["app","coordinates/coordinates"],(app,coordinates)->
+requirejs ["app","coordinates/coordinates","vendor/jquery.min","vendor/underscore-min","vendor/backbone-min"],(app,coordinates)->
 
 
     window.Coordinates = coordinates
+    window.app = app
+    STAGE_HEIGHT = 600
+    STAGE_WIDTH = 0
 
     ### données de chaque layout , ainsi qu'une instance du layout ###
     window.layout2dCollection = new app.collection.LayoutCollection([
@@ -19,7 +22,7 @@ requirejs ["app","coordinates/coordinates"],(app,coordinates)->
                 {type:"Quadric",options:{x:100,y:100,x1:0,y1:0,x2:600,y2:800,x3:600,y3:-400,x4:0,y4:400}}
                 {type:"HorizontalLine",options:{hPadding:10,y:300}}
                 {type:"Grid",options:{width:500,height:500,columns:5,rows:6,x:200,y:50}},
-                {type:"Ellipse",options:{width:450,height:450,x:450,y:300}},
+                {type:"Ellipse",options:{width:450,height:450,x:450,y:275}},
                 {type:"Wave",options:{width:800,height:300,x:50,y:300,frequency:2}},
                 {type:"Scatter",options:{width:500,height:500,x:150,y:50}}
     ])
@@ -36,8 +39,10 @@ requirejs ["app","coordinates/coordinates"],(app,coordinates)->
     ### zone de rendu des layouts 2d sur l'écran ###
     stage2d = new app.view.Stage2d(el:"#stage-layout2d",collection:imageUrlCollection)
 
+    timerView= new app.view.TimerView(model:new app.model.TimerModel())
+
     ### router principal gére l'interaction entre les différentes parties de l'application ###
-    window.mainRouter = new app.router.MainRouter(imageUrlCollection:imageUrlCollection,stage2d:stage2d,appConfig:appConfig,layout2dCollection:layout2dCollection,MenuStage2d:menuStage2d)
+    window.mainRouter = new app.router.MainRouter(timerView:timerView,imageUrlCollection:imageUrlCollection,stage2d:stage2d,appConfig:appConfig,layout2dCollection:layout2dCollection,MenuStage2d:menuStage2d)
 
     Backbone.history.start()
 

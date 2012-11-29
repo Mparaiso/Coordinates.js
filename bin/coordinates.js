@@ -1,13 +1,14 @@
-
 /**
- * almond 0.2.0 Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
- * Available via the MIT or new BSD license.
- * see: http://github.com/jrburke/almond for details
- */
-//Going sloppy to avoid 'use strict' string cost, but strict practices should
-//be followed.
-/*jslint sloppy: true */
-/*global setTimeout: false */
+
+Coordinates.js 
+
+@author M.Paraiso
+@email mparaiso@online.fr
+@copyrights 2012 M.Paraiso
+
+@link http://mparaiso.github.com/Coordinates.js/
+
+**/
 
 var requirejs, require, define;
 (function (undef) {

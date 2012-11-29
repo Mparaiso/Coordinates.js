@@ -1,3 +1,4 @@
+# app/view/MenuStage2d
 define (require)->
 
     require "vendor/backbone-min"
@@ -11,6 +12,7 @@ define (require)->
         template : _.template(MenuTemplate)
 
         LAYOUT_CHANGE:"layoutChange"
+        MENU_CLICK:"menuClick"
 
         initialize:(options)->
             @collection.on("change",@render,this)
@@ -22,7 +24,7 @@ define (require)->
 
         clickMenu:(e)->
             type = $(e.currentTarget).attr("data-type")
-            @trigger("click",type:type)
+            @trigger(MenuStage2d::MENU_CLICK,type:type)
 
         onCurrentLayoutChange:(layout)->
             ### set active if not active ###
