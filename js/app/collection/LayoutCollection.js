@@ -16,6 +16,11 @@ define(function(require) {
       return LayoutCollection.__super__.constructor.apply(this, arguments);
     }
 
+    /*
+                FR : collection de LayoutModels
+    */
+
+
     LayoutCollection.prototype.model = LayoutModel;
 
     LayoutCollection.prototype.initialize = function(models) {
@@ -28,6 +33,26 @@ define(function(require) {
         model.instance = Coordinates.createLayout(model.type.toString(), model.options);
         model.instance.setUpdateMethod(Coordinates.LayoutUpdateMethod.UPDATE_ONLY);
       }
+    };
+
+    LayoutCollection.prototype.getNextLayout = function(layoutModel) {
+      /*
+                      FR : retourne le prochain layout ou bien le premier si layoutModel est indéfini
+      */
+
+      var currentLayoutIndex;
+      currentLayoutIndex = this.indexOf(layoutModel);
+      return this.at(currentLayoutIndex + 1) || this.first();
+    };
+
+    LayoutCollection.prototype.getPreviousLayout = function(layoutModel) {
+      /*
+                      FR : retourn le layout précédent
+      */
+
+      var currentLayoutIndex;
+      currentLayoutIndex = this.indexOf(layoutModel);
+      return this.at(currentLayoutIndex - 1) || this.last();
     };
 
     return LayoutCollection;

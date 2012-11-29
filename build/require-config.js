@@ -7,7 +7,7 @@ r.js -o require-config.js
     out:"main.js",
     baseUrl:"../js",
     paths:{
-        "coordinates":"../../src/js/coordinates"
-    },
-    include:["../vendor/jquery.min","../vendor/underscore-min",'../vendor/backbone-min']
+        "coordinates":"../../src/js/coordinates",
+        "vendor":"../vendor"
+    }
 })

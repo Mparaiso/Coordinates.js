@@ -4,7 +4,6 @@ var __hasProp = {}.hasOwnProperty,
 
 define(function(require) {
   var ImageView;
-  require("vendor/jquery.min");
   require("vendor/backbone-min");
   return ImageView = (function(_super) {
 

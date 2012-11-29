@@ -23,6 +23,8 @@ define(function(require) {
 
     MenuStage2d.prototype.LAYOUT_CHANGE = "layoutChange";
 
+    MenuStage2d.prototype.MENU_CLICK = "menuClick";
+
     MenuStage2d.prototype.initialize = function(options) {
       this.collection.on("change", this.render, this);
       this.on(MenuStage2d.prototype.LAYOUT_CHANGE, this.onCurrentLayoutChange, this);
@@ -36,7 +38,7 @@ define(function(require) {
     MenuStage2d.prototype.clickMenu = function(e) {
       var type;
       type = $(e.currentTarget).attr("data-type");
-      return this.trigger("click", {
+      return this.trigger(MenuStage2d.prototype.MENU_CLICK, {
         type: type
       });
     };

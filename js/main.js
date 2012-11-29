@@ -11,9 +11,12 @@ requirejs.config({
 */
 
 
-requirejs(["app", "coordinates/coordinates"], function(app, coordinates) {
-  var stage2d;
+requirejs(["app", "coordinates/coordinates", "vendor/jquery.min", "vendor/underscore-min", "vendor/backbone-min"], function(app, coordinates) {
+  var STAGE_HEIGHT, STAGE_WIDTH, stage2d, timerView;
   window.Coordinates = coordinates;
+  window.app = app;
+  STAGE_HEIGHT = 600;
+  STAGE_WIDTH = 0;
   /* données de chaque layout , ainsi qu'une instance du layout
   */
 
@@ -95,7 +98,7 @@ requirejs(["app", "coordinates/coordinates"], function(app, coordinates) {
         width: 450,
         height: 450,
         x: 450,
-        y: 300
+        y: 275
       }
     }, {
       type: "Wave",
@@ -140,10 +143,14 @@ requirejs(["app", "coordinates/coordinates"], function(app, coordinates) {
     el: "#stage-layout2d",
     collection: imageUrlCollection
   });
+  timerView = new app.view.TimerView({
+    model: new app.model.TimerModel()
+  });
   /* router principal gére l'interaction entre les différentes parties de l'application
   */
 
   window.mainRouter = new app.router.MainRouter({
+    timerView: timerView,
     imageUrlCollection: imageUrlCollection,
     stage2d: stage2d,
     appConfig: appConfig,

@@ -7,13 +7,14 @@ define(function(require) {
           app/route/MainRouter
   */
 
-  var Coordinates, ImageView, MainRouter, MenuStage2d, Stage2d;
+  var Coordinates, ImageView, MainRouter, MenuStage2d, Stage2d, TimerView;
   require("vendor/underscore-min");
   require("vendor/backbone-min");
   ImageView = require("app/view/ImageView");
   Coordinates = require("coordinates/coordinates");
   Stage2d = require("app/view/Stage2d");
   MenuStage2d = require("app/view/MenuStage2d");
+  TimerView = require("app/view/TimerView");
   return MainRouter = (function(_super) {
 
     __extends(MainRouter, _super);
@@ -33,13 +34,16 @@ define(function(require) {
     MainRouter.prototype.initialize = function(config) {
       /* obtenir les params
       */
-      this.imageUrlCollection = config.imageUrlCollection, this.stage2d = config.stage2d, this.appConfig = config.appConfig, this.layout2dCollection = config.layout2dCollection, this.MenuStage2d = config.MenuStage2d;
+      this.timerView = config.timerView, this.imageUrlCollection = config.imageUrlCollection, this.stage2d = config.stage2d, this.appConfig = config.appConfig, this.layout2dCollection = config.layout2dCollection, this.MenuStage2d = config.MenuStage2d;
       /* ecouter l'évenement reset de @imageUrlCollection
       */
 
       this.appConfig.on("change:currentLayout", this.currentLayoutChange, this);
+      this.MenuStage2d.on(MenuStage2d.prototype.MENU_CLICK, this.stopTimer, this);
+      this.timerView.on(TimerView.prototype.TIMER_EVENT, this.timerEvent, this);
       this.stage2d.on(Stage2d.prototype.ADDED_TO_STAGE, this.imageUrlCollectionReset, this);
-      return this.imageUrlCollection.fetch();
+      this.imageUrlCollection.fetch();
+      return this.timerView.start();
     };
 
     MainRouter.prototype.imageUrlCollectionReset = function() {
@@ -71,11 +75,22 @@ define(function(require) {
       var _ref;
       this.appConfig.set("currentLayout", layout);
       document.title = "" + layout + " - Coordinates";
-      this._currentlayout = (_ref = this.layout2dCollection.where({
+      this._currentLayoutModel = (_ref = this.layout2dCollection.where({
         type: layout
-      })) != null ? _ref[0].get("instance") : void 0;
+      })) != null ? _ref[0] : void 0;
+      this._currentlayout = this._currentLayoutModel.get("instance");
       this._currentlayout.updateAndRender();
       this.MenuStage2d.trigger(MenuStage2d.prototype.LAYOUT_CHANGE, this.appConfig.get("currentLayout"));
+    };
+
+    MainRouter.prototype.stopTimer = function() {
+      return this.timerView.stop();
+    };
+
+    MainRouter.prototype.timerEvent = function() {
+      if (this._currentLayoutModel) {
+        return this.setCurrentLayout(this.layout2dCollection.getNextLayout(this._currentLayoutModel).get("type"));
+      }
     };
 
     return MainRouter;
