@@ -1,7 +1,13 @@
-define (require)->
+requirejs.config
+    paths:
+        "vendor":"../vendor"
+        "coordinates":"../../src/js/coordinates"
 
-    app = require("app")
+### application principale ###
+requirejs ["app","coordinates/coordinates"],(app,coordinates)->
 
+
+    window.Coordinates = coordinates
 
     ### données de chaque layout , ainsi qu'une instance du layout ###
     window.layout2dCollection = new app.collection.LayoutCollection([

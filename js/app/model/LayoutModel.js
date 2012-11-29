@@ -4,6 +4,7 @@ var __hasProp = {}.hasOwnProperty,
 
 define(function(require) {
   var LayoutModel;
+  require("vendor/backbone-min");
   return LayoutModel = (function(_super) {
 
     __extends(LayoutModel, _super);

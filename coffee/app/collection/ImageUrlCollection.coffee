@@ -1,5 +1,6 @@
 define (require)->
     
+    require "vendor/backbone-min"
     Flickr = require "app/service/Flickr"
     ImageUrlModel = require "app/model/ImageUrlModel"
 

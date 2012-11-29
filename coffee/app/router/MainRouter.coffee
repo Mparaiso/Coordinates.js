@@ -2,6 +2,8 @@ define (require)->
     ###
         app/route/MainRouter
     ###
+    require "vendor/underscore-min"
+    require "vendor/backbone-min"
     ImageView = require "app/view/ImageView"
     Coordinates = require "coordinates/coordinates"
     Stage2d = require "app/view/Stage2d"

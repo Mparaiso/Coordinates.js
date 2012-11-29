@@ -1,5 +1,6 @@
 define (require)->
 
+    require "vendor/backbone-min"
     Flickr = require "app/service/Flickr"
 
     class ImageUrlModel extends Backbone.Model

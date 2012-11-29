@@ -3,9 +3,10 @@ var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 define(function(require) {
-  var Coordinates, LayoutCollection, LayoutModel;
+  var Coordinates, ES5shims, LayoutCollection, LayoutModel;
+  require("vendor/backbone-min");
+  ES5shims = require("coordinates/utils/ES5shims");
   LayoutModel = require("app/model/LayoutModel");
-  Coordinates = require("coordinates/coordinates");
   Coordinates = require("coordinates/coordinates");
   return LayoutCollection = (function(_super) {
 

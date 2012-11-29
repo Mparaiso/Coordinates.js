@@ -1,5 +1,6 @@
 define (require)->
     
+    require "vendor/backbone-min"
     ImageView = require "app/view/ImageView"
     
     class Stage2d extends Backbone.View

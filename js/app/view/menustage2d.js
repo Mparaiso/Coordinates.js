@@ -4,6 +4,7 @@ var __hasProp = {}.hasOwnProperty,
 
 define(function(require) {
   var MenuStage2d, MenuTemplate;
+  require("vendor/backbone-min");
   MenuTemplate = require("app/template/MenuTemplate");
   return MenuStage2d = (function(_super) {
 

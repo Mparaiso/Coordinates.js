@@ -8,6 +8,8 @@ define(function(require) {
   */
 
   var Coordinates, ImageView, MainRouter, MenuStage2d, Stage2d;
+  require("vendor/underscore-min");
+  require("vendor/backbone-min");
   ImageView = require("app/view/ImageView");
   Coordinates = require("coordinates/coordinates");
   Stage2d = require("app/view/Stage2d");

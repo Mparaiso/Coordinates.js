@@ -1,5 +1,6 @@
 define (require)->
 
+    require "vendor/backbone-min"
     MenuTemplate =  require "app/template/MenuTemplate"
     
     class MenuStage2d extends Backbone.View
