@@ -86,6 +86,23 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
   */
 
   /*
+          coordinates.links.threedee.Link3d
+  */
+
+  module("coordinates.links.threedee.Link3d", {
+    setup: function() {
+      return this.link3d = new coordinates.Link3d({});
+    }
+  });
+  test("constructor", function() {
+    this.link3d.setX(30);
+    ok(this.link3d.getX() === 30);
+    this.link3d.setY(20);
+    ok(this.link3d.getY() === 20);
+    this.link3d.setZ(50);
+    return ok(this.link3d.getZ() === 50);
+  });
+  /*
           coordinates.links.DOMLink2d
   */
 

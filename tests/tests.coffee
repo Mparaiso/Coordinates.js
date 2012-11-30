@@ -39,10 +39,10 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
 
     test "capitalize",->
         testSentence = "this is a sentence"
-        expectedSentence ="This Is A Sentence"
+        expectedSentence = "This Is A Sentence"
         equal(testSentence.capitalize(),expectedSentence,"capitalize")
-        testSentence="this is a sentence with  spaces"
-        expectedSentence="This Is A Sentence With  Spaces"
+        testSentence= "this is a sentence with  spaces"
+        expectedSentence= "This Is A Sentence With  Spaces"
         equal(testSentence.capitalize(),expectedSentence,"capitalize with spaces")
 
     test "BaseClass",->
@@ -56,6 +56,23 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         ### test inheritance ###
 
     ### test de chaque méthode de chaque classe ###
+
+    ###
+        coordinates.links.threedee.Link3d
+    ###
+
+    module "coordinates.links.threedee.Link3d",
+        setup:->
+            @link3d = new coordinates.Link3d({})
+
+    test "constructor", ->
+        @link3d.setX 30
+        ok(@link3d.getX()==30)
+        @link3d.setY 20
+        ok(@link3d.getY()==20)
+        @link3d.setZ 50
+        ok(@link3d.getZ()==50)
+
     ###
         coordinates.links.DOMLink2d
     ###
@@ -64,8 +81,8 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
     test "coordinates.links.DOMLink2d",->
         el = document.createElement("DIV")
         el.style.width = "200px"
-        el.style.height="300px"
-        el.style.position="fixed"
+        el.style.height= "300px"
+        el.style.position= "fixed"
         ok(true)
         domLink2d = new coordinates.DOMLink2d(el)
         
@@ -74,6 +91,7 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         domLink2d.setY(250)
         domLink2d.setRotation(45)
         equal(domLink2d.getElement().style.transform ,"translate(200px,250px) rotate(45deg)","DOMLink2d.applyTransform")
+        # méthodes à retester
         equal(domLink2d.getWidth(),200)
         equal(domLink2d.getHeight(),300)
         return

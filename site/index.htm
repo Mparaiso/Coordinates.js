@@ -36,6 +36,7 @@
           <h2>A layout library for javascript.</h2>
           <h5>Author: M.Paraiso</h5>
           <h6>compatible browsers : IE9+ , CHROME , FF , OPERA , SAFARI </h6>
+          <a class='btn btn-success btn-large' href="https://github.com/Mparaiso/Coordinates.js">Check the project on github</a> 
           <h6><small class="muted">Based on coordy by P J Onori : <a href="http://somerandomdude.com/work/coordy/" target='_blank'>http://somerandomdude.com/work/coordy/</a></small></h6>
         </div>
       </div>
@@ -111,10 +112,12 @@ s                    <noscript>
           Coming soon...</div>
         </div>
       </div>
-      <script type="text/javascript" src="vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/jquery.min.js"></script>
       <script type="text/javascript" src="vendor/underscore-min.js"></script>
-      <script type="text/javascript" src="vendor/backbone-min.js"></script>
-      <script data-main="js/main" type="text/javascript" src="vendor/require.min.js"></script>
+      <script type="text/javascript" src="vendor/backbone-min.js"></script> <!--
+      <script data-main="js/main" type="text/javascript" src="vendor/require.min.js"></script>-->
+      <script type="text/javascript" src='vendor/require.min.js'></script>
+      <script type="text/javascript" src="build/main.js"></script>
       <style type="text/css">
       body,html{
         width:100%;
@@ -137,6 +140,7 @@ s                    <noscript>
         height:600px;
       }
       .thb{
+        box-shadow: 4px 4px 5px rgba(0,0,0,0.8);
         position: absolute;
         border:1px solid #FFF;
         padding:4px;

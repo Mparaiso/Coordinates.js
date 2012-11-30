@@ -16,6 +16,7 @@ define(function(require) {
 
   Coordinates.DOMLink2d = Coordinates.links.DOMLink2d;
   Coordinates.Link = Coordinates.links.Link;
+  Coordinates.Link3d = Coordinates.links.threedee.Link3d;
   Coordinates.Node = Coordinates.nodes.Node;
   Coordinates.Node2d = Coordinates.nodes.twodee.Node2d;
   Coordinates.Layout = Coordinates.layouts.Layout;
