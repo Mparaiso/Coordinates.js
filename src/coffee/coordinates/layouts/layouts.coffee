@@ -15,3 +15,4 @@ define (require)->
         Quadric: require './twodee/Quadric'
     threedee:
         Layout3d: require "./threedee/Layout3d"
+        Stack3d: require "./threedee/Stack3d"

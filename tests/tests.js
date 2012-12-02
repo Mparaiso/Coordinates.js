@@ -216,6 +216,15 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
     node2d.setJitterY(5);
     ok(node2d.getJitterX !== 3 && node2d.getJitterY() !== 5, "Node2d.setJitterX , Node2d.setJitterY");
   });
+  module("coordinates.OrderedNode3d", {
+    setup: function() {
+      return this.node = new coordinates.OrderedNode3d({});
+    }
+  });
+  test("constructor", function() {
+    ok(this.node !== null);
+    return ok(this.node.toString() === "[object OrderedNode3d]");
+  });
   /*
           Coordinates.layouts
   */
@@ -470,9 +479,29 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
       return _results;
     }
   });
-  return test("constructor", function() {
+  test("constructor", function() {
     equal(this.lattice.getWidth(), 500);
     equal(this.lattice.getHeight(), 500);
     return equal(this.lattice.size, 9);
+  });
+  /*
+          Coordinates.Stack3d
+  */
+
+  module("coordinates.Stack3d", {
+    setup: function() {
+      this.stack3d = new coordinates.Stack3d();
+      this.link1 = new coordinates.Link({});
+      this.link2 = new coordinates.Link({});
+      this.link3 = new coordinates.Link({});
+      return this.link4 = new coordinates.Link({});
+    }
+  });
+  test("constructor", function() {
+    return ok(this.stack3d !== null);
+  });
+  return test("addNodes", function() {
+    this.stack3d.addNodes([this.link1, this.link2, this.link3, this.link4]);
+    return equal(4, this.stack3d.size);
   });
 });

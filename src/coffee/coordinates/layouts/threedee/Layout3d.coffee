@@ -20,6 +20,7 @@ define (require)->
             @_updateMethod= value.name
             @_updateFunction = value.update
             @_proxyUpdater = value
+            return
 
         setUpdateMethod:(value)->
             ###
@@ -35,6 +36,7 @@ define (require)->
                     @updateFunction=update;
                 else 
                     @updateFunction = @updateAndRender;
+            return
 
         clone:->
             throw 'Method must be overriden by child class'
@@ -43,6 +45,7 @@ define (require)->
         executeUpdateMethod:->
             ### Performs the update method defined by the <em>updateMethod</em> property. Is helpful for behaviors and proxy updaters to work within the defined functiality set_at runtime. ###
             this.updateFunction()
+            return
 
         updateAndRender:->
             ### Performs an update on all the nodes' positions and renders each node's corresponding link ###

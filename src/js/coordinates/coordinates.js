@@ -20,6 +20,7 @@ define(function(require) {
   Coordinates.Link3d = Coordinates.links.threedee.Link3d;
   Coordinates.Node = Coordinates.nodes.Node;
   Coordinates.Node2d = Coordinates.nodes.twodee.Node2d;
+  Coordinates.OrderedNode3d = Coordinates.nodes.threedee.OrderedNode3d;
   Coordinates.Layout = Coordinates.layouts.Layout;
   Coordinates.Layout2d = Coordinates.layouts.twodee.Layout2d;
   Coordinates.Layout3d = Coordinates.layouts.threedee.Layout3d;
@@ -36,6 +37,7 @@ define(function(require) {
   Coordinates.Scatter = Coordinates.layouts.twodee.Scatter;
   Coordinates.Lattice = Coordinates.layouts.twodee.Lattice;
   Coordinates.Quadric = Coordinates.layouts.twodee.Quadric;
+  Coordinates.Stack3d = Coordinates.layouts.threedee.Stack3d;
   Coordinates.LayoutTransitioner = Coordinates.utils.LayoutTransitioner;
   Coordinates.LayoutUpdateMethod = Coordinates.constants.LayoutUpdateMethod;
   Coordinates.FlowOverflowPolicy = Coordinates.constants.FlowOverflowPolicy;

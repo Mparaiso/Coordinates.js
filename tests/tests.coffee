@@ -187,6 +187,14 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         ok(node2d.getJitterX!=3 && node2d.getJitterY()!=5,"Node2d.setJitterX , Node2d.setJitterY")
         return
 
+    module "coordinates.OrderedNode3d",
+        setup:->
+            @node = new coordinates.OrderedNode3d({})
+
+    test "constructor",->
+        ok(@node!=null)
+        ok(@node.toString()=="[object OrderedNode3d]")
+
     ###
         Coordinates.layouts
     ###
@@ -415,3 +423,22 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         equal(@lattice.getWidth(),500)
         equal(@lattice.getHeight(),500)
         equal(@lattice.size,9)
+
+    ###
+        Coordinates.Stack3d
+    ###
+    module "coordinates.Stack3d",
+        setup:->
+            @stack3d = new coordinates.Stack3d()
+            @link1 = new coordinates.Link({})
+            @link2 = new coordinates.Link({})
+            @link3 = new coordinates.Link({})
+            @link4 = new coordinates.Link({})
+            
+
+    test "constructor",->
+        ok(@stack3d!=null)
+
+    test "addNodes",->
+        @stack3d.addNodes([@link1,@link2,@link3,@link4])
+        equal(4,@stack3d.size)
