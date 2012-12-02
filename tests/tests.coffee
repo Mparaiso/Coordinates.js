@@ -73,6 +73,36 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         @link3d.setZ 50
         ok(@link3d.getZ()==50)
 
+    ### 
+        coordinates.links.DOMLink3d
+    ###
+
+    module("coordinates.links.DOMLink3d",{
+        setup:->
+            @el = document.createElement("DIV")
+            @el.style.width = "500px"
+            @el.style.height = "300px"
+            @link = new coordinates.DOMLink3d(@el)
+            return
+        })
+
+    test("constructor",->
+        equal(@link.getElement(),@el)
+        equal(@link.getWidth(),500)
+        equal(@link.getHeight(),300)
+        equal(@link.getX(),0)
+        equal(@link.getY(),0)
+        return
+    )
+
+    test "update , will fail on non webkitbrowsers or on browsers that do not support CSS transform 3D",->
+        @link.setRotationZ(60)
+
+        equal(@link.getElement().style.webkitTransform,"rotateX(0deg) rotateY(0deg) rotateZ(60deg) translateX(0px) translateY(0px) translateZ(0px)","element transform is correct string")
+        @link.setZ(500)
+        equal(@link.getElement().style.webkitTransform,"rotateX(0deg) rotateY(0deg) rotateZ(60deg) translateX(0px) translateY(0px) translateZ(500px)","element transform is correct string")
+        return
+
     ###
         coordinates.links.DOMLink2d
     ###
@@ -99,6 +129,7 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
     ###
         coordinates.events.helpers.Event
     ###
+
     module("coordinates.events.helpers.Event")
 
     test "coordinates.events.helpers.Event",->
@@ -111,11 +142,12 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         ok(clonedEvent.type == e.type && clonedEvent.bubbles == e.bubbles,"Event.clone")
 
 
-    module("coordinates.events.helpers.EventDispatcher")
 
     ###
         coordinates.events.helpers.EventDispatcher
     ###
+
+    module("coordinates.events.helpers.EventDispatcher")
 
     test "coordinates.events.helpers.EventDispatcher",->
         expect(3)
@@ -203,6 +235,26 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         @layout.addLinkAt(@link2,0)
         equal(@layout.nodes[0].getLink(),@link2,"Layout.addLinkAt")
 
+    ###
+        coordinates.Layout3d
+    ###
+
+    module "coordinates.Layout3d",
+        setup:-> 
+            @layout3d = new coordinates.Layout3d()
+
+    test "coordinates.Layout3d.constructor", ->
+            ok(@layout3d!=null,"layout3d is not null")
+
+    test "coordinates.Layout3d.get...",->
+            @layout3d.setX 30
+            ok(@layout3d.getX()==30,"getX")
+            @layout3d.setY 100
+            ok(@layout3d.getY()==100,"getY")
+
+    ###
+        "coordinates.VerticalLine"
+    ###
 
     module "coordinates.VerticalLine",
         setup:->

@@ -15,12 +15,14 @@ define(function(require) {
   */
 
   Coordinates.DOMLink2d = Coordinates.links.DOMLink2d;
+  Coordinates.DOMLink3d = Coordinates.links.threedee.DOMLink3d;
   Coordinates.Link = Coordinates.links.Link;
   Coordinates.Link3d = Coordinates.links.threedee.Link3d;
   Coordinates.Node = Coordinates.nodes.Node;
   Coordinates.Node2d = Coordinates.nodes.twodee.Node2d;
   Coordinates.Layout = Coordinates.layouts.Layout;
   Coordinates.Layout2d = Coordinates.layouts.twodee.Layout2d;
+  Coordinates.Layout3d = Coordinates.layouts.threedee.Layout3d;
   Coordinates.VerticalLine = Coordinates.layouts.twodee.VerticalLine;
   Coordinates.HorizontalLine = Coordinates.layouts.twodee.HorizontalLine;
   Coordinates.Ellipse = Coordinates.layouts.twodee.Ellipse;

@@ -102,6 +102,31 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
     this.link3d.setZ(50);
     return ok(this.link3d.getZ() === 50);
   });
+  /* 
+      coordinates.links.DOMLink3d
+  */
+
+  module("coordinates.links.DOMLink3d", {
+    setup: function() {
+      this.el = document.createElement("DIV");
+      this.el.style.width = "500px";
+      this.el.style.height = "300px";
+      this.link = new coordinates.DOMLink3d(this.el);
+    }
+  });
+  test("constructor", function() {
+    equal(this.link.getElement(), this.el);
+    equal(this.link.getWidth(), 500);
+    equal(this.link.getHeight(), 300);
+    equal(this.link.getX(), 0);
+    equal(this.link.getY(), 0);
+  });
+  test("update , will fail on non webkitbrowsers or on browsers that do not support CSS transform 3D", function() {
+    this.link.setRotationZ(60);
+    equal(this.link.getElement().style.webkitTransform, "rotateX(0deg) rotateY(0deg) rotateZ(60deg) translateX(0px) translateY(0px) translateZ(0px)", "element transform is correct string");
+    this.link.setZ(500);
+    equal(this.link.getElement().style.webkitTransform, "rotateX(0deg) rotateY(0deg) rotateZ(60deg) translateX(0px) translateY(0px) translateZ(500px)", "element transform is correct string");
+  });
   /*
           coordinates.links.DOMLink2d
   */
@@ -138,11 +163,11 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
     clonedEvent = e.clone();
     return ok(clonedEvent.type === e.type && clonedEvent.bubbles === e.bubbles, "Event.clone");
   });
-  module("coordinates.events.helpers.EventDispatcher");
   /*
           coordinates.events.helpers.EventDispatcher
   */
 
+  module("coordinates.events.helpers.EventDispatcher");
   test("coordinates.events.helpers.EventDispatcher", function() {
     var o;
     expect(3);
@@ -246,6 +271,28 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
     this.layout.addLinkAt(this.link2, 0);
     return equal(this.layout.nodes[0].getLink(), this.link2, "Layout.addLinkAt");
   });
+  /*
+          coordinates.Layout3d
+  */
+
+  module("coordinates.Layout3d", {
+    setup: function() {
+      return this.layout3d = new coordinates.Layout3d();
+    }
+  });
+  test("coordinates.Layout3d.constructor", function() {
+    return ok(this.layout3d !== null, "layout3d is not null");
+  });
+  test("coordinates.Layout3d.get...", function() {
+    this.layout3d.setX(30);
+    ok(this.layout3d.getX() === 30, "getX");
+    this.layout3d.setY(100);
+    return ok(this.layout3d.getY() === 100, "getY");
+  });
+  /*
+          "coordinates.VerticalLine"
+  */
+
   module("coordinates.VerticalLine", {
     setup: function() {
       this.l1 = new coordinates.Link({}, 0, 0, 0, 100, 100);

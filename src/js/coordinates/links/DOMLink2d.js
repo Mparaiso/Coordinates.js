@@ -46,15 +46,19 @@ define(function(require) {
     };
 
     DOMLink2d.prototype.getHeight = function() {
-      /* obtenir la hauteur
+      /* obtenir la hauteur , soit avec offsetHeight , ou style.height
       */
-      return this.getElement().offsetHeight;
+      return this.getElement().offsetHeight || parseInt(this._element.style.height.replace("px", ""), 10) || (function() {
+        throw "cant get " + this + " height";
+      }).call(this);
     };
 
     DOMLink2d.prototype.getWidth = function() {
-      /* obtenir la longueur
+      /* obtenir la longueur avec offsetWidth ou style.width ou lance une exception
       */
-      return this.getElement().offsetWidth;
+      return this.getElement().offsetWidth || parseInt(this._element.style.width.replace("px", ""), 10) || (function() {
+        throw "cant get " + this + " width";
+      }).call(this);
     };
 
     DOMLink2d.prototype.applyTransform = function() {

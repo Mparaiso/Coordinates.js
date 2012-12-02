@@ -144,34 +144,34 @@
 	"buffers":
 	[
 		{
-			"file": "src/coffee/coordinates/coordinates.coffee",
+			"file": "tests/tests.coffee",
 			"settings":
 			{
-				"buffer_size": 4651,
+				"buffer_size": 12980,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "tests/bezier.html",
+			"file": "src/coffee/coordinates/layouts/Layout.coffee",
 			"settings":
 			{
-				"buffer_size": 228,
+				"buffer_size": 3623,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "tests/bezier.coffee",
+			"file": "legacy_code/_haxe/com/somerandomdude/coordy/layouts/threedee/Layout3d.hx",
 			"settings":
 			{
-				"buffer_size": 572,
+				"buffer_size": 8633,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/coffee/coordinates/layouts/twodee/Quadric.coffee",
+			"file": "site/index.htm",
 			"settings":
 			{
-				"buffer_size": 28,
+				"buffer_size": 6771,
 				"line_ending": "Windows"
 			}
 		}
@@ -179,9 +179,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 245.0,
+		"height": 60.0,
 		"selected_items":
 		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				"pytho",
 				"User: Python PEP8 Autoformat"
@@ -193,10 +197,6 @@
 			[
 				"dja",
 				"Django DocsSearch"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
 			],
 			[
 				"stack",
@@ -415,7 +415,7 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 522.0
+		"width": 386.0
 	},
 	"console":
 	{
@@ -432,6 +432,26 @@
 	},
 	"file_history":
 	[
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/threedee/Layout3d.coffee",
+		"/C/projects/categories/javascript/coordinates/legacy_code/_haxe/com/somerandomdude/coordy/nodes/threedee/Node3d.hx",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/twodee/Layout2d.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/layouts.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/coordinates.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/nodes/threedee/Node3d.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/links/DOMLink2d.coffee",
+		"/C/projects/categories/javascript/coordinates/legacy_code/_haxe/examples/LayoutFactory.hx",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/nodes/nodes.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/links/threedee/Link3d.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/links/Link.coffee",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/twodee/Quadric.coffee",
+		"/C/projects/categories/javascript/coordinates/tests/bezier.html",
+		"/C/projects/categories/javascript/coordinates/tests/tests.coffee",
+		"/C/projects/categories/javascript/coordinates/tests/bezier.coffee",
+		"/C/projects/categories/javascript/coordinates/src/js/coordinates/utils/BaseClass.js",
+		"/C/projects/categories/javascript/coordinates/src/js/coordinates/links/threedee/Link3d.js",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/links/links.coffee",
+		"/C/projects/categories/javascript/coordinates/tests/tests.html",
+		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/nodes/Node.coffee",
 		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/SublimeCodeIntel/Base File.sublime-settings",
 		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/Completion Rules.tmPreferences",
 		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/JavaScript/Object-key-key-value.sublime-snippet",
@@ -458,8 +478,6 @@
 		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/twodee/Wave.coffee",
 		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/twodee/HorizontalLine.coffee",
 		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/constants/LayoutType.coffee",
-		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/links/DOMLink2d.coffee",
-		"/C/projects/categories/javascript/coordinates/tests/tests.coffee",
 		"/C/projects/lib/coordy-0.9.9/src/com/somerandomdude/coordy/layouts/twodee/Flow.as",
 		"/C/projects/categories/javascript/coordinates/legacy_code/_haxe/examples/layouts2d/GridLayout.hx",
 		"/C/projects/categories/javascript/coordinates/exemples/twodee/dom.js",
@@ -474,11 +492,6 @@
 		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/Layout.coffee",
 		"/C/Users/mark prades/Documents/www/Libraries/Flash/coordy-0.9.9/coordy-0.9.9/src/com/somerandomdude/coordy/proxyupdaters/InvalidationProxyUpdater.as",
 		"/C/projects/categories/javascript/coordinates/tests/tests.js",
-		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/layouts.coffee",
-		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/coordinates.coffee",
-		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/links/Link.coffee",
-		"/C/projects/categories/javascript/coordinates/tests/tests.html",
-		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/layouts/twodee/Layout2d.coffee",
 		"/C/projects/categories/javascript/coordinates/exemples/twodee/dom.htm",
 		"/C/projects/categories/javascript/coordinates/legacy_code/_haxe/com/somerandomdude/coordy/layouts/twodee/Flow.hx",
 		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/CoffeeScript/CoffeeScript.tmLanguage",
@@ -497,7 +510,6 @@
 		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/constants/LatticeAlternationPattern.coffee",
 		"/C/Users/mark prades/Documents/www/Libraries/Flash/coordy-0.9.9/coordy-0.9.9/src/com/somerandomdude/coordy/constants/LatticeAlternationPattern.as",
 		"/C/Users/mark prades/Documents/www/Libraries/Flash/coordy-0.9.9/coordy-0.9.9/src/com/somerandomdude/coordy/constants/LatticeOrder.as",
-		"/C/projects/categories/javascript/coordinates/src/coffee/coordinates/nodes/Node.coffee",
 		"/c/projects/categories/django/buddy/snippets/templates/snippets/snippet_detail.html",
 		"/c/projects/categories/django/buddy/snippets/templates/snippets/snippet_tag.html",
 		"/c/projects/categories/django/buddy/snippets/views.py",
@@ -547,19 +559,7 @@
 		"/c/projects/categories/django/buddy/public/django.fcgi",
 		"/C/projects/categories/django/buddy/public/.htaccess",
 		"/C/projects/categories/django/buddy/public/django.fcgi",
-		"/c/projects/categories/django/django-poll-tutorial/public/django.fcgi",
-		"/c/projects/categories/django/django-poll-tutorial/public/.htaccess",
-		"/C/projects/categories/java/java-for-artists/paraiso/marc/sample/SampleClass.java",
-		"/C/projects/categories/java/java-for-artists/paraiso/marc/sample/ApplicationClass.java",
-		"/C/Users/mark prades/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/C/projects/categories/django/django-poll-tutorial/public/.htaccess",
-		"/c/projects/categories/django/django-poll-tutorial/poll/settings.py",
-		"/C/projects/categories/django/django-poll-tutorial/poll/views.py",
-		"/c/projects/categories/django/django-poll-tutorial/poll/urls.py",
-		"/C/projects/categories/django/django-poll-tutorial/poll/templates/registration/login.html",
-		"/C/projects/categories/django/django-poll-tutorial/poll/tests.py",
-		"/c/projects/categories/typescript/hello-world/hello.ts",
-		"/c/projects/categories/typescript/hello-world/hello.js"
+		"/c/projects/categories/django/django-poll-tutorial/public/django.fcgi"
 	],
 	"find":
 	{
@@ -581,6 +581,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"layout3d",
+			"layout2d",
+			"link",
 			"^\\s*",
 			";",
 			"String=",
@@ -705,10 +708,7 @@
 			"add-on",
 			"       ",
 			"@note",
-			"$app['user_manager']",
-			"$app['article_manager']",
-			"info",
-			"form.factory"
+			"$app['user_manager']"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -756,23 +756,23 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/coffee/coordinates/coordinates.coffee",
+					"file": "tests/tests.coffee",
 					"settings":
 					{
-						"buffer_size": 4651,
+						"buffer_size": 12980,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2170,
-								2170
+								3997,
+								3997
 							]
 						],
 						"settings":
@@ -870,25 +870,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 612.0,
+						"translation.y": 1921.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "tests/bezier.html",
+					"file": "src/coffee/coordinates/layouts/Layout.coffee",
 					"settings":
 					{
-						"buffer_size": 228,
+						"buffer_size": 3623,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								198,
-								198
+								214,
+								214
 							]
 						],
 						"settings":
@@ -981,7 +981,9 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/PHP-Twig/Syntaxes/HTML (Twig).tmLanguage"
+							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -991,18 +993,18 @@
 				},
 				{
 					"buffer": 2,
-					"file": "tests/bezier.coffee",
+					"file": "legacy_code/_haxe/com/somerandomdude/coordy/layouts/threedee/Layout3d.hx",
 					"settings":
 					{
-						"buffer_size": 572,
+						"buffer_size": 8633,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								133,
-								133
+								1068,
+								1068
 							]
 						],
 						"settings":
@@ -1095,7 +1097,8 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage"
+							"syntax": "Packages/ActionScript 3/ActionScript 3.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1105,18 +1108,18 @@
 				},
 				{
 					"buffer": 3,
-					"file": "src/coffee/coordinates/layouts/twodee/Quadric.coffee",
+					"file": "site/index.htm",
 					"settings":
 					{
-						"buffer_size": 28,
+						"buffer_size": 6771,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								28,
-								28
+								5027,
+								5027
 							]
 						],
 						"settings":
@@ -1209,10 +1212,12 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/CoffeeScript/CoffeeScript.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1887.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1253,7 +1258,7 @@
 	"menu_visible": false,
 	"output.coffeecompile_output":
 	{
-		"height": 114.0
+		"height": 581.0
 	},
 	"output.exec":
 	{
@@ -1278,6 +1283,74 @@
 		"selected_items":
 		[
 			[
+				"la3d",
+				"src/coffee/coordinates/layouts/threedee/Layout3d.coffee"
+			],
+			[
+				"layouts",
+				"src/coffee/coordinates/layouts/layouts.coffee"
+			],
+			[
+				"coord",
+				"src/coffee/coordinates/coordinates.coffee"
+			],
+			[
+				"coo",
+				"src/coffee/coordinates/coordinates.coffee"
+			],
+			[
+				"tests",
+				"tests/tests.coffee"
+			],
+			[
+				"layout.co",
+				"src/coffee/coordinates/layouts/Layout.coffee"
+			],
+			[
+				"layout2d",
+				"src/coffee/coordinates/layouts/twodee/Layout2d.coffee"
+			],
+			[
+				"layoutfa",
+				"legacy_code/_haxe/examples/LayoutFactory.hx"
+			],
+			[
+				"layout3d",
+				"legacy_code/_haxe/com/somerandomdude/coordy/layouts/threedee/Layout3d.hx"
+			],
+			[
+				"link3d",
+				"src/coffee/coordinates/links/threedee/Link3d.coffee"
+			],
+			[
+				"domlink",
+				"src/coffee/coordinates/links/DOMLink2d.coffee"
+			],
+			[
+				"test",
+				"tests/tests.coffee"
+			],
+			[
+				"links",
+				"src/coffee/coordinates/links/links.coffee"
+			],
+			[
+				"co",
+				"src/coffee/coordinates/coordinates.coffee"
+			],
+			[
+				"node3d",
+				"legacy_code/_haxe/com/somerandomdude/coordy/nodes/threedee/Node3d.hx"
+			],
+			[
+				"link",
+				"src/coffee/coordinates/links/Link.coffee"
+			],
+			[
+				"node",
+				"src/coffee/coordinates/nodes/Node.coffee"
+			],
+			[
 				"wave",
 				"src/coffee/coordinates/layouts/twodee/Wave.coffee"
 			],
@@ -1298,10 +1371,6 @@
 				"src/coffee/coordinates/layouts/twodee/Ellipse.coffee"
 			],
 			[
-				"coo",
-				"src/coffee/coordinates/coordinates.coffee"
-			],
-			[
 				"doml",
 				"src/coffee/coordinates/links/DOMLink2d.coffee"
 			],
@@ -1310,24 +1379,12 @@
 				"exemples/twodee/dom.js"
 			],
 			[
-				"test",
-				"tests/tests.coffee"
-			],
-			[
-				"tests",
-				"tests/tests.coffee"
-			],
-			[
 				"domlin",
 				"src/coffee/coordinates/links/DOMLink2d.coffee"
 			],
 			[
 				"layout.c",
 				"src/coffee/coordinates/layouts/Layout.coffee"
-			],
-			[
-				"layout2d",
-				"src/coffee/coordinates/layouts/twodee/Layout2d.coffee"
 			],
 			[
 				"flow.",
@@ -1356,10 +1413,6 @@
 			[
 				"tes",
 				"tests/tests.coffee"
-			],
-			[
-				"coord",
-				"src/coffee/coordinates/coordinates.coffee"
 			],
 			[
 				"la",
@@ -1740,54 +1793,6 @@
 			[
 				"route",
 				"vendor/symfony/routing/Symfony/Component/Routing/Route.php"
-			],
-			[
-				"controllerresolver",
-				"vendor/symfony/http-kernel/Symfony/Component/HttpKernel/Controller/ControllerResolver.php"
-			],
-			[
-				"optionma",
-				"App/Model/Manager/OptionManager.php"
-			],
-			[
-				"optioncon",
-				"App/Controller/Admin/OptionAdminController.php"
-			],
-			[
-				"optionana",
-				"App/Model/Manager/OptionManager.php"
-			],
-			[
-				"usermana",
-				"App/Model/Manager/UserManager.php"
-			],
-			[
-				"commentmanager",
-				"mpmedia.alwaysdata.net-silexblog/App/Model/Manager/CommentManager.php"
-			],
-			[
-				"commentcontro",
-				"mpmedia.alwaysdata.net-silexblog/App/Controller/CommentController.php"
-			],
-			[
-				"entity/co",
-				"mpmedia.alwaysdata.net-silexblog/App/Model/Entity/Comment.php"
-			],
-			[
-				"comment/crea",
-				"mpmedia.alwaysdata.net-silexblog/App/view/comment/create.twig"
-			],
-			[
-				"form/comme",
-				"mpmedia.alwaysdata.net-silexblog/App/Form/Comment.php"
-			],
-			[
-				"form/com",
-				"extjs/extjs-4.1.0/examples/form/combos.html"
-			],
-			[
-				"commentcon",
-				"mpmedia.alwaysdata.net-silexblog/App/Controller/CommentController.php"
 			]
 		],
 		"width": 0.0
@@ -1803,7 +1808,7 @@
 	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
-	"side_bar_width": 257.0,
+	"side_bar_visible": false,
+	"side_bar_width": 240.0,
 	"status_bar_visible": true
 }

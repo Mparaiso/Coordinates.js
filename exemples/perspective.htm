@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="container">
+    <div class="threedee">
+        <div id="box" class="red box">
+            
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .threedee{
+        -webkit-perspective: 500px;
+        perspective: 500px;
+        perspective-origin: 10% 10%;
+        -webkit-perspective-origin: 10% 10%;
+        position: relative;
+    }
+    .threedee .red{
+        background: blue;
+        /**-webkit-transform:rotateY(45deg)**/
+    }
+    .box{
+        width:200px;
+        height:200px;
+        transition:all 0.5s;
+        -webkit-transition:all 0.5s;
+    }
+</style>
+<script type="text/javascript">
+    var box = document.querySelector("#box");
+    var r = 0
+    var interval = 200
+    var start = 0;
+    var anim = function(e){
+        if(e-start>interval){
+        start = e;
+        r+=25;
+        box.style.webkitTransform = "rotateY("+r+"deg)"
+        }
+        webkitRequestAnimationFrame(anim);
+    };
+    webkitRequestAnimationFrame(anim)
+</script>
+</body>
+</html>

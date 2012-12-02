@@ -16,6 +16,9 @@ define(function(require) {
       Flow: require("./twodee/Flow"),
       Lattice: require("./twodee/Lattice"),
       Quadric: require('./twodee/Quadric')
+    },
+    threedee: {
+      Layout3d: require("./threedee/Layout3d")
     }
   };
 });
