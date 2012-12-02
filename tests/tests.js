@@ -491,17 +491,23 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
   module("coordinates.Stack3d", {
     setup: function() {
       this.stack3d = new coordinates.Stack3d();
-      this.link1 = new coordinates.Link({});
-      this.link2 = new coordinates.Link({});
-      this.link3 = new coordinates.Link({});
-      return this.link4 = new coordinates.Link({});
+      this.link1 = new coordinates.Link3d({});
+      this.link2 = new coordinates.Link3d({});
+      this.link3 = new coordinates.Link3d({});
+      return this.link4 = new coordinates.Link3d({});
     }
   });
   test("constructor", function() {
     return ok(this.stack3d !== null);
   });
+  test("addNode", function() {
+    this.stack3d.addNode(this.link1);
+    equal(1, this.stack3d.size);
+    return equal(1, this.stack3d.nodes.length);
+  });
   return test("addNodes", function() {
     this.stack3d.addNodes([this.link1, this.link2, this.link3, this.link4]);
-    return equal(4, this.stack3d.size);
+    equal(4, this.stack3d.size);
+    return equal(4, this.stack3d.nodes.length);
   });
 });

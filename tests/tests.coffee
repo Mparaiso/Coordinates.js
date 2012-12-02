@@ -430,15 +430,23 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
     module "coordinates.Stack3d",
         setup:->
             @stack3d = new coordinates.Stack3d()
-            @link1 = new coordinates.Link({})
-            @link2 = new coordinates.Link({})
-            @link3 = new coordinates.Link({})
-            @link4 = new coordinates.Link({})
+            @link1 = new coordinates.Link3d({})
+            @link2 = new coordinates.Link3d({})
+            @link3 = new coordinates.Link3d({})
+            @link4 = new coordinates.Link3d({})
             
 
     test "constructor",->
         ok(@stack3d!=null)
 
+    test "addNode",->
+        @stack3d.addNode(@link1)
+        equal(1,@stack3d.size)
+        equal(1,@stack3d.nodes.length)
+
     test "addNodes",->
         @stack3d.addNodes([@link1,@link2,@link3,@link4])
         equal(4,@stack3d.size)
+        equal(4,@stack3d.nodes.length)
+
+

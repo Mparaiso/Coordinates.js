@@ -76,4 +76,4 @@ define (require)->
 
         validateObject:(link)->
             ### validate an link object ###
-            return link.getX && link.getY && link.getZ && link.rotationX && link.rotationY && link.rotationZ
+            return link.getX and link.getY and link.getZ and link.getRotationX and link.getRotationY and link.getRotationZ
