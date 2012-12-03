@@ -28,18 +28,22 @@ define(function(require) {
 
 
     MainRouter.prototype.routes = {
-      "layout2d/:layout": "setCurrentLayout"
+      "changelayout/:layoutcollection/:layout": "setCurrentLayout",
+      "changelayout/:layoutcollection": "setCurrentLayoutCollection"
     };
 
     MainRouter.prototype.initialize = function(config) {
       /* obtenir les params
       */
-      this.timerView = config.timerView, this.imageUrlCollection = config.imageUrlCollection, this.stage2d = config.stage2d, this.appConfig = config.appConfig, this.layout2dCollection = config.layout2dCollection, this.MenuStage2d = config.MenuStage2d;
+      this.timerView = config.timerView, this.imageUrlCollection = config.imageUrlCollection, this.stage2d = config.stage2d, this.appConfig = config.appConfig, this.layout2dCollection = config.layout2dCollection, this.menuStage2d = config.menuStage2d, this.menuLayoutCollectionCollection = config.menuLayoutCollectionCollection;
       /* ecouter l'évenement reset de @imageUrlCollection
       */
 
       this.appConfig.on("change:currentLayout", this.currentLayoutChange, this);
-      this.MenuStage2d.on(MenuStage2d.prototype.MENU_CLICK, this.stopTimer, this);
+      this.menuStage2d.on(MenuStage2d.prototype.MENU_CLICK, this.stopTimer, this);
+      this.menuLayoutCollectionCollection.on("click li", function() {
+        return console.log("click");
+      });
       this.timerView.on(TimerView.prototype.TIMER_EVENT, this.timerEvent, this);
       this.stage2d.on(Stage2d.prototype.ADDED_TO_STAGE, this.imageUrlCollectionReset, this);
       this.imageUrlCollection.fetch();
@@ -49,12 +53,12 @@ define(function(require) {
     MainRouter.prototype.imageUrlCollectionReset = function() {
       /* creer domlinks quand imageUrlCollection est mis à jour
       */
-      this.appConfig.set("domLinks", Coordinates.createDom2dLinks(_.pluck(this.stage2d.getImageViews(), "el")));
+      this.appConfig.set("domLinks", Coordinates.createDOMLink3d(_.pluck(this.stage2d.getImageViews(), "el")));
       this.addDomLinksToLayouts();
       if (!this.appConfig.has("currentLayout")) {
-        return this.setCurrentLayout(this.layout2dCollection.first().get("type"));
+        return this.setCurrentLayout("layout2d", this.layout2dCollection.first().get("type"));
       } else {
-        return this.setCurrentLayout(this.appConfig.get("currentLayout"));
+        return this.setCurrentLayout("layout2d", this.appConfig.get("currentLayout"));
       }
     };
 
@@ -68,28 +72,51 @@ define(function(require) {
       });
     };
 
-    MainRouter.prototype.setCurrentLayout = function(layout) {
-      /* set current layout
+    MainRouter.prototype.setCurrentLayoutCollection = function(layoutcollection) {
+      this.appConfig.set("layoutCollection", layoutcollection);
+    };
+
+    MainRouter.prototype.setCurrentLayout = function(layoutcollection, layout) {
+      /* configurer la collection de layouts courante
       */
 
       var _ref;
+      this.setCurrentLayoutCollection(layoutcollection);
+      /* set current layout
+      */
+
       this.appConfig.set("currentLayout", layout);
       document.title = "" + layout + " - Coordinates";
       this._currentLayoutModel = (_ref = this.layout2dCollection.where({
         type: layout
       })) != null ? _ref[0] : void 0;
       this._currentlayout = this._currentLayoutModel.get("instance");
+      this.resetDomLinksZindex();
       this._currentlayout.updateAndRender();
-      this.MenuStage2d.trigger(MenuStage2d.prototype.LAYOUT_CHANGE, this.appConfig.get("currentLayout"));
+      this.menuStage2d.trigger(MenuStage2d.prototype.LAYOUT_CHANGE, this.appConfig.get("currentLayout"));
+    };
+
+    MainRouter.prototype.resetDomLinksZindex = function() {
+      var domLink, _i, _len, _ref;
+      if (!this.appConfig.has("domLinks")) {
+        return;
+      }
+      _ref = this.appConfig.get("domLinks");
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        domLink = _ref[_i];
+        domLink.setZ(0);
+      }
     };
 
     MainRouter.prototype.stopTimer = function() {
+      /* arrete le timer responsable du changement de layout
+      */
       return this.timerView.stop();
     };
 
     MainRouter.prototype.timerEvent = function() {
       if (this._currentLayoutModel) {
-        return this.setCurrentLayout(this.layout2dCollection.getNextLayout(this._currentLayoutModel).get("type"));
+        return this.setCurrentLayout("layout2d", this.layout2dCollection.getNextLayout(this._currentLayoutModel).get("type"));
       }
     };
 

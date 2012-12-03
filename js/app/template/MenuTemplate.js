@@ -3,5 +3,5 @@
 define(function(require) {
   /* MenuTemplate
   */
-  return "<% for( i in layouts ){%>\n    <li data-type=\"<%-layouts[i].type %>\" > \n        <a href='#layout2d/<%- layouts[i].type %>'> <%- layouts[i].name  || layouts[i].type %> </a>\n    </li>\n<%}%>";
+  return "<!-- affiche la liste des layouts dans la collection de layouts courante -->\n<% for( i in layouts ){%>\n    <li data-type=\"<%-layouts[i].type %>\" > \n        <a href='#changelayout/layout2d/<%- layouts[i].type %>'> <%- layouts[i].name  || layouts[i].type %> </a>\n    </li>\n<%}%>";
 });

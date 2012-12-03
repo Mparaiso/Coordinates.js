@@ -17,13 +17,15 @@ define(function(require) {
     },
     collection: {
       LayoutCollection: require("app/collection/LayoutCollection"),
+      LayoutCollectionCollection: require("app/collection/LayoutCollectionCollection"),
       ImageUrlCollection: require("app/collection/ImageUrlCollection")
     },
     model: {
       AppConfig: require("app/model/AppConfig"),
       LayoutModel: require("app/model/LayoutModel"),
       ImageUrlModel: require("app/model/ImageUrlModel"),
-      TimerModel: require("app/model/TimerModel")
+      TimerModel: require("app/model/TimerModel"),
+      LayoutCollectionModel: require("app/model/LayoutCollectionModel")
     },
     template: {
       MenuTemplate: require("app/template/MenuTemplate")
