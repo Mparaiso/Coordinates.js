@@ -46,7 +46,7 @@ define (require)->
             return new Stack3d(@_angle,@_offset,@_x,@_y,@_z,@_order,@_jitterX,@_jitterY,@_jitterZ)
 
         update:->
-            if @node.length <= 0 then return
+            if @nodes.length <= 0 then return
             @cleanOrder()
             rad = @_angle*PI/180
             if @_order is StackOrder.ASCENDING

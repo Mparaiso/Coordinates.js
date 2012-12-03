@@ -33,7 +33,7 @@ define (require)->
                 when LayoutUpdateMethod.NONE
                     @updateFunction=->
                 when LayoutUpdateMethod.UPDATE_ONLY
-                    @updateFunction=update;
+                    @updateFunction= @update;
                 else 
                     @updateFunction = @updateAndRender;
             return

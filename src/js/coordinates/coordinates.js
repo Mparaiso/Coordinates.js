@@ -92,7 +92,7 @@ define(function(require) {
     var layout;
     type = type.capitalize();
     layout = (function() {
-      var alignAngleOffset, alignOffset, alignType, allowOverFlow, angle, angleDelta, circumference, columns, frequency, hDirection, hPadding, height, jitter, jitterRotation, jitterX, jitterY, offset, order, rotation, rows, spiralConstant, vDirection, vPadding, waveFunction, width, x, x1, x2, x3, x4, y, y1, y2, y3, y4;
+      var alignAngleOffset, alignOffset, alignType, allowOverFlow, angle, angleDelta, circumference, columns, frequency, hDirection, hPadding, height, jitter, jitterRotation, jitterX, jitterY, jitterZ, offset, order, rotation, rows, spiralConstant, vDirection, vPadding, waveFunction, width, x, x1, x2, x3, x4, y, y1, y2, y3, y4, z, zOffset;
       switch (type) {
         case Coordinates.LayoutType.ELLIPSE:
           width = options.width, height = options.height, x = options.x, y = options.y, rotation = options.rotation, jitterX = options.jitterX, jitterY = options.jitterY, alignType = options.alignType, alignAngleOffset = options.alignAngleOffset;
@@ -127,6 +127,12 @@ define(function(require) {
         case Coordinates.LayoutType.WAVE:
           width = options.width, height = options.height, x = options.x, y = options.y, frequency = options.frequency, waveFunction = options.waveFunction, jitterX = options.jitterX, jitterY = options.jitterY, alignType = options.alignType, alignOffset = options.alignOffset;
           return new Coordinates.Wave(width, height, x, y, frequency, waveFunction, jitterX, jitterY, alignType, alignOffset);
+          /* threedee
+          */
+
+        case Coordinates.LayoutType.STACK_3D:
+          angle = options.angle, offset = options.offset, zOffset = options.zOffset, x = options.x, y = options.y, z = options.z, order = options.order, jitterX = options.jitterX, jitterY = options.jitterY, jitterZ = options.jitterZ;
+          return new Coordinates.Stack3d(angle, offset, zOffset, x, y, z, order, jitterX, jitterY, jitterZ);
       }
     })();
     /* if links , then add nodes

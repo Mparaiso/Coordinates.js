@@ -127,6 +127,12 @@ define (require)->
                     {width, height, x, y, frequency, waveFunction, jitterX, jitterY, alignType, alignOffset} = options
                     new Coordinates.Wave(width, height, x, y, frequency, waveFunction, jitterX, jitterY, alignType, alignOffset)
 
+                    ### threedee ###
+
+                when Coordinates.LayoutType.STACK_3D
+                    {angle,offset,zOffset,x,y,z,order,jitterX,jitterY,jitterZ} = options
+                    new Coordinates.Stack3d(angle,offset,zOffset,x,y,z,order,jitterX,jitterY,jitterZ)
+
         ### if links , then add nodes ###
         if links then layout.addNodes(links)
         ### return layout ###

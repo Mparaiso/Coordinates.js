@@ -27,11 +27,23 @@ requirejs ["app","coordinates/coordinates","vendor/jquery.min","vendor/underscor
                 {type:"Scatter",options:{width:500,height:500,x:150,y:50}}
     ])
 
+    ### collection de layouts 3d ###
+    window.layout3dCollection = new app.collection.LayoutCollection([
+        {type:"Stack3d",name:"Stack3d",options:{}}
+    ])
+
+    window.layoutCollectionCollection = new app.collection.LayoutCollectionCollection([
+        {name:"2D Layouts",instance:layout2dCollection},
+        {name:"3D Layouts",instance:layout3dCollection}
+    ])
+
     ### modèle configuration générale de l'application ###
     window.appConfig = new app.model.AppConfig()
 
     ### menus des layouts 2d ###
     window.menuStage2d = new app.view.MenuStage2d(el:"#menu-layout2d",collection:layout2dCollection)
+
+    window.menuLayoutCollectionCollection = new app.view.MenuStage2d(el:"#menu-layoutCollectionCollection",collection:layoutCollectionCollection)
 
     ### collection d'urls d'images venant de flickr ###
     window.imageUrlCollection = new app.collection.ImageUrlCollection(quantity:30)
@@ -42,7 +54,7 @@ requirejs ["app","coordinates/coordinates","vendor/jquery.min","vendor/underscor
     timerView= new app.view.TimerView(model:new app.model.TimerModel())
 
     ### router principal gére l'interaction entre les différentes parties de l'application ###
-    window.mainRouter = new app.router.MainRouter(timerView:timerView,imageUrlCollection:imageUrlCollection,stage2d:stage2d,appConfig:appConfig,layout2dCollection:layout2dCollection,MenuStage2d:menuStage2d)
+    window.mainRouter = new app.router.MainRouter({timerView,imageUrlCollection,stage2d,appConfig,layout2dCollection,menuStage2d,menuLayoutCollectionCollection})
 
     Backbone.history.start()
 
