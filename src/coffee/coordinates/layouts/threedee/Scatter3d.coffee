@@ -27,13 +27,14 @@ define (require)->
             ### @TODO jitter rotation ###
             node = new ScatterNode3d(link,xPos,yPos,zPos)
 
-            node.setXRelation ((node.getX()-@_width/2) / (@_width/2))
+            node.setXRelation((node.getX()-@_width/2) / (@_width/2))
             node.setYRelation((node.getY()-@_height/2) / (@_height/2))
             node.setZRelation((node.getZ()-@_depth/2) / (@_depth/2))
 
             @storeNode(node)
 
-            if moveToCoordinates then @renderNode(node)
+            if moveToCoordinates
+                @renderNode(node)
 
             @dispatchEvent( new NodeEvent(NodeEvent::ADD,node))
 
@@ -46,12 +47,17 @@ define (require)->
                 @renderNode(node)
             return
 
+        renderNode:(node)->
+            super(node)
+            node.getLink().setOrder(0)
+
         update:->
             if @nodes.length <= 0 then return
             for node,i in @nodes
                 node.setX(node.getXRelation()*@_width + @_x)
                 node.setY(node.getYRelation()*@_height + @_y)
                 node.setZ(node.getZRelation()*@_depth + @_z)
+            @cleanZ()
             return
 
         scatter:->
@@ -67,6 +73,11 @@ define (require)->
             ### Clones the current object's properties (does not include links to DisplayObjects ###
             return new Scatter3d(@_width,@_height,@_depth,@_jitter,@_x,@_y,@_z,@_jitterRotation)
 
+        cleanZ:->
+            # @nodes.sort (a,b)->
+            #     if a.getZ()>b.getZ() then return 1
+            #     if a.getZ() is b.getZ() then return 0
+            #     if a.getZ() < b.getZ() then return -1
 
 
 

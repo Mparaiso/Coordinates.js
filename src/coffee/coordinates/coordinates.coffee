@@ -17,6 +17,7 @@ define (require)->
     Coordinates.Node=Coordinates.nodes.Node
     Coordinates.Node2d=Coordinates.nodes.twodee.Node2d
     Coordinates.OrderedNode3d = Coordinates.nodes.threedee.OrderedNode3d
+    Coordinates.Scatternode3d = Coordinates.nodes.threedee.Scatternode3d
     Coordinates.Layout = Coordinates.layouts.Layout
     Coordinates.Layout2d = Coordinates.layouts.twodee.Layout2d
     Coordinates.Layout3d = Coordinates.layouts.threedee.Layout3d
@@ -36,7 +37,7 @@ define (require)->
     Coordinates.Quadric = Coordinates.layouts.twodee.Quadric
 
     Coordinates.Stack3d = Coordinates.layouts.threedee.Stack3d
-
+    Coordinates.Scatter3d = Coordinates.layouts.threedee.Scatter3d
     Coordinates.LayoutTransitioner = Coordinates.utils.LayoutTransitioner
     Coordinates.LayoutUpdateMethod = Coordinates.constants.LayoutUpdateMethod
     Coordinates.FlowOverflowPolicy = Coordinates.constants.FlowOverflowPolicy
@@ -80,7 +81,9 @@ define (require)->
             add links to layout 
             @return layout
         ###
-        layout.addNodes(links)
+        for own link in links
+            layout.addNode(link)
+        return layout
 
     Coordinates.createDomLinks = (domElements)->
         return new Coordinates.DOMLink3d(element) for element in domElements if toString.call(domElements) is "[object Array]"
@@ -92,6 +95,7 @@ define (require)->
             @param root HTMLElement the root element from which the children elements will be associated with the layout
         ###
         type = type.capitalize()
+        ### instancier un layout suivant son type (factory) ###
         layout = do ->
             switch type
                 when Coordinates.LayoutType.ELLIPSE
@@ -144,12 +148,16 @@ define (require)->
                     {angle,offset,zOffset,x,y,z,order,jitterX,jitterY,jitterZ} = options
                     new Coordinates.Stack3d(angle,offset,zOffset,x,y,z,order,jitterX,jitterY,jitterZ)
 
+                when Coordinates.LayoutType.SCATTER_3D
+                    {width,height,depth,jitter,x,y,z,jitterRotation} = options
+                    new Coordinates.Scatter3d(width,height,depth,jitter,x,y,z,jitterRotation)
+
         ### if links , then add nodes ###
         if links then layout.addNodes(links)
         ### return layout ###
         return layout
 
-    Coordinates.createDomLayout = (type,options,root,autoUpdate=false)->
+    Coordinates.createDomLayout = (type,options,root,autoUpdate=true)->
         ###
             helper method to create layouts , and create dom links from a root element
             @param type layout type
@@ -158,6 +166,10 @@ define (require)->
             @param autoUpdate autoupdate layout when a HTMLElement is added or removed from the root element
         ###
         layout = Coordinates.createLayout(type,options)
+        unless autoUpdate
+            layout.setUpdateMethod Coordinates.LayoutUpdateMethod.UPDATE_ONLY
+        Coordinates.addLinksTolayout(root.childNodes)
+        return layout
 
                 
 

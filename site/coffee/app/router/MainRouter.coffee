@@ -49,7 +49,7 @@ define (require)->
 
         setCurrentLayoutCollection:(layoutcollection)->
             @appConfig.set("layoutCollection",layoutcollection)
-            console.log "setCurrentLayoutCollection",layoutcollection
+            # console.log "setCurrentLayoutCollection",layoutcollection
             return
 
         setCurrentLayout:(layoutcollection,layout)->

@@ -123,9 +123,9 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
   });
   test("update , will fail on non webkitbrowsers or on browsers that do not support CSS transform 3D", function() {
     this.link.setRotationZ(60);
-    equal(this.link.getElement().style.webkitTransform, "rotateX(0deg) rotateY(0deg) rotateZ(60deg) translateX(0px) translateY(0px) translateZ(0px)", "element transform is correct string");
+    equal(this.link.getElement().style.webkitTransform, "translateX(0px) translateY(0px) translateZ(0px) rotate(0deg) rotateX(0deg) rotateY(0deg) rotateZ(60deg)", "element transform is correct string");
     this.link.setZ(500);
-    equal(this.link.getElement().style.webkitTransform, "rotateX(0deg) rotateY(0deg) rotateZ(60deg) translateX(0px) translateY(0px) translateZ(500px)", "element transform is correct string");
+    equal(this.link.getElement().style.webkitTransform, "translateX(0px) translateY(0px) translateZ(-500px) rotate(0deg) rotateX(0deg) rotateY(0deg) rotateZ(60deg)", "element transform is correct string");
   });
   /*
           coordinates.links.DOMLink2d
@@ -505,9 +505,38 @@ require(["../src/js/coordinates/coordinates"], function(coordinates) {
     equal(1, this.stack3d.size);
     return equal(1, this.stack3d.nodes.length);
   });
-  return test("addNodes", function() {
+  test("addNodes", function() {
     this.stack3d.addNodes([this.link1, this.link2, this.link3, this.link4]);
     equal(4, this.stack3d.size);
     return equal(4, this.stack3d.nodes.length);
+  });
+  /*
+          Coordinates.Scatter3d
+  */
+
+  module("coordinates.Scatter3d", {
+    setup: function() {
+      return this.scatter3d = new coordinates.Scatter3d(300, 200, 100);
+    }
+  });
+  test("constructor", function() {
+    ok(this.scatter3d !== null, "scatter3d not null");
+    equal(this.scatter3d.getWidth(), 300, "width");
+    equal(this.scatter3d.getHeight(), 200, "height");
+    return equal(this.scatter3d.getDepth(), 100, "depth");
+  });
+  return test("adding links", function() {
+    var i, links;
+    links = (function() {
+      var _i, _results;
+      _results = [];
+      for (i = _i = 0; _i < 10; i = ++_i) {
+        _results.push(new Coordinates.Link3d({}));
+      }
+      return _results;
+    })();
+    Coordinates.addLinksTolayout(links, this.scatter3d);
+    equal(this.scatter3d.size, 10, "size");
+    return equal(this.scatter3d.nodes.length, 10, "nodes.length");
   });
 });

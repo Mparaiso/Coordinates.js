@@ -21,6 +21,7 @@ define(function(require) {
   Coordinates.Node = Coordinates.nodes.Node;
   Coordinates.Node2d = Coordinates.nodes.twodee.Node2d;
   Coordinates.OrderedNode3d = Coordinates.nodes.threedee.OrderedNode3d;
+  Coordinates.Scatternode3d = Coordinates.nodes.threedee.Scatternode3d;
   Coordinates.Layout = Coordinates.layouts.Layout;
   Coordinates.Layout2d = Coordinates.layouts.twodee.Layout2d;
   Coordinates.Layout3d = Coordinates.layouts.threedee.Layout3d;
@@ -38,6 +39,7 @@ define(function(require) {
   Coordinates.Lattice = Coordinates.layouts.twodee.Lattice;
   Coordinates.Quadric = Coordinates.layouts.twodee.Quadric;
   Coordinates.Stack3d = Coordinates.layouts.threedee.Stack3d;
+  Coordinates.Scatter3d = Coordinates.layouts.threedee.Scatter3d;
   Coordinates.LayoutTransitioner = Coordinates.utils.LayoutTransitioner;
   Coordinates.LayoutUpdateMethod = Coordinates.constants.LayoutUpdateMethod;
   Coordinates.FlowOverflowPolicy = Coordinates.constants.FlowOverflowPolicy;
@@ -91,7 +93,13 @@ define(function(require) {
         add links to layout 
         @return layout
     */
-    return layout.addNodes(links);
+
+    var link, _i, _len;
+    for (_i = 0, _len = links.length; _i < _len; _i++) {
+      link = links[_i];
+      layout.addNode(link);
+    }
+    return layout;
   };
   Coordinates.createDomLinks = function(domElements) {
     var element, _i, _len;
@@ -111,8 +119,11 @@ define(function(require) {
 
     var layout;
     type = type.capitalize();
+    /* instancier un layout suivant son type (factory)
+    */
+
     layout = (function() {
-      var alignAngleOffset, alignOffset, alignType, allowOverFlow, angle, angleDelta, circumference, columns, frequency, hDirection, hPadding, height, jitter, jitterRotation, jitterX, jitterY, jitterZ, offset, order, rotation, rows, spiralConstant, vDirection, vPadding, waveFunction, width, x, x1, x2, x3, x4, y, y1, y2, y3, y4, z, zOffset;
+      var alignAngleOffset, alignOffset, alignType, allowOverFlow, angle, angleDelta, circumference, columns, depth, frequency, hDirection, hPadding, height, jitter, jitterRotation, jitterX, jitterY, jitterZ, offset, order, rotation, rows, spiralConstant, vDirection, vPadding, waveFunction, width, x, x1, x2, x3, x4, y, y1, y2, y3, y4, z, zOffset;
       switch (type) {
         case Coordinates.LayoutType.ELLIPSE:
           width = options.width, height = options.height, x = options.x, y = options.y, rotation = options.rotation, jitterX = options.jitterX, jitterY = options.jitterY, alignType = options.alignType, alignAngleOffset = options.alignAngleOffset;
@@ -153,6 +164,9 @@ define(function(require) {
         case Coordinates.LayoutType.STACK_3D:
           angle = options.angle, offset = options.offset, zOffset = options.zOffset, x = options.x, y = options.y, z = options.z, order = options.order, jitterX = options.jitterX, jitterY = options.jitterY, jitterZ = options.jitterZ;
           return new Coordinates.Stack3d(angle, offset, zOffset, x, y, z, order, jitterX, jitterY, jitterZ);
+        case Coordinates.LayoutType.SCATTER_3D:
+          width = options.width, height = options.height, depth = options.depth, jitter = options.jitter, x = options.x, y = options.y, z = options.z, jitterRotation = options.jitterRotation;
+          return new Coordinates.Scatter3d(width, height, depth, jitter, x, y, z, jitterRotation);
       }
     })();
     /* if links , then add nodes
@@ -169,7 +183,7 @@ define(function(require) {
   Coordinates.createDomLayout = function(type, options, root, autoUpdate) {
     var layout;
     if (autoUpdate == null) {
-      autoUpdate = false;
+      autoUpdate = true;
     }
     /*
                 helper method to create layouts , and create dom links from a root element
@@ -179,7 +193,12 @@ define(function(require) {
                 @param autoUpdate autoupdate layout when a HTMLElement is added or removed from the root element
     */
 
-    return layout = Coordinates.createLayout(type, options);
+    layout = Coordinates.createLayout(type, options);
+    if (!autoUpdate) {
+      layout.setUpdateMethod(Coordinates.LayoutUpdateMethod.UPDATE_ONLY);
+    }
+    Coordinates.addLinksTolayout(root.childNodes);
+    return layout;
   };
   /* export coordinates
   */

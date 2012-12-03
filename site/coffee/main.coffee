@@ -26,6 +26,8 @@ requirejs ["app","coordinates/coordinates","vendor/jquery.min","vendor/underscor
                 {type:"Ellipse",options:{width:450,height:450,x:450,y:275}},
                 {type:"Wave",options:{width:800,height:300,x:50,y:300,frequency:2}},
                 {type:"Scatter",options:{width:500,height:500,x:150,y:50}}
+                # {type:"Scatter3d",name:"Scatted3d",options:{width:100,height:100,depth:500,x:100,y:100}}
+                
     ])
 
     ### collection de layouts 3d ###

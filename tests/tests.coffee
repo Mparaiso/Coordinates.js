@@ -98,9 +98,9 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
     test "update , will fail on non webkitbrowsers or on browsers that do not support CSS transform 3D",->
         @link.setRotationZ(60)
 
-        equal(@link.getElement().style.webkitTransform,"rotateX(0deg) rotateY(0deg) rotateZ(60deg) translateX(0px) translateY(0px) translateZ(0px)","element transform is correct string")
+        equal(@link.getElement().style.webkitTransform,"translateX(0px) translateY(0px) translateZ(0px) rotate(0deg) rotateX(0deg) rotateY(0deg) rotateZ(60deg)","element transform is correct string")
         @link.setZ(500)
-        equal(@link.getElement().style.webkitTransform,"rotateX(0deg) rotateY(0deg) rotateZ(60deg) translateX(0px) translateY(0px) translateZ(500px)","element transform is correct string")
+        equal(@link.getElement().style.webkitTransform,"translateX(0px) translateY(0px) translateZ(-500px) rotate(0deg) rotateX(0deg) rotateY(0deg) rotateZ(60deg)","element transform is correct string")
         return
 
     ###
@@ -448,5 +448,25 @@ require ["../src/js/coordinates/coordinates"],(coordinates)->
         @stack3d.addNodes([@link1,@link2,@link3,@link4])
         equal(4,@stack3d.size)
         equal(4,@stack3d.nodes.length)
+
+    ###
+        Coordinates.Scatter3d
+    ###
+    module "coordinates.Scatter3d",
+        setup:->
+            @scatter3d = new coordinates.Scatter3d(300,200,100)
+
+    test "constructor",->
+        ok(@scatter3d!=null,"scatter3d not null")
+        equal(@scatter3d.getWidth(),300,"width")
+        equal(@scatter3d.getHeight(),200,"height")
+        equal(@scatter3d.getDepth(),100,"depth")
+
+    test "adding links",->
+        links = (new Coordinates.Link3d({}) for i in [0...10])
+        Coordinates.addLinksTolayout(links,@scatter3d)
+        equal(@scatter3d.size,10,"size")
+        equal(@scatter3d.nodes.length,10,"nodes.length")
+
 
 
