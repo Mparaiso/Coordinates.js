@@ -44,14 +44,16 @@ define (require)->
 
         cleanOrder:->
             ### Cleans out duplicates and gaps  ###
-            for node,index in @nodes
-                node.setOrder(index)
-            return
+            # for node,index in @nodes
+            #     node.setOrder(index)
+            # return
 
         sortOnOrder:(n1,n2)->
             ### fonction d'aide pour le trie des noeux ###
-            n1.getOrder() > n2.getOrder()  
-
+            if n1.getOrder() > n2.getOrder() then return 1
+            if n1.getOrder() is n2.getOrder() then return 0
+            if n1.getOrder() < n2.getOrder() then return -1
+            
         renderNode:(node)->
             super(node)
             node.getLink().setRotation(0)

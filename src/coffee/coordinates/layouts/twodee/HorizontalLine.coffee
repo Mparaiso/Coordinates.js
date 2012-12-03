@@ -49,7 +49,10 @@ define (require)->
 
         update:->
             unless @size <= 0
-                @nodes.sort((a,b)->a.getOrder()>b.getOrder())
+                @nodes.sort (a,b)->
+                    if a.getOrder()>b.getOrder() then return 1
+                    if a.getOrder() is b.getOrder() then return 0
+                    if a.getOrder() < b.getOrder() then return -1
                 xPos = 0
                 for node in @nodes
                     node.setX( xPos+@getX()+(node.getJitterX()*@getJitterX()) )
@@ -57,6 +60,6 @@ define (require)->
                     xPos += node.getLink().getWidth() + @getHPadding()
 
         cleanOrder:->
-            @nodes.sort((a,b)->a.getOrder()>b.getOrder())
-            for i in [0...@size]
-                @nodes[i].setOrder(i)
+            # @nodes.sort((a,b)->a.getOrder()>b.getOrder())
+            # for i in [0...@size]
+            #     @nodes[i].setOrder(i)

@@ -56,10 +56,20 @@ define (require)->
 
     ### @todo ###
 
-    Coordinates.createDom2dLinks=(domElements)->
+    Coordinates.createDOMLink2d=(domElements)->
         ### creates and returns a or several DOMLink2d ###
-        for element in domElements
-            new Coordinates.DOMLink2d(element)
+        if toString.call(domElements) is "[object Array]"
+            for element in domElements
+                new Coordinates.DOMLink2d(element)
+        else
+            new Coordinates.DOMLink2d(domElements)
+
+    Coordinates.createDOMLink3d=(domElements)->
+        if toString.call(domElements) is "[object Array]" 
+            for element in domElements
+                new Coordinates.DOMLink3d(element)
+        else
+                new coordinates.DOMLink3d(domElements)
 
     # Coordinates.createLinks()
     # Coordinates.tweenLayouts(layout1,layout2,duration)
@@ -73,7 +83,8 @@ define (require)->
         layout.addNodes(links)
 
     Coordinates.createDomLinks = (domElements)->
-        return new Coordinates.DOMLink2d(element) for element in domElements 
+        return new Coordinates.DOMLink3d(element) for element in domElements if toString.call(domElements) is "[object Array]"
+        return new Coordinates.DOMLink3d(domElements)
 
     Coordinates.createLayout = (type,options,links)->
         ###

@@ -57,17 +57,34 @@ define(function(require) {
   /* @todo
   */
 
-  Coordinates.createDom2dLinks = function(domElements) {
+  Coordinates.createDOMLink2d = function(domElements) {
     /* creates and returns a or several DOMLink2d
     */
 
     var element, _i, _len, _results;
-    _results = [];
-    for (_i = 0, _len = domElements.length; _i < _len; _i++) {
-      element = domElements[_i];
-      _results.push(new Coordinates.DOMLink2d(element));
+    if (toString.call(domElements) === "[object Array]") {
+      _results = [];
+      for (_i = 0, _len = domElements.length; _i < _len; _i++) {
+        element = domElements[_i];
+        _results.push(new Coordinates.DOMLink2d(element));
+      }
+      return _results;
+    } else {
+      return new Coordinates.DOMLink2d(domElements);
     }
-    return _results;
+  };
+  Coordinates.createDOMLink3d = function(domElements) {
+    var element, _i, _len, _results;
+    if (toString.call(domElements) === "[object Array]") {
+      _results = [];
+      for (_i = 0, _len = domElements.length; _i < _len; _i++) {
+        element = domElements[_i];
+        _results.push(new Coordinates.DOMLink3d(element));
+      }
+      return _results;
+    } else {
+      return new coordinates.DOMLink3d(domElements);
+    }
   };
   Coordinates.addLinksTolayout = function(links, layout) {
     /* 
@@ -78,10 +95,13 @@ define(function(require) {
   };
   Coordinates.createDomLinks = function(domElements) {
     var element, _i, _len;
-    for (_i = 0, _len = domElements.length; _i < _len; _i++) {
-      element = domElements[_i];
-      return new Coordinates.DOMLink2d(element);
+    if (toString.call(domElements) === "[object Array]") {
+      for (_i = 0, _len = domElements.length; _i < _len; _i++) {
+        element = domElements[_i];
+        return new Coordinates.DOMLink3d(element);
+      }
     }
+    return new Coordinates.DOMLink3d(domElements);
   };
   Coordinates.createLayout = function(type, options, links) {
     /*

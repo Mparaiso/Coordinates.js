@@ -19,7 +19,8 @@ define(function(require) {
     },
     threedee: {
       Layout3d: require("./threedee/Layout3d"),
-      Stack3d: require("./threedee/Stack3d")
+      Stack3d: require("./threedee/Stack3d"),
+      Scatter3d: require("./threedee/Scatter3d")
     }
   };
 });

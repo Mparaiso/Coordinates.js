@@ -34,7 +34,7 @@ define (require)->
 
         imageUrlCollectionReset:->
             ### creer domlinks quand imageUrlCollection est mis à jour ###
-            @appConfig.set("domLinks",Coordinates.createDom2dLinks(_.pluck(@stage2d.getImageViews(),"el")) )
+            @appConfig.set("domLinks",Coordinates.createDOMLink3d(_.pluck(@stage2d.getImageViews(),"el")) )
             @addDomLinksToLayouts()
             if not @appConfig.has("currentLayout")
                 this.setCurrentLayout("layout2d",@layout2dCollection.first().get("type"))
@@ -60,8 +60,15 @@ define (require)->
             document.title = "#{layout} - Coordinates"
             @_currentLayoutModel = @layout2dCollection.where(type:layout)?[0]
             @_currentlayout = @_currentLayoutModel.get("instance")
+            @resetDomLinksZindex()
             @_currentlayout.updateAndRender()
             @menuStage2d.trigger(MenuStage2d::LAYOUT_CHANGE,@appConfig.get("currentLayout"))
+            return
+
+        resetDomLinksZindex:()->
+            if not @appConfig.has("domLinks") then return
+            for domLink in @appConfig.get("domLinks")
+                domLink.setZ 0
             return
 
         stopTimer:->

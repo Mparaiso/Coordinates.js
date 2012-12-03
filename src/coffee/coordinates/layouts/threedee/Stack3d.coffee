@@ -11,7 +11,7 @@ define (require)->
 
         PI = Math.PI
 
-        constructor:(angle=45,offset=5,zOffset=5,x=0,y=0,z=0,order= StackOrder.ASCENDING,jitterX=0,jitterY=0,jitterZ=0)->
+        constructor:(angle=45,offset=5,zOffset=5,x=0,y=0,z=0,order= StackOrder.DESCENDING,jitterX=0,jitterY=0,jitterZ=0)->
             super()
             @initConfig({angle,offset,zOffset,x,y,z,order,jitterX,jitterY,jitterZ},->@updateFunction())
 
@@ -51,9 +51,9 @@ define (require)->
             rad = @_angle*PI/180
             if @_order is StackOrder.ASCENDING
                 @nodes.sort (a,b)->
-                    return 1 if a.getOrder() < b.getOrder()
+                    return 1 if a.getOrder() > b.getOrder()
                     return 0 if a.getOrder() is b.getOrder()
-                    return -1 if a.getOrder() > b.getOrder()
+                    return -1 if a.getOrder() < b.getOrder()
             for node,i in @nodes
                 node.setX @_x+Math.cos(rad)*@_offset*i + node.getJitterX()*@_jitterX
                 node.setY @_y+Math.sin(rad)*@_offset*i + node.getJitterY()*@_jitterY
@@ -62,12 +62,16 @@ define (require)->
 
         cleanOrder:->
             @nodes.sort (a,b)->
-                if a.getOrder()>b.getOrder() then return 1
+                if a.getOrder()>b.getOrder() then return -1
                 if a.getOrder()==b.getOrder() then return 0
-                if a.getOrder()<b.getOrder() then return -1
-            for node,i in @nodes
-                @nodes[i].setOrder i
-            return
+                if a.getOrder()<b.getOrder() then return 1
+            # for node,i in @nodes
+            #     @nodes[i].setOrder i
+            # return
+
+        renderNode:(node)->
+            super(node)
+            node.getLink().setOrder node.getOrder()
 
         toString:->
             "[object Stack3d]"

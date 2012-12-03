@@ -4,10 +4,10 @@ define (require)->
         Layout2d:require("./twodee/Layout2d")
         VerticalLine:require("./twodee/VerticalLine")
         HorizontalLine:require("./twodee/HorizontalLine")
-        Ellipse:require("./twodee/Ellipse")
-        Wave:require("./twodee/Wave")
-        Stack:require("./twodee/Stack")
-        Spiral:require("./twodee/Spiral")
+        Ellipse:require "./twodee/Ellipse"
+        Wave:require "./twodee/Wave"
+        Stack:require "./twodee/Stack"
+        Spiral:require "./twodee/Spiral"
         Grid: require "./twodee/Grid"
         Scatter:require "./twodee/Scatter"
         Flow: require "./twodee/Flow"
@@ -16,3 +16,4 @@ define (require)->
     threedee:
         Layout3d: require "./threedee/Layout3d"
         Stack3d: require "./threedee/Stack3d"
+        Scatter3d: require "./threedee/Scatter3d"

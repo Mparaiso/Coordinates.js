@@ -14,13 +14,14 @@ requirejs ["app","coordinates/coordinates","vendor/jquery.min","vendor/underscor
 
     ### données de chaque layout , ainsi qu'une instance du layout ###
     window.layout2dCollection = new app.collection.LayoutCollection([
+                {type:"Stack3d",name:"Stack3d",options:{zOffset:30,offset:30,angle:45,x:100,y:100}}
                 {type:"Flow",options:{width:600,height:500,hPadding:20,vPadding:20,y:100,x:100}},
                 {type:"Spiral",options:{circumference:50,x:450,y:300}},
-                {type:"VerticalLine",options:{vPadding:10,x:400}},
+                {type:"VerticalLine",name:"Vertical",options:{vPadding:10,x:400}},
                 {type:"Stack",options:{angle:40,offset:40,x:50,y:50}},
                 {type:"Lattice",options:{width:500,height:500,x:200,y:50,columns:5,rows:4}},
                 {type:"Quadric",options:{x:100,y:100,x1:0,y1:0,x2:600,y2:800,x3:600,y3:-400,x4:0,y4:400}}
-                {type:"HorizontalLine",options:{hPadding:10,y:300}}
+                {type:"HorizontalLine",name:'Horizontal',options:{hPadding:10,y:300}}
                 {type:"Grid",options:{width:500,height:500,columns:5,rows:6,x:200,y:50}},
                 {type:"Ellipse",options:{width:450,height:450,x:450,y:275}},
                 {type:"Wave",options:{width:800,height:300,x:50,y:300,frequency:2}},
