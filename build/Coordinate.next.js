@@ -3,6 +3,64 @@ var coordinate;
     /**
     * @license see license.txt
     * @author mparaiso <mparaiso@online.fr>
+    * @url mparaiso.online.fr
+    */
+    (function (constantes) {
+        (function (FlowAlignment) {
+            /**
+            * Flow nodes align to the top-left bounds
+            */
+            FlowAlignment[FlowAlignment["TOP_LEFT"] = 0] = "TOP_LEFT";
+
+            /**
+            * Flow nodes align to the top-center bounds
+            */
+            FlowAlignment[FlowAlignment["TOP_CENTER"] = 1] = "TOP_CENTER";
+
+            /**
+            * Flow nodes align to the top-right bounds
+            */
+            FlowAlignment[FlowAlignment["TOP_RIGHT"] = 2] = "TOP_RIGHT";
+
+            /**
+            * Flow nodes align to the middle-left bounds
+            */
+            FlowAlignment[FlowAlignment["MIDDLE_LEFT"] = 3] = "MIDDLE_LEFT";
+
+            /**
+            * Flow nodes align to the middle-center bounds
+            */
+            FlowAlignment[FlowAlignment["MIDDLE_CENTER"] = 4] = "MIDDLE_CENTER";
+
+            /**
+            * Flow nodes align to the middle-right bounds
+            */
+            FlowAlignment[FlowAlignment["MIDDLE_RIGHT"] = 5] = "MIDDLE_RIGHT";
+
+            /**
+            * Flow nodes align to the bottom-left bounds
+            */
+            FlowAlignment[FlowAlignment["BOTTOM_LEFT"] = 6] = "BOTTOM_LEFT";
+
+            /**
+            * Flow nodes align to the bottom-center bounds
+            */
+            FlowAlignment[FlowAlignment["BOTTOM_CENTER"] = 7] = "BOTTOM_CENTER";
+
+            /**
+            * Flow nodes align to the bottom-right bounds
+            */
+            FlowAlignment[FlowAlignment["BOTTOM_RIGHT"] = 8] = "BOTTOM_RIGHT";
+        })(constantes.FlowAlignment || (constantes.FlowAlignment = {}));
+        var FlowAlignment = constantes.FlowAlignment;
+    })(coordinate.constantes || (coordinate.constantes = {}));
+    var constantes = coordinate.constantes;
+})(coordinate || (coordinate = {}));
+var coordinate;
+(function (coordinate) {
+    /**
+    * @license see license.txt
+    * @author mparaiso <mparaiso@online.fr>
     * @url mparaiso@online.fr
     */
     (function (nodes) {

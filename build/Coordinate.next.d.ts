@@ -1,6 +1,51 @@
 /**
 * @license see license.txt
 * @author mparaiso <mparaiso@online.fr>
+* @url mparaiso.online.fr
+*/
+declare module coordinate.constantes {
+    enum FlowAlignment {
+        /**
+        * Flow nodes align to the top-left bounds
+        */
+        TOP_LEFT,
+        /**
+        * Flow nodes align to the top-center bounds
+        */
+        TOP_CENTER,
+        /**
+        * Flow nodes align to the top-right bounds
+        */
+        TOP_RIGHT,
+        /**
+        * Flow nodes align to the middle-left bounds
+        */
+        MIDDLE_LEFT,
+        /**
+        * Flow nodes align to the middle-center bounds
+        */
+        MIDDLE_CENTER,
+        /**
+        * Flow nodes align to the middle-right bounds
+        */
+        MIDDLE_RIGHT,
+        /**
+        * Flow nodes align to the bottom-left bounds
+        */
+        BOTTOM_LEFT,
+        /**
+        * Flow nodes align to the bottom-center bounds
+        */
+        BOTTOM_CENTER,
+        /**
+        * Flow nodes align to the bottom-right bounds
+        */
+        BOTTOM_RIGHT,
+    }
+}
+/**
+* @license see license.txt
+* @author mparaiso <mparaiso@online.fr>
 * @url mparaiso@online.fr
 */
 declare module coordinate.nodes {
@@ -172,6 +217,37 @@ declare module coordinate.nodes.twodee {
         * @return Generic object containing all the node's layout properties
         */
         public toObject(): Object;
+    }
+}
+declare module coordinate.layouts {
+    interface ILayout extends layouts.ICoreLayout {
+        updateMethod: String;
+        proxyUpdater: Object;
+        executeUpdateMethod(): void;
+    }
+}
+declare module coordinate.layouts {
+    interface ICoreLayout {
+        nodes: Array<T>;
+        size: number;
+        addNodes(count: number): void;
+        addNode(object: Object, moveToCoordinates: Boolean): coordinate.nodes.INode;
+        addToLayout(object: Object, moveToCoordinates: Boolean): coordinate.nodes.INode;
+        getNodeByLink(link: Object): coordinate.nodes.INode;
+        getNodeIndex(node: coordinate.nodes.INode): number;
+        getNodeAt(index: number): coordinate.nodes.INode;
+        addLinkAt(object: Object, index: number): void;
+        removeLinks(): void;
+        removeLinkAt(index: number): void;
+        removeNode(node: coordinate.nodes.INode): void;
+        removeNodeByLink(object: Object): void;
+        swapNodeLinks(nodeTo: coordinate.nodes.INode, nodeFrom: coordinate.nodes.INode): void;
+        updateAndRender(): void;
+        update(): void;
+        render(): void;
+        toString(): String;
+        toJSON(): String;
+        toXML(): String;
     }
 }
 declare module coordinate {

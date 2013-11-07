@@ -3,10 +3,6 @@
 
 module coordinate.layouts
 {
-    //import com.somerandomdude.coordy.nodes.INode;
-    
-    //import flash.display.DisplayObject;
-    
     
     export interface ICoreLayout
     {

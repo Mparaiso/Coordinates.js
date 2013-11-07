@@ -1,9 +1,14 @@
+///<reference path="coordinate/constants.ts"/>
 ///<reference path="coordinate/nodes/Node.ts"/>
 ///<reference path="coordinate/nodes/twodee/INode2d.ts"/>
 ///<reference path="coordinate/nodes/twodee/Node2d.ts"/>
 ///<reference path="coordinate/nodes/twodee/OrderedNode.ts"/>
 ///<reference path="coordinate/nodes/twodee/FlowNode.ts"/>
 ///<reference path="coordinate/nodes/twodee/GridNode.ts"/>
+///<reference path="coordinate/layouts/ILayout.ts"/>
+///<reference path="coordinate/layouts/ICoreLayout.ts"/>
+
+
 /**
  * @license see license.txt
  * @author mparaiso <mparaiso@online.fr>  
