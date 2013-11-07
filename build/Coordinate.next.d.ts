@@ -162,6 +162,11 @@ declare module coordinate.constantes {
         WAVE,
     }
 }
+declare module coordinate.events {
+    class EventDispatcher {
+        constructor();
+    }
+}
 /**
 * @license see license.txt
 * @author mparaiso <mparaiso@online.fr>
@@ -170,6 +175,7 @@ declare module coordinate.constantes {
 declare module coordinate.nodes {
     interface INode {
         link: Object;
+        toObject();
     }
     /**
     * Base Node for Layouts
@@ -367,6 +373,133 @@ declare module coordinate.layouts {
         toString(): String;
         toJSON(): String;
         toXML(): String;
+    }
+}
+declare module coordinate.layouts {
+    class Layout extends coordinate.events.EventDispatcher {
+        public _nodes: coordinate.nodes.INode[];
+        public _size: number;
+        /**
+        * Returns the number of nodes currently stored and managed
+        *
+        * @return  Total number of nodes
+        */
+        public size : number;
+        /**
+        * Returns an array of node objects
+        *
+        * @return  Array containing all node objects
+        */
+        public nodes : Array<T>;
+        /**
+        * The most base-level class for all layouts. Cannot be instantiated as is.
+        *
+        */
+        public Layout(): void;
+        public toString(): string;
+        /**
+        * Serializes the layout data of each node as a JSON string. Includes the 'type', 'size' and 'nodes' properties.
+        *
+        * @return JSON representation of the layout's composition
+        */
+        public toJSON(): string;
+        public addToLayout(object: Object, moveToCoordinates?: Boolean): coordinate.nodes.INode;
+        public addNode(object?: Object, moveToCoordinates?: Boolean): coordinate.nodes.INode;
+        /**
+        * Adds a specified number of empty nodes to the layout
+        *
+        * @param count The number of nodes to add to the layout
+        */
+        public addNodes(count: number): void;
+        /**
+        * Returns node object by specified display object
+        *
+        * @param  link  an absolute URL giving the base location of the image
+        * @return      the node object which the display object is linked to
+        * @see         INode
+        */
+        public getNodeByLink(link: Object): coordinate.nodes.INode;
+        /**
+        * Returns specified node object's index in the collection
+        *
+        * @param  node  Node object from layout organizer
+        * @return      Index of node object in the collection of nodes
+        * @see         INode
+        */
+        public getNodeIndex(node: coordinate.nodes.INode): number;
+        /**
+        * Returns node object at specified index of collection
+        *
+        * @param  index  Index of item in the collection of nodes
+        * @return      Node object at the specified location in the collection
+        * @see         Node
+        */
+        public getNodeAt(index: number): coordinate.nodes.INode;
+        /**
+        * Returns true if a link (DisplayObject owned by a layout's node) exists in the layout
+        *
+        * @param  link  DisplayObject in question
+        * @return      True if link exists in layout, false if not.
+        * @see         Node
+        */
+        public linkExists(link: Object): Boolean;
+        /**
+        * Swaps links of two node objects
+        *
+        * @param  nodeTo
+        * @param  nodeFrom
+        */
+        public swapNodeLinks(nodeTo: coordinate.nodes.INode, nodeFrom: coordinate.nodes.INode): void;
+        /**
+        * Removes all links between nodes and display objects
+        *
+        */
+        public removeLinks(): void;
+        /**
+        * Removed the link between the node and display object at the specified index
+        *
+        * @param  index  index in collection of item to be removed
+        */
+        public removeLinkAt(index: number): void;
+        /**
+        * Removes specified node object from layout organizer
+        *
+        * @param  node specified Node object to remove
+        */
+        public removeNode(node: coordinate.nodes.INode): void;
+        /**
+        * Removes all nodes from the layout
+        */
+        public removeAllNodes(): void;
+        /**
+        * Removes the node that is linked to the specified object
+        *
+        * @param link
+        */
+        public removeNodeByLink(link: Object): void;
+        /**
+        * Adds a link between the specified display object to the node object at the specified index
+        *
+        * @param  object   item to add to collection
+        * @param  index        position where to add the item
+        */
+        public addLinkAt(object: Object, index: number): void;
+        /**
+        * @protected
+        */
+        private storeNode(node);
+        /**
+        * @protected
+        */
+        private storeNodeAt(node, index);
+        /**
+        * @protected
+        */
+        private getNextAvailableNode();
+        /**
+        * @protected
+        */
+        private clearNodes();
     }
 }
 declare module coordinate {

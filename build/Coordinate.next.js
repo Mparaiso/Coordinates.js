@@ -208,6 +208,18 @@ var coordinate;
 })(coordinate || (coordinate = {}));
 var coordinate;
 (function (coordinate) {
+    (function (events) {
+        var EventDispatcher = (function () {
+            function EventDispatcher() {
+            }
+            return EventDispatcher;
+        })();
+        events.EventDispatcher = EventDispatcher;
+    })(coordinate.events || (coordinate.events = {}));
+    var events = coordinate.events;
+})(coordinate || (coordinate = {}));
+var coordinate;
+(function (coordinate) {
     /**
     * @license see license.txt
     * @author mparaiso <mparaiso@online.fr>
@@ -583,6 +595,302 @@ var coordinate;
         var twodee = nodes.twodee;
     })(coordinate.nodes || (coordinate.nodes = {}));
     var nodes = coordinate.nodes;
+})(coordinate || (coordinate = {}));
+var coordinate;
+(function (coordinate) {
+    (function (layouts) {
+        //import com.serialization.json.JSON;
+        //import com.somerandomdude.coordy.nodes.INode;
+        //import flash.display.DisplayObject;
+        //import flash.events.EventDispatcher;
+        var Layout = (function (_super) {
+            __extends(Layout, _super);
+            function Layout() {
+                _super.apply(this, arguments);
+            }
+            Object.defineProperty(Layout.prototype, "size", {
+                get: /**
+                * Returns the number of nodes currently stored and managed
+                *
+                * @return  Total number of nodes
+                */
+                function () {
+                    return this._size;
+                },
+                enumerable: true,
+                configurable: true
+            });
+
+            Object.defineProperty(Layout.prototype, "nodes", {
+                get: /**
+                * Returns an array of node objects
+                *
+                * @return  Array containing all node objects
+                */
+                function () {
+                    return this._nodes;
+                },
+                enumerable: true,
+                configurable: true
+            });
+
+            /**
+            * The most base-level class for all layouts. Cannot be instantiated as is.
+            *
+            */
+            Layout.prototype.Layout = function () {
+                this._size = 0;
+            };
+
+            Layout.prototype.toString = function () {
+                return "";
+            };
+
+            /**
+            * Serializes the layout data of each node as a JSON string. Includes the 'type', 'size' and 'nodes' properties.
+            *
+            * @return JSON representation of the layout's composition
+            */
+            Layout.prototype.toJSON = function () {
+                var nodes = new Array();
+                var layout = new Object();
+
+                for (var i = 0; i < this._size; i++) {
+                    nodes.push(this._nodes[i].toObject());
+                }
+
+                layout.type = toString();
+                layout.size = this._size;
+                layout.nodes = nodes;
+
+                return JSON.stringify(layout);
+            };
+
+            Layout.prototype.addToLayout = function (object, moveToCoordinates) {
+                if (typeof moveToCoordinates === "undefined") { moveToCoordinates = true; }
+                throw (new Error('Method must be overriden by child class'));
+                return null;
+            };
+
+            Layout.prototype.addNode = function (object, moveToCoordinates) {
+                if (typeof object === "undefined") { object = null; }
+                if (typeof moveToCoordinates === "undefined") { moveToCoordinates = true; }
+                throw (new Error('Method must be overriden by child class'));
+                return null;
+            };
+
+            /**
+            * Adds a specified number of empty nodes to the layout
+            *
+            * @param count The number of nodes to add to the layout
+            */
+            Layout.prototype.addNodes = function (count) {
+                for (var i = 0; i < count; i++)
+                    this.addNode();
+            };
+
+            /**
+            * Generates XML for the layout's properties.
+            *
+            * @return XML representation of the layout's composition
+            */
+            /*toXML(): XML {
+            var xml: XML = <layout>< / layout>;
+            xml.@type = toString();
+            xml.@size = _size;
+            for (var i: number = 0; i < _size; i++) {
+            var node: XML = <node />
+            var obj: Object = _nodes[i].toObject();
+            for (var j: string in obj) {
+            node[string('@' + j)] = obj[j];
+            }
+            
+            xml.appendChild(node);
+            }
+            
+            return xml;
+            }*/
+            /**
+            * Returns node object by specified display object
+            *
+            * @param  link  an absolute URL giving the base location of the image
+            * @return      the node object which the display object is linked to
+            * @see         INode
+            */
+            Layout.prototype.getNodeByLink = function (link) {
+                for (var i; i < this._nodes.length; i++) {
+                    if (this._nodes[i].link == link)
+                        return this._nodes[i];
+                }
+                return null;
+            };
+
+            /**
+            * Returns specified node object's index in the collection
+            *
+            * @param  node  Node object from layout organizer
+            * @return      Index of node object in the collection of nodes
+            * @see         INode
+            */
+            Layout.prototype.getNodeIndex = function (node) {
+                for (var i = 0; i < this._nodes.length; i++) {
+                    if (this._nodes[i] == node)
+                        return i;
+                }
+                return null;
+            };
+
+            /**
+            * Returns node object at specified index of collection
+            *
+            * @param  index  Index of item in the collection of nodes
+            * @return      Node object at the specified location in the collection
+            * @see         Node
+            */
+            Layout.prototype.getNodeAt = function (index) {
+                return this._nodes[index];
+            };
+
+            /**
+            * Returns true if a link (DisplayObject owned by a layout's node) exists in the layout
+            *
+            * @param  link  DisplayObject in question
+            * @return      True if link exists in layout, false if not.
+            * @see         Node
+            */
+            Layout.prototype.linkExists = function (link) {
+                for (var i = 0; i < this.size; i++)
+                    if (link == this._nodes[i].link)
+                        return true;
+                return false;
+            };
+
+            /**
+            * Swaps links of two node objects
+            *
+            * @param  nodeTo
+            * @param  nodeFrom
+            */
+            Layout.prototype.swapNodeLinks = function (nodeTo, nodeFrom) {
+                var tmpLink = nodeTo.link;
+                nodeTo.link = nodeFrom.link;
+                nodeFrom.link = tmpLink;
+            };
+
+            /**
+            * Removes all links between nodes and display objects
+            *
+            */
+            Layout.prototype.removeLinks = function () {
+                for (var i = 0; i < this._nodes.length; i++)
+                    this._nodes[i].link = null;
+            };
+
+            /**
+            * Removed the link between the node and display object at the specified index
+            *
+            * @param  index  index in collection of item to be removed
+            */
+            Layout.prototype.removeLinkAt = function (index) {
+                this._nodes[index].link = null;
+            };
+
+            /**
+            * Removes specified node object from layout organizer
+            *
+            * @param  node specified Node object to remove
+            */
+            Layout.prototype.removeNode = function (node) {
+                this._nodes.splice(this.getNodeIndex(node), 1);
+                this._size--;
+            };
+
+            /**
+            * Removes all nodes from the layout
+            */
+            Layout.prototype.removeAllNodes = function () {
+                this.clearNodes();
+                this._size = 0;
+            };
+
+            /**
+            * Removes the node that is linked to the specified object
+            *
+            * @param link
+            */
+            Layout.prototype.removeNodeByLink = function (link) {
+                for (var i = 0; i < this._size; i++) {
+                    if (this._nodes[i].link == link)
+                        this.removeNode(this._nodes[i]);
+                }
+            };
+
+            /**
+            * Adds a link between the specified display object to the node object at the specified index
+            *
+            * @param  object   item to add to collection
+            * @param  index        position where to add the item
+            */
+            Layout.prototype.addLinkAt = function (object, index) {
+                this._nodes[index].link = object;
+            };
+
+            /**
+            * @protected
+            */
+            Layout.prototype.storeNode = function (node) {
+                if (!this._nodes)
+                    this._nodes = new Array();
+                this._nodes.push(node);
+                this._size++;
+
+                return this.size;
+            };
+
+            /**
+            * @protected
+            */
+            Layout.prototype.storeNodeAt = function (node, index) {
+                if (!this._nodes)
+                    this._nodes = new Array();
+                if (index >= 0 && index < this._size)
+                    this._nodes.splice(index, 0, node);
+else
+                    this._nodes.push(node);
+                this._size++;
+
+                return this.size;
+            };
+
+            /**
+            * @protected
+            */
+            Layout.prototype.getNextAvailableNode = function () {
+                for (var i = 0; i < this._nodes.length; i++) {
+                    if (!this._nodes[i].link) {
+                        return this._nodes[i];
+                    }
+                }
+                return null;
+            };
+
+            /**
+            * @protected
+            */
+            Layout.prototype.clearNodes = function () {
+                if (this._nodes) {
+                    for (var i in this._nodes) {
+                        delete this._nodes[i];
+                        this._nodes[i] = null;
+                    }
+                }
+                this._nodes = new Array();
+            };
+            return Layout;
+        })(coordinate.events.EventDispatcher);
+        layouts.Layout = Layout;
+    })(coordinate.layouts || (coordinate.layouts = {}));
+    var layouts = coordinate.layouts;
 })(coordinate || (coordinate = {}));
 if (typeof (global) !== "undefined") {
     global.coordinate = coordinate;

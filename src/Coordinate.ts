@@ -1,4 +1,5 @@
 ///<reference path="coordinate/constants.ts"/>
+///<reference path="coordinate/events/EventDispatcher.ts"/>
 ///<reference path="coordinate/nodes/Node.ts"/>
 ///<reference path="coordinate/nodes/twodee/INode2d.ts"/>
 ///<reference path="coordinate/nodes/twodee/Node2d.ts"/>
@@ -7,6 +8,7 @@
 ///<reference path="coordinate/nodes/twodee/GridNode.ts"/>
 ///<reference path="coordinate/layouts/ILayout.ts"/>
 ///<reference path="coordinate/layouts/ICoreLayout.ts"/>
+///<reference path="coordinate/layouts/Layout.ts"/>
 
 
 /**
