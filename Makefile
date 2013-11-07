@@ -1,3 +1,4 @@
+DATE=  `date +'%y.%m.%d %H:%M:%S'`
 all: build test commit
 
 build:
@@ -5,7 +6,7 @@ build:
 	
 commit:
 	git add . 
-	 git commit -am"update"
+	 git commit -am"update $(DATE)"
 	
 test:
 	mocha  -R list --recursive --require "./build/Coordinate.next.js" --globals coordinate
