@@ -224,6 +224,68 @@ var coordinate;
         * @url mparaiso@online.fr
         */
         (function (twodee) {
+            var FlowNode = (function (_super) {
+                __extends(FlowNode, _super);
+                /**
+                * Node used for Flow layout
+                *
+                * @see com.somerandomdude.coordy.layouts.twodee.Flow
+                *
+                * @param link      The node's target DisplayObject
+                * @param x         Node's x position
+                * @param y         Node's y position
+                *
+                */
+                function FlowNode(link, x, y) {
+                    if (typeof link === "undefined") { link = null; }
+                    if (typeof x === "undefined") { x = 0; }
+                    if (typeof y === "undefined") { y = 0; }
+                    _super.call(this, link, x, y);
+                }
+                Object.defineProperty(FlowNode.prototype, "outsideBounds", {
+                    get: /**
+                    * Property as to whether node's position exists outside of the layouts current bounds
+                    * @return Boolean of node's placement in/out of bounds. True if out of bounds
+                    *
+                    */
+                    function () {
+                        return this._outsideBounds;
+                    },
+                    set: function (value) {
+                        this._outsideBounds = value;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+
+                /**
+                * Creates an exact copy of node with link and position properties carried over
+                *
+                * @return Cloned node
+                *
+                */
+                FlowNode.prototype.clone = function () {
+                    var n = new FlowNode(this._link, this._x, this._y);
+                    n.outsideBounds = this._outsideBounds;
+                    return n;
+                };
+                return FlowNode;
+            })(twodee.Node2d);
+            twodee.FlowNode = FlowNode;
+        })(nodes.twodee || (nodes.twodee = {}));
+        var twodee = nodes.twodee;
+    })(coordinate.nodes || (coordinate.nodes = {}));
+    var nodes = coordinate.nodes;
+})(coordinate || (coordinate = {}));
+var coordinate;
+(function (coordinate) {
+    (function (nodes) {
+        /**
+        * @license see license.txt
+        * @author mparaiso <mparaiso@online.fr>
+        * @url mparaiso@online.fr
+        */
+        (function (twodee) {
             var GridNode = (function (_super) {
                 __extends(GridNode, _super);
                 /**

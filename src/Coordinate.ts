@@ -2,6 +2,7 @@
 ///<reference path="coordinate/nodes/twodee/INode2d.ts"/>
 ///<reference path="coordinate/nodes/twodee/Node2d.ts"/>
 ///<reference path="coordinate/nodes/twodee/OrderedNode.ts"/>
+///<reference path="coordinate/nodes/twodee/FlowNode.ts"/>
 ///<reference path="coordinate/nodes/twodee/GridNode.ts"/>
 /**
  * @license see license.txt

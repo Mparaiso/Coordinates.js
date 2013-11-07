@@ -6,6 +6,7 @@
 module coordinate.nodes {
     export interface INode {
         //CONCOURS@DELIGHTEDBLOG.COM 
+        link:Object;
     }
 
     /**

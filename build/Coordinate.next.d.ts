@@ -5,6 +5,7 @@
 */
 declare module coordinate.nodes {
     interface INode {
+        link: Object;
     }
     /**
     * Base Node for Layouts
@@ -88,6 +89,40 @@ declare module coordinate.nodes.twodee {
         * @return Generic object containing all the node's layout properties
         */
         public toObject(): Object;
+    }
+}
+/**
+* @license see license.txt
+* @author mparaiso <mparaiso@online.fr>
+* @url mparaiso@online.fr
+*/
+declare module coordinate.nodes.twodee {
+    class FlowNode extends twodee.Node2d implements twodee.INode2d {
+        public _outsideBounds: Boolean;
+        /**
+        * Node used for Flow layout
+        *
+        * @see com.somerandomdude.coordy.layouts.twodee.Flow
+        *
+        * @param link      The node's target DisplayObject
+        * @param x         Node's x position
+        * @param y         Node's y position
+        *
+        */
+        constructor(link?: Object, x?: number, y?: number);
+        /**
+        * Property as to whether node's position exists outside of the layouts current bounds
+        * @return Boolean of node's placement in/out of bounds. True if out of bounds
+        *
+        */
+        public outsideBounds : Boolean;
+        /**
+        * Creates an exact copy of node with link and position properties carried over
+        *
+        * @return Cloned node
+        *
+        */
+        public clone(): twodee.INode2d;
     }
 }
 /**
