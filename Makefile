@@ -1,5 +1,5 @@
 #VARIABLES
-DATE=  `date +'%y.%m.%d %H:%M:%S'`
+DATE=  `date +'%Y.%m.%d %H:%M:%S'`
 #@see http://stackoverflow.com/q/1859113/750852
 
 #TASKS
