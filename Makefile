@@ -1,4 +1,8 @@
+#VARIABLES
 DATE=  `date +'%y.%m.%d %H:%M:%S'`
+#@see http://stackoverflow.com/q/1859113/750852
+
+#TASKS
 all: build test commit
 
 build:
@@ -11,4 +15,4 @@ commit:
 test:
 	mocha  -R list --recursive --require "./build/Coordinate.next.js" --globals coordinate
 	
-.PHONY:  build test
+.PHONY:  test
