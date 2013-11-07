@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="bin"/>
+	<classpathentry excluding="assets/js/vendor/|threedee/|twodee/" kind="src" path="exemples"/>
+	<classpathentry kind="src" path="exemples/assets/js/vendor"/>
+	<classpathentry kind="src" path="exemples/threedee"/>
+	<classpathentry kind="src" path="exemples/twodee"/>
+	<classpathentry kind="src" path="site/build"/>
+	<classpathentry excluding="app/view/|Services/|app/router/|app/collection/|app/model/|app/service/|app/template/" kind="src" path="site/js"/>
+	<classpathentry kind="src" path="site/js/app/collection"/>
+	<classpathentry kind="src" path="site/js/app/model"/>
+	<classpathentry kind="src" path="site/js/app/router"/>
+	<classpathentry kind="src" path="site/js/app/service"/>
+	<classpathentry kind="src" path="site/js/app/template"/>
+	<classpathentry kind="src" path="site/js/app/view"/>
+	<classpathentry kind="src" path="site/js/Services"/>
+	<classpathentry kind="src" path="site/tests"/>
+	<classpathentry excluding="bootstrap/js/" kind="src" path="site/vendor"/>
+	<classpathentry kind="src" path="site/vendor/bootstrap/js"/>
+	<classpathentry excluding="nodes/twodee/|events/helpers/|nodes/|layouts/twodee/|links/|layouts/|events/|proxyupdaters/|links/threedee/|layouts/threedee/|nodes/threedee/|constants/|helpers/|utils/" kind="src" path="src/js/coordinates"/>
+	<classpathentry kind="src" path="src/js/coordinates/constants"/>
+	<classpathentry excluding="helpers/" kind="src" path="src/js/coordinates/events"/>
+	<classpathentry kind="src" path="src/js/coordinates/events/helpers"/>
+	<classpathentry kind="src" path="src/js/coordinates/helpers"/>
+	<classpathentry excluding="twodee/|threedee/" kind="src" path="src/js/coordinates/layouts"/>
+	<classpathentry kind="src" path="src/js/coordinates/layouts/threedee"/>
+	<classpathentry kind="src" path="src/js/coordinates/layouts/twodee"/>
+	<classpathentry excluding="threedee/" kind="src" path="src/js/coordinates/links"/>
+	<classpathentry kind="src" path="src/js/coordinates/links/threedee"/>
+	<classpathentry excluding="twodee/|threedee/" kind="src" path="src/js/coordinates/nodes"/>
+	<classpathentry kind="src" path="src/js/coordinates/nodes/threedee"/>
+	<classpathentry kind="src" path="src/js/coordinates/nodes/twodee"/>
+	<classpathentry kind="src" path="src/js/coordinates/proxyupdaters"/>
+	<classpathentry kind="src" path="src/js/coordinates/utils"/>
+	<classpathentry kind="src" path="src/js/vendor"/>
+	<classpathentry kind="src" path="tests"/>
+	<classpathentry kind="src" path="tools"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

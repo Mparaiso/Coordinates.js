@@ -1,7 +1,0 @@
-Coordinates.js 
-
-@author M.Paraiso
-@email mparaiso@online.fr
-@copyrights 2012 M.Paraiso
-
-@link http://mparaiso.github.com/Coordinates.js/

@@ -1,0 +1,1 @@
+"src/Coordinate.ts" --sourcemap --declaration --target ES5 --module amd --out build/Coordinate.next.js

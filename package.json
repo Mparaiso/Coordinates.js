@@ -1,0 +1,11 @@
+{
+	"name": "Coordinate",
+	"version": "0.0.1",
+	"description": "Organise stuffs in 2d an 3d space",
+	"devDependencies": {
+		"mocha": "*",
+		"chai": "*",
+		"grunt": "0.4.x",
+		"grunt-ts": "1.4.x"
+	}
+}
