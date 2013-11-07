@@ -5,7 +5,7 @@ build:
 	
 commit:
 	git add . 
-	git commit -am"update `DATE`"
+	git commit -am"update $(date)"
 	
 test:
 	mocha  -R list --recursive --require "./build/Coordinate.next.js" --globals coordinate
