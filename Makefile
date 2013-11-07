@@ -3,9 +3,9 @@ all: build test
 build:
 	grunt
 	
-deploy:
+commit:
 	git add . 
-	git commit -am"update ${date}"
+	git commit -am"update $${DATE}"
 	
 test:
 	mocha  -R list --recursive --require "./build/Coordinate.next.js" --globals coordinate
