@@ -3,6 +3,11 @@ declare module coordinate.events {
         constructor();
     }
 }
+declare module coordinate.events {
+    class Event {
+        constructor(type, bubbles?: boolean, cancelable?: boolean);
+    }
+}
 /**
 * @license see license.txt
 * @author mparaiso <mparaiso@online.fr>

@@ -12,6 +12,20 @@ var coordinate;
 })(coordinate || (coordinate = {}));
 var coordinate;
 (function (coordinate) {
+    (function (events) {
+        var Event = (function () {
+            function Event(type, bubbles, cancelable) {
+                if (typeof bubbles === "undefined") { bubbles = false; }
+                if (typeof cancelable === "undefined") { cancelable = false; }
+            }
+            return Event;
+        })();
+        events.Event = Event;
+    })(coordinate.events || (coordinate.events = {}));
+    var events = coordinate.events;
+})(coordinate || (coordinate = {}));
+var coordinate;
+(function (coordinate) {
     /**
     * @license see license.txt
     * @author mparaiso <mparaiso@online.fr>
