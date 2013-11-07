@@ -90,5 +90,54 @@ declare module coordinate.nodes.twodee {
         public toObject(): Object;
     }
 }
+/**
+* @license see license.txt
+* @author mparaiso <mparaiso@online.fr>
+* @url mparaiso@online.fr
+*/
+declare module coordinate.nodes.twodee {
+    class GridNode extends twodee.Node2d implements twodee.INode2d {
+        public _row: number;
+        public _column: number;
+        /**
+        * Node used for Grid layout
+        *          *
+        * @param link          The node's target object
+        * @param column        Column in the grid in which the node resides
+        * @param row           Row in the grid in which the node resides
+        * @param x             Node's x position
+        * @param y             Node's y position
+        * @param jitterX       Node's x-jitter value
+        * @param jitterY       Node's y-jitter value
+        *
+        */
+        constructor(link?: Object, column?: number, row?: number, x?: number, y?: number, jitterX?: number, jitterY?: number);
+        /**
+        * Mutator/accessor of the node's row property. <strong>Note</strong> - There's currently no error-checking if invaluid value is set
+        * @return Row in the grid in which the node resides
+        *
+        */
+        public row : number;
+        /**
+        * Mutator/accessor of the node's column property. <strong>Note</strong> - There's currently no error-checking if invaluid value is set
+        * @return Column in the grid in which the node resides
+        *
+        */
+        public column : number;
+        /**
+        * Creates an exact copy of node with link and position properties carried over
+        *
+        * @return Cloned node
+        *
+        */
+        public clone(): twodee.INode2d;
+        /**
+        * Packages the node as a generic object - mainly used for exporting layout data.
+        *
+        * @return Generic object containing all the node's layout properties
+        */
+        public toObject(): Object;
+    }
+}
 declare module coordinate {
 }

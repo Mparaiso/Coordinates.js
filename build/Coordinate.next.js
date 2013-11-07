@@ -215,6 +215,105 @@ var coordinate;
     })(coordinate.nodes || (coordinate.nodes = {}));
     var nodes = coordinate.nodes;
 })(coordinate || (coordinate = {}));
+var coordinate;
+(function (coordinate) {
+    (function (nodes) {
+        /**
+        * @license see license.txt
+        * @author mparaiso <mparaiso@online.fr>
+        * @url mparaiso@online.fr
+        */
+        (function (twodee) {
+            var GridNode = (function (_super) {
+                __extends(GridNode, _super);
+                /**
+                * Node used for Grid layout
+                *          *
+                * @param link          The node's target object
+                * @param column        Column in the grid in which the node resides
+                * @param row           Row in the grid in which the node resides
+                * @param x             Node's x position
+                * @param y             Node's y position
+                * @param jitterX       Node's x-jitter value
+                * @param jitterY       Node's y-jitter value
+                *
+                */
+                function GridNode(link, column, row, x, y, jitterX, jitterY) {
+                    if (typeof link === "undefined") { link = null; }
+                    if (typeof column === "undefined") { column = -1; }
+                    if (typeof row === "undefined") { row = -1; }
+                    if (typeof x === "undefined") { x = 0; }
+                    if (typeof y === "undefined") { y = 0; }
+                    if (typeof jitterX === "undefined") { jitterX = 0; }
+                    if (typeof jitterY === "undefined") { jitterY = 0; }
+                    _super.call(this, link, x, y, jitterX, jitterY);
+                    this._row = row;
+                    this._column = column;
+                }
+                Object.defineProperty(GridNode.prototype, "row", {
+                    get: /**
+                    * Mutator/accessor of the node's row property. <strong>Note</strong> - There's currently no error-checking if invaluid value is set
+                    * @return Row in the grid in which the node resides
+                    *
+                    */
+                    function () {
+                        return this._row;
+                    },
+                    set: function (value) {
+                        this._row = value;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+
+                Object.defineProperty(GridNode.prototype, "column", {
+                    get: /**
+                    * Mutator/accessor of the node's column property. <strong>Note</strong> - There's currently no error-checking if invaluid value is set
+                    * @return Column in the grid in which the node resides
+                    *
+                    */
+                    function () {
+                        return this._column;
+                    },
+                    set: function (value) {
+                        this._column = value;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+
+                /**
+                * Creates an exact copy of node with link and position properties carried over
+                *
+                * @return Cloned node
+                *
+                */
+                GridNode.prototype.clone = function () {
+                    return new GridNode(this._link, this._column, this._row, this._x, this._y, this._jitterX, this._jitterY);
+                };
+
+                /**
+                * Packages the node as a generic object - mainly used for exporting layout data.
+                *
+                * @return Generic object containing all the node's layout properties
+                */
+                GridNode.prototype.toObject = function () {
+                    return {
+                        row: this._row,
+                        column: this._column,
+                        x: this._x,
+                        y: this._y,
+                        rotation: this._rotation
+                    };
+                };
+                return GridNode;
+            })(twodee.Node2d);
+            twodee.GridNode = GridNode;
+        })(nodes.twodee || (nodes.twodee = {}));
+        var twodee = nodes.twodee;
+    })(coordinate.nodes || (coordinate.nodes = {}));
+    var nodes = coordinate.nodes;
+})(coordinate || (coordinate = {}));
 if (typeof (global) !== "undefined") {
     global.coordinate = coordinate;
 }
