@@ -53,6 +53,156 @@ var coordinate;
             FlowAlignment[FlowAlignment["BOTTOM_RIGHT"] = 8] = "BOTTOM_RIGHT";
         })(constantes.FlowAlignment || (constantes.FlowAlignment = {}));
         var FlowAlignment = constantes.FlowAlignment;
+
+        (function (FlowDirection) {
+            /**
+            * Nodes flow horizontally within the bounds of the layout
+            */
+            FlowDirection[FlowDirection["HORIZONTAL"] = 0] = "HORIZONTAL";
+
+            /**
+            * Nodes flow vertically within the bounds of the layout
+            */
+            FlowDirection[FlowDirection["VERTICAL"] = 1] = "VERTICAL";
+        })(constantes.FlowDirection || (constantes.FlowDirection = {}));
+        var FlowDirection = constantes.FlowDirection;
+
+        (function (FlowOverflowPolicy) {
+            /**
+            * Allow all nodes within flow that are out of the layout's bounds to continue flowing.
+            * For example, a flow layout in which the <em>flowDirection</em> was <em>HORIZONTAL</em> would continue
+            * places nodes horizontally even if the bounds of the layout have been reached
+            */
+            FlowOverflowPolicy[FlowOverflowPolicy["ALLOW_OVERFLOW"] = 0] = "ALLOW_OVERFLOW";
+
+            /**
+            * Will simply not place nodes that do not fit within the layout's bounds.
+            */
+            FlowOverflowPolicy[FlowOverflowPolicy["IGNORE_OVERFLOW"] = 1] = "IGNORE_OVERFLOW";
+
+            /**
+            * Will remove node's DisplayObject link from the target's display stack if it does not
+            * fit within that layout's bounds.
+            */
+            FlowOverflowPolicy[FlowOverflowPolicy["HIDE_OVERFLOW"] = 2] = "HIDE_OVERFLOW";
+        })(constantes.FlowOverflowPolicy || (constantes.FlowOverflowPolicy = {}));
+        var FlowOverflowPolicy = constantes.FlowOverflowPolicy;
+
+        (function (GridLayoutDirection) {
+            /**
+            * Places nodes within the grid layout from left to right
+            */
+            GridLayoutDirection[GridLayoutDirection["LEFT_TO_RIGHT"] = 0] = "LEFT_TO_RIGHT";
+
+            /**
+            * Places nodes within the grid layout from right to left
+            */
+            GridLayoutDirection[GridLayoutDirection["RIGHT_TO_LEFT"] = 1] = "RIGHT_TO_LEFT";
+
+            /**
+            * Places nodes within the grid layout from top to bottom
+            */
+            GridLayoutDirection[GridLayoutDirection["TOP_TO_BOTTOM"] = 2] = "TOP_TO_BOTTOM";
+
+            /**
+            * Places nodes within the grid layout from bottom to top
+            */
+            GridLayoutDirection[GridLayoutDirection["BOTTOM_TO_TOP"] = 3] = "BOTTOM_TO_TOP";
+        })(constantes.GridLayoutDirection || (constantes.GridLayoutDirection = {}));
+        var GridLayoutDirection = constantes.GridLayoutDirection;
+
+        (function (LayoutType) {
+            /**
+            * @see coordinate.layouts.threedee.Ellipse3d
+            */
+            LayoutType[LayoutType["ELLIPSE_3D"] = 0] = "ELLIPSE_3D";
+
+            /**
+            * @see coordinate.layouts.threedee.Grid3d
+            */
+            LayoutType[LayoutType["GRID_3D"] = 1] = "GRID_3D";
+
+            /**
+            * @see coordinate.layouts.threedee.Scatter3d
+            */
+            LayoutType[LayoutType["SCATTER_3D"] = 2] = "SCATTER_3D";
+
+            /**
+            * @see coordinate.layouts.threedee.Snapshot3d
+            */
+            LayoutType[LayoutType["SNAPSHOT_3D"] = 3] = "SNAPSHOT_3D";
+
+            /**
+            * @see coordinate.layouts.threedee.Sphere3d
+            */
+            LayoutType[LayoutType["SPHEROID_3D"] = 4] = "SPHEROID_3D";
+
+            /**
+            * @see coordinate.layouts.threedee.Stack3d
+            */
+            LayoutType[LayoutType["STACK_3D"] = 5] = "STACK_3D";
+
+            /**
+            * @see coordinate.layouts.threedee.Wave3d
+            */
+            LayoutType[LayoutType["WAVE_3D"] = 6] = "WAVE_3D";
+
+            /**
+            * @see coordinate.layouts.threedee.WaveEllipse3d
+            */
+            LayoutType[LayoutType["WAVE_ELLIPSE_3D"] = 7] = "WAVE_ELLIPSE_3D";
+
+            /**
+            * @see coordinate.layouts.twodee.Ellipse
+            */
+            LayoutType[LayoutType["ELLIPSE"] = 8] = "ELLIPSE";
+
+            /**
+            * @see coordinate.layouts.twodee.Flow
+            */
+            LayoutType[LayoutType["FLOW"] = 9] = "FLOW";
+
+            /**
+            * @see coordinate.layouts.twodee.Grid
+            */
+            LayoutType[LayoutType["GRID"] = 10] = "GRID";
+
+            /**
+            * @see coordinate.layouts.twodee.HorizontalLine
+            */
+            LayoutType[LayoutType["HORIZONTAL_LINE"] = 11] = "HORIZONTAL_LINE";
+
+            /**
+            * @see coordinate.layouts.twodee.Lattice
+            */
+            LayoutType[LayoutType["LATTICE"] = 12] = "LATTICE";
+
+            /**
+            * @see coordinate.layouts.twodee.Scatter
+            */
+            LayoutType[LayoutType["SCATTER"] = 13] = "SCATTER";
+
+            /**
+            * @see coordinate.layouts.twodee.Snapshot
+            */
+            LayoutType[LayoutType["SNAPSHOT"] = 14] = "SNAPSHOT";
+
+            /**
+            * @see coordinate.layouts.twodee.Stack
+            */
+            LayoutType[LayoutType["STACK"] = 15] = "STACK";
+
+            /**
+            * @see coordinate.layouts.twodee.VerticalLine
+            */
+            LayoutType[LayoutType["VERTICAL_LINE"] = 16] = "VERTICAL_LINE";
+
+            /**
+            * @see coordinate.layouts.twodee.Wave
+            */
+            LayoutType[LayoutType["WAVE"] = 17] = "WAVE";
+        })(constantes.LayoutType || (constantes.LayoutType = {}));
+        var LayoutType = constantes.LayoutType;
     })(coordinate.constantes || (coordinate.constantes = {}));
     var constantes = coordinate.constantes;
 })(coordinate || (coordinate = {}));
