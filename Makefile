@@ -15,4 +15,4 @@ commit:
 test:
 	mocha  -R list --recursive --require "./build/Coordinate.next.js" --globals coordinate
 	
-.PHONY:  build test
+.PHONY:   test
