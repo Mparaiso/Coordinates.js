@@ -1,5 +1,10 @@
 var coordinate;
 (function (coordinate) {
+    /**
+    * @license see license.txt
+    * @author mparaiso <mparaiso@online.fr>
+    * @url mparaiso@online.fr
+    */
     (function (nodes) {
         /**
         * Base Node for Layouts
@@ -192,7 +197,7 @@ var coordinate;
                 *
                 */
                 OrderedNode.prototype.clone = function () {
-                    return new OrderedNode(_link, _order, _x, _y, _jitterX, _jitterY);
+                    return new OrderedNode(this._link, this._order, this._x, this._y, this._jitterX, this._jitterY);
                 };
 
                 /**
@@ -200,7 +205,7 @@ var coordinate;
                 * @return Generic object containing all the node's layout properties
                 */
                 OrderedNode.prototype.toObject = function () {
-                    return { order: _order, x: _x, y: _y, rotation: _rotation };
+                    return { order: this._order, x: this._x, y: this._y, rotation: this._rotation };
                 };
                 return OrderedNode;
             })(twodee.Node2d);

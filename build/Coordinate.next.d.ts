@@ -1,3 +1,8 @@
+/**
+* @license see license.txt
+* @author mparaiso <mparaiso@online.fr>
+* @url mparaiso@online.fr
+*/
 declare module coordinate.nodes {
     interface INode {
     }
@@ -47,6 +52,39 @@ declare module coordinate.nodes.twodee {
         /**
         * Packages the node as a generic object - mainly used for exporting layout data.
         *
+        * @return Generic object containing all the node's layout properties
+        */
+        public toObject(): Object;
+    }
+}
+declare module coordinate.nodes.twodee {
+    class OrderedNode extends twodee.Node2d {
+        public _order: number;
+        public order : number;
+        /**
+        * Node used for HorizontalLine, VerticalLine and Stack layouts
+        *
+        * @see com.somerandomdude.coordy.layouts.twodee.HorizontalLine
+        * @see com.somerandomdude.coordy.layouts.twodee.VerticalLine
+        * @see com.somerandomdude.coordy.layouts.twodee.Stack
+        *
+        * @param link          The node's target DisplayObject
+        * @param order         Node's order in the layout
+        * @param x             Node's x position
+        * @param y             Node's y position
+        * @param jitterX       Node's x-jitter value
+        * @param jitterY       Node's y-jitter value
+        *
+        */
+        constructor(link?: Object, order?: number, x?: number, y?: number, jitterX?: number, jitterY?: number);
+        /**
+        * Creates an exact copy of node with link and position properties carried over
+        * @return Cloned node
+        *
+        */
+        public clone(): twodee.INode2d;
+        /**
+        * Packages the node as a generic object - mainly used for exporting layout data.
         * @return Generic object containing all the node's layout properties
         */
         public toObject(): Object;
