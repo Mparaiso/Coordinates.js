@@ -1,3 +1,8 @@
+declare module coordinate.events {
+    class EventDispatcher {
+        constructor();
+    }
+}
 /**
 * @license see license.txt
 * @author mparaiso <mparaiso@online.fr>
@@ -160,11 +165,6 @@ declare module coordinate.constantes {
         * @see coordinate.layouts.twodee.Wave
         */
         WAVE,
-    }
-}
-declare module coordinate.events {
-    class EventDispatcher {
-        constructor();
     }
 }
 /**

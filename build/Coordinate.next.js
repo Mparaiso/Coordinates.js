@@ -1,5 +1,17 @@
 var coordinate;
 (function (coordinate) {
+    (function (events) {
+        var EventDispatcher = (function () {
+            function EventDispatcher() {
+            }
+            return EventDispatcher;
+        })();
+        events.EventDispatcher = EventDispatcher;
+    })(coordinate.events || (coordinate.events = {}));
+    var events = coordinate.events;
+})(coordinate || (coordinate = {}));
+var coordinate;
+(function (coordinate) {
     /**
     * @license see license.txt
     * @author mparaiso <mparaiso@online.fr>
@@ -205,18 +217,6 @@ var coordinate;
         var LayoutType = constantes.LayoutType;
     })(coordinate.constantes || (coordinate.constantes = {}));
     var constantes = coordinate.constantes;
-})(coordinate || (coordinate = {}));
-var coordinate;
-(function (coordinate) {
-    (function (events) {
-        var EventDispatcher = (function () {
-            function EventDispatcher() {
-            }
-            return EventDispatcher;
-        })();
-        events.EventDispatcher = EventDispatcher;
-    })(coordinate.events || (coordinate.events = {}));
-    var events = coordinate.events;
 })(coordinate || (coordinate = {}));
 var coordinate;
 (function (coordinate) {
@@ -602,7 +602,6 @@ var coordinate;
         //import com.serialization.json.JSON;
         //import com.somerandomdude.coordy.nodes.INode;
         //import flash.display.DisplayObject;
-        //import flash.events.EventDispatcher;
         var Layout = (function (_super) {
             __extends(Layout, _super);
             function Layout() {

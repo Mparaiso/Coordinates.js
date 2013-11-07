@@ -4,7 +4,6 @@ module coordinate.layouts {
     //import com.somerandomdude.coordy.nodes.INode;
 
     //import flash.display.DisplayObject;
-    //import flash.events.EventDispatcher;
 
     export class Layout extends events.EventDispatcher {
 
@@ -242,7 +241,7 @@ module coordinate.layouts {
          * @protected 
          */
         private getNextAvailableNode(): nodes.INode {
-            for (var i= 0; i < this._nodes.length; i++) {
+            for (var i = 0; i < this._nodes.length; i++) {
                 if (!this._nodes[i].link) {
                     return this._nodes[i];
                 }
