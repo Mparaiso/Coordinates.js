@@ -1,4 +1,13 @@
 declare module coordinate.events {
+    interface IEventDispatcher {
+        addEventListener(type: string, listener: Function, useCapture: boolean, priority: number, useWeakReference: boolean): void;
+        dispatchEvent(event): boolean;
+        hasEventListener(type: string): boolean;
+        removeEventListener(type: string, listener: Function, useCapture: boolean): void;
+        willTrigger(type: string): boolean;
+    }
+}
+declare module coordinate.events {
     class Event {
         public bubbles: boolean;
         public cancelable: boolean;

@@ -6,7 +6,7 @@ DATE=  `date +'%Y/%m/%d %H:%M:%S'`
 all: build test commit
 
 build:
-	grunt
+	grunt -v
 	
 commit:
 	git add . 
