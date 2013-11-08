@@ -1,6 +1,68 @@
 var coordinate;
 (function (coordinate) {
     (function (events) {
+        var Event = (function () {
+            function Event(inType, inBubbles, inCancelable) {
+                if (typeof inBubbles === "undefined") { inBubbles = false; }
+                if (typeof inCancelable === "undefined") { inCancelable = false; }
+                this.type = inType;
+                this.bubbles = inBubbles;
+                this.cancelable = inCancelable;
+                this.__isCancelled = false;
+                this.__isCancelledNow = false;
+                this.target = null;
+                this.currentTarget = null;
+                this.eventPhase = events.EventPhase.AT_TARGET;
+            }
+            Event.prototype.clone = function () {
+                return new Event(this.type, this.bubbles, this.cancelable);
+            };
+
+            Event.prototype.stopImmediatePropagation = function () {
+                this.__isCancelled = true;
+                this.__isCancelledNow = true;
+            };
+
+            Event.prototype.stopPropagation = function () {
+                this.__isCancelled = true;
+            };
+
+            Event.prototype.toString = function () {
+                return "[Event type=" + this.type + " bubbles=" + this.bubbles + " cancelable=" + this.cancelable + "]";
+            };
+
+            Event.prototype.__createSimilar = function (type, related, targ) {
+                if (typeof related === "undefined") { related = null; }
+                if (typeof targ === "undefined") { targ = null; }
+                var result = new Event(this.type, this.bubbles, this.cancelable);
+
+                if (targ != null) {
+                    result.target = targ;
+                }
+
+                return result;
+            };
+
+            Event.prototype.__getIsCancelled = function () {
+                return this.__isCancelled;
+            };
+
+            Event.prototype.__getIsCancelledNow = function () {
+                return this.__isCancelledNow;
+            };
+
+            Event.prototype.__setPhase = function (phase) {
+                this.eventPhase = phase;
+            };
+            return Event;
+        })();
+        events.Event = Event;
+    })(coordinate.events || (coordinate.events = {}));
+    var events = coordinate.events;
+})(coordinate || (coordinate = {}));
+var coordinate;
+(function (coordinate) {
+    (function (events) {
         var EventDispatcher = (function () {
             function EventDispatcher() {
             }
@@ -13,14 +75,10 @@ var coordinate;
 var coordinate;
 (function (coordinate) {
     (function (events) {
-        var Event = (function () {
-            function Event(type, bubbles, cancelable) {
-                if (typeof bubbles === "undefined") { bubbles = false; }
-                if (typeof cancelable === "undefined") { cancelable = false; }
-            }
-            return Event;
-        })();
-        events.Event = Event;
+        (function (EventPhase) {
+            EventPhase[EventPhase["AT_TARGET"] = 0] = "AT_TARGET";
+        })(events.EventPhase || (events.EventPhase = {}));
+        var EventPhase = events.EventPhase;
     })(coordinate.events || (coordinate.events = {}));
     var events = coordinate.events;
 })(coordinate || (coordinate = {}));

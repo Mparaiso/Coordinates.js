@@ -1,5 +1,6 @@
 ///<reference path="coordinate/events/Event.ts"/>
 ///<reference path="coordinate/events/EventDispatcher.ts"/>
+///<reference path="coordinate/events/EventPhase.ts"/>
 ///<reference path="coordinate/constants.ts"/>
 ///<reference path="coordinate/nodes/Node.ts"/>
 ///<reference path="coordinate/nodes/twodee/INode2d.ts"/>

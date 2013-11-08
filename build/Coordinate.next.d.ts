@@ -1,11 +1,32 @@
 declare module coordinate.events {
+    class Event {
+        public bubbles: boolean;
+        public cancelable: boolean;
+        public currentTarget: any;
+        public eventPhase: number;
+        public target: any;
+        public type: string;
+        public __isCancelled: boolean;
+        public __isCancelledNow: boolean;
+        constructor(inType: string, inBubbles?: boolean, inCancelable?: boolean);
+        public clone(): Event;
+        public stopImmediatePropagation(): void;
+        public stopPropagation(): void;
+        public toString(): string;
+        public __createSimilar(type: String, related?: any, targ?: any): Event;
+        public __getIsCancelled(): boolean;
+        public __getIsCancelledNow(): boolean;
+        public __setPhase(phase: number): void;
+    }
+}
+declare module coordinate.events {
     class EventDispatcher {
         constructor();
     }
 }
 declare module coordinate.events {
-    class Event {
-        constructor(type, bubbles?: boolean, cancelable?: boolean);
+    enum EventPhase {
+        AT_TARGET,
     }
 }
 /**
