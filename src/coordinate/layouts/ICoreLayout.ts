@@ -1,34 +1,36 @@
-///<reference path="../nodes/Node.ts"/>
-
+ 
 
 module coordinate.layouts
 {
-    
-    export interface ICoreLayout
-    {
-        nodes:Array;
-        size:number;
-        
-         addNodes(count:number):void;
-         addNode(object:Object, moveToCoordinates:Boolean):nodes.INode;
-         addToLayout(object:Object, moveToCoordinates:Boolean):nodes.INode;
-         getNodeByLink(link:Object):nodes.INode;
-         getNodeIndex(node:nodes.INode):number;
-         getNodeAt(index:number):nodes.INode;
-         addLinkAt(object:Object, index:number):void;
-         removeLinks():void;
-         removeLinkAt(index:number):void;
-         removeNode(node:nodes.INode):void;
-         removeNodeByLink(object:Object):void;
-         swapNodeLinks(nodeTo:nodes.INode, nodeFrom:nodes.INode):void;
-        
-         updateAndRender():void;
-         update():void;
-         render():void;
-        
-         toString():String;
-         toJSON():String;
-         toXML():String;
-        
-    }
+	import nodes =  coordinate.nodes ;
+	
+	import display =  flash.display ;
+	
+	public Numbererface ICoreLayout
+	{
+		function get nodes():Array;
+		function get size():Number;
+		
+		function addNodes(count:Number):void;
+		function addNode(object:any=null, moveToCoordinates:boolean=true):nodes.INode;
+		function addToLayout(object:any, moveToCoordinates:boolean=true):nodes.INode;
+		function getNodeByLink(link:any):nodes.INode;
+		function getNodeIndex(node:nodes.INode):Number;
+		function getNodeAt(index:Number):nodes.INode;
+		function addLinkAt(object:any, index:Number):void;
+		function removeLinks():void;
+		function removeLinkAt(index:Number):void;
+		function removeNode(node:nodes.INode):void;
+		function removeNodeByLink(object:any):void;
+		function swapNodeLinks(nodeTo:nodes.INode, nodeFrom:nodes.INode):void;
+		
+		function updateAndRender():void;
+		function update():void;
+		function render():void;
+		
+		function toString():string;
+		function toJSON():string;
+		function toXML():XML;
+		
+	}
 }

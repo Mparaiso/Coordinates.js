@@ -1,19 +1,23 @@
+ 
+
+  
 
 module coordinate.layouts
 {
-    //import com.somerandomdude.coordy.nodes.INode;
-    //import com.somerandomdude.coordy.proxyupdaters.IProxyUpdater;
-    
-    //import flash.display.DisplayObject;
-    
-    export interface ILayout extends ICoreLayout
-    {
-        updateMethod:String;
-        
-        proxyUpdater:Object;
-        //function set proxyUpdater(value:IProxyUpdater):void;
-        
-        executeUpdateMethod():void;
-        
-    }
+	import nodes =  coordinate.nodes ;
+	import proxyupdaters =  coordinate.proxyupdaters ;
+	
+	import display =  flash.display ;
+	
+	public Numbererface ILayout extends ICoreLayout
+	{
+		function get updateMethod():string;
+		function set updateMethod(value:string):void;
+		
+		function get proxyUpdater():proxyupdaters.IProxyUpdater;
+		function set proxyUpdater(value:proxyupdaters.IProxyUpdater):void;
+		
+		function executeUpdateMethod():void;
+		
+	}
 }

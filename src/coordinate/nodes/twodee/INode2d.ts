@@ -1,10 +1,14 @@
 module coordinate.nodes.twodee {
-    export interface INode2d {
-        x: number;
-        y: number;
-        jitterX: number;
-        jitterY: number;
-        rotation: number;
-        clone(): INode2d;
+
+    import nodes = coordinate.nodes;	
+
+	export interface INode2d extends nodes.INode {
+		 x:Number;
+		 y:Number;
+		 jitterX:Number;
+		 jitterY:Number;	
+		 rotation:Number;
+         
+        clone():INode2d;
     }
 }

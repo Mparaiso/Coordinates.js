@@ -1,7 +1,3 @@
 module coordinate.events {
-
-    export class EventDispatcher {
-
-        constructor() { }
-    }
+    export class EventDispatcher { }
 }

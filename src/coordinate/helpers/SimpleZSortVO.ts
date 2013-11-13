@@ -1,0 +1,1 @@
+module coordinate.helpers{	import display =  flash.display ;					export class SimpleZSortVO	{		 object : display.DisplayObject;		 screenZ:Number;								 SimpleZSortVO(object : display.DisplayObject, screenZ:Number){			this.object = object;			this.screenZ = screenZ;		}	}}
