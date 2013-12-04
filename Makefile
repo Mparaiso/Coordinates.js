@@ -10,9 +10,9 @@ build:
 	
 commit:
 	git add . 
-	 git commit -am"update $(DATE)"
+	git commit -am"update $(DATE)"
 	
 test:
-	mocha  -R list --recursive --require "./build/Coordinate.next.js" --globals coordinate
+	mocha  -R list --recursive --require "./build/Coordinate.next.js" --globals coordinate -d -u tdd
 	
 .PHONY:  build test commit

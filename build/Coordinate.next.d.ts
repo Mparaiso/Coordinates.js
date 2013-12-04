@@ -1,5 +1,10 @@
 declare module coordinate.events {
     class EventDispatcher {
+        static eventSplitter: string;
+        public callbacks: Object;
+        public addEventListener(events: string, callback: Function): EventDispatcher;
+        public removeEventListener(events_: String, callback?): EventDispatcher;
+        public dispatchEvent(events_: string, rest?: Array<T>): EventDispatcher;
     }
 }
 declare module coordinate.constants {
