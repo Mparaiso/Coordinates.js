@@ -4,8 +4,12 @@
 	"description": "Organise stuffs in 2d an 3d space",
 	"devDependencies": {
 		"mocha": "*",
-		"chai": "*",
-		"grunt": "0.4.x",
-		"grunt-ts": "1.4.x"
+		"uglify-js":"*",
+		"jshint":"*",
+		"typescript":"*",
+		"jsdoc":"*"
+	},
+	"scripts":{
+		"test":"mocha -R spec --recursive"
 	}
 }

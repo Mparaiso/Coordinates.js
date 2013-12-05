@@ -1,4 +1,31 @@
-var coordinate = {};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: c:/development/categories/javascript/coordinates/src/coordinate.js</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: c:/development/categories/javascript/coordinates/src/coordinate.js</h1>
+    
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>var coordinate = {};
 (function (coordinate) {
     "use strict";
 
@@ -12,11 +39,11 @@ var coordinate = {};
     */
     var _extend = function () {
         var sources = [];
-        for (var _i = 0; _i < (arguments.length - 0); _i++) {
+        for (var _i = 0; _i &lt; (arguments.length - 0); _i++) {
             sources[_i] = arguments[_i + 0];
         }
         var destination = {};
-        for (var i = 0; i < sources.length; i++) {
+        for (var i = 0; i &lt; sources.length; i++) {
             for (var key in sources[i]) {
                 destination[key] = sources[i][key];
             }
@@ -201,7 +228,7 @@ var coordinate = {};
         */
         addNodes: function (count) {
             assert(count > 0, "count is positive");
-            for (var i = 0; i < count; i++) {
+            for (var i = 0; i &lt; count; i++) {
                 this.addNode();
             }
         },
@@ -397,7 +424,7 @@ var coordinate = {};
             //this.dispatchEvent(new NodeEvent(NodeEvent.REMOVE,node));
         },
         /**
-        * Performs the update method defined by the <em>updateMethod</em> property. Is helpful for
+        * Performs the update method defined by the &lt;em>updateMethod&lt;/em> property. Is helpful for
         * for behaviors and proxy updaters to work within the defined functiality set at runtime.
         */
         executeUpdateMethod: function () {
@@ -522,7 +549,7 @@ var coordinate = {};
         },
         getColumn: function (columnIndex) {
             var c = [];
-            for (var i = 0; i < this._rows; i++) {
+            for (var i = 0; i &lt; this._rows; i++) {
                 c.push(this._nodes[(i * this._columns) + columnIndex]);
             }
             return c;
@@ -534,7 +561,7 @@ var coordinate = {};
         */
         getRow: function (rowIndex) {
             var r = [];
-            for (var i = 0; i < this._columns; i++) {
+            for (var i = 0; i &lt; this._columns; i++) {
                 r.push(this._nodes[(i * this._columns) + rowIndex]);
             }
             return r;
@@ -568,7 +595,7 @@ var coordinate = {};
             var r = Math.floor(this.size / (this._maxNodes / this.rows));
             var node = new coordinate.nodes.twodee.GridNode(link, c, r, ((d.width * c) + (c * this._hPadding) + this._x), ((d.height * r) + (r * this._yPadding) + this._y));
             this.storeNode(node);
-            if (link && moveToCoordinates) {
+            if (link &amp;&amp; moveToCoordinates) {
                 this.renderNode(node);
             }
 
@@ -583,7 +610,7 @@ var coordinate = {};
             var total = this._columns * this._rows;
             var d = this.calculateCellSize();
             var c, r, node;
-            for (var i = 0; i < this._size; i++) {
+            for (var i = 0; i &lt; this._size; i++) {
                 node = this._nodes[i];
                 if (!node)
                     break;
@@ -613,7 +640,30 @@ var coordinate = {};
         Rectangle: Rectangle
     };
 
-    if (typeof module !== "undefined" && module.exports) {
+    if (typeof module !== "undefined" &amp;&amp; module.exports) {
         module.exports = coordinate;
     }
 })(coordinate);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="coordinate.layouts.Layout.html">Layout</a></li><li><a href="coordinate.layouts.twodee.Grid.html">Grid</a></li><li><a href="coordinate.layouts.twodee.Layout2d.html">Layout2d</a></li><li><a href="coordinate.nodes.Node.html">Node</a></li><li><a href="coordinate.nodes.twodee.GridNode.html">GridNode</a></li></ul><h3>Global</h3><ul><li><a href="global.html#executeUpdateMethod">executeUpdateMethod</a></li><li><a href="global.html#getRow">getRow</a></li><li><a href="global.html#removeItemAt">removeItemAt</a></li><li><a href="global.html#removeNode">removeNode</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#renderNode">renderNode</a></li><li><a href="global.html#updateAndRender">updateAndRender</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha2</a> on Thu Dec 05 2013 09:03:14 GMT+0100 (Paris, Madrid)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

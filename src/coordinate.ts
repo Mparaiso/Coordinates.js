@@ -1,20 +1,23 @@
+/* jslint browser:true */
+
+/**
+ * @copyright 2011 mparaiso mparaiso@online.fr
+ */
+declare var module: any;
 var coordinate = {};
-(function (coordinate) {
+(function(coordinate) {
     "use strict";
 
     /**************
-    *  UTILITIES *
-    **************/
+     *  UTILITIES *
+     **************/
+
     /**
-    * extends a object with multiple other objects
-    * @param {Object} [sources...] mutliple objects
-    * @return {Object} the extended object
-    */
-    var _extend = function () {
-        var sources = [];
-        for (var _i = 0; _i < (arguments.length - 0); _i++) {
-            sources[_i] = arguments[_i + 0];
-        }
+     * extends a object with multiple other objects
+     * @param {Object} [sources...] mutliple objects
+     * @return {Object} the extended object
+     */
+    var _extend = function(...sources) {
         var destination = {};
         for (var i = 0; i < sources.length; i++) {
             for (var key in sources[i]) {
@@ -23,17 +26,14 @@ var coordinate = {};
         }
         return destination;
     };
-    var _defined = function (val) {
-        return typeof val !== "undefined";
-    };
-    var _undefined = function (val) {
-        return !_defined(val);
-    };
-    var assert = function (predicate, message) {
+    var _defined = function(val) { return typeof val !== "undefined"; };
+    var _undefined = function(val) { return !_defined(val); };
+    var assert = function(predicate, message) {
         message = message || predicate;
         if (!predicate)
             throw "assertion error : " + message;
     };
+
 
     coordinate.constants = {
         LayoutUpdateMethod: {
@@ -69,21 +69,22 @@ var coordinate = {};
         }
     };
 
+
     Object.freeze(coordinate.constants);
 
     /**************
-    * RECTANGLE  *
-    *************/
+     * RECTANGLE  *
+     *************/
     /**
-    * Rectangle
-    * @constructor
-    * @typedef coordinate.utils.Rectangle
-    * @param {Number} x
-    * @param {Number} y
-    * @param {Number} width
-    * @param {Number} height
-    */
-    var Rectangle = function (x, y, width, height) {
+     * Rectangle
+     * @constructor
+     * @typedef coordinate.utils.Rectangle
+     * @param {Number} x
+     * @param {Number} y
+     * @param {Number} width
+     * @param {Number} height
+     */
+    var Rectangle = function(x, y, width, height) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -91,48 +92,39 @@ var coordinate = {};
     };
 
     /**************
-    *    NODES   *
-    **************/
+     *    NODES   *
+     **************/
     coordinate.nodes = {};
-
     /**
-    * @typedef coordinate.nodes.Node
-    * @constructor
-    * @param {Object} link
-    */
-    coordinate.nodes.Node = function (link) {
+     * @typedef coordinate.nodes.Node
+     * @constructor
+     * @param {Object} link
+     */
+    coordinate.nodes.Node = function(link) {
         this.link = link;
     };
 
     coordinate.nodes.twodee = {};
-
+    
     /**
-    * @constructor
-    * @typedef coordinate.nodes.twoodee.Node2d
-    * @param {Object} link
-    * @param {Number} x
-    * @param {Number} y
-    * @param {Number} jitterX
-    * @param {Number} jitterY
-    */
-    coordinate.nodes.twodee.Node2d = function (link, x, y, jitterX, jitterY) {
+     * @constructor
+     * @typedef coordinate.nodes.twoodee.Node2d
+     * @param {Object} link
+     * @param {Number} x
+     * @param {Number} y
+     * @param {Number} jitterX
+     * @param {Number} jitterY
+     */
+    coordinate.nodes.twodee.Node2d = function(link, x, y, jitterX, jitterY) {
         coordinate.nodes.Node.call(this, link);
 
         Object.defineProperty(this, "jitterX", {
-            get: function () {
-                return this._jitterX;
-            },
-            set: function (value) {
-                this._jitterX = Math.random() * value * ((Math.random() > 0.5) ? -1 : 1);
-            }
+            get: function() { return this._jitterX; },
+            set: function(value) { this._jitterX = Math.random() * value * ((Math.random() > 0.5) ? -1 : 1); }
         });
         Object.defineProperty(this, "jitterY", {
-            get: function () {
-                return this._jitterY;
-            },
-            set: function (value) {
-                this._jitterY = Math.random() * value * ((Math.random() > 0.5) ? -1 : 1);
-            }
+            get: function() { return this._jitterY; },
+            set: function(value) { this._jitterY = Math.random() * value * ((Math.random() > 0.5) ? -1 : 1); }
         });
 
         this.x = x;
@@ -145,170 +137,148 @@ var coordinate = {};
     coordinate.nodes.twodee.Node2d.prototype.constructor = coordinate.nodes.Node;
 
     /**
-    * node for grid layout
-    * @constructor
-    * @param {Object} link
-    * @param {Number} column
-    * @param {Number} row
-    * @param {Number} x
-    * @param {Number} y
-    * @param {Number} jitterX
-    * @param {Number} jitterY
-    */
-    coordinate.nodes.twodee.GridNode = function (link, column, row, x, y, jitterX, jitterY) {
+     * node for grid layout
+     * @constructor
+     * @param {Object} link
+     * @param {Number} column
+     * @param {Number} row
+     * @param {Number} x
+     * @param {Number} y
+     * @param {Number} jitterX
+     * @param {Number} jitterY
+     */
+    coordinate.nodes.twodee.GridNode = function(link, column, row, x, y, jitterX, jitterY) {
         coordinate.nodes.twodee.Node2d.call(this, link, x, y, jitterX, jitterY);
         this.column = _defined(column) ? column : -1;
         this.row = _defined(row) ? row : -1;
     };
     coordinate.nodes.twodee.GridNode.prototype = Object.create(coordinate.nodes.twodee.Node2d);
     coordinate.nodes.twodee.GridNode.prototype.constructor = coordinate.nodes.twodee.Node2d;
-    coordinate.nodes.twodee.GridNode.prototype.toObject = function () {
+    coordinate.nodes.twodee.GridNode.prototype.toObject = function() {
         return { row: this.row, column: this.column, x: this.x, y: this.y, rotation: this.rotation };
     };
 
-    /**************
-    * LAYOUTS 2D *
-    **************/
-    coordinate.layouts = {};
 
+
+    /**************
+     * LAYOUTS 2D *
+     **************/
+    coordinate.layouts = {};
     /**
-    * @constructor
-    */
-    coordinate.layouts.Layout = function () {
+     * @constructor
+     */
+    coordinate.layouts.Layout = function() {
         this._nodes = [];
         Object.defineProperties(this, {
             size: {
-                get: function () {
-                    return this._nodes.length;
-                }
+                get: function() { return this._nodes.length; }
             },
             nodes: {
-                get: function () {
-                    return this._nodes;
-                }
+                get: function() { return this._nodes; }
             }
         });
     };
     coordinate.layouts.Layout.prototype = {
-        addNode: function (object, moveToCoordinates) {
+        addNode: function(object, moveToCoordinates) {
             var node = { link: object };
             this._nodes.push(node);
             return node;
         },
         /**
-        *
-        * @param {Number} count
-        */
-        addNodes: function (count) {
+         * 
+         * @param {Number} count
+         */
+        addNodes: function(count) {
             assert(count > 0, "count is positive");
             for (var i = 0; i < count; i++) {
                 this.addNode();
             }
         },
         /**
-        * @param {object} link
-        */
-        getNodeByLink: function (link) {
-            return this._nodes.filter(function (n) {
-                return n.link === link;
-            })[0];
+         * @param {object} link
+         */
+        getNodeByLink: function(link) {
+            return this._nodes.filter(function(n) { return n.link === link; })[0];
         },
         /**
-        * @param {coordinate.nodes.Node} node
-        */
-        getNodeIndex: function (node) {
+         * @param {coordinate.nodes.Node} node
+         */
+        getNodeIndex: function(node) {
             return this._nodes.indexOf(node);
         },
-        getNodeByIndex: function (node) {
-            return this._nodes.filter(function (n) {
-                return n === node;
-            })[0];
+        getNodeByIndex: function(node) {
+            return this._nodes.filter(function(n) { return n === node; })[0];
         },
-        getNodeAt: function (index) {
+        getNodeAt: function(index) {
             return this._nodes[index];
         },
         /**
-        * @return {Boolean}
-        */
-        linkExists: function (link) {
-            return this._nodes.some(function (n) {
-                return n.link === link;
-            });
+         * @return {Boolean}
+         */
+        linkExists: function(link) {
+            return this._nodes.some(function(n) { return n.link === link; });
         },
-        swapNodeLinks: function (nodeTo, nodeFrom) {
+        swapNodeLinks: function(nodeTo, nodeFrom) {
             var tmpLink = nodeTo.link;
             nodeTo.link = nodeFrom.link;
             nodeFrom.link = tmpLink;
         },
-        removeLinks: function () {
-            this._nodes.forEach(function (node) {
-                node.link = null;
-            });
+        removeLinks: function() {
+            this._nodes.forEach(function(node) { node.link = null; });
         },
-        removeLinkAt: function (index) {
+        removeLinkAt: function(index) {
             if (this._nodes[index])
                 this._nodes[index].link = null;
         },
-        removeNode: function (node) {
+        removeNode: function(node) {
             return this._nodes.splice(this.getNodeIndex(node), 1);
         },
-        removeAllNodes: function () {
+        removeAllNodes: function() {
             return this._nodes.splice(0, this._nodes.length);
         },
-        removeNodeByLink: function (link) {
+        removeNodeByLink: function(link) {
             return this._nodes.splice(this.getNodeIndex(this.getNodeByLink(link)), 1);
         },
-        addLinkAt: function (link, index) {
+        addLinkAt: function(link, index) {
             this._nodes[index].link = link;
         },
-        storeNode: function (node) {
+        storeNode: function(node) {
             this._nodes.push(node);
         },
-        storeNodeAt: function (node, index) {
+        storeNodeAt: function(node, index) {
             assert((index % 1) === 0, "index is a Integer");
             this._nodes[index] = node;
         },
-        getNextAvailableNode: function () {
-            return this._nodes.filter(function (node) {
-                return !(node.link);
-            })[0];
+        getNextAvailableNode: function() {
+            return this._nodes.filter(function(node) { return !(node.link); })[0];
         },
-        clearNodes: function () {
+        clearNodes: function() {
             this._nodes = [];
         }
+
     };
     coordinate.layouts.twodee = {};
-
     /**
-    * @constructor
-    */
-    coordinate.layouts.twodee.Layout2d = function () {
+     * @constructor
+     */
+    coordinate.layouts.twodee.Layout2d = function() {
         coordinate.layouts.Layout.apply(this, [].slice.call(arguments));
         this._rotation = 0;
         this._updateMethod = coordinate.constants.LayoutUpdateMethod.UPDATE_AND_RENDER;
         this._updateFunction = this.updateAndRender;
-
         //properties
         Object.defineProperties(this, {
             proxyUpdater: {
-                get: function () {
-                    return this._proxyUpdater;
-                },
-                set: function (value) {
-                    this._updateMethod = value.name;
-                    this._updateFunction = value.update;
-                }
+                get: function() { return this._proxyUpdater; },
+                set: function(value) { this._updateMethod = value.name; this._updateFunction = value.update; }
             },
             updateMethod: {
-                get: function () {
-                    return this._updateMethod;
-                },
-                set: function (value) {
+                get: function() { return this._updateMethod; },
+                set: function(value) {
                     this._updateMethod = value;
                     switch (value) {
                         case coordinate.constants.LayoutUpdateMethod.NONE:
-                            this._updateFunction = function () {
-                            };
+                            this._updateFunction = function() { };
                             break;
                         case coordinate.constants.LayoutUpdateMethod.UPDATE_ONLY:
                             this._updateFunction = this.update;
@@ -319,188 +289,129 @@ var coordinate = {};
                 }
             },
             rotation: {
-                get: function () {
-                    return this._rotation;
-                },
-                set: function (value) {
-                    this._rotation = value;
-                    this._updateFunction();
-                }
+                get: function(): number { return this._rotation; },
+                set: function(value) { this._rotation = value; this._updateFunction(); },
             },
             y: {
-                get: function () {
-                    return this._y;
-                },
-                set: function (value) {
-                    this._y = value;
-                    this._updateFunction();
-                }
+                get: function(): number { return this._y; },
+                set: function(value) { this._y = value; this._updateFunction(); }
             },
             x: {
-                get: function () {
-                    return this._x;
-                },
-                set: function (value) {
-                    this._x = value;
-                    this._updateFunction();
-                }
+                get: function(): number { return this._x; },
+                set: function(value) { this._x = value; this._updateFunction(); }
             },
             width: {
-                get: function () {
-                    return this._width;
-                },
-                set: function (value) {
-                    this._width = value;
-                    this._updateFunction();
-                }
+                get: function(): number { return this._width; },
+                set: function(value) { this._width = value; this._updateFunction(); }
             },
             height: {
-                get: function () {
-                    return this._height;
-                },
-                set: function (value) {
-                    this._height = value;
-                    this._updateFunction();
-                }
+                get: function(): number { return this._height; },
+                set: function(value) { this._height = value; this._updateFunction(); }
             },
             jitterX: {
-                get: function () {
-                    return this._jitterY;
-                },
-                set: function (value) {
-                    this._jitterX = value;
-                    this._updateFunction();
-                }
+                get: function(): number { return this._jitterY; },
+                set: function(value) { this._jitterX = value; this._updateFunction(); }
             },
             jitterY: {
-                get: function () {
-                    return this._jitterY;
-                },
-                set: function (value) {
-                    this._jitterY = value;
-                    this._updateFunction();
-                }
+                get: function(): number { return this._jitterY; },
+                set: function(value) { this._jitterY = value; this._updateFunction(); }
             }
         });
     };
     coordinate.layouts.twodee.Layout2d.prototype = _extend(new coordinate.layouts.Layout(), {
         constructor: coordinate.layouts.Layout,
         /**
-        * coordinate.layouts.twodee.Layout2d
-        * @param  {coordinate.nodes.Node}
-        */
-        removeNode: function (node) {
+         * coordinate.layouts.twodee.Layout2d
+         * @param  {coordinate.nodes.Node}
+         */
+        removeNode: function(node) {
             coordinate.layout.Layout.removeNode.call(this, node);
-
             //@TODO completer
             this._updateFunction();
             //this.dispatchEvent(new NodeEvent(NodeEvent.REMOVE,node));
         },
         /**
-        * Performs the update method defined by the <em>updateMethod</em> property. Is helpful for
-        * for behaviors and proxy updaters to work within the defined functiality set at runtime.
-        */
-        executeUpdateMethod: function () {
+         * Performs the update method defined by the <em>updateMethod</em> property. Is helpful for 
+         * for behaviors and proxy updaters to work within the defined functiality set at runtime.
+         */
+        executeUpdateMethod: function() {
             this._updateFunction();
         },
         /**
-        * Performs an update on all the nodes' positions and renders each node's corresponding link
-        */
-        updateAndRender: function () {
+         * Performs an update on all the nodes' positions and renders each node's corresponding link
+         */
+        updateAndRender: function() {
             this.update();
             this.render();
         },
         /**
-        * Renders all layout property values to all objects in the collection
-        */
-        render: function () {
-            this._nodes.forEach((function (node) {
+         * Renders all layout property values to all objects in the collection
+         */
+        render: function() {
+            this._nodes.forEach((function(node) {
                 if (node.link)
                     this.renderNode(node);
             }).bind(this));
         },
         /**
-        * Renders all layout property values of a specified node
-        * @param  {coordinate.nodes.twodee.Node2d} node
-        */
-        renderNode: function (node) {
+         * Renders all layout property values of a specified node
+         * @param  {coordinate.nodes.twodee.Node2d} node
+         */
+        renderNode: function(node) {
             node.link.x = node.x;
             node.link.y = node.y;
         }
     });
 
     // Grid2d
+
     /**
-    * @constructor
-    * @param {Number} width
-    * @param {Number} height
-    * @param {Number} columns
-    * @param {Number} rows
-    * @param {Number} hPadding
-    * @param {Number} vPadding
-    * @param {Number} x
-    * @param {Number} y
-    * @param {Number} jitterX
-    * @param {Number} jitterY
-    */
-    coordinate.layouts.twodee.Grid = function (width, height, columns, rows, hPadding, vPadding, x, y, jitterX, jitterY) {
+     * @constructor
+     * @param {Number} width
+     * @param {Number} height
+     * @param {Number} columns
+     * @param {Number} rows
+     * @param {Number} hPadding
+     * @param {Number} vPadding
+     * @param {Number} x
+     * @param {Number} y
+     * @param {Number} jitterX
+     * @param {Number} jitterY
+     */
+    coordinate.layouts.twodee.Grid = function(width, height, columns, rows, hPadding, vPadding, x, y, jitterX, jitterY) {
         coordinate.layouts.twodee.Layout2d.apply(this, [].slice.call(arguments));
 
         Object.defineProperties(this, {
             columns: {
-                get: function () {
-                    return this._columns;
-                }
+                get: function() { return this._columns; }
             },
             rows: {
-                get: function () {
-                    return this._rows;
-                }
+                get: function() { return this._rows; }
             },
             horizontalDirection: {
-                get: function () {
-                    return this._hDirection;
-                },
-                set: function (value) {
-                    this._hDirection = value;
-                    this._updateFunction();
-                }
+                get: function() { return this._hDirection; },
+                set: function(value) { this._hDirection = value; this._updateFunction(); }
             },
             verticalDirection: {
-                get: function () {
-                    return this._vDirection;
-                },
-                set: function (value) {
-                    this._vDirection = value;
-                }
+                get: function() { return this._vDirection; },
+                set: function(value) { this._vDirection = value; }
             },
             paddingX: {
-                get: function () {
-                    return this._hPadding;
-                },
-                set: function (value) {
+                get: function() { return this._hPadding; },
+                set: function(value) {
                     this._hPadding = value;
                     this._updateFunction();
                 }
             },
             paddingY: {
-                get: function () {
-                    return this._yPadding;
-                },
-                set: function (value) {
-                    this._yPadding = value;
-                    this._updateFunction();
-                }
+                get: function() { return this._yPadding; },
+                set: function(value) { this._yPadding = value; this._updateFunction(); }
             },
             nodeWidth: {
-                get: function () {
-                    return this._width / this._columns;
-                }
+                get: function() { return this._width / this._columns; }
             },
             nodeHeight: {
-                get: function () {
-                    return this._height / this._rows;
-                }
+                get () { return this._height / this._rows; }
             }
         });
         this._width = width;
@@ -517,10 +428,8 @@ var coordinate = {};
     };
     coordinate.layouts.twodee.Grid.prototype = _extend(new coordinate.layouts.twodee.Layout2d(), {
         constructor: coordinate.layouts.twodee.Layout2d,
-        toString: function () {
-            return coordinate.constants.LayoutType.GRID;
-        },
-        getColumn: function (columnIndex) {
+        toString: function() { return coordinate.constants.LayoutType.GRID; },
+        getColumn: function(columnIndex) {
             var c = [];
             for (var i = 0; i < this._rows; i++) {
                 c.push(this._nodes[(i * this._columns) + columnIndex]);
@@ -528,11 +437,11 @@ var coordinate = {};
             return c;
         },
         /**
-        * Get cell objects by row index
-        * @param  {Integer} rowIndex
-        * @return {Array}
-        */
-        getRow: function (rowIndex) {
+         * Get cell objects by row index
+         * @param  {Integer} rowIndex
+         * @return {Array}
+         */
+        getRow: function(rowIndex) {
             var r = [];
             for (var i = 0; i < this._columns; i++) {
                 r.push(this._nodes[(i * this._columns) + rowIndex]);
@@ -540,15 +449,14 @@ var coordinate = {};
             return r;
         },
         /**
-        * Removes cell link of DisplayObject at specified grid coordinates
-        */
-        removeItemAt: function (columnIndex, rowIndex) {
+         * Removes cell link of DisplayObject at specified grid coordinates
+         */
+        removeItemAt: function(columnIndex, rowIndex) {
             this.getNodeFromCoordinates(columnIndex, rowIndex).link = null;
         },
-        addItemAt: function (link, columnIndex, rowIndex, moveToCoordinates) {
+        addItemAt: function(link, columnIndex, rowIndex, moveToCoordinates) {
             moveToCoordinates = _undefined(moveToCoordinates) ? true : moveToCoordinates;
-            if (this.linkExists(link))
-                return null;
+            if (this.linkExists(link)) return null;
             var node = this.getNodeFromCoordinates(columnIndex, rowIndex);
             node.link = link;
             if (moveToCoordinates) {
@@ -556,13 +464,12 @@ var coordinate = {};
             }
             return node;
         },
-        getNodeFromCoordinates: function (columnIndex, rowIndex) {
+        getNodeFromCoordinates: function(columnIndex, rowIndex) {
             return this._nodes[(rowIndex * this._columns) + columnIndex];
         },
-        addNode: function (link, moveToCoordinates) {
+        addNode: function(link, moveToCoordinates) {
             moveToCoordinates = _undefined(moveToCoordinates) ? true : moveToCoordinates;
-            if (this.linkExists(link))
-                return null;
+            if (this.linkExists(link)) return null;
             var d = this.calculateCellSize();
             var c = this.size % this.columns;
             var r = Math.floor(this.size / (this._maxNodes / this.rows));
@@ -571,22 +478,20 @@ var coordinate = {};
             if (link && moveToCoordinates) {
                 this.renderNode(node);
             }
-
             //TODO créer event dispatcher + nodeevent
             //this.dispatchEvent(new NodeEvent(NodeEvent.ADD,node));
             return node;
         },
         /**
-        * @memberof coordinate.layouts.twodee.Grid.prototype
-        */
-        update: function () {
+         * @memberof coordinate.layouts.twodee.Grid.prototype
+         */
+        update: function() {
             var total = this._columns * this._rows;
             var d = this.calculateCellSize();
             var c, r, node;
             for (var i = 0; i < this._size; i++) {
                 node = this._nodes[i];
-                if (!node)
-                    break;
+                if (!node) break;
                 c = i % this._columns;
                 r = Math.floor(i / (total / this._rows));
                 if (this._hDirection == coordinate.constants.GridLayoutDirection.RIGHT_TO_LEFT)
@@ -598,12 +503,13 @@ var coordinate = {};
             }
         },
         /**
-        * @memberof coordinate.layouts.twodee.Grid.prototype
-        * @return {Rectangle}
-        */
-        calculateCellSize: function () {
+         * @memberof coordinate.layouts.twodee.Grid.prototype
+         * @return {Rectangle}
+         */
+        calculateCellSize: function() {
             return new Rectangle(0, 0, (this._width - ((this._columns - 1) * this._hPadding)) / this._columns, (this._height - ((this._rows - 1) * this._yPadding)) / this._rows);
         }
+
     });
 
     coordinate.utils = {
@@ -613,7 +519,10 @@ var coordinate = {};
         Rectangle: Rectangle
     };
 
+
+
     if (typeof module !== "undefined" && module.exports) {
         module.exports = coordinate;
     }
+
 })(coordinate);
