@@ -40,7 +40,7 @@
             twodee:{},
             threedee:{}
         },
-        layout:{
+        layouts:{
             twodee:{},
             threedee:{}
         },
@@ -128,12 +128,23 @@
         });
         this.x=x;
         this.y=y;
-        this.jitterX=jitterX;
-        this.jitterY=jitterY;
+        this.jitterX=_defined(jitterX)?jitterX:0;
+        this.jitterY=_defined(jitterY)?jitterY:0;
     };
     coordinate.nodes.twodee.Node2d.prototype=Object.create(coordinate.nodes.Node);
     coordinate.nodes.twodee.Node2d.prototype.constructor=coordinate.nodes.Node;
     
+    coordinate.nodes.twodee.GridNode=function(link,column,row,x,y,jitterX,jitterY){
+        coordinate.nodes.twodee.Node2d.call(this,link,x,y,jitterX,jitterY);
+        this.column=_defined(column)?column:-1;
+        this.row=_defined(row)?row:-1;
+    };
+    coordinate.nodes.twodee.GridNode.prototype=Object.create(coordinate.nodes.twodee.Node2d);
+    coordinate.nodes.twodee.GridNode.prototype.constructor=coordinate.nodes.twodee.Node2d;
+    coordinate.nodes.twodee.GridNode.prototype.toObject=function(){
+        return {row:this.row,column:this.column,x:this.x,y:this.y,rotation:this.rotation};
+    };
+
 
 
     /**************
@@ -400,6 +411,14 @@
             var d=this.calculateCellSize();
             var c = this.size % this.columns;
             var r = Math.floor(this.size/(this._maxNodes/this.rows));
+            var node=new coordinate.nodes.twodee.GridNode(link,c,r,((d.width*c)+(c*this._hPadding)+this._x),((d.height*r)+(r*this._yPadding)+this._y));
+            this.storeNode(node);
+            if(link && moveToCoordinates){
+                this.renderNode(node);
+            }
+            //TODO créer event dispatcher + nodeevent
+            //this.dispatchEvent(new NodeEvent(NodeEvent.ADD,node));
+            return node;
         },
         update:function(){
             var total=this._columns*this._rows;

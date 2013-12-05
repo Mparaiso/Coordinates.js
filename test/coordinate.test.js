@@ -22,6 +22,10 @@ describe("Layout",function(){
 	});
 });
 
+/*************
+ *   NODES   *
+ *************/
+
 describe("coordinate.nodes",function(){
 	describe("twodee",function(){
 		describe("Node2d",function(){
@@ -29,9 +33,21 @@ describe("coordinate.nodes",function(){
 				this.node2d = new coordinate.nodes.twodee.Node2d({},0,0,1,1);
 			});
 			it('jitterX and jitterY are between -1 and 1',function(){
-				//console.log(this.node2d);
 				assert.ok(this.node2d.jitterX < 1 && this.node2d.jitterX > -1);
 				assert.ok(this.node2d.jitterY < 1 && this.node2d.jitterY > -1);
+			});
+		});
+		describe('GridNode',function(){
+			beforeEach(function(){
+				this.link = {};
+				this.gridNode=new coordinate.nodes.twodee.GridNode(this.link,2,4,10,15,1,1);
+			});
+			it("behaves as expected",function(){
+				assert.equal(this.gridNode.link,this.link);
+				assert.equal(this.gridNode.x,10);
+				assert.equal(this.gridNode.y,15);
+				assert.equal(this.gridNode.column,2);
+				assert.equal(this.gridNode.row,4);
 			});
 		});
 	});
